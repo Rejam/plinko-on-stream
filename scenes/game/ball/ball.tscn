@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ckqgq6tlnuqhc" path="res://scenes/game/ball/ball.gd" id="1_l07mq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oekm8"]
+friction = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hiwug"]
 radius = 19.104973

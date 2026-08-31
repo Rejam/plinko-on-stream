@@ -13,18 +13,18 @@ boards = Array[PackedScene]([ExtResource("2_yd8kv"), ExtResource("3_uaf1y")])
 unique_name_in_owner = true
 position = Vector2(100, 200)
 
-[node name="PanelContainer" type="HBoxContainer" parent="." unique_id=1805621368]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1805621368]
 offset_right = 925.0
 offset_bottom = 60.0
 theme = ExtResource("4_uaf1y")
 
-[node name="NextRoundButton" type="Button" parent="PanelContainer" unique_id=55538867]
+[node name="NextRoundButton" type="Button" parent="HBoxContainer" unique_id=55538867]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Next Round"
 
-[node name="DropBallButton" type="Button" parent="PanelContainer" unique_id=501488133]
+[node name="DropBallButton" type="Button" parent="HBoxContainer" unique_id=501488133]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
