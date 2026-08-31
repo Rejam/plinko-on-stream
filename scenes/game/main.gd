@@ -7,7 +7,7 @@ extends Node2D
 @onready var next_round_button: Button = %NextRoundButton
 @onready var drop_ball_button: Button = %DropBallButton
 
-var ballScene := preload("res://scenes/game/ball/ball.tscn")
+const ball_scene := preload("uid://cthrtlsbusy3")
 var game_round := 0
 var board: Node2D = null
 var balls_remaining := 0
@@ -46,7 +46,7 @@ func _next_round() -> void:
 func _dropball() -> void:
 	if not balls_remaining: return
 	if not board: return
-	var ball : Ball = ballScene.instantiate()
+	var ball : Ball = ball_scene.instantiate()
 	ball.position = Vector2(randi_range(100, 1000), randi_range(20, 50))
 	board.add_child(ball)
 	balls_remaining -= 1

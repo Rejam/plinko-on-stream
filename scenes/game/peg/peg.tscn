@@ -10,6 +10,8 @@ bounce = 0.5
 radius = 6.0
 
 [node name="Peg" type="StaticBody2D" unique_id=578915731]
+collision_layer = 4
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 
 [node name="PegCollision" type="CollisionShape2D" parent="." unique_id=540054425]
