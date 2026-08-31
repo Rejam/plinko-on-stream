@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://cvffomituhpw8"]
+
+[ext_resource type="PackedScene" uid="uid://c56jtk2m2j8e" path="res://scenes/game/boards/_base_board.tscn" id="1_axgm0"]
+[ext_resource type="PackedScene" uid="uid://ctc64dnv2jawv" path="res://scenes/game/peg/peg.tscn" id="2_e5uvs"]
+
+[sub_resource type="Gradient" id="Gradient_l1al6"]
+colors = PackedColorArray(1, 0.4600119, 0.7694043, 1, 1, 0.6552185, 0.6028567, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2lkem"]
+gradient = SubResource("Gradient_l1al6")
+fill_to = Vector2(0, 1)
+
+[node name="BoardPink" unique_id=2047480295 instance=ExtResource("1_axgm0")]
+
+[node name="TextureRect" parent="." index="0" unique_id=1086679066]
+texture = SubResource("GradientTexture2D_2lkem")
+metadata/_edit_lock_ = true
+
+[node name="Pegs" type="Node2D" parent="." index="1" unique_id=1813015774]
+
+[node name="Row_1_1" parent="Pegs" index="0" unique_id=578915731 instance=ExtResource("2_e5uvs")]
+position = Vector2(128, 128)
+
+[node name="Row_1_2" parent="Pegs" index="1" unique_id=694041337 instance=ExtResource("2_e5uvs")]
+position = Vector2(384, 128)
+
+[node name="Row_1_3" parent="Pegs" index="2" unique_id=887734181 instance=ExtResource("2_e5uvs")]
+position = Vector2(640, 128)
+
+[node name="Row_1_4" parent="Pegs" index="3" unique_id=13674256 instance=ExtResource("2_e5uvs")]
+position = Vector2(896, 128)
+
+[node name="Row_1_5" parent="Pegs" index="4" unique_id=1337709196 instance=ExtResource("2_e5uvs")]
+position = Vector2(1152, 128)
+
+[node name="Row_2_1" parent="Pegs" index="5" unique_id=1295424768 instance=ExtResource("2_e5uvs")]
+position = Vector2(256, 256)
+
+[node name="Row_2_2" parent="Pegs" index="6" unique_id=623422614 instance=ExtResource("2_e5uvs")]
+position = Vector2(512, 256)
+
+[node name="Row_2_3" parent="Pegs" index="7" unique_id=1413632777 instance=ExtResource("2_e5uvs")]
+position = Vector2(768, 256)
+
+[node name="Row_2_4" parent="Pegs" index="8" unique_id=436786703 instance=ExtResource("2_e5uvs")]
+position = Vector2(1024, 256)
+
+[node name="Row_3_1" parent="Pegs" index="9" unique_id=519152587 instance=ExtResource("2_e5uvs")]
+position = Vector2(128, 384)
+
+[node name="Row_3_2" parent="Pegs" index="10" unique_id=813776745 instance=ExtResource("2_e5uvs")]
+position = Vector2(384, 384)
+
+[node name="Row_3_3" parent="Pegs" index="11" unique_id=2125376900 instance=ExtResource("2_e5uvs")]
+position = Vector2(640, 384)
+
+[node name="Row_3_4" parent="Pegs" index="12" unique_id=107254824 instance=ExtResource("2_e5uvs")]
+position = Vector2(896, 384)
+
+[node name="Row_3_5" parent="Pegs" index="13" unique_id=1429483492 instance=ExtResource("2_e5uvs")]
+position = Vector2(1152, 384)
+
+[node name="Row_4_1" parent="Pegs" index="14" unique_id=1584210811 instance=ExtResource("2_e5uvs")]
+position = Vector2(256, 512)
+
+[node name="Row_4_2" parent="Pegs" index="15" unique_id=762867479 instance=ExtResource("2_e5uvs")]
+position = Vector2(512, 512)
+
+[node name="Row_4_3" parent="Pegs" index="16" unique_id=1832822637 instance=ExtResource("2_e5uvs")]
+position = Vector2(768, 512)
+
+[node name="Row_4_4" parent="Pegs" index="17" unique_id=1063234790 instance=ExtResource("2_e5uvs")]
+position = Vector2(1024, 512)
+
+[node name="Row_5_1" parent="Pegs" index="18" unique_id=73686868 instance=ExtResource("2_e5uvs")]
+position = Vector2(128, 640)
+
+[node name="Row_5_2" parent="Pegs" index="19" unique_id=1207094522 instance=ExtResource("2_e5uvs")]
+position = Vector2(384, 640)
+
+[node name="Row_5_3" parent="Pegs" index="20" unique_id=1434748038 instance=ExtResource("2_e5uvs")]
+position = Vector2(640, 640)
+
+[node name="Row_5_4" parent="Pegs" index="21" unique_id=1748112991 instance=ExtResource("2_e5uvs")]
+position = Vector2(896, 640)
+
+[node name="Row_5_5" parent="Pegs" index="22" unique_id=1516853122 instance=ExtResource("2_e5uvs")]
+position = Vector2(1152, 640)

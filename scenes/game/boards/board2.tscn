@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dp33x5bhhwo7d"]
+
+[ext_resource type="PackedScene" uid="uid://c56jtk2m2j8e" path="res://scenes/game/boards/_base_board.tscn" id="1_ordsl"]
+
+[node name="BoardYellow" unique_id=2047480295 instance=ExtResource("1_ordsl")]

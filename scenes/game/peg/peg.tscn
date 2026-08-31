@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ctc64dnv2jawv"]
+
+[ext_resource type="Texture2D" uid="uid://cpckgbgge31d8" path="res://scenes/game/peg/ball_puck.png" id="1_shcew"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l07mq"]
+friction = 0.5
+bounce = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hiwug"]
+radius = 6.0
+
+[node name="Peg" type="StaticBody2D" unique_id=578915731]
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="PegCollision" type="CollisionShape2D" parent="." unique_id=540054425]
+shape = SubResource("CircleShape2D_hiwug")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1708710926]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_shcew")

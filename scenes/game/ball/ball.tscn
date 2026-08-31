@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cthrtlsbusy3"]
+
+[ext_resource type="Texture2D" uid="uid://rhrsf1vt7uym" path="res://scenes/game/ball/ball_bowling3.png" id="1_8wjkr"]
+[ext_resource type="Script" uid="uid://ckqgq6tlnuqhc" path="res://scenes/game/ball/ball.gd" id="1_l07mq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oekm8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hiwug"]
+radius = 19.104973
+
+[node name="Ball" type="Node2D" unique_id=1423027495]
+script = ExtResource("1_l07mq")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=100949653]
+physics_material_override = SubResource("PhysicsMaterial_oekm8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1269854069]
+shape = SubResource("CircleShape2D_hiwug")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=506313762]
+scale = Vector2(2, 2)
+texture = ExtResource("1_8wjkr")
+
+[node name="Timer" type="Timer" parent="." unique_id=195438635]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
