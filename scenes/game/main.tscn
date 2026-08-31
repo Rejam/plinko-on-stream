@@ -3,17 +3,29 @@
 [ext_resource type="Script" uid="uid://drdi3o0k7wjik" path="res://scenes/game/main.gd" id="1_yd8kv"]
 [ext_resource type="PackedScene" uid="uid://cvffomituhpw8" path="res://scenes/game/boards/board1.tscn" id="2_yd8kv"]
 [ext_resource type="PackedScene" uid="uid://dp33x5bhhwo7d" path="res://scenes/game/boards/board2.tscn" id="3_uaf1y"]
+[ext_resource type="Theme" uid="uid://bivrme57bosm5" path="res://game_theme.tres" id="4_uaf1y"]
 
 [node name="Game" type="Node2D" unique_id=2047480295]
 script = ExtResource("1_yd8kv")
 boards = Array[PackedScene]([ExtResource("2_yd8kv"), ExtResource("3_uaf1y")])
 
 [node name="BoardMarker" type="Node2D" parent="." unique_id=226631675]
+unique_name_in_owner = true
 position = Vector2(100, 200)
 
-[node name="NextRound" type="Button" parent="." unique_id=55538867]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="PanelContainer" type="HBoxContainer" parent="." unique_id=1805621368]
+offset_right = 925.0
+offset_bottom = 60.0
+theme = ExtResource("4_uaf1y")
+
+[node name="NextRoundButton" type="Button" parent="PanelContainer" unique_id=55538867]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
 text = "Next Round"
 
-[connection signal="pressed" from="NextRound" to="." method="_on_next_round_pressed"]
+[node name="DropBallButton" type="Button" parent="PanelContainer" unique_id=501488133]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Drop Ball"
