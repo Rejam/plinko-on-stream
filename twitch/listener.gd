@@ -12,7 +12,7 @@ const SCOPES := [
 # --- PUBLIC SIGNALS (the game listens to these) ---
 signal login_completed(user_login: String)
 signal login_failed
-signal chat_message(user: String, message: String, tags: Dictionary)
+signal entry_received(player: Player, args: PackedStringArray)
 #signal reward_redeemed(user: String, reward_title: String, user_input: String)
 
 # --- PUBLIC STATE ---
@@ -54,8 +54,15 @@ func _on_login_completed(token: String, id: String, login: String) -> void:
 	#_eventsub.init(token, id, CLIENT_ID)
 	login_completed.emit(login)
 
-func _on_chat_message(user: String, message: String, tags: Dictionary) -> void:
-	chat_message.emit(user, message, tags)
+func _on_chat_message(player: Player, message: String) -> void:
+	var parts := message.strip_edges().split(" ", false)
+	if parts.is_empty() or parts[0].to_lower() != "!plinko":
+		return
+	submit_entry(player, parts.slice(1))
 
+func submit_entry(player: Player, args: PackedStringArray) -> void:
+	print(player)
+	entry_received.emit(player, args)
+	
 #func _on_redemption(user: String, reward_title: String, user_input: String) -> void:
 	#reward_redeemed.emit(user, reward_title, user_input)

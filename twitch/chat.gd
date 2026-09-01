@@ -1,6 +1,6 @@
 class_name TwitchChat extends Node
 
-signal message_received(user: String, message: String, tags: Dictionary)
+signal message_received(player: Player, message: String)
 
 const IRC_URL := "wss://irc-ws.chat.twitch.tv:443"
 
@@ -55,8 +55,9 @@ func _parse_chat_line(line: String) -> void:
 		var split_idx := line.find(" ")
 		tags = _parse_tags(line.substr(1, split_idx - 1))
 		rest = line.substr(split_idx + 1)
-
-	message_received.emit(_user_from(rest), _message_from(rest), tags)
+	
+	var player := Player.make(tags.get("user-id", ""), tags.get("display-name", _user_from(rest)))
+	message_received.emit(player, _message_from(rest))
 
 func _parse_tags(raw: String) -> Dictionary:
 	var tags := {}
