@@ -9,8 +9,8 @@ extends Node2D
 
 const ball_scene := preload("uid://cthrtlsbusy3")
 var game_round := 0
-var board: Node2D = null
 var balls_remaining := 0
+var board: Board = null
 
 func _ready() -> void:
 	next_round_button.pressed.connect(_next_round)
@@ -18,7 +18,7 @@ func _ready() -> void:
 	_load_board()
 	_reset_balls()
 	
-func _get_board() -> Node:
+func _get_board() -> Board:
 	if not boards:
 		push_error("No boards have been added")
 		return null
@@ -30,6 +30,7 @@ func _load_board() -> void:
 	board = _get_board()
 	if not board: return
 	board_marker.add_child(board)
+	board.ball_scored.connect(_on_ball_scored)
 
 func _clear_current_board() -> void:
 	if not board: return
@@ -46,7 +47,12 @@ func _next_round() -> void:
 func _dropball() -> void:
 	if not balls_remaining: return
 	if not board: return
-	var ball : Ball = ball_scene.instantiate()
-	ball.position = Vector2(randi_range(100, 1000), randi_range(20, 50))
-	board.add_child(ball)
+	var column := randi_range(1, board.column_count())
+	var ball := board.spawn_held_ball(column)
+	ball.freeze = false
+	# help prevent balls resting on grid aligned pegs
+	ball.apply_central_impulse(Vector2(randf_range(-20, 20), 0))
 	balls_remaining -= 1
+
+func _on_ball_scored(ball: Ball, base_value: int) -> void:
+	print("%s scored %d" % [ball.name, base_value])

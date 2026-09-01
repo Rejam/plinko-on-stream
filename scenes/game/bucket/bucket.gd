@@ -69,12 +69,17 @@ func _resize_label(size: Vector2) -> void:
 	_label.text = str(base_value)	
 
 func _position_walls(size: Vector2) -> void:
-	_left_wall_collision.shape.size = Vector2(1.0, size.y)
-	_left_wall_collision.position = Vector2(- size.x / 2, 0)
-	_right_wall_collision.shape.size = Vector2(1.0, size.y)
-	_right_wall_collision.position = Vector2( size.x / 2, 0)
-	_base_collision.shape.size = Vector2(size.x, 32.0)
+	_left_wall_collision.shape = _new_wall_shape(Vector2(1.0, size.y))
+	_left_wall_collision.position = Vector2(-size.x / 2, 0)
+	_right_wall_collision.shape = _new_wall_shape(Vector2(1.0, size.y))
+	_right_wall_collision.position = Vector2(size.x / 2, 0)
+	_base_collision.shape = _new_wall_shape(Vector2(size.x, 32.0))
 	_base_collision.position = Vector2(0, size.y / 2 + 16)
+
+func _new_wall_shape(shape_size: Vector2) -> RectangleShape2D:
+	var shape := RectangleShape2D.new()
+	shape.size = shape_size
+	return shape
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Ball:
