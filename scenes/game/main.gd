@@ -28,6 +28,7 @@ func _load_board() -> void:
 	_clear_current_board()
 	board = _get_board()
 	if not board: return
+	print(board.ball_gravity_scale)
 	board_marker.add_child(board)
 	board.ball_scored.connect(_on_ball_scored)
 

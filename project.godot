@@ -14,6 +14,10 @@ config/name="Plinko on Stream"
 run/main_scene="uid://bob0rs2tvh3yo"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
+[autoload]
+
+Twitch="*uid://55icjsj1ma4u"
+
 [display]
 
 window/size/viewport_width=1920
