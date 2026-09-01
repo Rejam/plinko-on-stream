@@ -1,9 +1,7 @@
-class_name TwitchAuth
-extends Node
+class_name TwitchAuth extends Node
 ## OAuth login flow ONLY: opens the browser, runs the local redirect
 ## server, captures the access token, fetches the user's id/login, then
-## announces the result and goes quiet. Knows nothing about chat or the
-## game. Created and owned by twitch_listener.gd.
+## announces the result and goes quiet.
 
 signal login_completed(access_token: String, user_id: String, user_login: String)
 signal login_failed
@@ -31,8 +29,6 @@ var _recv_buffer := PackedByteArray()
 var _access_token: String = ""
 
 @onready var _login_timeout := _make_login_timer()
-
-
 
 func start_login(client_id: String, redirect_port: int, scopes: Array) -> void:
 	_client_id = client_id
