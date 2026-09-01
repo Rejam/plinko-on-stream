@@ -10,7 +10,6 @@ signal ball_scored(ball: Ball, base_value: int)
 @export var ball_gravity_scale := 1.0
 
 const BALL_SCENE = preload("uid://cthrtlsbusy3")
-const SPAWN_JITTER := 12.0
 
 @onready var _drop_positions: Node2D = %DropPositions
 @onready var _buckets: Node2D = %Buckets

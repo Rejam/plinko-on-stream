@@ -7,7 +7,6 @@ extends Node2D
 @onready var next_round_button: Button = %NextRoundButton
 @onready var drop_ball_button: Button = %DropBallButton
 
-const ball_scene := preload("uid://cthrtlsbusy3")
 var game_round := 0
 var balls_remaining := 0
 var board: Board = null
