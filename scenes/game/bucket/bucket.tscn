@@ -5,13 +5,22 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wprqg"]
 size = Vector2(128, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auo3e"]
+size = Vector2(2, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygq4p"]
+size = Vector2(2, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hiwug"]
+size = Vector2(2, 11)
+
 [node name="Bucket" type="Area2D" unique_id=497517029]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_wprqg")
 width = 128
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1519126293]
+[node name="BucketCollision" type="CollisionShape2D" parent="." unique_id=1519126293]
 unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_wprqg")
 
@@ -32,3 +41,35 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Walls" type="Node2D" parent="." unique_id=1687352619]
+
+[node name="Left" type="StaticBody2D" parent="Walls" unique_id=1569237800]
+collision_layer = 4
+collision_mask = 0
+
+[node name="LeftWallCollision" type="CollisionShape2D" parent="Walls/Left" unique_id=1999720630]
+unique_name_in_owner = true
+position = Vector2(-65, -26.5)
+shape = SubResource("RectangleShape2D_auo3e")
+debug_color = Color(0, 0.57510555, 0.8280916, 0.41960785)
+
+[node name="Right" type="StaticBody2D" parent="Walls" unique_id=1973567558]
+collision_layer = 4
+collision_mask = 0
+
+[node name="RightWallCollision" type="CollisionShape2D" parent="Walls/Right" unique_id=865515837]
+unique_name_in_owner = true
+position = Vector2(-65, -12)
+shape = SubResource("RectangleShape2D_ygq4p")
+debug_color = Color(0.9204129, 0.030702798, 0.68484974, 0.41960785)
+
+[node name="Bottom" type="StaticBody2D" parent="Walls" unique_id=1458009096]
+collision_layer = 4
+collision_mask = 0
+
+[node name="BaseCollision" type="CollisionShape2D" parent="Walls/Bottom" unique_id=1746066763]
+unique_name_in_owner = true
+position = Vector2(-65, 3)
+shape = SubResource("RectangleShape2D_hiwug")
+debug_color = Color(5.7756904e-07, 0.6480026, 0.20375973, 0.41960785)
