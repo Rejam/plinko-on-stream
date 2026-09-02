@@ -62,7 +62,7 @@ func _on_chat_message(player: Player, message: String) -> void:
 	submit_entry(player, raw_column)
 
 func submit_entry(player: Player, raw_column: String) -> void:
-	print("twitch listener - submit_entry: player = %s, column = %s", player.display_name, raw_column)
+	print("twitch listener - submit_entry: player = %s, column = %s" % [player.display_name, raw_column])
 	entry_received.emit(player, raw_column)
 	
 #func _on_redemption(user: String, reward_title: String, user_input: String) -> void:
