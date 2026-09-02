@@ -16,9 +16,6 @@ var current_player: Player = null
 var _entries: Dictionary = {}
 var _queue: Array[Player] = []
 
-func _ready() -> void:
-	pass
-
 func start_session(rounds: int) -> void:
 	round_count = rounds
 	current_round = 0
