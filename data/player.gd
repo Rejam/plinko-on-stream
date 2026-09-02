@@ -4,6 +4,7 @@ class_name Player extends Resource
 
 @export var user_id: String = ""
 @export var display_name: String = ""
+var column: int = 0
 
 static func make(id: String, name: String) -> Player:
 	var player := Player.new()

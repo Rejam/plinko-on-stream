@@ -16,10 +16,8 @@ func _ready() -> void:
 	
 func _on_ten_entrants_pressed() -> void:
 	for i in 3:
-		var args := PackedStringArray()
-		if COLUMNS[i % COLUMNS.size()] != "":
-			args.append(COLUMNS[i % COLUMNS.size()])
-		Twitch.submit_entry(_new_player(), args)
+		var col := COLUMNS[i % COLUMNS.size()]
+		Twitch.submit_entry(_new_player(), col)
 
 func _new_player() -> Player:
 	var id := "mock_%d" % _next_id

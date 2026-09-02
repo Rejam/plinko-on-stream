@@ -17,7 +17,7 @@ var _entries: Dictionary = {}
 var _queue: Array[Player] = []
 
 func _ready() -> void:
-	Twitch.entry_received.connect(_on_entry_received)
+	pass
 
 func start_session(rounds: int) -> void:
 	round_count = rounds
@@ -30,9 +30,10 @@ func end_registration() -> void:
 	_build_queue()
 	_next_entrant()
 
-func _on_entry_received(player: Player, _args: PackedStringArray) -> void:
+func register_entrant(player: Player, column: int) -> void:
 	if round_state != RoundState.REGISTRATION:
 		return
+	player.column = column
 	_entries[player.user_id] = player
 	var entrants: Array[Player] = []
 	entrants.assign(_entries.values())

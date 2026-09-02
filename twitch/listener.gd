@@ -12,7 +12,7 @@ const SCOPES := [
 # --- PUBLIC SIGNALS (the game listens to these) ---
 signal login_completed(user_login: String)
 signal login_failed
-signal entry_received(player: Player, args: PackedStringArray)
+signal entry_received(player: Player, raw_column: String)
 #signal reward_redeemed(user: String, reward_title: String, user_input: String)
 
 # --- PUBLIC STATE ---
@@ -58,11 +58,12 @@ func _on_chat_message(player: Player, message: String) -> void:
 	var parts := message.strip_edges().split(" ", false)
 	if parts.is_empty() or parts[0].to_lower() != "!plinko":
 		return
-	submit_entry(player, parts.slice(1))
+	var raw_column := parts[1] if parts.size() > 1 else ""
+	submit_entry(player, raw_column)
 
-func submit_entry(player: Player, args: PackedStringArray) -> void:
-	print("twitch listener - submit_entry: ", player)
-	entry_received.emit(player, args)
+func submit_entry(player: Player, raw_column: String) -> void:
+	print("twitch listener - submit_entry: player = %s, column = %s", player.display_name, raw_column)
+	entry_received.emit(player, raw_column)
 	
 #func _on_redemption(user: String, reward_title: String, user_input: String) -> void:
 	#reward_redeemed.emit(user, reward_title, user_input)

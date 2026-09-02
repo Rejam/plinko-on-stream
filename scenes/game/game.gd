@@ -26,6 +26,7 @@ func _ready() -> void:
 	round_manager.ball_released.connect(_on_ball_released)
 	round_manager.entrants_changed.connect(_on_entrants_changed)
 	round_manager.start_session(round_count)
+	Twitch.entry_received.connect(_on_entry_received)
 
 func _on_round_changed(_current_round: int, _round_count: int) -> void:
 	_load_board.call_deferred()
@@ -51,8 +52,7 @@ func _clear_current_board() -> void:
 
 func _on_ball_requested(player: Player) -> void:
 	if not board: return
-	var column := randi_range(1, board.column_count())
-	current_ball = board.spawn_held_ball(column)
+	current_ball = board.spawn_held_ball(player.column)
 	current_ball.owner_player = player
 
 func _on_ball_released() -> void:
@@ -72,4 +72,17 @@ func _on_round_state_changed(round_state: RoundManager.RoundState) -> void:
 func _on_entrants_changed(entrants: Array[Player]) -> void:
 	entrants_list.clear()
 	for player in entrants:
-		entrants_list.add_item(player.display_name)
+		entrants_list.add_item("%s : %s" % [player.display_name, player.column])
+
+func _on_entry_received(player: Player, raw_column: String) -> void:
+	if not board: return
+	var column := _parse_column(raw_column)
+	round_manager.register_entrant(player, column)
+
+func _parse_column(raw_column: String) -> int:
+	if raw_column.is_empty():
+		return randi_range(1, board.column_count())
+	var value := raw_column.to_int()
+	if value < 1 or value > board.column_count():
+		return randi_range(1, board.column_count())
+	return value
