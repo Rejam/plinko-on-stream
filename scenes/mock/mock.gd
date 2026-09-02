@@ -15,7 +15,7 @@ func _ready() -> void:
 	add_entrants_button.pressed.connect(_on_ten_entrants_pressed)
 	
 func _on_ten_entrants_pressed() -> void:
-	for i in 10:
+	for i in 3:
 		var args := PackedStringArray()
 		if COLUMNS[i % COLUMNS.size()] != "":
 			args.append(COLUMNS[i % COLUMNS.size()])

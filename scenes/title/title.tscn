@@ -33,3 +33,12 @@ text = "Connect to Twitch"
 [node name="ConnectStatusLabel" type="Label" parent="VBoxContainer" unique_id=988635894]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="LengthSelectButton" type="OptionButton" parent="VBoxContainer" unique_id=2084283828]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=2136148088]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start"

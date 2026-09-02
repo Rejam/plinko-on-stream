@@ -45,7 +45,7 @@ func _handle_line(line: String) -> void:
 	elif line.contains("PRIVMSG"):
 		_parse_chat_line(line)
 	else:
-		print("IRC: ", line)
+		print("Twitch chat - IRC: ", line)
 
 func _parse_chat_line(line: String) -> void:
 	var tags := {}

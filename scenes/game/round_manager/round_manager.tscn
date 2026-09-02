@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cyi8s84cd4wi3"]
+
+[ext_resource type="Script" uid="uid://dqy73mq72m201" path="res://scenes/game/round_manager/round_manager.gd" id="1_3i5rj"]
+
+[node name="RoundManager" type="Node2D" unique_id=1912180117]
+script = ExtResource("1_3i5rj")

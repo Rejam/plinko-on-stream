@@ -61,7 +61,7 @@ func _on_chat_message(player: Player, message: String) -> void:
 	submit_entry(player, parts.slice(1))
 
 func submit_entry(player: Player, args: PackedStringArray) -> void:
-	print(player)
+	print("twitch listener - submit_entry: ", player)
 	entry_received.emit(player, args)
 	
 #func _on_redemption(user: String, reward_title: String, user_input: String) -> void:

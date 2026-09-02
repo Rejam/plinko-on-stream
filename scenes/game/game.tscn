@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bob0rs2tvh3yo"]
+
+[ext_resource type="Script" uid="uid://drdi3o0k7wjik" path="res://scenes/game/game.gd" id="1_5i0tg"]
+[ext_resource type="PackedScene" uid="uid://cvffomituhpw8" path="res://scenes/game/boards/board1.tscn" id="2_bdhmt"]
+[ext_resource type="PackedScene" uid="uid://dp33x5bhhwo7d" path="res://scenes/game/boards/board2.tscn" id="3_87uf6"]
+[ext_resource type="Theme" uid="uid://bivrme57bosm5" path="res://game_theme.tres" id="4_2a8rs"]
+[ext_resource type="PackedScene" uid="uid://b8t3bxfwvtd7m" path="res://scenes/mock/mock.tscn" id="5_4j704"]
+[ext_resource type="PackedScene" uid="uid://cyi8s84cd4wi3" path="res://scenes/game/round_manager/round_manager.tscn" id="6_kp23o"]
+
+[node name="Game" type="Node2D" unique_id=2047480295]
+script = ExtResource("1_5i0tg")
+boards = Array[PackedScene]([ExtResource("2_bdhmt"), ExtResource("3_87uf6")])
+
+[node name="BoardMarker" type="Node2D" parent="." unique_id=226631675]
+unique_name_in_owner = true
+position = Vector2(100, 200)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1805621368]
+offset_right = 925.0
+offset_bottom = 60.0
+theme = ExtResource("4_2a8rs")
+
+[node name="NextRoundButton" type="Button" parent="HBoxContainer" unique_id=55538867]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Next Round"
+
+[node name="DropBallButton" type="Button" parent="HBoxContainer" unique_id=501488133]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Drop Ball"
+
+[node name="EndRegistrationButton" type="Button" parent="HBoxContainer" unique_id=1130275608]
+unique_name_in_owner = true
+layout_mode = 2
+text = "End Registration"
+
+[node name="ContinueButton" type="Button" parent="HBoxContainer" unique_id=302666286]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Continue"
+
+[node name="RoundStatusLabel" type="Label" parent="HBoxContainer" unique_id=2140504398]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RoundManager" parent="." unique_id=1912180117 instance=ExtResource("6_kp23o")]
+unique_name_in_owner = true
+
+[node name="EntrantsList" type="ItemList" parent="." unique_id=1820649433]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(-1, 500)
+offset_left = 1536.0
+offset_top = 128.0
+offset_right = 1920.0
+offset_bottom = 136.0
+auto_height = true
+
+[node name="Mock" parent="." unique_id=250459968 instance=ExtResource("5_4j704")]
+offset_left = 1538.0
+offset_top = 2.0
+offset_right = 1538.0
+offset_bottom = 2.0

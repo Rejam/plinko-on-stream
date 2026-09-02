@@ -1,0 +1,97 @@
+class_name RoundManager extends Node 
+
+enum RoundState { IDLE, REGISTRATION, PRE_DROP, DROPPING, DROP_RESOLVED, ROUND_FINISHED, SESSION_FINISHED }
+
+signal round_state_changed(round_state: RoundState)
+signal round_changed(current_round: int, round_count: int)
+signal ball_requested(player: Player)
+signal ball_released
+signal entrants_changed(players: Array[Player])
+
+var round_count := 0
+var round_state: RoundState = RoundState.IDLE
+var current_round := 0
+var current_player: Player = null
+
+var _entries: Dictionary = {}
+var _queue: Array[Player] = []
+
+func _ready() -> void:
+	Twitch.entry_received.connect(_on_entry_received)
+
+func start_session(rounds: int) -> void:
+	round_count = rounds
+	current_round = 0
+	_begin_round()
+
+func end_registration() -> void:
+	if round_state != RoundState.REGISTRATION:
+		return
+	_build_queue()
+	_next_entrant()
+
+func _on_entry_received(player: Player, _args: PackedStringArray) -> void:
+	if round_state != RoundState.REGISTRATION:
+		return
+	_entries[player.user_id] = player
+	var entrants: Array[Player] = []
+	entrants.assign(_entries.values())
+	entrants_changed.emit(entrants)
+
+func _build_queue() -> void:
+	# Sorted by session total ascending once Session exists.
+	_queue = []
+	for id in _entries:
+		_queue.append(_entries[id])
+
+func notify_ball_scored(_ball: Ball, _base_value: int) -> void:
+	if round_state != RoundState.DROPPING:
+		return
+	_set_round_state(RoundState.DROP_RESOLVED)
+	
+func _next_entrant() -> void:
+	if _queue.is_empty():
+		current_player = null
+		_set_round_state(RoundState.ROUND_FINISHED)
+	else:
+		current_player = _queue.pop_front()
+		ball_requested.emit(current_player)
+		_set_round_state(RoundState.PRE_DROP)
+
+func drop_next() -> void:
+	if round_state != RoundState.PRE_DROP:
+		return
+	ball_released.emit()
+	_set_round_state(RoundState.DROPPING)
+	
+func continue_round() -> void:
+	if round_state != RoundState.DROP_RESOLVED:
+		return
+	_next_entrant()
+	
+func next_round() -> void:
+	if round_state != RoundState.ROUND_FINISHED:
+		return
+	if current_round >= round_count:
+		_set_round_state(RoundState.SESSION_FINISHED)
+	else:
+		_begin_round()
+		
+func end_session() -> void:
+	if round_state == RoundState.SESSION_FINISHED:
+		return
+	_set_round_state(RoundState.SESSION_FINISHED)
+		
+func _begin_round() -> void:
+	current_round += 1
+	_entries.clear()
+	_queue.clear()
+	entrants_changed.emit([] as Array[Player])
+	current_player = null
+	round_changed.emit(current_round, round_count)
+	_set_round_state(RoundState.REGISTRATION)
+
+func _set_round_state(new_state: RoundState) -> void:
+	round_state = new_state
+	round_state_changed.emit(new_state)
+	
