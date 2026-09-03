@@ -13,6 +13,7 @@ config_version=5
 config/name="Plinko on Stream"
 run/main_scene="uid://c1xgn7nye0xdk"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="uid://bc2rx6cwmfilf"
 
 [autoload]
 

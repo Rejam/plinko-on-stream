@@ -14,7 +14,6 @@ fill_to = Vector2(0, 1)
 
 [node name="TextureRect" parent="." index="0" unique_id=1086679066]
 texture = SubResource("GradientTexture2D_2lkem")
-metadata/_edit_lock_ = true
 
 [node name="Pegs" type="Node2D" parent="." index="1" unique_id=1813015774]
 

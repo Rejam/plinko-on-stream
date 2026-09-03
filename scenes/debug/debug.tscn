@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b8t3bxfwvtd7m"]
+
+[ext_resource type="Script" uid="uid://th7sgj1gl6hb" path="res://scenes/debug/debug_menu.gd" id="1_fym4n"]
+[ext_resource type="Script" uid="uid://7nok02hhhgby" path="res://scenes/debug/add_entrant.gd" id="2_fym4n"]
+
+[node name="DebugMenu" type="CanvasLayer" unique_id=1987372415]
+layer = 10
+script = ExtResource("1_fym4n")
+
+[node name="ToggleButton" type="Button" parent="." unique_id=813497881]
+unique_name_in_owner = true
+offset_left = 1874.0
+offset_top = 1044.0
+offset_right = 1916.0
+offset_bottom = 1075.0
+text = "DBG"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1356332488]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -120.0
+offset_right = -16.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1330248860]
+layout_mode = 2
+
+[node name="AddEntrantButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=458178444]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Add Entrant"
+script = ExtResource("2_fym4n")

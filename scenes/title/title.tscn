@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c1xgn7nye0xdk"]
 
 [ext_resource type="Script" uid="uid://068rmrvesrlh" path="res://scenes/title/title.gd" id="1_5vtrw"]
+[ext_resource type="Theme" uid="uid://bivrme57bosm5" path="res://game_theme.tres" id="2_ds13r"]
 
 [node name="Title" type="Control" unique_id=583400631]
 layout_mode = 3
@@ -24,6 +25,7 @@ offset_right = 116.0
 offset_bottom = 118.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_ds13r")
 
 [node name="ConnectButton" type="Button" parent="VBoxContainer" unique_id=270407912]
 unique_name_in_owner = true

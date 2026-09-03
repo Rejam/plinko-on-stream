@@ -10,7 +10,9 @@ extends Node2D
 @onready var round_status_label: Label = %RoundStatusLabel
 @onready var end_reg_button: Button = %EndRegistrationButton
 @onready var continue_button: Button = %ContinueButton
-@onready var entrants_list: ItemList = %EntrantsList
+@onready var entrants_waiting: ItemList = %EntrantsWaiting
+@onready var redrop_button: Button = %RedropButton
+@onready var current_ball_label: Label = %CurrentBallLabel
 
 var board: Board = null
 var current_ball: Ball = null
@@ -20,6 +22,7 @@ func _ready() -> void:
 	drop_ball_button.pressed.connect(round_manager.drop_next)
 	end_reg_button.pressed.connect(round_manager.end_registration)
 	continue_button.pressed.connect(round_manager.continue_round)
+	redrop_button.pressed.connect(round_manager.redrop)
 	round_manager.round_state_changed.connect(_on_round_state_changed)
 	round_manager.round_changed.connect(_on_round_changed)
 	round_manager.ball_requested.connect(_on_ball_requested)
@@ -52,27 +55,36 @@ func _clear_current_board() -> void:
 
 func _on_ball_requested(player: Player) -> void:
 	if not board: return
+	if is_instance_valid(current_ball):
+		current_ball.queue_free()
 	current_ball = board.spawn_held_ball(player.column)
 	current_ball.owner_player = player
+	current_ball_label.text = "Next up: %s" % [player.display_name]
 
 func _on_ball_released() -> void:
-	if not current_ball: return
+	if not is_instance_valid(current_ball): return
 	current_ball.freeze = false
 	# help prevent balls resting on grid aligned pegs
 	current_ball.apply_central_impulse(Vector2(randf_range(-20, 20), 0))
 
 func _on_ball_scored(ball: Ball, base_value: int) -> void:
+	if ball != current_ball: return
 	current_ball = null
-	print("game - _on_ball_scored: %s scored %d" % [ball.owner_player.display_name, base_value])
 	round_manager.notify_ball_scored(ball, base_value)
 
 func _on_round_state_changed(round_state: RoundManager.RoundState) -> void:
 	round_status_label.text = RoundManager.RoundState.keys()[round_state]
+	if round_state in [
+		RoundManager.RoundState.REGISTRATION,
+		RoundManager.RoundState.ROUND_FINISHED,
+		RoundManager.RoundState.SESSION_FINISHED,
+	]:
+		current_ball_label.text = "Next up:"
 	
 func _on_entrants_changed(entrants: Array[Player]) -> void:
-	entrants_list.clear()
+	entrants_waiting.clear()
 	for player in entrants:
-		entrants_list.add_item("%s : %s" % [player.display_name, player.column])
+		entrants_waiting.add_item("%s : %s" % [player.display_name, player.column])
 
 func _on_entry_received(player: Player, raw_column: String) -> void:
 	if not board: return

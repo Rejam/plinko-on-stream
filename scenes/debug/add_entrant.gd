@@ -5,19 +5,16 @@ const NAMES: PackedStringArray = [
 	"toon_army_99", "pigeon_lad", "stotty_cake", "mag_pie",
 	"dene_walker", "wor_lass", "tyne_bridge_fan", "coble_boat",
 ]
-const COLUMNS: PackedStringArray = ["3", "1", "", "5", "banana", "7", "2", "99", "4", "6"]
-
-@onready var add_entrants_button: Button = $AddEntrantsButton
+const COLUMNS: PackedStringArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "banana", 7, "", []]
 
 var _next_id: int = 1
 
 func _ready() -> void:
-	add_entrants_button.pressed.connect(_on_ten_entrants_pressed)
+	self.pressed.connect(_on_entrant_pressed)
 	
-func _on_ten_entrants_pressed() -> void:
-	for i in 3:
-		var col := COLUMNS[i % COLUMNS.size()]
-		Twitch.submit_entry(_new_player(), col)
+func _on_entrant_pressed() -> void:
+	var col := COLUMNS[randi_range(0, COLUMNS.size() - 1)]
+	Twitch.submit_entry(_new_player(), col)
 
 func _new_player() -> Player:
 	var id := "mock_%d" % _next_id

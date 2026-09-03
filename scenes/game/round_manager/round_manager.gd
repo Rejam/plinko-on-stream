@@ -43,6 +43,8 @@ func _build_queue() -> void:
 		_queue.append(_entries[id])
 
 func notify_ball_scored(_ball: Ball, _base_value: int) -> void:
+	# gaurd against double score
+	# round_state leaves DROPPING as soon as ball scores
 	if round_state != RoundState.DROPPING:
 		return
 	_set_round_state(RoundState.DROP_RESOLVED)
@@ -53,6 +55,7 @@ func _next_entrant() -> void:
 		_set_round_state(RoundState.ROUND_FINISHED)
 	else:
 		current_player = _queue.pop_front()
+		entrants_changed.emit(_queue.duplicate())
 		ball_requested.emit(current_player)
 		_set_round_state(RoundState.PRE_DROP)
 
@@ -93,3 +96,8 @@ func _set_round_state(new_state: RoundState) -> void:
 	round_state = new_state
 	round_state_changed.emit(new_state)
 	
+func redrop() -> void:
+	if round_state != RoundState.DROPPING:
+		return
+	ball_requested.emit(current_player)
+	_set_round_state(RoundState.PRE_DROP)
