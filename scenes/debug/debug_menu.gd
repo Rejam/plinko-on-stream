@@ -7,7 +7,7 @@ extends CanvasLayer
 func _ready() -> void:
 	if not OS.is_debug_build(): 
 		queue_free()
-		pass
+		return
 	panel.hide()
 	toggle_button.pressed.connect(_on_toggle_pressed)
 

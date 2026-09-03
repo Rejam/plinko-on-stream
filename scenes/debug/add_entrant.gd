@@ -5,7 +5,7 @@ const NAMES: PackedStringArray = [
 	"toon_army_99", "pigeon_lad", "stotty_cake", "mag_pie",
 	"dene_walker", "wor_lass", "tyne_bridge_fan", "coble_boat",
 ]
-const COLUMNS: PackedStringArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "banana", 7, "", []]
+const COLUMNS: PackedStringArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-3", "3.7", "banana", "", 7, []]
 
 var _next_id: int = 1
 
