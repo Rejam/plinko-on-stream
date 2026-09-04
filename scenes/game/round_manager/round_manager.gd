@@ -1,18 +1,22 @@
 class_name RoundManager extends Node 
 
 enum RoundState { IDLE, REGISTRATION, PRE_DROP, DROPPING, DROP_RESOLVED, ROUND_FINISHED, SESSION_FINISHED }
+const BLOCK_SIZE := 5
 
 signal round_state_changed(round_state: RoundState)
 signal round_changed(current_round: int, round_count: int)
 signal ball_requested(player: Player)
 signal ball_released
 signal entrants_changed(players: Array[Player])
+signal drop_scored(player: Player, base_value: int, multiplier: int, points: int)
 
 var round_count := 0
 var round_state: RoundState = RoundState.IDLE
 var current_round := 0
 var current_player: Player = null
-
+var current_multiplier: int:
+	get: return multiplier_for_round(current_round)
+	
 var _entries: Dictionary = {}
 var _queue: Array[Player] = []
 
@@ -42,11 +46,16 @@ func _build_queue() -> void:
 	for id in _entries:
 		_queue.append(_entries[id])
 
-func notify_ball_scored(_ball: Ball, _base_value: int) -> void:
-	# gaurd against double score
-	# round_state leaves DROPPING as soon as ball scores
+func notify_drop_scored(player: Player, base_value: int) -> void:
+	# round_state leaves DROPPING as soon as a ball scores, so a second
+	# report from the same ball is ignored.
 	if round_state != RoundState.DROPPING:
 		return
+	if player.user_id != current_player.user_id:
+		push_error("Scored ball belongs to %s, expected %s" % [player.display_name, current_player.display_name])
+		return
+	var points := base_value * current_multiplier
+	drop_scored.emit(player, base_value, current_multiplier, points)
 	_set_round_state(RoundState.DROP_RESOLVED)
 	
 func _next_entrant() -> void:
@@ -101,3 +110,8 @@ func redrop() -> void:
 		return
 	ball_requested.emit(current_player)
 	_set_round_state(RoundState.PRE_DROP)
+
+## Rounds group into blocks of BLOCK_SIZE, each paying one multiple more than the last
+func multiplier_for_round(round_number: int) -> int:
+	var multiplier = (round_number - 1.0) / (BLOCK_SIZE) + 1
+	return int(multiplier)

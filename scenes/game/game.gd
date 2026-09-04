@@ -13,6 +13,7 @@ extends Node2D
 @onready var entrants_waiting: ItemList = %EntrantsWaiting
 @onready var redrop_button: Button = %RedropButton
 @onready var current_ball_label: Label = %CurrentBallLabel
+@onready var last_drop_label: Label = %LastDropLabel
 
 var board: Board = null
 var current_ball: Ball = null
@@ -28,10 +29,12 @@ func _ready() -> void:
 	round_manager.ball_requested.connect(_on_ball_requested)
 	round_manager.ball_released.connect(_on_ball_released)
 	round_manager.entrants_changed.connect(_on_entrants_changed)
+	round_manager.drop_scored.connect(_on_drop_scored)
 	round_manager.start_session(round_count)
 	Twitch.entry_received.connect(_on_entry_received)
 
 func _on_round_changed(_current_round: int, _round_count: int) -> void:
+	last_drop_label.text = ""
 	_load_board.call_deferred()
 
 func _get_board() -> Board:
@@ -70,7 +73,7 @@ func _on_ball_released() -> void:
 func _on_ball_scored(ball: Ball, base_value: int) -> void:
 	if ball != current_ball: return
 	current_ball = null
-	round_manager.notify_ball_scored(ball, base_value)
+	round_manager.notify_drop_scored(ball.owner_player, base_value)
 
 func _on_round_state_changed(round_state: RoundManager.RoundState) -> void:
 	round_status_label.text = RoundManager.RoundState.keys()[round_state]
@@ -103,3 +106,9 @@ func _parse_column(raw_column: String) -> int:
 	if value < 1 or value > board.column_count():
 		return randi_range(1, board.column_count())
 	return value
+
+func _on_drop_scored(player: Player, base_value: int, multiplier: int, points: int) -> void:
+	if multiplier == 1:
+		last_drop_label.text = "%s · %d" % [player.display_name, points]
+	else:
+		last_drop_label.text = "%s · %d × %d = %d" % [player.display_name, base_value, multiplier, points]
