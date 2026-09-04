@@ -28,14 +28,6 @@ func _ready() -> void:
 func column_count() -> int:
 	return _drop_positions.get_child_count()
 
-func get_valid_column(raw_column: String) -> int:
-	if raw_column.is_empty():
-		return randi_range(1, column_count())
-	var value := raw_column.to_int()
-	if value < 1 or value > column_count():
-		return randi_range(1, column_count())
-	return value
-	
 func drop_position(column: int) -> Vector2:
 	var column_index = column - 1
 	return _drop_positions.get_child(column_index).position

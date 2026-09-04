@@ -56,7 +56,7 @@ func _on_ball_scored(ball: Ball, base_value: int) -> void:
 	round_manager.notify_drop_scored(ball.owner_player, base_value)
 
 func _on_round_state_changed(round_state: RoundManager.RoundState) -> void:
-	round_status_label.text = RoundManager.RoundState.keys()[round_state]
+	round_status_label.text = RoundManager.get_round_state_label_text(round_state)
 	end_reg_button.disabled = round_state != RoundManager.RoundState.REGISTRATION
 	drop_ball_button.disabled = round_state != RoundManager.RoundState.PRE_DROP
 	redrop_button.disabled = round_state != RoundManager.RoundState.DROPPING
@@ -76,6 +76,7 @@ func _on_entrants_changed(entrants: Array[Player]) -> void:
 
 func _on_entry_received(player: Player, raw_column: String) -> void:
 	var column := board_marker.parse_column(raw_column)
+	if column == BoardMarker.NO_COLUMN: return
 	round_manager.register_entrant(player, column)
 
 func _on_drop_scored(player: Player, base_value: int, multiplier: int, points: int) -> void:
