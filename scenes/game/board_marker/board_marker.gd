@@ -24,6 +24,7 @@ func spawn_held_ball(column: int) -> Ball:
 	return _board.spawn_held_ball(column)
 
 func parse_column(raw_column: String) -> int:
+	if not _board: return NO_COLUMN
 	var value := raw_column.to_int()
 	if value < 1 or value > _board.column_count():
 		return NO_COLUMN

@@ -35,6 +35,7 @@ func _ready() -> void:
 	Twitch.entry_received.connect(_on_entry_received)
 
 func _on_round_changed(current_round: int, _round_count: int) -> void:
+	last_drop_label.text = ""
 	board_marker.swap_to.call_deferred(current_round)
 
 func _on_ball_requested(player: Player) -> void:
