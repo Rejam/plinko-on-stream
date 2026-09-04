@@ -3,7 +3,7 @@ extends Node2D
 @export var boards: Array[PackedScene] = []
 @export var round_count := 10
 
-@onready var board_marker: Node2D = %BoardMarker
+@onready var board_marker: BoardMarker = %BoardMarker
 @onready var round_manager: RoundManager = %RoundManager
 @onready var next_round_button: Button = %NextRoundButton
 @onready var drop_ball_button: Button = %DropBallButton
@@ -15,7 +15,6 @@ extends Node2D
 @onready var current_ball_label: Label = %CurrentBallLabel
 @onready var last_drop_label: Label = %LastDropLabel
 
-var board: Board = null
 var current_ball: Ball = null
 
 func _ready() -> void:
@@ -30,37 +29,18 @@ func _ready() -> void:
 	round_manager.ball_released.connect(_on_ball_released)
 	round_manager.entrants_changed.connect(_on_entrants_changed)
 	round_manager.drop_scored.connect(_on_drop_scored)
+	board_marker.setup(boards)
+	board_marker.ball_scored.connect(_on_ball_scored)
 	round_manager.start_session(round_count)
 	Twitch.entry_received.connect(_on_entry_received)
 
-func _on_round_changed(_current_round: int, _round_count: int) -> void:
-	last_drop_label.text = ""
-	_load_board.call_deferred()
-
-func _get_board() -> Board:
-	if not boards:
-		push_error("No boards have been added")
-		return null
-	var board_index := (round_manager.current_round - 1) % boards.size()
-	return boards[board_index].instantiate()
-
-func _load_board() -> void:
-	_clear_current_board()
-	board = _get_board()
-	if not board: return
-	board_marker.add_child(board)
-	board.ball_scored.connect(_on_ball_scored)
-
-func _clear_current_board() -> void:
-	if not board: return
-	board.ball_scored.disconnect(_on_ball_scored)
-	board.queue_free()
+func _on_round_changed(current_round: int, _round_count: int) -> void:
+	board_marker.swap_to.call_deferred(current_round)
 
 func _on_ball_requested(player: Player) -> void:
-	if not board: return
 	if is_instance_valid(current_ball):
 		current_ball.queue_free()
-	current_ball = board.spawn_held_ball(player.column)
+	current_ball = board_marker.spawn_held_ball(player.column)
 	current_ball.owner_player = player
 	current_ball_label.text = "Next up: %s" % [player.display_name]
 
@@ -76,7 +56,7 @@ func _on_ball_scored(ball: Ball, base_value: int) -> void:
 	round_manager.notify_drop_scored(ball.owner_player, base_value)
 
 func _on_round_state_changed(round_state: RoundManager.RoundState) -> void:
-	round_status_label.text = RoundManager.get_round_state_label_text(round_state)
+	round_status_label.text = RoundManager.RoundState.keys()[round_state]
 	end_reg_button.disabled = round_state != RoundManager.RoundState.REGISTRATION
 	drop_ball_button.disabled = round_state != RoundManager.RoundState.PRE_DROP
 	redrop_button.disabled = round_state != RoundManager.RoundState.DROPPING
@@ -95,17 +75,8 @@ func _on_entrants_changed(entrants: Array[Player]) -> void:
 		entrants_waiting.add_item("%s : %s" % [player.display_name, player.column])
 
 func _on_entry_received(player: Player, raw_column: String) -> void:
-	if not board: return
-	var column := _parse_column(raw_column)
+	var column := board_marker.parse_column(raw_column)
 	round_manager.register_entrant(player, column)
-
-func _parse_column(raw_column: String) -> int:
-	if raw_column.is_empty():
-		return randi_range(1, board.column_count())
-	var value := raw_column.to_int()
-	if value < 1 or value > board.column_count():
-		return randi_range(1, board.column_count())
-	return value
 
 func _on_drop_scored(player: Player, base_value: int, multiplier: int, points: int) -> void:
 	if multiplier == 1:

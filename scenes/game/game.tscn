@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dp33x5bhhwo7d" path="res://scenes/game/boards/board2.tscn" id="3_87uf6"]
 [ext_resource type="Theme" uid="uid://bivrme57bosm5" path="res://game_theme.tres" id="4_2a8rs"]
 [ext_resource type="PackedScene" uid="uid://b8t3bxfwvtd7m" path="res://scenes/debug/debug.tscn" id="5_4j704"]
+[ext_resource type="PackedScene" uid="uid://cp8xq4wu4wyor" path="res://scenes/game/board_marker/board_marker.tscn" id="5_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://cyi8s84cd4wi3" path="res://scenes/game/round_manager/round_manager.tscn" id="6_kp23o"]
 
 [sub_resource type="Gradient" id="Gradient_5i0tg"]
@@ -125,15 +126,9 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BoardMarker" type="Node2D" parent="." unique_id=226631675]
+[node name="BoardMarker" parent="." unique_id=797090416 instance=ExtResource("5_bdhmt")]
 unique_name_in_owner = true
 position = Vector2(112, 176)
-
-[node name="ColorRect" type="ColorRect" parent="BoardMarker" unique_id=256030716]
-offset_right = 1280.0
-offset_bottom = 768.0
-color = Color(1, 1, 1, 0.13333334)
-metadata/_edit_lock_ = true
 
 [node name="RoundManager" parent="." unique_id=1912180117 instance=ExtResource("6_kp23o")]
 unique_name_in_owner = true

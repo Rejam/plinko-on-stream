@@ -20,8 +20,8 @@ var current_multiplier: int:
 var _entries: Dictionary = {}
 var _queue: Array[Player] = []
 
-static func get_round_state_label_text(round_state: RoundState) -> String:
-	return RoundState.keys()[round_state]
+static func get_round_state_label_text(state: RoundState) -> String:
+	return RoundState.keys()[state]
 	
 func start_session(rounds: int) -> void:
 	round_count = rounds
