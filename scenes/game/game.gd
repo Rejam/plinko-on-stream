@@ -35,9 +35,9 @@ func _ready() -> void:
 	round_manager.start_session(round_count)
 	Twitch.entry_received.connect(_on_entry_received)
 
-func _on_round_changed(current_round: int, round: int, multiplier: int) -> void:
+func _on_round_changed(current_round: int, total_rounds: int, multiplier: int) -> void:
 	last_drop_label.text = ""
-	multiplier_label.text = "Round %d/%d · %dx" % [current_round, round, multiplier]
+	multiplier_label.text = "Round %d/%d · %dx" % [current_round, total_rounds, multiplier]
 	board_marker.swap_to.call_deferred(current_round)
 
 func _on_ball_requested(player: Player) -> void:
