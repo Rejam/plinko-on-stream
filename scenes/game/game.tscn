@@ -55,25 +55,38 @@ layout_mode = 2
 size_flags_vertical = 3
 auto_height = true
 
-[node name="PanelContainer" type="PanelContainer" parent="UI" unique_id=466346033]
+[node name="BottomBarHBox" type="HBoxContainer" parent="UI" unique_id=1539954066]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -320.0
+offset_left = -836.0
 offset_top = -104.0
-offset_right = -73.0
+offset_right = 431.0
 offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 3
 theme = ExtResource("4_2a8rs")
 
-[node name="NextRoundButton" type="Button" parent="UI/PanelContainer" unique_id=55538867]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/BottomBarHBox" unique_id=384314690]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MultiplierLabel" type="Label" parent="UI/BottomBarHBox/HBoxContainer" unique_id=743735509]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="NextRoundButton" type="Button" parent="UI/BottomBarHBox" unique_id=55538867]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Next Round"
+
+[node name="Control" type="Control" parent="UI/BottomBarHBox" unique_id=1505188736]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="TopBarVBox" type="VBoxContainer" parent="UI" unique_id=1134344469]
 offset_left = 112.0
