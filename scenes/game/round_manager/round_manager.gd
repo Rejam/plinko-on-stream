@@ -4,7 +4,7 @@ enum RoundState { IDLE, REGISTRATION, PRE_DROP, DROPPING, DROP_RESOLVED, ROUND_F
 const BLOCK_SIZE := 5
 
 signal round_state_changed(round_state: RoundState)
-signal round_changed(current_round: int, round_count: int)
+signal round_changed(current_round: int, round_count: int, multiplier: int)
 signal ball_requested(player: Player)
 signal ball_released
 signal entrants_changed(players: Array[Player])
@@ -58,8 +58,8 @@ func notify_drop_scored(player: Player, base_value: int) -> void:
 		push_error("Scored ball belongs to %s, expected %s" % [player.display_name, current_player.display_name])
 		return
 	var points := base_value * current_multiplier
-	drop_scored.emit(player, base_value, current_multiplier, points)
 	_set_round_state(RoundState.DROP_RESOLVED)
+	drop_scored.emit(player, base_value, current_multiplier, points)
 	
 func _next_entrant() -> void:
 	if _queue.is_empty():
@@ -101,7 +101,7 @@ func _begin_round() -> void:
 	_queue.clear()
 	entrants_changed.emit([] as Array[Player])
 	current_player = null
-	round_changed.emit(current_round, round_count)
+	round_changed.emit(current_round, round_count, current_multiplier)
 	_set_round_state(RoundState.REGISTRATION)
 
 func _set_round_state(new_state: RoundState) -> void:
