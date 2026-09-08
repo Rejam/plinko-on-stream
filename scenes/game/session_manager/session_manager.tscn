@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://bkhuo30b08vdf"]
 
-[ext_resource type="PackedScene" uid="uid://cyi8s84cd4wi3" path="res://scenes/game/round_manager/round_manager.tscn" id="1_7sj2r"]
 [ext_resource type="Script" uid="uid://diyskvyevvoda" path="res://scenes/game/session_manager/session_manager.gd" id="1_rhos5"]
 
 [node name="SessionManager" type="Node" unique_id=916437948]
 script = ExtResource("1_rhos5")
-
-[node name="RoundManager" parent="." unique_id=1912180117 instance=ExtResource("1_7sj2r")]
