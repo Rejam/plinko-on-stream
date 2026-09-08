@@ -15,6 +15,9 @@ colors = PackedColorArray(0.6666667, 0.6666667, 0.6666667, 1, 0.73333335, 0.7333
 gradient = SubResource("Gradient_5i0tg")
 repeat = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hiwug"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="Game" type="Node2D" unique_id=2047480295]
 script = ExtResource("1_5i0tg")
 boards = Array[PackedScene]([ExtResource("2_bdhmt"), ExtResource("3_87uf6")])
@@ -30,64 +33,6 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_hiwug")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=403276215]
-
-[node name="EntrantsContainer" type="VBoxContainer" parent="UI" unique_id=573250791]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -271.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 256.0
-grow_horizontal = 0
-size_flags_vertical = 3
-theme = ExtResource("4_2a8rs")
-
-[node name="EndRegistrationButton" type="Button" parent="UI/EntrantsContainer" unique_id=1130275608]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "End Registration"
-
-[node name="EntrantsWaitingList" type="ItemList" parent="UI/EntrantsContainer" unique_id=1820649433]
-unique_name_in_owner = true
-custom_maximum_size = Vector2(-1, 480)
-layout_mode = 2
-size_flags_vertical = 3
-auto_height = true
-
-[node name="BottomBarHBox" type="HBoxContainer" parent="UI" unique_id=1539954066]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -944.0
-offset_top = -96.0
-offset_right = 323.0
-offset_bottom = -19.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 3
-theme = ExtResource("4_2a8rs")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/BottomBarHBox" unique_id=384314690]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MultiplierLabel" type="Label" parent="UI/BottomBarHBox/HBoxContainer" unique_id=743735509]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="NextRoundButton" type="Button" parent="UI/BottomBarHBox" unique_id=55538867]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Next Round"
-
-[node name="Control" type="Control" parent="UI/BottomBarHBox" unique_id=1505188736]
-layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="TopBarVBox" type="VBoxContainer" parent="UI" unique_id=1134344469]
 offset_left = 16.0
@@ -121,6 +66,10 @@ text = "Continue"
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="MultiplierLabel" type="Label" parent="UI/TopBarVBox/TopBarHContainer" unique_id=743735509]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="RoundStatusLabel" type="Label" parent="UI/TopBarVBox/TopBarHContainer" unique_id=2140504398]
 unique_name_in_owner = true
 layout_mode = 2
@@ -144,21 +93,30 @@ size_flags_horizontal = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -592.0
+offset_left = -600.0
 offset_top = 16.0
-offset_right = -288.0
+offset_right = -16.0
 offset_bottom = 464.0
 grow_horizontal = 0
+theme = ExtResource("4_2a8rs")
 
 [node name="RoundWinnerLabel" type="Label" parent="UI/StandingsContainer" unique_id=1448057218]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
+autowrap_mode = 3
 
 [node name="StandingsList" type="ItemList" parent="UI/StandingsContainer" unique_id=867627058]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 auto_height = true
+
+[node name="NextRoundButton" type="Button" parent="UI/StandingsContainer" unique_id=55538867]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Next Round"
 
 [node name="BoardMarker" parent="." unique_id=797090416 instance=ExtResource("5_bdhmt")]
 unique_name_in_owner = true
@@ -168,3 +126,66 @@ position = Vector2(16, 192)
 
 [node name="SessionManager" parent="." unique_id=916437948 instance=ExtResource("7_bdhmt")]
 unique_name_in_owner = true
+
+[node name="RegistrationLayer" type="CanvasLayer" parent="." unique_id=2037464211]
+unique_name_in_owner = true
+visible = false
+
+[node name="RegistrationPanel" type="Panel" parent="RegistrationLayer" unique_id=228381791]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="RegistrationLayer/RegistrationPanel" unique_id=597478160]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -428.0
+offset_right = 380.0
+offset_bottom = 428.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hiwug")
+
+[node name="EntrantsContainer" type="VBoxContainer" parent="RegistrationLayer/RegistrationPanel/Panel" unique_id=573250791]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -255.5
+offset_top = -388.0
+offset_right = 255.5
+offset_bottom = 388.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("4_2a8rs")
+theme_override_constants/separation = 16
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RegistrationLayer/RegistrationPanel/Panel/EntrantsContainer" unique_id=1628050838]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "Register"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="EntrantsWaitingList" type="ItemList" parent="RegistrationLayer/RegistrationPanel/Panel/EntrantsContainer" unique_id=1820649433]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+auto_height = true
+
+[node name="EndRegistrationButton" type="Button" parent="RegistrationLayer/RegistrationPanel/Panel/EntrantsContainer" unique_id=1130275608]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Start Game"

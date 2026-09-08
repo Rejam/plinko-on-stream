@@ -36,6 +36,8 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdhmt"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hiwug"]
 content_margin_left = 16.0
 content_margin_top = 4.0
@@ -56,5 +58,7 @@ Button/font_sizes/font_size = 32
 Button/styles/disabled = SubResource("StyleBoxFlat_1fvms")
 Button/styles/hover = SubResource("StyleBoxFlat_p1w3f")
 Button/styles/normal = SubResource("StyleBoxFlat_vp4oh")
+ItemList/colors/font_color = Color(0.2, 0.2, 0.2, 1)
+ItemList/styles/panel = SubResource("StyleBoxFlat_bdhmt")
 Label/font_sizes/font_size = 32
 Label/styles/normal = SubResource("StyleBoxFlat_hiwug")

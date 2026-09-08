@@ -99,6 +99,7 @@ func _entrant_registered(player: Player) -> void:
 		standings[player.user_id].display_name = player.display_name
 	else:
 		standings[player.user_id] = Standing.make(player)
+	standings_updated.emit(standings)
 
 func _resolve_round_winner() -> void:
 	var winners := round_winners(current_round)
