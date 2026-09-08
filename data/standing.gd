@@ -4,7 +4,7 @@ class_name Standing extends Resource
 @export var display_name: String = ""
 @export var total: int = 0
 @export var round_wins: int = 0
-var round_points: Dictionary = {}
+var round_points: Dictionary[int, int] = {}
 
 static func make(player: Player) -> Standing:
 	var standing := Standing.new()

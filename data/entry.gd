@@ -4,9 +4,10 @@ class_name Entry extends Resource
 @export var column: int = 0
 @export var total: int = 0
 
-static func make(_player: Player, _column: int, _total: int) -> Entry:
+@warning_ignore("shadowed_variable")
+static func make(player: Player, column: int, total: int) -> Entry: 
 	var entry := Entry.new()
-	entry.player = _player
-	entry.column = _column
-	entry.total = _total
+	entry.player = player
+	entry.column = column
+	entry.total = total
 	return entry
