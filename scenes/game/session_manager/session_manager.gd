@@ -152,7 +152,7 @@ func _next_entrant() -> void:
 		_set_round_state(RoundState.PRE_DROP)
 
 func _insert_into_queue(entry: Entry) -> void:
-	_queue.insert(_queue.bsearch_custom(entry, _by_total), entry)
+	_queue.insert(_queue.bsearch_custom(entry, _by_total, false), entry)
 
 func _by_total(a: Entry, b: Entry) -> bool:
 	return a.total < b.total
