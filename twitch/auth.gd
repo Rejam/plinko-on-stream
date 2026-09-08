@@ -30,6 +30,9 @@ var _access_token: String = ""
 
 @onready var _login_timeout := _make_login_timer()
 
+func _ready() -> void:
+	set_process(false)
+	
 func start_login(client_id: String, redirect_port: int, scopes: Array) -> void:
 	_client_id = client_id
 	_redirect_port = redirect_port
@@ -37,7 +40,7 @@ func start_login(client_id: String, redirect_port: int, scopes: Array) -> void:
 	if _server.listen(_redirect_port, "127.0.0.1") != OK:
 		push_error("TwitchAuth: could not listen on port %d (already in use?)" % _redirect_port)
 		return
-
+	set_process(true)
 	OS.shell_open(_authorize_url(scopes))
 	_login_timeout.start()
 
@@ -152,6 +155,7 @@ func _fail(reason: String) -> void:
 	login_failed.emit()
 
 func _stop_login() -> void:
+	set_process(false)
 	_server.stop()
 	_drop_pending_client()
 	if _login_timeout:

@@ -117,16 +117,21 @@ func continue_round() -> void:
 		return
 	_next_entrant()
 
-func notify_drop_scored(player: Player, base_value: int) -> void:
+## Returns false if the report was rejected, in which case the caller still owns
+## the ball — the round stays in DROPPING and Redrop is the way out.
+func notify_drop_scored(player: Player, base_value: int) -> bool:
 	# round_state leaves DROPPING as soon as a ball scores, so a second
 	# report from the same ball is ignored.
 	if round_state != RoundState.DROPPING:
-		return
+		return false
 	if player.user_id != current_entry.player.user_id:
 		push_error("Scored ball belongs to %s, expected %s" % [player.display_name, current_entry.player.display_name])
-		return
+		return false
+	if not standings.has(player.user_id):
+		push_error("No standing for %s" % player.display_name)
+		return false
 	_set_round_state(RoundState.DROP_RESOLVED)
-
+ 
 	var multiplier := current_multiplier
 	var points := base_value * multiplier
 	var standing := standings[player.user_id]
@@ -134,6 +139,7 @@ func notify_drop_scored(player: Player, base_value: int) -> void:
 	standing.round_points[current_round] = points
 	standings_updated.emit(standings)
 	drop_resolved.emit(player, base_value, multiplier, points)
+	return true
 
 func _next_entrant() -> void:
 	if _queue.is_empty():

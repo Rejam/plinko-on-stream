@@ -33,5 +33,6 @@ func parse_column(raw_column: String) -> int:
 func _clear() -> void:
 	if not _board: return
 	_board.ball_scored.disconnect(ball_scored.emit)
+	remove_child(_board)
 	_board.queue_free()
 	_board = null

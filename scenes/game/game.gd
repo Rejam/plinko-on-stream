@@ -62,8 +62,8 @@ func _on_ball_released() -> void:
 
 func _on_ball_scored(ball: Ball, base_value: int) -> void:
 	if ball != current_ball: return
-	current_ball = null
-	session_manager.notify_drop_scored(ball.owner_player, base_value)
+	if session_manager.notify_drop_scored(ball.owner_player, base_value):
+		current_ball = null
 
 func _on_state_changed(round_state: SessionManager.RoundState, session_state: SessionManager.SessionState) -> void:
 	var session_over := session_state == SessionManager.SessionState.FINISHED

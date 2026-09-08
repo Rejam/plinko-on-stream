@@ -15,7 +15,7 @@ func _ready() -> void:
 	Twitch.login_failed.connect(_on_login_failed)
 	for n in LENGTHS:
 		_length_select.add_item("%d rounds" % n)
-	_length_select.select(1)
+	_length_select.select(LENGTHS.find(10))
 	_start_button.pressed.connect(_on_start_pressed)
 	
 func _on_connect_pressed() -> void:

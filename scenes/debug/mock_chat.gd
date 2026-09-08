@@ -16,7 +16,7 @@ const NAMES: PackedStringArray = [
 
 ## Columns 1..SAFE_COLUMN_MAX are assumed valid on every board, since the script
 ## has no way to ask. Raise it to your real column count for a wider spread.
-const SAFE_COLUMN_MAX := 3
+const SAFE_COLUMN_MAX := 7
 ## Rejected on any board: to_int() gives < 1, or a number no board reaches.
 ## Digits above 7 are deliberately absent — board1 has 8 columns, so "8" is a
 ## real entry there. "3.7" is absent too: to_int() truncates it to a valid 3.
