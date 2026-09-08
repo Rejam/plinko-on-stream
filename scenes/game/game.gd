@@ -18,6 +18,7 @@ extends Node2D
 @onready var standings_list: ItemList = %StandingsList
 @onready var round_winner_label: Label = %RoundWinnerLabel
 @onready var registration_layer: CanvasLayer = %RegistrationLayer
+@onready var round_over_layer: CanvasLayer = %RoundOverLayer
 
 var current_ball: Ball = null
 
@@ -72,6 +73,7 @@ func _on_state_changed(round_state: RoundManager.RoundState, session_state: Sess
 	continue_button.disabled = session_over or round_state != RoundManager.RoundState.DROP_RESOLVED
 	next_round_button.disabled = session_over or round_state != RoundManager.RoundState.FINISHED
 	registration_layer.visible = round_state == RoundManager.RoundState.REGISTRATION
+	round_over_layer.visible = round_state == RoundManager.RoundState.FINISHED and not session_over
 	if round_state in [RoundManager.RoundState.REGISTRATION, RoundManager.RoundState.FINISHED]:
 		current_ball_label.text = "Next up:"
 	if session_over:

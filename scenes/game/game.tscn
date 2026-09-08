@@ -93,30 +93,18 @@ size_flags_horizontal = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -600.0
+offset_left = -344.0
 offset_top = 16.0
 offset_right = -16.0
 offset_bottom = 464.0
 grow_horizontal = 0
 theme = ExtResource("4_2a8rs")
 
-[node name="RoundWinnerLabel" type="Label" parent="UI/StandingsContainer" unique_id=1448057218]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 30)
-layout_mode = 2
-autowrap_mode = 3
-
 [node name="StandingsList" type="ItemList" parent="UI/StandingsContainer" unique_id=867627058]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 auto_height = true
-
-[node name="NextRoundButton" type="Button" parent="UI/StandingsContainer" unique_id=55538867]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Next Round"
 
 [node name="BoardMarker" parent="." unique_id=797090416 instance=ExtResource("5_bdhmt")]
 unique_name_in_owner = true
@@ -131,15 +119,14 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 visible = false
 
-[node name="RegistrationPanel" type="Panel" parent="RegistrationLayer" unique_id=228381791]
-unique_name_in_owner = true
+[node name="Panel" type="Panel" parent="RegistrationLayer" unique_id=228381791]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="RegistrationLayer/RegistrationPanel" unique_id=597478160]
+[node name="Panel" type="Panel" parent="RegistrationLayer/Panel" unique_id=597478160]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -154,7 +141,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hiwug")
 
-[node name="EntrantsContainer" type="VBoxContainer" parent="RegistrationLayer/RegistrationPanel/Panel" unique_id=573250791]
+[node name="EntrantsContainer" type="VBoxContainer" parent="RegistrationLayer/Panel/Panel" unique_id=573250791]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -171,21 +158,83 @@ size_flags_vertical = 3
 theme = ExtResource("4_2a8rs")
 theme_override_constants/separation = 16
 
-[node name="RichTextLabel" type="RichTextLabel" parent="RegistrationLayer/RegistrationPanel/Panel/EntrantsContainer" unique_id=1628050838]
+[node name="RichTextLabel" type="RichTextLabel" parent="RegistrationLayer/Panel/Panel/EntrantsContainer" unique_id=1628050838]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 40
 text = "Register"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="EntrantsWaitingList" type="ItemList" parent="RegistrationLayer/RegistrationPanel/Panel/EntrantsContainer" unique_id=1820649433]
+[node name="EntrantsWaitingList" type="ItemList" parent="RegistrationLayer/Panel/Panel/EntrantsContainer" unique_id=1820649433]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 auto_height = true
 
-[node name="EndRegistrationButton" type="Button" parent="RegistrationLayer/RegistrationPanel/Panel/EntrantsContainer" unique_id=1130275608]
+[node name="EndRegistrationButton" type="Button" parent="RegistrationLayer/Panel/Panel/EntrantsContainer" unique_id=1130275608]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Start Game"
+
+[node name="RoundOverLayer" type="CanvasLayer" parent="." unique_id=903112456]
+unique_name_in_owner = true
+visible = false
+
+[node name="Panel" type="Panel" parent="RoundOverLayer" unique_id=543792398]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="RoundOverLayer/Panel" unique_id=1698007558]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -428.0
+offset_right = 380.0
+offset_bottom = 428.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hiwug")
+
+[node name="RoundResultsContainer" type="VBoxContainer" parent="RoundOverLayer/Panel/Panel" unique_id=882743647]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = -388.0
+offset_right = 336.0
+offset_bottom = 388.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("4_2a8rs")
+theme_override_constants/separation = 16
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RoundOverLayer/Panel/Panel/RoundResultsContainer" unique_id=1348691223]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "Round Complete"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="RoundWinnerLabel" type="Label" parent="RoundOverLayer/Panel/Panel/RoundResultsContainer" unique_id=1448057218]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 3
+autowrap_mode = 3
+
+[node name="NextRoundButton" type="Button" parent="RoundOverLayer/Panel/Panel/RoundResultsContainer" unique_id=55538867]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Next Round"
