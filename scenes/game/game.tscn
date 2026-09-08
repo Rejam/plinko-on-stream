@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://bivrme57bosm5" path="res://game_theme.tres" id="4_2a8rs"]
 [ext_resource type="PackedScene" uid="uid://b8t3bxfwvtd7m" path="res://scenes/debug/debug.tscn" id="5_4j704"]
 [ext_resource type="PackedScene" uid="uid://cp8xq4wu4wyor" path="res://scenes/game/board_marker/board_marker.tscn" id="5_bdhmt"]
-[ext_resource type="PackedScene" uid="uid://cyi8s84cd4wi3" path="res://scenes/game/round_manager/round_manager.tscn" id="6_kp23o"]
+[ext_resource type="PackedScene" uid="uid://bkhuo30b08vdf" path="res://scenes/game/session_manager/session_manager.tscn" id="7_bdhmt"]
 
 [sub_resource type="Gradient" id="Gradient_5i0tg"]
 colors = PackedColorArray(0.6666667, 0.6666667, 0.6666667, 1, 0.73333335, 0.73333335, 0.73333335, 1)
@@ -143,7 +143,7 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 position = Vector2(112, 176)
 
-[node name="RoundManager" parent="." unique_id=1912180117 instance=ExtResource("6_kp23o")]
-unique_name_in_owner = true
-
 [node name="DebugMenu" parent="." unique_id=250459968 instance=ExtResource("5_4j704")]
+
+[node name="SessionManager" parent="." unique_id=916437948 instance=ExtResource("7_bdhmt")]
+unique_name_in_owner = true
