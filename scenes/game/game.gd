@@ -42,6 +42,7 @@ func _ready() -> void:
 
 func _on_round_started(current_round: int, total_rounds: int, multiplier: int) -> void:
 	last_drop_label.text = ""
+	round_winner_label.text = ""
 	multiplier_label.text = "Round %d/%d · %dx" % [current_round, total_rounds, multiplier]
 	board_marker.swap_to.call_deferred(current_round)
 
