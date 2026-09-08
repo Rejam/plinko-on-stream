@@ -10,11 +10,13 @@ extends Node2D
 @onready var round_status_label: Label = %RoundStatusLabel
 @onready var end_reg_button: Button = %EndRegistrationButton
 @onready var continue_button: Button = %ContinueButton
-@onready var entrants_waiting: ItemList = %EntrantsWaiting
+@onready var entrants_waiting_list: ItemList = %EntrantsWaitingList
 @onready var redrop_button: Button = %RedropButton
 @onready var current_ball_label: Label = %CurrentBallLabel
 @onready var last_drop_label: Label = %LastDropLabel
 @onready var multiplier_label: Label = %MultiplierLabel
+@onready var standings_list: ItemList = %StandingsList
+@onready var round_winner_label: Label = %RoundWinnerLabel
 
 var current_ball: Ball = null
 
@@ -30,6 +32,8 @@ func _ready() -> void:
 	session_manager.ball_released.connect(_on_ball_released)
 	session_manager.drop_resolved.connect(_on_drop_resolved)
 	session_manager.entrants_changed.connect(_on_entrants_changed)
+	session_manager.standings_updated.connect(_on_standings_updated)
+	session_manager.round_won.connect(_on_round_won)
 	board_marker.setup(boards)
 	board_marker.ball_scored.connect(_on_ball_scored)
 	session_manager.start_session(round_count)
@@ -73,9 +77,9 @@ func _on_state_changed(round_state: RoundManager.RoundState, session_state: Sess
 		round_status_label.text = RoundManager.get_round_state_label_text(round_state)
 		
 func _on_entrants_changed(entrants: Array[Entry]) -> void:
-	entrants_waiting.clear()
+	entrants_waiting_list.clear()
 	for entrant in entrants:
-		entrants_waiting.add_item("%s : %s" % [entrant.player.display_name, entrant.column])
+		entrants_waiting_list.add_item("%s : %s" % [entrant.player.display_name, entrant.column])
 
 func _on_entry_received(player: Player, raw_column: String) -> void:
 	var column := board_marker.parse_column(raw_column)
@@ -87,3 +91,21 @@ func _on_drop_resolved(player: Player, base_value: int, multiplier: int, points:
 		last_drop_label.text = "%s · %d" % [player.display_name, points]
 	else:
 		last_drop_label.text = "%s · %d × %d = %d" % [player.display_name, base_value, multiplier, points]
+
+func _on_standings_updated(standings: Dictionary[String, Standing]) -> void:
+	var rows: Array[Standing] = []
+	rows.assign(standings.values())
+	rows.sort_custom(func(a, b): return a.total > b.total)
+	standings_list.clear()
+	for standing in rows:
+		standings_list.add_item("%s : %d" % [standing.display_name, standing.total])
+
+func _on_round_won(winners: Array[Standing]) -> void:
+	if winners.is_empty():
+		round_winner_label.text = ""
+		return
+	var names: Array[String] = []
+	for standing in winners:
+		names.append(standing.display_name)
+	round_winner_label.text = "Round winner: %s · %d" % [
+		", ".join(names), winners[0].points_in(session_manager.current_round)]

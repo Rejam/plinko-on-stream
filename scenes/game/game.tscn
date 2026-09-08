@@ -31,11 +31,11 @@ texture = SubResource("GradientTexture2D_hiwug")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=403276215]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=573250791]
+[node name="EntrantsContainer" type="VBoxContainer" parent="UI" unique_id=573250791]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -334.0
+offset_left = -271.0
 offset_top = 16.0
 offset_right = -16.0
 offset_bottom = 256.0
@@ -43,12 +43,13 @@ grow_horizontal = 0
 size_flags_vertical = 3
 theme = ExtResource("4_2a8rs")
 
-[node name="EndRegistrationButton" type="Button" parent="UI/VBoxContainer" unique_id=1130275608]
+[node name="EndRegistrationButton" type="Button" parent="UI/EntrantsContainer" unique_id=1130275608]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "End Registration"
 
-[node name="EntrantsWaiting" type="ItemList" parent="UI/VBoxContainer" unique_id=1820649433]
+[node name="EntrantsWaitingList" type="ItemList" parent="UI/EntrantsContainer" unique_id=1820649433]
 unique_name_in_owner = true
 custom_maximum_size = Vector2(-1, 480)
 layout_mode = 2
@@ -61,10 +62,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -836.0
-offset_top = -104.0
-offset_right = 431.0
-offset_bottom = -27.0
+offset_left = -944.0
+offset_top = -96.0
+offset_right = 323.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
@@ -89,9 +90,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="TopBarVBox" type="VBoxContainer" parent="UI" unique_id=1134344469]
-offset_left = 112.0
+offset_left = 16.0
 offset_top = 16.0
-offset_right = 1392.0
+offset_right = 1296.0
 offset_bottom = 160.0
 theme = ExtResource("4_2a8rs")
 
@@ -139,9 +140,29 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="StandingsContainer" type="VBoxContainer" parent="UI" unique_id=632585386]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -592.0
+offset_top = 16.0
+offset_right = -288.0
+offset_bottom = 464.0
+grow_horizontal = 0
+
+[node name="RoundWinnerLabel" type="Label" parent="UI/StandingsContainer" unique_id=1448057218]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StandingsList" type="ItemList" parent="UI/StandingsContainer" unique_id=867627058]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+auto_height = true
+
 [node name="BoardMarker" parent="." unique_id=797090416 instance=ExtResource("5_bdhmt")]
 unique_name_in_owner = true
-position = Vector2(112, 176)
+position = Vector2(16, 192)
 
 [node name="DebugMenu" parent="." unique_id=250459968 instance=ExtResource("5_4j704")]
 
