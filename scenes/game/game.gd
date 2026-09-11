@@ -19,6 +19,7 @@ extends Node2D
 @onready var round_winner_label: Label = %RoundWinnerLabel
 @onready var registration_layer: CanvasLayer = %RegistrationLayer
 @onready var round_over_layer: CanvasLayer = %RoundOverLayer
+@onready var facecam_reserve: Control = %FacecamReserve
 
 var current_ball: Ball = null
 

@@ -7,11 +7,56 @@
 [ext_resource type="Texture2D" uid="uid://cedacrybofmmn" path="res://assets/UIpackSheet_transparent.png" id="4_87uf6"]
 [ext_resource type="PackedScene" uid="uid://b8t3bxfwvtd7m" path="res://scenes/debug/debug.tscn" id="5_4j704"]
 [ext_resource type="PackedScene" uid="uid://cp8xq4wu4wyor" path="res://scenes/game/board_marker/board_marker.tscn" id="5_bdhmt"]
+[ext_resource type="Theme" uid="uid://qpugxn881apx" path="res://hud_theme.tres" id="6_2a8rs"]
 [ext_resource type="PackedScene" uid="uid://bkhuo30b08vdf" path="res://scenes/game/session_manager/session_manager.tscn" id="7_bdhmt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bpukv"]
 atlas = ExtResource("4_87uf6")
 region = Rect2(450, 54, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a8rs"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.31, 0.55, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4j704"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.22, 0.45, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kp23o"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.42, 0.65, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jirj"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87uf6"]
 bg_color = Color(0.01, 0.01, 0.015, 0.68)
@@ -32,12 +77,85 @@ texture = SubResource("AtlasTexture_bpukv")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=403276215]
 
+[node name="TopBarBg" type="Panel" parent="UI" unique_id=24549467]
+offset_right = 1920.0
+offset_bottom = 40.0
+theme = ExtResource("6_2a8rs")
+
+[node name="FacecamReserve" type="Panel" parent="UI" unique_id=305499433]
+unique_name_in_owner = true
+offset_left = 1592.0
+offset_top = 40.0
+offset_right = 1920.0
+offset_bottom = 225.0
+theme = ExtResource("6_2a8rs")
+
+[node name="Margin" type="MarginContainer" parent="UI/FacecamReserve" unique_id=1825687716]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Ticker" type="Panel" parent="UI" unique_id=1092493225]
+offset_top = 1044.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("6_2a8rs")
+
+[node name="Margin" type="MarginContainer" parent="UI/Ticker" unique_id=1452149116]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 3
+
+[node name="InfoBox" type="Panel" parent="UI" unique_id=1712812118]
+offset_left = 1592.0
+offset_top = 225.0
+offset_right = 1920.0
+offset_bottom = 1044.0
+theme = ExtResource("6_2a8rs")
+
+[node name="Margin" type="MarginContainer" parent="UI/InfoBox" unique_id=1626145583]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="StandingsContainer" type="VBoxContainer" parent="UI/InfoBox/Margin" unique_id=632585386]
+layout_mode = 2
+theme = ExtResource("6_2a8rs")
+
+[node name="CurrentBallLabel" type="Label" parent="UI/InfoBox/Margin/StandingsContainer" unique_id=317949338]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LastDropLabel" type="Label" parent="UI/InfoBox/Margin/StandingsContainer" unique_id=1560846131]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StandingsList" type="ItemList" parent="UI/InfoBox/Margin/StandingsContainer" unique_id=867627058]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+auto_height = true
+
 [node name="TopBarVBox" type="VBoxContainer" parent="UI" unique_id=1134344469]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 1296.0
-offset_bottom = 160.0
-theme = ExtResource("4_2a8rs")
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 1900.0
+offset_bottom = 36.0
+theme = ExtResource("6_2a8rs")
 
 [node name="TopBarHContainer" type="HBoxContainer" parent="UI/TopBarVBox" unique_id=1805621368]
 layout_mode = 2
@@ -47,17 +165,27 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 4
 text = "Redrop"
 
 [node name="DropBallButton" type="Button" parent="UI/TopBarVBox/TopBarHContainer" unique_id=501488133]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_2a8rs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4j704")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kp23o")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5jirj")
 text = "Drop Ball"
 
 [node name="ContinueButton" type="Button" parent="UI/TopBarVBox/TopBarHContainer" unique_id=302666286]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 4
 text = "Continue"
 
 [node name="Control" type="Control" parent="UI/TopBarVBox/TopBarHContainer" unique_id=878020415]
@@ -73,40 +201,9 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Status"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/TopBarVBox" unique_id=927394008]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="CurrentBallLabel" type="Label" parent="UI/TopBarVBox/HBoxContainer" unique_id=317949338]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="LastDropLabel" type="Label" parent="UI/TopBarVBox/HBoxContainer" unique_id=1560846131]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="StandingsContainer" type="VBoxContainer" parent="UI" unique_id=632585386]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -344.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 464.0
-grow_horizontal = 0
-theme = ExtResource("4_2a8rs")
-
-[node name="StandingsList" type="ItemList" parent="UI/StandingsContainer" unique_id=867627058]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-auto_height = true
-
 [node name="BoardMarker" parent="." unique_id=797090416 instance=ExtResource("5_bdhmt")]
 unique_name_in_owner = true
-position = Vector2(16, 192)
+position = Vector2(0, 40)
 
 [node name="DebugMenu" parent="." unique_id=250459968 instance=ExtResource("5_4j704")]
 
@@ -115,6 +212,7 @@ unique_name_in_owner = true
 
 [node name="RegistrationLayer" type="CanvasLayer" parent="." unique_id=2037464211]
 unique_name_in_owner = true
+visible = false
 
 [node name="Card" type="Panel" parent="RegistrationLayer" unique_id=597478160]
 anchors_preset = 11
@@ -181,6 +279,7 @@ text = "Start Game"
 
 [node name="RoundOverLayer" type="CanvasLayer" parent="." unique_id=903112456]
 unique_name_in_owner = true
+visible = false
 
 [node name="Scrim" type="Panel" parent="RoundOverLayer" unique_id=543792398]
 anchors_preset = 15
