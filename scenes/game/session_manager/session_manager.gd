@@ -1,12 +1,11 @@
 class_name SessionManager extends Node
 
-enum SessionState { IDLE, RUNNING, FINISHED }
-enum RoundState { REGISTRATION, PRE_DROP, DROPPING, DROP_RESOLVED, FINISHED }
+enum GameState { IDLE, REGISTRATION, PRE_DROP, DROPPING, DROP_RESOLVED, ROUND_OVER, SESSION_OVER }
 
 const BLOCK_SIZE := 5
 
 signal round_started(current_round: int, round_count: int, multiplier: int)
-signal state_changed(round_state: RoundState, session_state: SessionState)
+signal state_changed(game_state: GameState)
 signal standings_updated(standings: Dictionary[String, Standing])
 signal round_won(winners: Array[Standing])
 signal ball_requested(entry: Entry)
@@ -14,15 +13,15 @@ signal ball_released
 signal entrants_changed(entries: Array[Entry])
 signal drop_resolved(player: Player, base_value: int, multiplier: int, points: int)
 
+var game_state: GameState = GameState.IDLE
+
 # Session-scoped. Never cleared while the session runs.
 var standings: Dictionary[String, Standing] = {}
-var session_state: SessionState = SessionState.IDLE
 var round_count := 0
 var current_round := 0
 
 # Round-scoped. _reset_round() clears exactly these and nothing else.
 # Anything added here must be added there.
-var round_state: RoundState = RoundState.REGISTRATION
 var current_entry: Entry = null
 var _entries: Dictionary[String, Entry] = {}
 var _queue: Array[Entry] = []
@@ -30,22 +29,21 @@ var _queue: Array[Entry] = []
 var current_multiplier: int:
 	get: return multiplier_for_round(current_round)
 
-static func get_round_state_label_text(state: RoundState) -> String:
-	return RoundState.keys()[state]
+static func get_game_state_label_text(state: GameState) -> String:
+	return GameState.keys()[state]
 
 # --- session ---------------------------------------------------------------
 
 func start_session(rounds: int) -> void:
 	round_count = rounds
 	current_round = 0
-	_set_session_state(SessionState.RUNNING)
 	_begin_round()
 
 func next_round() -> void:
-	if round_state != RoundState.FINISHED:
+	if game_state != GameState.ROUND_OVER:
 		return
 	if current_round >= round_count:
-		_set_session_state(SessionState.FINISHED)
+		_set_game_state(GameState.SESSION_OVER)
 	else:
 		_begin_round()
 
@@ -76,12 +74,12 @@ func _reset_round() -> void:
 	_queue.clear()
 	entrants_changed.emit([] as Array[Entry])
 	current_entry = null
-	_set_round_state(RoundState.REGISTRATION)
+	_set_game_state(GameState.REGISTRATION)
 
 # --- round -----------------------------------------------------------------
 
 func register_entrant(player: Player, column: int) -> void:
-	if round_state != RoundState.REGISTRATION:
+	if game_state != GameState.REGISTRATION:
 		return
 	var total := 0
 	if standings.has(player.user_id):
@@ -96,33 +94,33 @@ func register_entrant(player: Player, column: int) -> void:
 	_record_standing(player)
 
 func end_registration() -> void:
-	if round_state != RoundState.REGISTRATION:
+	if game_state != GameState.REGISTRATION:
 		return
 	_next_entrant()
 
 func drop_next() -> void:
-	if round_state != RoundState.PRE_DROP:
+	if game_state != GameState.PRE_DROP:
 		return
 	ball_released.emit()
-	_set_round_state(RoundState.DROPPING)
+	_set_game_state(GameState.DROPPING)
 
 func redrop() -> void:
-	if round_state != RoundState.DROPPING:
+	if game_state != GameState.DROPPING:
 		return
 	ball_requested.emit(current_entry)
-	_set_round_state(RoundState.PRE_DROP)
+	_set_game_state(GameState.PRE_DROP)
 
 func continue_round() -> void:
-	if round_state != RoundState.DROP_RESOLVED:
+	if game_state != GameState.DROP_RESOLVED:
 		return
 	_next_entrant()
 
 ## Returns false if the report was rejected, in which case the caller still owns
 ## the ball — the round stays in DROPPING and Redrop is the way out.
 func notify_drop_scored(player: Player, base_value: int) -> bool:
-	# round_state leaves DROPPING as soon as a ball scores, so a second
+	# game_state leaves DROPPING as soon as a ball scores, so a second
 	# report from the same ball is ignored.
-	if round_state != RoundState.DROPPING:
+	if game_state != GameState.DROPPING:
 		return false
 	if player.user_id != current_entry.player.user_id:
 		push_error("Scored ball belongs to %s, expected %s" % [player.display_name, current_entry.player.display_name])
@@ -130,7 +128,7 @@ func notify_drop_scored(player: Player, base_value: int) -> bool:
 	if not standings.has(player.user_id):
 		push_error("No standing for %s" % player.display_name)
 		return false
-	_set_round_state(RoundState.DROP_RESOLVED)
+	_set_game_state(GameState.DROP_RESOLVED)
  
 	var multiplier := current_multiplier
 	var points := base_value * multiplier
@@ -144,12 +142,12 @@ func notify_drop_scored(player: Player, base_value: int) -> bool:
 func _next_entrant() -> void:
 	if _queue.is_empty():
 		current_entry = null
-		_set_round_state(RoundState.FINISHED)
+		_set_game_state(GameState.ROUND_OVER)
 	else:
 		current_entry = _queue.pop_front()
 		entrants_changed.emit(_queue.duplicate())
 		ball_requested.emit(current_entry)
-		_set_round_state(RoundState.PRE_DROP)
+		_set_game_state(GameState.PRE_DROP)
 
 func _insert_into_queue(entry: Entry) -> void:
 	_queue.insert(_queue.bsearch_custom(entry, _by_total, false), entry)
@@ -174,12 +172,8 @@ func _resolve_round_winner() -> void:
 
 # --- state transitions -----------------------------------------------------
 
-func _set_round_state(new_state: RoundState) -> void:
-	round_state = new_state
-	if new_state == RoundState.FINISHED:
+func _set_game_state(new_state: GameState) -> void:
+	game_state = new_state
+	if new_state == GameState.ROUND_OVER:
 		_resolve_round_winner()
-	state_changed.emit(new_state, session_state)
-
-func _set_session_state(new_state: SessionState) -> void:
-	session_state = new_state
-	state_changed.emit(round_state, new_state)
+	state_changed.emit(new_state)

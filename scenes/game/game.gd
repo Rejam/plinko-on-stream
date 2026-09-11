@@ -65,21 +65,21 @@ func _on_ball_scored(ball: Ball, base_value: int) -> void:
 	if session_manager.notify_drop_scored(ball.owner_player, base_value):
 		current_ball = null
 
-func _on_state_changed(round_state: SessionManager.RoundState, session_state: SessionManager.SessionState) -> void:
-	var session_over := session_state == SessionManager.SessionState.FINISHED
-	end_reg_button.disabled = session_over or round_state != SessionManager.RoundState.REGISTRATION
-	drop_ball_button.disabled = session_over or round_state != SessionManager.RoundState.PRE_DROP
-	redrop_button.disabled = session_over or round_state != SessionManager.RoundState.DROPPING
-	continue_button.disabled = session_over or round_state != SessionManager.RoundState.DROP_RESOLVED
-	next_round_button.disabled = session_over or round_state != SessionManager.RoundState.FINISHED
-	registration_layer.visible = round_state == SessionManager.RoundState.REGISTRATION
-	round_over_layer.visible = round_state == SessionManager.RoundState.FINISHED and not session_over
-	if round_state in [SessionManager.RoundState.REGISTRATION, SessionManager.RoundState.FINISHED]:
+func _on_state_changed(game_state: SessionManager.GameState) -> void:
+	var session_over := game_state == SessionManager.GameState.SESSION_OVER
+	end_reg_button.disabled = game_state != SessionManager.GameState.REGISTRATION
+	drop_ball_button.disabled = game_state != SessionManager.GameState.PRE_DROP
+	redrop_button.disabled = game_state != SessionManager.GameState.DROPPING
+	continue_button.disabled = game_state != SessionManager.GameState.DROP_RESOLVED
+	next_round_button.disabled = game_state != SessionManager.GameState.ROUND_OVER
+	registration_layer.visible = game_state == SessionManager.GameState.REGISTRATION
+	round_over_layer.visible = game_state == SessionManager.GameState.ROUND_OVER
+	if game_state in [SessionManager.GameState.REGISTRATION, SessionManager.GameState.ROUND_OVER]:
 		current_ball_label.text = "Next up:"
 	if session_over:
 		round_status_label.text = "SESSION FINISHED"
 	else:
-		round_status_label.text = SessionManager.get_round_state_label_text(round_state)
+		round_status_label.text = SessionManager.get_game_state_label_text(game_state)
 		
 func _on_entrants_changed(entrants: Array[Entry]) -> void:
 	entrants_waiting_list.clear()
