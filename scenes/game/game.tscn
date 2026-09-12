@@ -8,8 +8,8 @@
 [ext_resource type="Theme" uid="uid://qpugxn881apx" path="res://hud_theme.tres" id="6_2a8rs"]
 [ext_resource type="Script" uid="uid://dw3rutslo8pit" path="res://scenes/game/board_marker.gd" id="6_4j704"]
 [ext_resource type="PackedScene" uid="uid://bkhuo30b08vdf" path="res://scenes/game/session_manager/session_manager.tscn" id="7_bdhmt"]
-[ext_resource type="PackedScene" path="res://scenes/game/phase_panel/round_over_layer.tscn" id="9_kp23o"]
-[ext_resource type="PackedScene" path="res://scenes/game/phase_panel/session_over_layer.tscn" id="10_5jirj"]
+[ext_resource type="PackedScene" uid="uid://dfpnxfomie3s4" path="res://scenes/game/phase_panel/round_over_layer.tscn" id="9_kp23o"]
+[ext_resource type="PackedScene" uid="uid://c7wodg5g357dt" path="res://scenes/game/phase_panel/session_over_layer.tscn" id="10_5jirj"]
 [ext_resource type="PackedScene" path="res://scenes/game/quit_confirm/quit_confirm_layer.tscn" id="11_kp23o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bpukv"]
@@ -48,21 +48,31 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
-[node name="Rows" type="VBoxContainer" parent="UI/Root" unique_id=743662110]
+[node name="Columns" type="HBoxContainer" parent="UI/Root" unique_id=1769035691]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Ticker" type="Panel" parent="UI/Root/Rows" unique_id=1092493225]
+[node name="LeftColumn" type="VBoxContainer" parent="UI/Root/Columns" unique_id=1611780381]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Ticker" type="Panel" parent="UI/Root/Columns/LeftColumn" unique_id=1092493225]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("6_2a8rs")
 
-[node name="Margin" type="MarginContainer" parent="UI/Root/Rows/Ticker" unique_id=1452149116]
+[node name="Margin" type="MarginContainer" parent="UI/Root/Columns/LeftColumn/Ticker" unique_id=1452149116]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -71,22 +81,32 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 3
 
-[node name="TickerLabel" type="Label" parent="UI/Root/Rows/Ticker/Margin" unique_id=1628050901]
+[node name="Row" type="HBoxContainer" parent="UI/Root/Columns/LeftColumn/Ticker/Margin" unique_id=1900441995]
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="UI/Root/Columns/LeftColumn/Ticker/Margin/Row" unique_id=1047079342]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Quit"
+
+[node name="TickerLabel" type="Label" parent="UI/Root/Columns/LeftColumn/Ticker/Margin/Row" unique_id=1628050901]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 0.5)
 theme_override_font_sizes/font_size = 13
 text = "Type !plinko <column> in chat to join"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="TopBar" type="Panel" parent="UI/Root/Rows" unique_id=1668786433]
+[node name="TopBar" type="Panel" parent="UI/Root/Columns/LeftColumn" unique_id=1668786433]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("6_2a8rs")
 
-[node name="Margin" type="MarginContainer" parent="UI/Root/Rows/TopBar" unique_id=372798264]
+[node name="Margin" type="MarginContainer" parent="UI/Root/Columns/LeftColumn/TopBar" unique_id=372798264]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -95,79 +115,51 @@ size_flags_vertical = 3
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 4
 
-[node name="TopBarHContainer" type="HBoxContainer" parent="UI/Root/Rows/TopBar/Margin" unique_id=1805621368]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="LeftGroup" type="HBoxContainer" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer" unique_id=1129685556]
+[node name="Row" type="HBoxContainer" parent="UI/Root/Columns/LeftColumn/TopBar/Margin" unique_id=1129685556]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RedropButton" type="Button" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer/LeftGroup" unique_id=499774679]
+[node name="RedropButton" type="Button" parent="UI/Root/Columns/LeftColumn/TopBar/Margin/Row" unique_id=499774679]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "Redrop"
 
-[node name="DropBallButton" type="Button" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer/LeftGroup" unique_id=501488133]
+[node name="DropBallButton" type="Button" parent="UI/Root/Columns/LeftColumn/TopBar/Margin/Row" unique_id=501488133]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"PrimaryButton"
 theme_override_styles/normal = SubResource("StyleBoxFlat_2a8rs")
 text = "Drop Ball"
 
-[node name="ContinueButton" type="Button" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer/LeftGroup" unique_id=302666286]
+[node name="ContinueButton" type="Button" parent="UI/Root/Columns/LeftColumn/TopBar/Margin/Row" unique_id=302666286]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 theme_type_variation = &"PrimaryButton"
 text = "Continue"
 
-[node name="Spacer" type="Control" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer/LeftGroup" unique_id=1526887495]
+[node name="Spacer" type="Control" parent="UI/Root/Columns/LeftColumn/TopBar/Margin/Row" unique_id=1526887495]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MultiplierLabel" type="Label" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer/LeftGroup" unique_id=743735509]
+[node name="MultiplierLabel" type="Label" parent="UI/Root/Columns/LeftColumn/TopBar/Margin/Row" unique_id=743735509]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RoundStatusLabel" type="Label" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer/LeftGroup" unique_id=2140504398]
+[node name="RoundStatusLabel" type="Label" parent="UI/Root/Columns/LeftColumn/TopBar/Margin/Row" unique_id=2140504398]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Status"
 
-[node name="RightGroup" type="HBoxContainer" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer" unique_id=1320192902]
-custom_minimum_size = Vector2(320, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-alignment = 2
-
-[node name="QuitButton" type="Button" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer/RightGroup" unique_id=1047079342]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Quit"
-
-[node name="Middle" type="HBoxContainer" parent="UI/Root/Rows" unique_id=1769035691]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="LeftColumn" type="VBoxContainer" parent="UI/Root/Rows/Middle" unique_id=1611780381]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="BoardRegion" type="Control" parent="UI/Root/Rows/Middle/LeftColumn" unique_id=393348934]
+[node name="BoardRegion" type="Control" parent="UI/Root/Columns/LeftColumn" unique_id=393348934]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="CurrentBallLabel" type="Label" parent="UI/Root/Rows/Middle/LeftColumn/BoardRegion" unique_id=317743552]
+[node name="CurrentBallLabel" type="Label" parent="UI/Root/Columns/LeftColumn/BoardRegion" unique_id=317743552]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
@@ -176,21 +168,21 @@ theme_override_font_sizes/font_size = 56
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RightColumn" type="VBoxContainer" parent="UI/Root/Rows/Middle" unique_id=1938546238]
+[node name="RightColumn" type="VBoxContainer" parent="UI/Root/Columns" unique_id=1938546238]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="FacecamReserve" type="Panel" parent="UI/Root/Rows/Middle/RightColumn" unique_id=305499433]
+[node name="FacecamReserve" type="Panel" parent="UI/Root/Columns/RightColumn" unique_id=305499433]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 180)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("6_2a8rs")
 
-[node name="Margin" type="MarginContainer" parent="UI/Root/Rows/Middle/RightColumn/FacecamReserve" unique_id=1825687716]
+[node name="Margin" type="MarginContainer" parent="UI/Root/Columns/RightColumn/FacecamReserve" unique_id=1825687716]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -199,13 +191,13 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="InfoBox" type="Panel" parent="UI/Root/Rows/Middle/RightColumn" unique_id=1712812118]
+[node name="InfoBox" type="Panel" parent="UI/Root/Columns/RightColumn" unique_id=1712812118]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("6_2a8rs")
 
-[node name="Margin" type="MarginContainer" parent="UI/Root/Rows/Middle/RightColumn/InfoBox" unique_id=1626145583]
+[node name="Margin" type="MarginContainer" parent="UI/Root/Columns/RightColumn/InfoBox" unique_id=1626145583]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -214,23 +206,23 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="StandingsContainer" type="VBoxContainer" parent="UI/Root/Rows/Middle/RightColumn/InfoBox/Margin" unique_id=632585386]
+[node name="StandingsContainer" type="VBoxContainer" parent="UI/Root/Columns/RightColumn/InfoBox/Margin" unique_id=632585386]
 layout_mode = 2
 theme = ExtResource("6_2a8rs")
 
-[node name="StandingsList" type="ItemList" parent="UI/Root/Rows/Middle/RightColumn/InfoBox/Margin/StandingsContainer" unique_id=867627058]
+[node name="StandingsList" type="ItemList" parent="UI/Root/Columns/RightColumn/InfoBox/Margin/StandingsContainer" unique_id=867627058]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 auto_height = true
 
-[node name="EntrantsWaitingList" type="ItemList" parent="UI/Root/Rows/Middle/RightColumn/InfoBox/Margin/StandingsContainer" unique_id=1820649433]
+[node name="EntrantsWaitingList" type="ItemList" parent="UI/Root/Columns/RightColumn/InfoBox/Margin/StandingsContainer" unique_id=1820649433]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 auto_height = true
 
-[node name="EndRegistrationButton" type="Button" parent="UI/Root/Rows/Middle/RightColumn/InfoBox/Margin/StandingsContainer" unique_id=1130275608]
+[node name="EndRegistrationButton" type="Button" parent="UI/Root/Columns/RightColumn/InfoBox/Margin/StandingsContainer" unique_id=1130275608]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
