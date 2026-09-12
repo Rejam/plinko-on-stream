@@ -6,8 +6,7 @@ const BLOCK_SIZE := 5
 
 signal round_started(current_round: int, round_count: int, multiplier: int)
 signal state_changed(game_state: GameState)
-signal standings_updated(standings: Dictionary[String, Standing])
-signal round_won(winners: Array[Standing])
+signal standings_updated(standings: Array[Standing])
 signal ball_requested(entry: Entry)
 signal ball_released
 signal entrants_changed(entries: Array[Entry])
@@ -52,17 +51,18 @@ func multiplier_for_round(round_number: int) -> int:
 	var multiplier := (round_number - 1.0) / (BLOCK_SIZE) + 1
 	return int(multiplier)
 
-func round_winners(round_number: int) -> Array[Standing]:
-	var best := 0
-	var winners: Array[Standing] = []
-	for standing: Standing in standings.values():
-		var points := standing.points_in(round_number)
-		if points > best:
-			best = points
-			winners.clear()
-		if points == best and points > 0:
-			winners.append(standing)
-	return winners
+## Display order: total descending, then registration order. seq is unique, so
+## this is a total order — sort_custom's instability cannot reshuffle ties.
+func sorted_standings() -> Array[Standing]:
+	var rows: Array[Standing] = []
+	rows.assign(standings.values())
+	rows.sort_custom(_by_standing)
+	return rows
+
+func _by_standing(a: Standing, b: Standing) -> bool:
+	if a.total == b.total:
+		return a.seq < b.seq
+	return a.total > b.total
 
 func _begin_round() -> void:
 	current_round += 1
@@ -135,7 +135,7 @@ func notify_drop_scored(player: Player, base_value: int) -> bool:
 	var standing := standings[player.user_id]
 	standing.total += points
 	standing.round_points[current_round] = points
-	standings_updated.emit(standings)
+	standings_updated.emit(sorted_standings())
 	drop_resolved.emit(player, base_value, multiplier, points)
 	return true
 
@@ -161,19 +161,12 @@ func _record_standing(player: Player) -> void:
 	if standings.has(player.user_id):
 		standings[player.user_id].display_name = player.display_name
 	else:
-		standings[player.user_id] = Standing.make(player)
-	standings_updated.emit(standings)
-
-func _resolve_round_winner() -> void:
-	var winners := round_winners(current_round)
-	for standing in winners:
-		standing.round_wins += 1
-	round_won.emit(winners)
+		# standings only ever grows, so size() is the registration index.
+		standings[player.user_id] = Standing.make(player, standings.size())
+	standings_updated.emit(sorted_standings())
 
 # --- state transitions -----------------------------------------------------
 
 func _set_game_state(new_state: GameState) -> void:
 	game_state = new_state
-	if new_state == GameState.ROUND_OVER:
-		_resolve_round_winner()
 	state_changed.emit(new_state)
