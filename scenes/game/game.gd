@@ -20,6 +20,10 @@ extends Node2D
 @onready var registration_layer: CanvasLayer = %RegistrationLayer
 @onready var round_over_layer: CanvasLayer = %RoundOverLayer
 @onready var facecam_reserve: Control = %FacecamReserve
+@onready var quit_button: Button = %QuitButton
+@onready var quit_confirm_layer: CanvasLayer = %QuitConfirmLayer
+@onready var cancel_quit_button: Button = %CancelButton
+@onready var confirm_quit_button: Button = %ConfirmQuitButton
 
 var current_ball: Ball = null
 
@@ -41,6 +45,9 @@ func _ready() -> void:
 	board_marker.ball_scored.connect(_on_ball_scored)
 	session_manager.start_session(round_count)
 	Twitch.entry_received.connect(_on_entry_received)
+	quit_button.pressed.connect(func(): quit_confirm_layer.visible = true)
+	cancel_quit_button.pressed.connect(func(): quit_confirm_layer.visible = false)
+	confirm_quit_button.pressed.connect(_on_quit_confirmed)
 
 func _on_round_started(current_round: int, total_rounds: int, multiplier: int) -> void:
 	last_drop_label.text = ""
@@ -82,6 +89,9 @@ func _on_state_changed(game_state: SessionManager.GameState) -> void:
 	else:
 		round_status_label.text = SessionManager.get_game_state_label_text(game_state)
 		
+func _on_quit_confirmed() -> void:
+	get_tree().change_scene_to_file("res://scenes/title/title.tscn")
+
 func _on_entrants_changed(entrants: Array[Entry]) -> void:
 	entrants_waiting_list.clear()
 	for entrant in entrants:
