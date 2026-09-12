@@ -82,7 +82,7 @@ func _update_current_ball_label(game_state: SessionManager.GameState) -> void:
 		SessionManager.GameState.PRE_DROP:
 			current_ball_label.text = "%s is up" % entry.player.display_name
 		SessionManager.GameState.DROPPING:
-			current_ball_label.text = "%s is dropping" % entry.player.display_name
+			current_ball_label.text = "%s is up" % entry.player.display_name
 		_:
 			current_ball_label.text = ""
 

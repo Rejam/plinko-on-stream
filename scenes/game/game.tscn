@@ -72,30 +72,25 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("6_2a8rs")
 
-[node name="Margin" type="MarginContainer" parent="UI/Root/Columns/LeftColumn/Ticker" unique_id=1452149116]
-layout_mode = 0
+[node name="Row" type="HBoxContainer" parent="UI/Root/Columns/LeftColumn/Ticker" unique_id=1900441995]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 3
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Row" type="HBoxContainer" parent="UI/Root/Columns/LeftColumn/Ticker/Margin" unique_id=1900441995]
-layout_mode = 2
-
-[node name="QuitButton" type="Button" parent="UI/Root/Columns/LeftColumn/Ticker/Margin/Row" unique_id=1047079342]
+[node name="QuitButton" type="Button" parent="UI/Root/Columns/LeftColumn/Ticker/Row" unique_id=1047079342]
 unique_name_in_owner = true
 layout_mode = 2
-theme_type_variation = &"FlatButton"
 text = "Quit"
 
-[node name="TickerLabel" type="Label" parent="UI/Root/Columns/LeftColumn/Ticker/Margin/Row" unique_id=1628050901]
+[node name="TickerLabel" type="Label" parent="UI/Root/Columns/LeftColumn/Ticker/Row" unique_id=1628050901]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 1, 1, 0.5)
-theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(1, 1, 1, 0.6)
+theme_override_font_sizes/font_size = 16
 text = "Type !plinko <column> in chat to join"
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -153,18 +148,22 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Status"
 
-[node name="BoardRegion" type="Control" parent="UI/Root/Columns/LeftColumn" unique_id=393348934]
+[node name="BoardRegion" type="PanelContainer" parent="UI/Root/Columns/LeftColumn" unique_id=1179253482]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 2
 mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/Root/Columns/LeftColumn/BoardRegion" unique_id=1246481491]
+layout_mode = 2
+color = Color(0, 0, 0, 0.2901961)
 
 [node name="CurrentBallLabel" type="Label" parent="UI/Root/Columns/LeftColumn/BoardRegion" unique_id=317743552]
 unique_name_in_owner = true
-layout_mode = 0
-anchor_right = 1.0
-offset_bottom = 77.0
-theme_override_font_sizes/font_size = 56
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -6)
+theme_override_font_sizes/font_size = 48
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -244,6 +243,7 @@ unique_name_in_owner = true
 session_manager = NodePath("../SessionManager")
 
 [node name="SessionOverLayer" parent="." unique_id=1931666716 node_paths=PackedStringArray("session_manager") instance=ExtResource("10_5jirj")]
+visible = false
 session_manager = NodePath("../SessionManager")
 
 [node name="QuitConfirmLayer" parent="." unique_id=447824394 instance=ExtResource("11_kp23o")]

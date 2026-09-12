@@ -24,11 +24,6 @@ const HEIGHT := 80.0
 		_refresh()
 
 
-@export_color_no_alpha var text_colour: Color = Color.WHITE:
-	set(value):
-		text_colour = value
-		_refresh()
-		
 @onready var _bucket_collision: CollisionShape2D = %BucketCollision
 @onready var _rect: ColorRect = %ColorRect
 @onready var _label: Label = %Label
@@ -60,11 +55,10 @@ func _set_bucket_collision_area(size: Vector2) -> void:
 func _resize_rect(size: Vector2) -> void:
 	_rect.size = size
 	_rect.position = -size / 2.0
-	_rect.color = background_colour
+	_rect.color = Color(background_colour, 0.8)
 	
 func _resize_label(size: Vector2) -> void:
 	_label.size = size
-	_label.add_theme_color_override("font_color", text_colour)
 	_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	_label.text = str(base_value)	
