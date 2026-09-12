@@ -51,7 +51,7 @@ func multiplier_for_round(round_number: int) -> int:
 	var multiplier := (round_number - 1.0) / (BLOCK_SIZE) + 1
 	return int(multiplier)
 
-## Display order: total descending, then registration order. seq is unique, so
+## Display order: total descending, then first-score order. seq is unique, so
 ## this is a total order — sort_custom's instability cannot reshuffle ties.
 func sorted_standings() -> Array[Standing]:
 	var rows: Array[Standing] = []
@@ -90,8 +90,7 @@ func register_entrant(player: Player, column: int) -> void:
 
 	_entries[player.user_id] = entry
 	_insert_into_queue(entry)
-	entrants_changed.emit(_entries.values())
-	_record_standing(player)
+	entrants_changed.emit(_waiting_entries())
 
 func end_registration() -> void:
 	if game_state != GameState.REGISTRATION:
@@ -125,16 +124,15 @@ func notify_drop_scored(player: Player, base_value: int) -> bool:
 	if player.user_id != current_entry.player.user_id:
 		push_error("Scored ball belongs to %s, expected %s" % [player.display_name, current_entry.player.display_name])
 		return false
-	if not standings.has(player.user_id):
-		push_error("No standing for %s" % player.display_name)
-		return false
 	_set_game_state(GameState.DROP_RESOLVED)
  
 	var multiplier := current_multiplier
 	var points := base_value * multiplier
-	var standing := standings[player.user_id]
+	var standing := _standing_for(player)
 	standing.total += points
 	standing.round_points[current_round] = points
+	current_entry.scored = true
+	entrants_changed.emit(_waiting_entries())
 	standings_updated.emit(sorted_standings())
 	drop_resolved.emit(player, base_value, multiplier, points)
 	return true
@@ -142,12 +140,23 @@ func notify_drop_scored(player: Player, base_value: int) -> bool:
 func _next_entrant() -> void:
 	if _queue.is_empty():
 		current_entry = null
+		entrants_changed.emit(_waiting_entries())
 		_set_game_state(GameState.ROUND_OVER)
 	else:
 		current_entry = _queue.pop_front()
-		entrants_changed.emit(_queue.duplicate())
+		entrants_changed.emit(_waiting_entries())
 		ball_requested.emit(current_entry)
 		_set_game_state(GameState.PRE_DROP)
+
+## Everyone whose ball has not yet resolved this round, in drop order. The
+## current dropper is included until their ball scores. Typed, because
+## Dictionary.values() is not.
+func _waiting_entries() -> Array[Entry]:
+	var waiting: Array[Entry] = []
+	if current_entry != null and not current_entry.scored:
+		waiting.append(current_entry)
+	waiting.append_array(_queue)
+	return waiting
 
 func _insert_into_queue(entry: Entry) -> void:
 	_queue.insert(_queue.bsearch_custom(entry, _by_total, false), entry)
@@ -157,13 +166,15 @@ func _by_total(a: Entry, b: Entry) -> bool:
 
 # --- standings -------------------------------------------------------------
 
-func _record_standing(player: Player) -> void:
+## Standings fill as balls resolve, not at registration, so round one starts
+## empty rather than as a screen of zeroes. Mints the Standing on first score.
+func _standing_for(player: Player) -> Standing:
 	if standings.has(player.user_id):
 		standings[player.user_id].display_name = player.display_name
 	else:
-		# standings only ever grows, so size() is the registration index.
+		# standings only ever grows, so size() is the first-score index.
 		standings[player.user_id] = Standing.make(player, standings.size())
-	standings_updated.emit(sorted_standings())
+	return standings[player.user_id]
 
 # --- state transitions -----------------------------------------------------
 

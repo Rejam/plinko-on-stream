@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/game/quit_confirm/quit_confirm_layer.gd" id="1_qcl"]
+[ext_resource type="Theme" uid="uid://cjpll8hsimr7p" path="res://game_theme.tres" id="2_qcl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcl"]
+bg_color = Color(0.01, 0.01, 0.015, 0.68)
+
+[node name="QuitConfirmLayer" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_qcl")
+
+[node name="Scrim" type="Panel" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qcl")
+
+[node name="Card" type="Panel" parent="Scrim"]
+layout_mode = 0
+offset_left = 580.0
+offset_top = 400.0
+offset_right = 1340.0
+offset_bottom = 680.0
+theme = ExtResource("2_qcl")
+
+[node name="Margin" type="MarginContainer" parent="Scrim/Card"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Content" type="VBoxContainer" parent="Scrim/Card/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="Scrim/Card/Margin/Content"]
+layout_mode = 2
+text = "Quit to title screen?"
+horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="Scrim/Card/Margin/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "This session's progress will be lost."
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Scrim/Card/Margin/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonRow" type="HBoxContainer" parent="Scrim/Card/Margin/Content"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="CancelButton" type="Button" parent="Scrim/Card/Margin/Content/ButtonRow"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="ConfirmQuitButton" type="Button" parent="Scrim/Card/Margin/Content/ButtonRow"]
+layout_mode = 2
+text = "Quit"

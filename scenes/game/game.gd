@@ -5,7 +5,6 @@ extends Node2D
 
 @onready var board_marker: BoardMarker = %BoardMarker
 @onready var session_manager: SessionManager = %SessionManager
-@onready var next_round_button: Button = %NextRoundButton
 @onready var drop_ball_button: Button = %DropBallButton
 @onready var round_status_label: Label = %RoundStatusLabel
 @onready var end_reg_button: Button = %EndRegistrationButton
@@ -13,25 +12,15 @@ extends Node2D
 @onready var entrants_waiting_list: ItemList = %EntrantsWaitingList
 @onready var redrop_button: Button = %RedropButton
 @onready var current_ball_label: Label = %CurrentBallLabel
-@onready var last_drop_label: Label = %LastDropLabel
 @onready var multiplier_label: Label = %MultiplierLabel
 @onready var standings_list: ItemList = %StandingsList
-@onready var registration_layer: CanvasLayer = %RegistrationLayer
-@onready var round_over_layer: CanvasLayer = %RoundOverLayer
-@onready var round_standings_list: ItemList = %RoundStandingsList
-@onready var session_over_layer: CanvasLayer = %SessionOverLayer
-@onready var session_standings_list: ItemList = %SessionStandingsList
-@onready var back_to_title_button: Button = %BackToTitleButton
 @onready var facecam_reserve: Control = %FacecamReserve
 @onready var quit_button: Button = %QuitButton
 @onready var quit_confirm_layer: CanvasLayer = %QuitConfirmLayer
-@onready var cancel_quit_button: Button = %CancelButton
-@onready var confirm_quit_button: Button = %ConfirmQuitButton
 
 var current_ball: Ball = null
 
 func _ready() -> void:
-	next_round_button.pressed.connect(session_manager.next_round)
 	drop_ball_button.pressed.connect(session_manager.drop_next)
 	end_reg_button.pressed.connect(session_manager.end_registration)
 	continue_button.pressed.connect(session_manager.continue_round)
@@ -47,13 +36,9 @@ func _ready() -> void:
 	board_marker.ball_scored.connect(_on_ball_scored)
 	session_manager.start_session(round_count)
 	Twitch.entry_received.connect(_on_entry_received)
-	quit_button.pressed.connect(func(): quit_confirm_layer.visible = true)
-	cancel_quit_button.pressed.connect(func(): quit_confirm_layer.visible = false)
-	confirm_quit_button.pressed.connect(_on_quit_confirmed)
-	back_to_title_button.pressed.connect(_on_quit_confirmed)
+	quit_button.pressed.connect(quit_confirm_layer.open)
 
 func _on_round_started(current_round: int, total_rounds: int, multiplier: int) -> void:
-	last_drop_label.text = ""
 	multiplier_label.text = "Round %d/%d · %dx" % [current_round, total_rounds, multiplier]
 	board_marker.swap_to.call_deferred(current_round)
 
@@ -62,7 +47,6 @@ func _on_ball_requested(entry: Entry) -> void:
 		current_ball.queue_free()
 	current_ball = board_marker.spawn_held_ball(entry.column)
 	current_ball.owner_player = entry.player
-	current_ball_label.text = "Next up: %s" % [entry.player.display_name]
 
 func _on_ball_released() -> void:
 	if not is_instance_valid(current_ball): return
@@ -81,25 +65,26 @@ func _on_state_changed(game_state: SessionManager.GameState) -> void:
 	drop_ball_button.disabled = game_state != SessionManager.GameState.PRE_DROP
 	redrop_button.disabled = game_state != SessionManager.GameState.DROPPING
 	continue_button.disabled = game_state != SessionManager.GameState.DROP_RESOLVED
-	next_round_button.disabled = game_state != SessionManager.GameState.ROUND_OVER
-	registration_layer.visible = game_state == SessionManager.GameState.REGISTRATION
-	round_over_layer.visible = game_state == SessionManager.GameState.ROUND_OVER
-	session_over_layer.visible = session_over
-	# Both panels are hidden while scores move, so they read standings on entry
-	# instead of riding standings_updated on every drop.
-	if round_over_layer.visible:
-		_fill_standings(round_standings_list, session_manager.sorted_standings())
-	if session_over:
-		_fill_standings(session_standings_list, session_manager.sorted_standings())
-	if game_state in [SessionManager.GameState.REGISTRATION, SessionManager.GameState.ROUND_OVER]:
-		current_ball_label.text = "Next up:"
+	_update_current_ball_label(game_state)
 	if session_over:
 		round_status_label.text = "SESSION FINISHED"
 	else:
 		round_status_label.text = SessionManager.get_game_state_label_text(game_state)
-		
-func _on_quit_confirmed() -> void:
-	get_tree().change_scene_to_file("res://scenes/title/title.tscn")
+
+## Reads current_entry, which SessionManager assigns before it emits the state
+## change, so PRE_DROP and DROPPING both see the entry they belong to.
+func _update_current_ball_label(game_state: SessionManager.GameState) -> void:
+	var entry := session_manager.current_entry
+	if entry == null:
+		current_ball_label.text = ""
+		return
+	match game_state:
+		SessionManager.GameState.PRE_DROP:
+			current_ball_label.text = "%s is up" % entry.player.display_name
+		SessionManager.GameState.DROPPING:
+			current_ball_label.text = "%s is dropping" % entry.player.display_name
+		_:
+			current_ball_label.text = ""
 
 func _on_entrants_changed(entrants: Array[Entry]) -> void:
 	entrants_waiting_list.clear()
@@ -111,16 +96,13 @@ func _on_entry_received(player: Player, raw_column: String) -> void:
 	if column == BoardMarker.NO_COLUMN: return
 	session_manager.register_entrant(player, column)
 
-func _on_drop_resolved(player: Player, base_value: int, multiplier: int, points: int) -> void:
-	if multiplier == 1:
-		last_drop_label.text = "%s · %d" % [player.display_name, points]
-	else:
-		last_drop_label.text = "%s · %d × %d = %d" % [player.display_name, base_value, multiplier, points]
+func _on_drop_resolved(_player: Player, _base_value: int, _multiplier: int, _points: int) -> void:
+	# Unconsumed. The score lands in the standings list; base_value and
+	# multiplier are exposed nowhere else, so this stays as the hook for an
+	# on-board score popup.
+	pass
 
 func _on_standings_updated(standings: Array[Standing]) -> void:
-	_fill_standings(standings_list, standings)
-
-func _fill_standings(list: ItemList, rows: Array[Standing]) -> void:
-	list.clear()
-	for standing in rows:
-		list.add_item("%s : %d" % [standing.display_name, standing.total])
+	standings_list.clear()
+	for standing in standings:
+		standings_list.add_item("%s : %d" % [standing.display_name, standing.total])

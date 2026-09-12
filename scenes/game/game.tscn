@@ -3,12 +3,14 @@
 [ext_resource type="Script" uid="uid://drdi3o0k7wjik" path="res://scenes/game/game.gd" id="1_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://cvffomituhpw8" path="res://scenes/game/boards/board1.tscn" id="2_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://dp33x5bhhwo7d" path="res://scenes/game/boards/board2.tscn" id="3_87uf6"]
-[ext_resource type="Theme" uid="uid://cjpll8hsimr7p" path="res://game_theme.tres" id="4_2a8rs"]
 [ext_resource type="Texture2D" uid="uid://cedacrybofmmn" path="res://assets/UIpackSheet_transparent.png" id="4_87uf6"]
 [ext_resource type="PackedScene" uid="uid://b8t3bxfwvtd7m" path="res://scenes/debug/debug.tscn" id="5_4j704"]
-[ext_resource type="PackedScene" uid="uid://cp8xq4wu4wyor" path="res://scenes/game/board_marker/board_marker.tscn" id="5_bdhmt"]
 [ext_resource type="Theme" uid="uid://qpugxn881apx" path="res://hud_theme.tres" id="6_2a8rs"]
+[ext_resource type="Script" uid="uid://dw3rutslo8pit" path="res://scenes/game/board_marker.gd" id="6_4j704"]
 [ext_resource type="PackedScene" uid="uid://bkhuo30b08vdf" path="res://scenes/game/session_manager/session_manager.tscn" id="7_bdhmt"]
+[ext_resource type="PackedScene" path="res://scenes/game/phase_panel/round_over_layer.tscn" id="9_kp23o"]
+[ext_resource type="PackedScene" path="res://scenes/game/phase_panel/session_over_layer.tscn" id="10_5jirj"]
+[ext_resource type="PackedScene" path="res://scenes/game/quit_confirm/quit_confirm_layer.tscn" id="11_kp23o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bpukv"]
 atlas = ExtResource("4_87uf6")
@@ -24,12 +26,6 @@ corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87uf6"]
-bg_color = Color(0.01, 0.01, 0.015, 0.68)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vaxfo"]
-bg_color = Color(0.01, 0.01, 0.015, 0.68)
 
 [node name="Game" type="Node2D" unique_id=2047480295]
 script = ExtResource("1_5i0tg")
@@ -47,36 +43,26 @@ texture = SubResource("AtlasTexture_bpukv")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=403276215]
 
-[node name="TopBarBg" type="Panel" parent="UI" unique_id=24549467]
-anchors_preset = 10
+[node name="Root" type="Control" parent="UI" unique_id=23372577]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 40.0
-theme = ExtResource("6_2a8rs")
+anchor_bottom = 1.0
+mouse_filter = 2
 
-[node name="FacecamReserve" type="Panel" parent="UI" unique_id=305499433]
-unique_name_in_owner = true
-offset_left = 1592.0
-offset_top = 40.0
-offset_right = 1920.0
-offset_bottom = 225.0
-theme = ExtResource("6_2a8rs")
-
-[node name="Margin" type="MarginContainer" parent="UI/FacecamReserve" unique_id=1825687716]
+[node name="Rows" type="VBoxContainer" parent="UI/Root" unique_id=743662110]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/separation = 0
 
-[node name="Ticker" type="Panel" parent="UI" unique_id=1092493225]
-offset_top = 1044.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+[node name="Ticker" type="Panel" parent="UI/Root/Rows" unique_id=1092493225]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("6_2a8rs")
 
-[node name="Margin" type="MarginContainer" parent="UI/Ticker" unique_id=1452149116]
+[node name="Margin" type="MarginContainer" parent="UI/Root/Rows/Ticker" unique_id=1452149116]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -85,14 +71,141 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 3
 
-[node name="InfoBox" type="Panel" parent="UI" unique_id=1712812118]
-offset_left = 1592.0
-offset_top = 225.0
-offset_right = 1920.0
-offset_bottom = 1044.0
+[node name="TickerLabel" type="Label" parent="UI/Root/Rows/Ticker/Margin" unique_id=1628050901]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.5)
+theme_override_font_sizes/font_size = 13
+text = "Type !plinko <column> in chat to join"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TopBar" type="Panel" parent="UI/Root/Rows" unique_id=1668786433]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("6_2a8rs")
 
-[node name="Margin" type="MarginContainer" parent="UI/InfoBox" unique_id=1626145583]
+[node name="Margin" type="MarginContainer" parent="UI/Root/Rows/TopBar" unique_id=372798264]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 4
+
+[node name="TopBarHContainer" type="HBoxContainer" parent="UI/Root/Rows/TopBar/Margin" unique_id=1805621368]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="LeftGroup" type="HBoxContainer" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer" unique_id=1129685556]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RedropButton" type="Button" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer/LeftGroup" unique_id=499774679]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Redrop"
+
+[node name="DropBallButton" type="Button" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer/LeftGroup" unique_id=501488133]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+theme_override_styles/normal = SubResource("StyleBoxFlat_2a8rs")
+text = "Drop Ball"
+
+[node name="ContinueButton" type="Button" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer/LeftGroup" unique_id=302666286]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"PrimaryButton"
+text = "Continue"
+
+[node name="Spacer" type="Control" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer/LeftGroup" unique_id=1526887495]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MultiplierLabel" type="Label" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer/LeftGroup" unique_id=743735509]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RoundStatusLabel" type="Label" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer/LeftGroup" unique_id=2140504398]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Status"
+
+[node name="RightGroup" type="HBoxContainer" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer" unique_id=1320192902]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+alignment = 2
+
+[node name="QuitButton" type="Button" parent="UI/Root/Rows/TopBar/Margin/TopBarHContainer/RightGroup" unique_id=1047079342]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
+
+[node name="Middle" type="HBoxContainer" parent="UI/Root/Rows" unique_id=1769035691]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="LeftColumn" type="VBoxContainer" parent="UI/Root/Rows/Middle" unique_id=1611780381]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="BoardRegion" type="Control" parent="UI/Root/Rows/Middle/LeftColumn" unique_id=393348934]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="CurrentBallLabel" type="Label" parent="UI/Root/Rows/Middle/LeftColumn/BoardRegion" unique_id=317743552]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 56
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightColumn" type="VBoxContainer" parent="UI/Root/Rows/Middle" unique_id=1938546238]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="FacecamReserve" type="Panel" parent="UI/Root/Rows/Middle/RightColumn" unique_id=305499433]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("6_2a8rs")
+
+[node name="Margin" type="MarginContainer" parent="UI/Root/Rows/Middle/RightColumn/FacecamReserve" unique_id=1825687716]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="InfoBox" type="Panel" parent="UI/Root/Rows/Middle/RightColumn" unique_id=1712812118]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("6_2a8rs")
+
+[node name="Margin" type="MarginContainer" parent="UI/Root/Rows/Middle/RightColumn/InfoBox" unique_id=1626145583]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -101,157 +214,23 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="StandingsContainer" type="VBoxContainer" parent="UI/InfoBox/Margin" unique_id=632585386]
+[node name="StandingsContainer" type="VBoxContainer" parent="UI/Root/Rows/Middle/RightColumn/InfoBox/Margin" unique_id=632585386]
 layout_mode = 2
 theme = ExtResource("6_2a8rs")
 
-[node name="CurrentBallLabel" type="Label" parent="UI/InfoBox/Margin/StandingsContainer" unique_id=317949338]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="LastDropLabel" type="Label" parent="UI/InfoBox/Margin/StandingsContainer" unique_id=1560846131]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="StandingsList" type="ItemList" parent="UI/InfoBox/Margin/StandingsContainer" unique_id=867627058]
+[node name="StandingsList" type="ItemList" parent="UI/Root/Rows/Middle/RightColumn/InfoBox/Margin/StandingsContainer" unique_id=867627058]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 auto_height = true
 
-[node name="TopBarVBox" type="VBoxContainer" parent="UI" unique_id=1134344469]
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 5.0
-offset_bottom = 36.0
-theme = ExtResource("6_2a8rs")
-
-[node name="TopBarHContainer" type="HBoxContainer" parent="UI/TopBarVBox" unique_id=1805621368]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="LeftGroup" type="HBoxContainer" parent="UI/TopBarVBox/TopBarHContainer" unique_id=1129685556]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="RedropButton" type="Button" parent="UI/TopBarVBox/TopBarHContainer/LeftGroup" unique_id=499774679]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-text = "Redrop"
-
-[node name="DropBallButton" type="Button" parent="UI/TopBarVBox/TopBarHContainer/LeftGroup" unique_id=501488133]
-unique_name_in_owner = true
-layout_mode = 2
-theme_type_variation = &"PrimaryButton"
-theme_override_styles/normal = SubResource("StyleBoxFlat_2a8rs")
-text = "Drop Ball"
-
-[node name="ContinueButton" type="Button" parent="UI/TopBarVBox/TopBarHContainer/LeftGroup" unique_id=302666286]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 4
-theme_type_variation = &"PrimaryButton"
-text = "Continue"
-
-[node name="Spacer" type="Control" parent="UI/TopBarVBox/TopBarHContainer/LeftGroup" unique_id=1526887495]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MultiplierLabel" type="Label" parent="UI/TopBarVBox/TopBarHContainer/LeftGroup" unique_id=743735509]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="RoundStatusLabel" type="Label" parent="UI/TopBarVBox/TopBarHContainer/LeftGroup" unique_id=2140504398]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Status"
-
-[node name="RightGroup" type="HBoxContainer" parent="UI/TopBarVBox/TopBarHContainer" unique_id=1320192902]
-custom_minimum_size = Vector2(328, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-alignment = 2
-
-[node name="QuitButton" type="Button" parent="UI/TopBarVBox/TopBarHContainer/RightGroup" unique_id=1047079342]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Quit"
-
-[node name="BoardMarker" parent="." unique_id=797090416 instance=ExtResource("5_bdhmt")]
-unique_name_in_owner = true
-position = Vector2(46, 155)
-
-[node name="DebugMenu" parent="." unique_id=250459968 instance=ExtResource("5_4j704")]
-
-[node name="SessionManager" parent="." unique_id=916437948 instance=ExtResource("7_bdhmt")]
-unique_name_in_owner = true
-
-[node name="RegistrationLayer" type="CanvasLayer" parent="." unique_id=2037464211]
-unique_name_in_owner = true
-visible = false
-
-[node name="Card" type="Panel" parent="RegistrationLayer" unique_id=597478160]
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -344.0
-offset_top = 480.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 0
-grow_vertical = 2
-theme = ExtResource("4_2a8rs")
-
-[node name="Margin" type="MarginContainer" parent="RegistrationLayer/Card" unique_id=597478161]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 18
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 18
-
-[node name="EntrantsContainer" type="VBoxContainer" parent="RegistrationLayer/Card/Margin" unique_id=573250791]
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("4_2a8rs")
-theme_override_constants/separation = 10
-
-[node name="TitleLabel" type="RichTextLabel" parent="RegistrationLayer/Card/Margin/EntrantsContainer" unique_id=1628050838]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 22
-text = "Register to Play"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="SubtitleLabel" type="Label" parent="RegistrationLayer/Card/Margin/EntrantsContainer" unique_id=1628050901]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.5)
-theme_override_font_sizes/font_size = 13
-text = "Type !plinko <column> in chat to join"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="HSeparator" type="HSeparator" parent="RegistrationLayer/Card/Margin/EntrantsContainer" unique_id=1628050902]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="EntrantsWaitingList" type="ItemList" parent="RegistrationLayer/Card/Margin/EntrantsContainer" unique_id=1820649433]
+[node name="EntrantsWaitingList" type="ItemList" parent="UI/Root/Rows/Middle/RightColumn/InfoBox/Margin/StandingsContainer" unique_id=1820649433]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 auto_height = true
 
-[node name="EndRegistrationButton" type="Button" parent="RegistrationLayer/Card/Margin/EntrantsContainer" unique_id=1130275608]
+[node name="EndRegistrationButton" type="Button" parent="UI/Root/Rows/Middle/RightColumn/InfoBox/Margin/StandingsContainer" unique_id=1130275608]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
@@ -259,184 +238,21 @@ theme_type_variation = &"PrimaryButton"
 theme_override_font_sizes/font_size = 16
 text = "Start Game"
 
-[node name="RoundOverLayer" type="CanvasLayer" parent="." unique_id=903112456]
+[node name="BoardMarker" type="Node2D" parent="." unique_id=797090416]
 unique_name_in_owner = true
-visible = false
+position = Vector2(0, 80)
+script = ExtResource("6_4j704")
 
-[node name="Scrim" type="Panel" parent="RoundOverLayer" unique_id=543792398]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_87uf6")
+[node name="DebugMenu" parent="." unique_id=250459968 instance=ExtResource("5_4j704")]
 
-[node name="Card" type="Panel" parent="RoundOverLayer/Scrim" unique_id=1698007558]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -380.0
-offset_top = -428.0
-offset_right = 380.0
-offset_bottom = 428.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_2a8rs")
-
-[node name="RoundResultsContainer" type="VBoxContainer" parent="RoundOverLayer/Scrim/Card" unique_id=882743647]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -336.0
-offset_top = -388.0
-offset_right = 336.0
-offset_bottom = 388.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-theme = ExtResource("4_2a8rs")
-theme_override_constants/separation = 16
-
-[node name="RichTextLabel" type="RichTextLabel" parent="RoundOverLayer/Scrim/Card/RoundResultsContainer" unique_id=1348691223]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
-text = "Round Complete"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="RoundStandingsList" type="ItemList" parent="RoundOverLayer/Scrim/Card/RoundResultsContainer" unique_id=675530]
+[node name="SessionManager" parent="." unique_id=916437948 instance=ExtResource("7_bdhmt")]
 unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
 
-[node name="NextRoundButton" type="Button" parent="RoundOverLayer/Scrim/Card/RoundResultsContainer" unique_id=55538867]
+[node name="RoundOverLayer" parent="." unique_id=927767012 node_paths=PackedStringArray("session_manager") instance=ExtResource("9_kp23o")]
+session_manager = NodePath("../SessionManager")
+
+[node name="SessionOverLayer" parent="." unique_id=1931666716 node_paths=PackedStringArray("session_manager") instance=ExtResource("10_5jirj")]
+session_manager = NodePath("../SessionManager")
+
+[node name="QuitConfirmLayer" parent="." unique_id=447824394 instance=ExtResource("11_kp23o")]
 unique_name_in_owner = true
-layout_mode = 2
-text = "Next Round"
-
-[node name="SessionOverLayer" type="CanvasLayer" parent="." unique_id=1203854220]
-unique_name_in_owner = true
-visible = false
-
-[node name="Scrim" type="Panel" parent="SessionOverLayer" unique_id=1448148021]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_87uf6")
-
-[node name="Card" type="Panel" parent="SessionOverLayer/Scrim" unique_id=1131377106]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -380.0
-offset_top = -428.0
-offset_right = 380.0
-offset_bottom = 428.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_2a8rs")
-
-[node name="SessionResultsContainer" type="VBoxContainer" parent="SessionOverLayer/Scrim/Card" unique_id=155856359]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -336.0
-offset_top = -388.0
-offset_right = 336.0
-offset_bottom = 388.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-theme = ExtResource("4_2a8rs")
-theme_override_constants/separation = 16
-
-[node name="TitleLabel" type="RichTextLabel" parent="SessionOverLayer/Scrim/Card/SessionResultsContainer" unique_id=1791783072]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
-text = "Session Complete"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="SessionStandingsList" type="ItemList" parent="SessionOverLayer/Scrim/Card/SessionResultsContainer" unique_id=1394779851]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="BackToTitleButton" type="Button" parent="SessionOverLayer/Scrim/Card/SessionResultsContainer" unique_id=86523019]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Back to Title"
-
-[node name="QuitConfirmLayer" type="CanvasLayer" parent="." unique_id=1275937586]
-unique_name_in_owner = true
-visible = false
-
-[node name="Scrim" type="Panel" parent="QuitConfirmLayer" unique_id=1575896926]
-offset_right = 1920.0
-offset_bottom = 1080.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_vaxfo")
-
-[node name="Card" type="Panel" parent="QuitConfirmLayer/Scrim" unique_id=81373462]
-layout_mode = 0
-offset_left = 580.0
-offset_top = 400.0
-offset_right = 1340.0
-offset_bottom = 680.0
-theme = ExtResource("4_2a8rs")
-
-[node name="Margin" type="MarginContainer" parent="QuitConfirmLayer/Scrim/Card" unique_id=1099728046]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
-
-[node name="Content" type="VBoxContainer" parent="QuitConfirmLayer/Scrim/Card/Margin" unique_id=1821700450]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="TitleLabel" type="Label" parent="QuitConfirmLayer/Scrim/Card/Margin/Content" unique_id=661045166]
-layout_mode = 2
-text = "Quit to title screen?"
-horizontal_alignment = 1
-
-[node name="MessageLabel" type="Label" parent="QuitConfirmLayer/Scrim/Card/Margin/Content" unique_id=1217315127]
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "This session's progress will be lost."
-horizontal_alignment = 1
-
-[node name="Spacer" type="Control" parent="QuitConfirmLayer/Scrim/Card/Margin/Content" unique_id=1119606343]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ButtonRow" type="HBoxContainer" parent="QuitConfirmLayer/Scrim/Card/Margin/Content" unique_id=391146999]
-layout_mode = 2
-theme_override_constants/separation = 24
-alignment = 1
-
-[node name="CancelButton" type="Button" parent="QuitConfirmLayer/Scrim/Card/Margin/Content/ButtonRow" unique_id=1008660809]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Cancel"
-
-[node name="ConfirmQuitButton" type="Button" parent="QuitConfirmLayer/Scrim/Card/Margin/Content/ButtonRow" unique_id=1775189283]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Quit"

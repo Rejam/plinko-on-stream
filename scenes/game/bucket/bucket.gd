@@ -6,14 +6,14 @@ class_name Bucket extends Area2D
 
 signal ball_entered(ball: Ball, base_value: int)
 
-const HEIGHT := 64.0
+const HEIGHT := 80.0
 
 @export_range(10, 100, 5, "prefer_slider") var base_value := 10:
 	set(value):
 		base_value = value
 		_refresh()
 
-@export_range(128, 640, 32, "or_greater", "prefer_slider") var width : int = 256:
+@export_range(100, 660, 20, "or_greater", "prefer_slider") var width : int = 200:
 	set(value):
 		width = value
 		_refresh()
@@ -55,6 +55,7 @@ func _set_bucket_collision_area(size: Vector2) -> void:
 	var shape := RectangleShape2D.new()
 	shape.size = size
 	_bucket_collision.shape = shape
+	_bucket_collision.position = Vector2.ZERO
 
 func _resize_rect(size: Vector2) -> void:
 	_rect.size = size
@@ -73,8 +74,8 @@ func _position_walls(size: Vector2) -> void:
 	_left_wall_collision.position = Vector2(-size.x / 2, 0)
 	_right_wall_collision.shape = _new_wall_shape(Vector2(1.0, size.y))
 	_right_wall_collision.position = Vector2(size.x / 2, 0)
-	_base_collision.shape = _new_wall_shape(Vector2(size.x, 32.0))
-	_base_collision.position = Vector2(0, size.y / 2 + 16)
+	_base_collision.shape = _new_wall_shape(Vector2(size.x, 10.0))
+	_base_collision.position = Vector2(0, size.y / 2 + 5)
 
 func _new_wall_shape(shape_size: Vector2) -> RectangleShape2D:
 	var shape := RectangleShape2D.new()
