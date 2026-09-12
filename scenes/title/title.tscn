@@ -2,11 +2,50 @@
 
 [ext_resource type="Script" uid="uid://068rmrvesrlh" path="res://scenes/title/title.gd" id="1_5vtrw"]
 [ext_resource type="Texture2D" uid="uid://cedacrybofmmn" path="res://assets/UIpackSheet_transparent.png" id="2_7hvf5"]
-[ext_resource type="Theme" uid="uid://bivrme57bosm5" path="res://game_theme.tres" id="2_ds13r"]
+[ext_resource type="Theme" uid="uid://cjpll8hsimr7p" path="res://game_theme.tres" id="2_ds13r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4gru"]
 atlas = ExtResource("2_7hvf5")
 region = Rect2(450, 54, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gl121"]
+content_margin_left = 12.0
+content_margin_top = 9.0
+content_margin_right = 12.0
+content_margin_bottom = 9.0
+bg_color = Color(0.3345108, 0.0009633851, 0.81827766, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjwoi"]
+content_margin_left = 12.0
+content_margin_top = 9.0
+content_margin_right = 12.0
+content_margin_bottom = 9.0
+bg_color = Color(0.29506236, 0.00073457154, 0.73328453, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hvf5"]
+content_margin_left = 12.0
+content_margin_top = 9.0
+content_margin_right = 12.0
+content_margin_bottom = 9.0
+bg_color = Color(0.40595022, 0.0014217824, 0.98298603, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4gru"]
+content_margin_left = 9.0
+content_margin_top = 9.0
+content_margin_right = 9.0
+content_margin_bottom = 9.0
+bg_color = Color(0.161, 0.161, 0.161, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.43679118, 0.20248193, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 5
 
 [node name="Title" type="Control" unique_id=583400631]
 layout_mode = 3
@@ -77,6 +116,11 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+theme_override_styles/normal = SubResource("StyleBoxFlat_gl121")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yjwoi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7hvf5")
+theme_override_styles/focus = SubResource("StyleBoxFlat_g4gru")
 text = "Connect to Twitch"
 
 [node name="ConnectStatusLabel" type="Label" parent="Card/Margin/Content" unique_id=988635894]
@@ -96,5 +140,6 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
+theme_type_variation = &"PrimaryButton"
 theme_override_font_sizes/font_size = 18
 text = "Start"

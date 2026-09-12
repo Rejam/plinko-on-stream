@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://drdi3o0k7wjik" path="res://scenes/game/game.gd" id="1_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://cvffomituhpw8" path="res://scenes/game/boards/board1.tscn" id="2_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://dp33x5bhhwo7d" path="res://scenes/game/boards/board2.tscn" id="3_87uf6"]
-[ext_resource type="Theme" uid="uid://bivrme57bosm5" path="res://game_theme.tres" id="4_2a8rs"]
+[ext_resource type="Theme" uid="uid://cjpll8hsimr7p" path="res://game_theme.tres" id="4_2a8rs"]
 [ext_resource type="Texture2D" uid="uid://cedacrybofmmn" path="res://assets/UIpackSheet_transparent.png" id="4_87uf6"]
 [ext_resource type="PackedScene" uid="uid://b8t3bxfwvtd7m" path="res://scenes/debug/debug.tscn" id="5_4j704"]
 [ext_resource type="PackedScene" uid="uid://cp8xq4wu4wyor" path="res://scenes/game/board_marker/board_marker.tscn" id="5_bdhmt"]
@@ -20,43 +20,10 @@ content_margin_top = 4.0
 content_margin_right = 8.0
 content_margin_bottom = 4.0
 bg_color = Color(0.31, 0.55, 1, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4j704"]
-content_margin_left = 8.0
-content_margin_top = 4.0
-content_margin_right = 8.0
-content_margin_bottom = 4.0
-bg_color = Color(0.22, 0.45, 1, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kp23o"]
-content_margin_left = 8.0
-content_margin_top = 4.0
-content_margin_right = 8.0
-content_margin_bottom = 4.0
-bg_color = Color(0.42, 0.65, 1, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jirj"]
-content_margin_left = 8.0
-content_margin_top = 4.0
-content_margin_right = 8.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87uf6"]
 bg_color = Color(0.01, 0.01, 0.015, 0.68)
@@ -180,21 +147,15 @@ text = "Redrop"
 [node name="DropBallButton" type="Button" parent="UI/TopBarVBox/TopBarHContainer/LeftGroup" unique_id=501488133]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_type_variation = &"PrimaryButton"
 theme_override_styles/normal = SubResource("StyleBoxFlat_2a8rs")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4j704")
-theme_override_styles/hover = SubResource("StyleBoxFlat_kp23o")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_5jirj")
 text = "Drop Ball"
 
 [node name="ContinueButton" type="Button" parent="UI/TopBarVBox/TopBarHContainer/LeftGroup" unique_id=302666286]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
+theme_type_variation = &"PrimaryButton"
 text = "Continue"
 
 [node name="Spacer" type="Control" parent="UI/TopBarVBox/TopBarHContainer/LeftGroup" unique_id=1526887495]
@@ -223,7 +184,7 @@ text = "Quit"
 
 [node name="BoardMarker" parent="." unique_id=797090416 instance=ExtResource("5_bdhmt")]
 unique_name_in_owner = true
-position = Vector2(0, 40)
+position = Vector2(46, 155)
 
 [node name="DebugMenu" parent="." unique_id=250459968 instance=ExtResource("5_4j704")]
 
@@ -294,6 +255,7 @@ auto_height = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
+theme_type_variation = &"PrimaryButton"
 theme_override_font_sizes/font_size = 16
 text = "Start Game"
 
