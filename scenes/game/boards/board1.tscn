@@ -9,7 +9,12 @@
 [node name="ImageBackground" parent="." index="0" unique_id=94544916]
 texture = ExtResource("2_e5uvs")
 
-[node name="Node2D" type="Node2D" parent="." index="4" unique_id=2022453167]
+[node name="Pegs" type="Node2D" parent="." index="4" unique_id=2022453167]
 
-[node name="Peg" parent="Node2D" index="0" unique_id=578915731 instance=ExtResource("3_l1al6")]
-position = Vector2(800, 320)
+[node name="Group1" type="Node" parent="Pegs" index="0" unique_id=1615965345]
+
+[node name="Peg" parent="Pegs/Group1" index="0" unique_id=578915731 instance=ExtResource("3_l1al6")]
+position = Vector2(677, 339)
+
+[node name="Peg2" parent="Pegs/Group1" index="1" unique_id=372000281 instance=ExtResource("3_l1al6")]
+position = Vector2(632, 388)

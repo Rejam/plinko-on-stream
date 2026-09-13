@@ -13,6 +13,7 @@ const SCOPES := [
 signal login_completed(user_login: String)
 signal login_failed
 signal entry_received(player: Player, raw_column: String)
+signal chat_state_changed(state: TwitchChat.ChatState)
 #signal reward_redeemed(user: String, reward_title: String, user_input: String)
 
 # --- PUBLIC STATE ---
@@ -36,10 +37,21 @@ func _ready() -> void:
 	_chat = TwitchChat.new()
 	add_child(_chat)
 	_chat.message_received.connect(_on_chat_message)
+	_chat.chat_state_changed.connect(chat_state_changed.emit)
 	#
 	#_eventsub = TwitchEventSub.new()
 	#add_child(_eventsub)
 	#_eventsub.redemption_received.connect(_on_redemption)
+
+## Login happens on the title screen, so anything in game.tscn is created after
+## chat has already connected and has missed the emit. Read the state instead of
+## assuming DISCONNECTED.
+func chat_state() -> TwitchChat.ChatState:
+	return _chat.chat_state
+
+## Manual reconnect, for the connection indicator's click handler.
+func retry_chat() -> void:
+	_chat.retry()
 
 func start_login() -> void:
 	_auth.start_login(CLIENT_ID, REDIRECT_PORT, SCOPES)

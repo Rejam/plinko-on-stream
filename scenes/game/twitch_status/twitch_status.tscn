@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bhqi5hdr2opg4"]
+
+[ext_resource type="Script" uid="uid://bo3rmer4142xf" path="res://scenes/game/twitch_status/twitch_status.gd" id="1_2s86m"]
+
+[node name="TwitchStatus" type="HBoxContainer" unique_id=2118529810]
+size_flags_vertical = 4
+tooltip_text = "Twitch chat connection. Click to reconnect when red."
+mouse_filter = 0
+theme_override_constants/separation = 6
+script = ExtResource("1_2s86m")
+
+[node name="NameLabel" type="Label" parent="." unique_id=883997117]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.6)
+theme_override_font_sizes/font_size = 16
+text = "Twitch"
+
+[node name="Dot" type="ColorRect" parent="." unique_id=1799585408]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(0.8, 0.2, 0.2, 1)

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b8t3bxfwvtd7m" path="res://scenes/debug/debug.tscn" id="5_4j704"]
 [ext_resource type="Theme" uid="uid://qpugxn881apx" path="res://hud_theme.tres" id="6_2a8rs"]
 [ext_resource type="Script" uid="uid://dw3rutslo8pit" path="res://scenes/game/board_marker.gd" id="6_4j704"]
+[ext_resource type="PackedScene" uid="uid://bhqi5hdr2opg4" path="res://scenes/game/twitch_status/twitch_status.tscn" id="6_5jirj"]
 [ext_resource type="PackedScene" uid="uid://bkhuo30b08vdf" path="res://scenes/game/session_manager/session_manager.tscn" id="7_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://dfpnxfomie3s4" path="res://scenes/game/phase_panel/round_over_layer.tscn" id="9_kp23o"]
 [ext_resource type="PackedScene" uid="uid://c7wodg5g357dt" path="res://scenes/game/phase_panel/session_over_layer.tscn" id="10_5jirj"]
@@ -94,6 +95,9 @@ theme_override_font_sizes/font_size = 16
 text = "Type !plinko <column> in chat to join"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="TwitchStatus" parent="UI/Root/Columns/LeftColumn/Ticker/Row" unique_id=2118529810 instance=ExtResource("6_5jirj")]
+layout_mode = 2
 
 [node name="TopBar" type="Panel" parent="UI/Root/Columns/LeftColumn" unique_id=1668786433]
 custom_minimum_size = Vector2(0, 40)
