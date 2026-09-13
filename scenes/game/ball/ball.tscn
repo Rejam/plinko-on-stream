@@ -6,7 +6,7 @@
 friction = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hiwug"]
-radius = 19.104973
+radius = 18.0
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=100949653]
 collision_layer = 2
@@ -21,6 +21,6 @@ shape = SubResource("CircleShape2D_hiwug")
 
 [node name="VisibleOnScreen" type="VisibleOnScreenNotifier2D" parent="." unique_id=1146669852]
 unique_name_in_owner = true
-rect = Rect2(-21, -20, 41, 40)
+rect = Rect2(-19, -19, 38, 38)
 
 [node name="Skin" type="Sprite2D" parent="." unique_id=1432784917]

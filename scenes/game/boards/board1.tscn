@@ -2,8 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://c56jtk2m2j8e" path="res://scenes/game/boards/_base_board.tscn" id="1_axgm0"]
 [ext_resource type="Texture2D" uid="uid://do1o5hsalkbm1" path="res://assets/board_backgrounds/supernanny.jpg" id="2_e5uvs"]
+[ext_resource type="PackedScene" uid="uid://ctc64dnv2jawv" path="res://scenes/game/peg/peg.tscn" id="3_l1al6"]
 
 [node name="BoardPink" unique_id=2047480295 instance=ExtResource("1_axgm0")]
 
-[node name="ImageBackground" parent="." index="1" unique_id=94544916]
+[node name="ImageBackground" parent="." index="0" unique_id=94544916]
 texture = ExtResource("2_e5uvs")
+
+[node name="Node2D" type="Node2D" parent="." index="4" unique_id=2022453167]
+
+[node name="Peg" parent="Node2D" index="0" unique_id=578915731 instance=ExtResource("3_l1al6")]
+position = Vector2(800, 320)

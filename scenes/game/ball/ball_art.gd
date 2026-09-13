@@ -30,8 +30,10 @@ static func colours_for(user_id: String) -> Array[Color]:
 	var accent_hue := fposmod(hue + 0.5, 1.0)
 	return [Color.from_hsv(hue, 0.68, 0.92), Color.from_hsv(accent_hue, 0.45, 0.98)]
 
+## Salted rather than derived from the hue hash, so pattern and colour vary
+## independently — and no integer division to warn about.
 static func pattern_for(user_id: String) -> Pattern:
-	return ((absi(user_id.hash()) / 360) % PATTERN_COUNT) as Pattern
+	return (absi((user_id + "#pattern").hash()) % PATTERN_COUNT) as Pattern
 
 static func _build(user_id: String) -> ImageTexture:
 	var pair := colours_for(user_id)

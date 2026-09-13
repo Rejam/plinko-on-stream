@@ -22,7 +22,6 @@ var current_round := 0
 # Round-scoped. _reset_round() clears exactly these and nothing else.
 # Anything added here must be added there.
 var current_entry: Entry = null
-var _entries: Dictionary[String, Entry] = {}
 var _queue: Array[Entry] = []
 
 var current_multiplier: int:
@@ -70,10 +69,9 @@ func _begin_round() -> void:
 	_reset_round()
 
 func _reset_round() -> void:
-	_entries.clear()
 	_queue.clear()
-	entrants_changed.emit([] as Array[Entry])
 	current_entry = null
+	entrants_changed.emit(_waiting_entries())
 	_set_game_state(GameState.REGISTRATION)
 
 # --- round -----------------------------------------------------------------
@@ -85,12 +83,18 @@ func register_entrant(player: Player, column: int) -> void:
 	if standings.has(player.user_id):
 		total = standings[player.user_id].total
 	var entry := Entry.make(player, column, total)
-	if _entries.has(player.user_id):
-		_queue.erase(_entries[player.user_id])
-
-	_entries[player.user_id] = entry
+	_remove_existing(player.user_id)
 	_insert_into_queue(entry)
 	entrants_changed.emit(_waiting_entries())
+
+## Re-registering replaces the earlier entry. This only runs during
+## REGISTRATION, before anything has been popped, so the queue is the complete
+## set of entries and a scan is sufficient — there is no separate index.
+func _remove_existing(user_id: String) -> void:
+	for i in _queue.size():
+		if _queue[i].player.user_id == user_id:
+			_queue.remove_at(i)
+			return
 
 func end_registration() -> void:
 	if game_state != GameState.REGISTRATION:
