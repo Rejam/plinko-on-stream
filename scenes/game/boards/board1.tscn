@@ -146,7 +146,45 @@ position = Vector2(1100, 403)
 [node name="Row" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="1" unique_id=1913549549]
 position = Vector2(60, 450)
 
-[node name="Row2" type="Node2D" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="2" unique_id=1970655025]
+[node name="LeftGroup" type="Node2D" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="2" unique_id=956081267]
+position = Vector2(60, 330)
+
+[node name="Peg" parent="Pins/LeftGroup" index="0" unique_id=239090687 instance=ExtResource("3_l1al6")]
+
+[node name="Peg2" parent="Pins/LeftGroup" index="1" unique_id=2135179716 instance=ExtResource("3_l1al6")]
+position = Vector2(90, 0)
+
+[node name="Peg3" parent="Pins/LeftGroup" index="2" unique_id=500894737 instance=ExtResource("3_l1al6")]
+position = Vector2(180, 0)
+
+[node name="Peg4" parent="Pins/LeftGroup" index="3" unique_id=1467425478 instance=ExtResource("3_l1al6")]
+position = Vector2(270, 0)
+
+[node name="Peg5" parent="Pins/LeftGroup" index="4" unique_id=846317953 instance=ExtResource("3_l1al6")]
+position = Vector2(360, 0)
+
+[node name="Peg6" parent="Pins/LeftGroup" index="5" unique_id=692822227 instance=ExtResource("3_l1al6")]
+position = Vector2(450, 0)
+
+[node name="Peg7" parent="Pins/LeftGroup" index="6" unique_id=771282387 instance=ExtResource("3_l1al6")]
+position = Vector2(30, 60)
+
+[node name="Peg8" parent="Pins/LeftGroup" index="7" unique_id=102706862 instance=ExtResource("3_l1al6")]
+position = Vector2(120, 60)
+
+[node name="Peg9" parent="Pins/LeftGroup" index="8" unique_id=693583597 instance=ExtResource("3_l1al6")]
+position = Vector2(210, 60)
+
+[node name="Peg10" parent="Pins/LeftGroup" index="9" unique_id=288486929 instance=ExtResource("3_l1al6")]
+position = Vector2(300, 60)
+
+[node name="Peg11" parent="Pins/LeftGroup" index="10" unique_id=892525831 instance=ExtResource("3_l1al6")]
+position = Vector2(390, 60)
+
+[node name="Peg12" parent="Pins/LeftGroup" index="11" unique_id=18017144 instance=ExtResource("3_l1al6")]
+position = Vector2(480, 60)
+
+[node name="Row2" type="Node2D" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="3" unique_id=1970655025]
 position = Vector2(90, 510)
 
 [node name="Peg" parent="Pins/Row2" index="0" unique_id=426227027 instance=ExtResource("3_l1al6")]
@@ -199,7 +237,7 @@ position = Vector2(1350, 0)
 [node name="Peg17" parent="Pins/Row2" index="16" unique_id=1759380840 instance=ExtResource("3_l1al6")]
 position = Vector2(1440, 0)
 
-[node name="Row3" type="Node2D" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="3" unique_id=418533939]
+[node name="Row3" type="Node2D" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="4" unique_id=418533939]
 position = Vector2(30, 570)
 
 [node name="Peg2" parent="Pins/Row3" index="0" unique_id=1177941289 instance=ExtResource("3_l1al6")]
@@ -253,7 +291,7 @@ position = Vector2(1440, 0)
 [node name="Peg18" parent="Pins/Row3" index="16" unique_id=1256344361 instance=ExtResource("3_l1al6")]
 position = Vector2(1530, 0)
 
-[node name="Row4" type="Node2D" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="4" unique_id=336740374]
+[node name="Row4" type="Node2D" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="5" unique_id=336740374]
 position = Vector2(60, 630)
 
 [node name="Peg" parent="Pins/Row4" index="0" unique_id=29605482 instance=ExtResource("3_l1al6")]
@@ -306,8 +344,8 @@ position = Vector2(1350, 0)
 [node name="Peg17" parent="Pins/Row4" index="16" unique_id=285518210 instance=ExtResource("3_l1al6")]
 position = Vector2(1440, 0)
 
-[node name="Row5" type="Node2D" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="5" unique_id=1239481958]
-position = Vector2(60, 690)
+[node name="Row5" type="Node2D" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="6" unique_id=1239481958]
+position = Vector2(90, 690)
 
 [node name="Peg" parent="Pins/Row5" index="0" unique_id=1631220774 instance=ExtResource("3_l1al6")]
 
@@ -359,8 +397,8 @@ position = Vector2(1350, 0)
 [node name="Peg17" parent="Pins/Row5" index="16" unique_id=1578845349 instance=ExtResource("3_l1al6")]
 position = Vector2(1440, 0)
 
-[node name="Row6" type="Node2D" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="6" unique_id=1318431533]
-position = Vector2(90, 750)
+[node name="Row6" type="Node2D" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="7" unique_id=1318431533]
+position = Vector2(120, 750)
 
 [node name="Peg" parent="Pins/Row6" index="0" unique_id=1383564702 instance=ExtResource("3_l1al6")]
 
@@ -412,8 +450,8 @@ position = Vector2(1350, 0)
 [node name="Peg17" parent="Pins/Row6" index="16" unique_id=1094232802 instance=ExtResource("3_l1al6")]
 position = Vector2(1440, 0)
 
-[node name="Row7" type="Node2D" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="7" unique_id=295885455]
-position = Vector2(30, 810)
+[node name="Row7" type="Node2D" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="8" unique_id=295885455]
+position = Vector2(-30, 810)
 
 [node name="Peg2" parent="Pins/Row7" index="0" unique_id=1228239768 instance=ExtResource("3_l1al6")]
 position = Vector2(90, 0)
@@ -466,8 +504,8 @@ position = Vector2(1440, 0)
 [node name="Peg18" parent="Pins/Row7" index="16" unique_id=227404245 instance=ExtResource("3_l1al6")]
 position = Vector2(1530, 0)
 
-[node name="Row8" type="Node2D" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="8" unique_id=1356255958]
-position = Vector2(60, 870)
+[node name="Row8" type="Node2D" parent="Pins" parent_id_path=PackedInt32Array(210672860) index="9" unique_id=1356255958]
+position = Vector2(90, 870)
 
 [node name="Peg" parent="Pins/Row8" index="0" unique_id=1816562390 instance=ExtResource("3_l1al6")]
 
