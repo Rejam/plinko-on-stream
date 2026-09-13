@@ -1,7 +1,7 @@
 class_name Board extends Node2D
 
 ## Expected children (authored per board in the editor, like pegs):
-##   DropPositions/ — one Marker2D per column, left to right
+##   DropPositions/ — one DropMarker per column, left to right
 ##   Buckets/      — Bucket scenes with base_value set per instance
 ##   Pegs/, Walls/ — visual/physical content, opaque to this script
 

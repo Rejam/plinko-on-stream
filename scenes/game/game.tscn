@@ -148,25 +148,6 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Status"
 
-[node name="BoardRegion" type="PanelContainer" parent="UI/Root/Columns/LeftColumn" unique_id=1179253482]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 2
-mouse_filter = 2
-
-[node name="ColorRect" type="ColorRect" parent="UI/Root/Columns/LeftColumn/BoardRegion" unique_id=1246481491]
-layout_mode = 2
-color = Color(0, 0, 0, 0.2901961)
-
-[node name="CurrentBallLabel" type="Label" parent="UI/Root/Columns/LeftColumn/BoardRegion" unique_id=317743552]
-unique_name_in_owner = true
-layout_mode = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(0, -6)
-theme_override_font_sizes/font_size = 48
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="RightColumn" type="VBoxContainer" parent="UI/Root/Columns" unique_id=1938546238]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
@@ -228,6 +209,24 @@ layout_mode = 2
 theme_type_variation = &"PrimaryButton"
 theme_override_font_sizes/font_size = 16
 text = "Start Game"
+
+[node name="CurrentBallLabel" type="Label" parent="UI" unique_id=317743552]
+unique_name_in_owner = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 30.0
+offset_right = -320.0
+offset_bottom = 80.0
+grow_horizontal = 2
+size_flags_vertical = 1
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -6)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 36
+text = "quayside_kev is dropping"
+horizontal_alignment = 1
+vertical_alignment = 1
+max_lines_visible = 1
 
 [node name="BoardMarker" type="Node2D" parent="." unique_id=797090416]
 unique_name_in_owner = true
