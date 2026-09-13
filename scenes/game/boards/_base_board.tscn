@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://585tibkjp0fq" path="res://scenes/game/boards/board.gd" id="1_grf38"]
 [ext_resource type="PackedScene" path="res://scenes/game/drop_marker/drop_marker.tscn" id="2_gcs0y"]
 [ext_resource type="PackedScene" uid="uid://bnugbts7q5efj" path="res://scenes/game/bucket/bucket.tscn" id="2_voa4k"]
+[ext_resource type="PackedScene" uid="uid://ctc64dnv2jawv" path="res://scenes/game/peg/peg.tscn" id="4_5oo8i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wprqg"]
 friction = 0.0
@@ -97,3 +98,58 @@ metadata/_edit_lock_ = true
 position = Vector2(16, 487.5)
 shape = SubResource("RectangleShape2D_hiwug")
 metadata/_edit_lock_ = true
+
+[node name="Pins" type="Node2D" parent="." unique_id=210672860]
+
+[node name="Row" type="Node2D" parent="Pins" unique_id=1913549549]
+position = Vector2(60, 300)
+
+[node name="Peg" parent="Pins/Row" unique_id=578915731 instance=ExtResource("4_5oo8i")]
+
+[node name="Peg2" parent="Pins/Row" unique_id=1988151128 instance=ExtResource("4_5oo8i")]
+position = Vector2(90, 0)
+
+[node name="Peg3" parent="Pins/Row" unique_id=589841314 instance=ExtResource("4_5oo8i")]
+position = Vector2(180, 0)
+
+[node name="Peg4" parent="Pins/Row" unique_id=470463380 instance=ExtResource("4_5oo8i")]
+position = Vector2(270, 0)
+
+[node name="Peg5" parent="Pins/Row" unique_id=786212727 instance=ExtResource("4_5oo8i")]
+position = Vector2(360, 0)
+
+[node name="Peg6" parent="Pins/Row" unique_id=1011148814 instance=ExtResource("4_5oo8i")]
+position = Vector2(450, 0)
+
+[node name="Peg7" parent="Pins/Row" unique_id=558236834 instance=ExtResource("4_5oo8i")]
+position = Vector2(540, 0)
+
+[node name="Peg8" parent="Pins/Row" unique_id=1439649435 instance=ExtResource("4_5oo8i")]
+position = Vector2(630, 0)
+
+[node name="Peg9" parent="Pins/Row" unique_id=507273164 instance=ExtResource("4_5oo8i")]
+position = Vector2(720, 0)
+
+[node name="Peg10" parent="Pins/Row" unique_id=1195753754 instance=ExtResource("4_5oo8i")]
+position = Vector2(810, 0)
+
+[node name="Peg11" parent="Pins/Row" unique_id=284554194 instance=ExtResource("4_5oo8i")]
+position = Vector2(900, 0)
+
+[node name="Peg12" parent="Pins/Row" unique_id=1828211561 instance=ExtResource("4_5oo8i")]
+position = Vector2(990, 0)
+
+[node name="Peg13" parent="Pins/Row" unique_id=244779218 instance=ExtResource("4_5oo8i")]
+position = Vector2(1080, 0)
+
+[node name="Peg14" parent="Pins/Row" unique_id=1793544466 instance=ExtResource("4_5oo8i")]
+position = Vector2(1170, 0)
+
+[node name="Peg15" parent="Pins/Row" unique_id=1982842871 instance=ExtResource("4_5oo8i")]
+position = Vector2(1260, 0)
+
+[node name="Peg16" parent="Pins/Row" unique_id=207036366 instance=ExtResource("4_5oo8i")]
+position = Vector2(1350, 0)
+
+[node name="Peg17" parent="Pins/Row" unique_id=404258644 instance=ExtResource("4_5oo8i")]
+position = Vector2(1440, 0)
