@@ -27,4 +27,5 @@ func _on_state_changed(game_state: SessionManager.GameState) -> void:
 		return
 	_standings_list.clear()
 	for standing in session_manager.sorted_standings():
-		_standings_list.add_item("%s : %d" % [standing.display_name, standing.total])
+		_standings_list.add_item("%s : %d" % [standing.display_name, standing.total],
+			BallArt.texture_for(standing.user_id))

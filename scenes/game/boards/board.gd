@@ -9,6 +9,10 @@ signal ball_scored(ball: Ball, base_value: int)
 
 @export var ball_gravity_scale := 1.0
 
+## Held balls sit this far above the board's top edge so they drop into view
+## rather than appearing on top of a drop marker. Negative is above the board.
+@export var ball_spawn_y := -60.0
+
 const BALL_SCENE = preload("uid://cthrtlsbusy3")
 
 @onready var _drop_positions: Node2D = %DropPositions
@@ -32,13 +36,13 @@ func drop_position(column: int) -> Vector2:
 	var column_index = column - 1
 	return _drop_positions.get_child(column_index).position
 
-## Creates a ball held (frozen) at the column's drop position — the
+## Creates a ball held (frozen) above the column's drop position — the
 ## pre-drop state. The caller keeps the returned reference and owns
 ## the ball from here: releasing (freeze = false), redropping,
 ## freeing. The board never frees a ball.
 func spawn_held_ball(column: int) -> Ball:
 	var ball: Ball = BALL_SCENE.instantiate()
-	ball.position = drop_position(column)
+	ball.position = Vector2(drop_position(column).x, ball_spawn_y)
 	ball.gravity_scale = ball_gravity_scale
 	ball.freeze = true
 	add_child(ball)

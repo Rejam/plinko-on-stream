@@ -18,36 +18,27 @@ class_name DropMarker extends Node2D
 		radius = value
 		queue_redraw()
 
-## Alternating bands, drawn outermost first. Filled rather than outlined so the
-## marker reads against any board background instead of relying on contrast
-## with whatever is behind it.
-@export var band_colour: Color = Color(0.86, 0.18, 0.18):
+## Single flat disc rather than a banded target — concentric rings competed with
+## the ball for attention once one was falling through them.
+@export var disc_colour: Color = Color(0.05, 0.05, 0.07, 0.45):
 	set(value):
-		band_colour = value
+		disc_colour = value
 		queue_redraw()
 
-@export var alt_band_colour: Color = Color(0.97, 0.97, 0.95):
+@export var number_colour: Color = Color(1, 1, 1, 0.65):
 	set(value):
-		alt_band_colour = value
+		number_colour = value
 		queue_redraw()
 
-@export var edge_colour: Color = Color(0.06, 0.06, 0.08, 0.85):
-	set(value):
-		edge_colour = value
-		queue_redraw()
-
-@export var font_size: int = 30:
+@export var font_size: int = 26:
 	set(value):
 		font_size = value
 		queue_redraw()
 
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, radius, edge_colour)
-	draw_circle(Vector2.ZERO, radius * 0.92, band_colour)
-	draw_circle(Vector2.ZERO, radius * 0.66, alt_band_colour)
-	draw_circle(Vector2.ZERO, radius * 0.40, band_colour)
+	draw_circle(Vector2.ZERO, radius, disc_colour)
 	var font := ThemeDB.fallback_font
 	# draw_string anchors on the text baseline, so nudge down by ~a third of the
-	# font size to sit it optically centred in the ring.
+	# font size to sit it optically centred in the disc.
 	draw_string(font, Vector2(-radius, font_size * 0.36), str(column),
-		HORIZONTAL_ALIGNMENT_CENTER, radius * 2.0, font_size, alt_band_colour)
+		HORIZONTAL_ALIGNMENT_CENTER, radius * 2.0, font_size, number_colour)

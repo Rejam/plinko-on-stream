@@ -12,6 +12,7 @@ const NAMES: PackedStringArray = [
 	"quayside_kev", "hadrianstan", "bellringer92", "greggs_enjoyer",
 	"toon_army_99", "pigeon_lad", "stotty_cake", "mag_pie",
 	"dene_walker", "wor_lass", "tyne_bridge_fan", "coble_boat",
+	"testing_123", "stormy", "po", "jan", "brynn_start", "fudder"
 ]
 
 ## Columns 1..SAFE_COLUMN_MAX are assumed valid on every board, since the script

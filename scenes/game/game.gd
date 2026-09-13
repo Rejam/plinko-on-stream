@@ -12,6 +12,7 @@ extends Node2D
 @onready var entrants_waiting_list: ItemList = %EntrantsWaitingList
 @onready var redrop_button: Button = %RedropButton
 @onready var current_ball_label: Label = %CurrentBallLabel
+@onready var current_ball_icon: TextureRect = %BallIcon
 @onready var multiplier_label: Label = %MultiplierLabel
 @onready var standings_list: ItemList = %StandingsList
 @onready var facecam_reserve: Control = %FacecamReserve
@@ -75,21 +76,20 @@ func _on_state_changed(game_state: SessionManager.GameState) -> void:
 ## change, so PRE_DROP and DROPPING both see the entry they belong to.
 func _update_current_ball_label(game_state: SessionManager.GameState) -> void:
 	var entry := session_manager.current_entry
-	if entry == null:
+	var showing := entry != null and game_state in [
+		SessionManager.GameState.PRE_DROP, SessionManager.GameState.DROPPING]
+	current_ball_icon.visible = showing
+	if not showing:
 		current_ball_label.text = ""
 		return
-	match game_state:
-		SessionManager.GameState.PRE_DROP:
-			current_ball_label.text = "%s is up" % entry.player.display_name
-		SessionManager.GameState.DROPPING:
-			current_ball_label.text = "%s is up" % entry.player.display_name
-		_:
-			current_ball_label.text = ""
+	current_ball_label.text = "%s is up" % entry.player.display_name
+	current_ball_icon.texture = BallArt.texture_for(entry.player.user_id)
 
 func _on_entrants_changed(entrants: Array[Entry]) -> void:
 	entrants_waiting_list.clear()
 	for entrant in entrants:
-		entrants_waiting_list.add_item("%s : %s" % [entrant.player.display_name, entrant.column])
+		entrants_waiting_list.add_item("%s : %s" % [entrant.player.display_name, entrant.column],
+			BallArt.texture_for(entrant.player.user_id))
 
 func _on_entry_received(player: Player, raw_column: String) -> void:
 	var column := board_marker.parse_column(raw_column)
@@ -105,4 +105,5 @@ func _on_drop_resolved(_player: Player, _base_value: int, _multiplier: int, _poi
 func _on_standings_updated(standings: Array[Standing]) -> void:
 	standings_list.clear()
 	for standing in standings:
-		standings_list.add_item("%s : %d" % [standing.display_name, standing.total])
+		standings_list.add_item("%s : %d" % [standing.display_name, standing.total],
+			BallArt.texture_for(standing.user_id))
