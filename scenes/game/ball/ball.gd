@@ -34,3 +34,9 @@ func _physics_process(delta: float) -> void:
 	if freeze or is_zero_approx(_roll_radius):
 		return
 	_skin.rotation += (linear_velocity.x / _roll_radius) * spin_scale * delta
+
+
+func _on_body_entered(body: Node) -> void:
+	var peg = body as Peg
+	if not peg: return
+	peg.hit()
