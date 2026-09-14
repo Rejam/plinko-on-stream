@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bud1xgj8rjy15"]
+
+[ext_resource type="Script" uid="uid://dydnto2ga80xl" path="res://scenes/game/ramp/ramp.gd" id="1_14uah"]
+
+[node name="Ramp" type="StaticBody2D" unique_id=2071365893]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_14uah")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1145262442]

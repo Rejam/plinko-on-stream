@@ -3,18 +3,32 @@
 [ext_resource type="Script" uid="uid://585tibkjp0fq" path="res://scenes/game/boards/board.gd" id="1_grf38"]
 [ext_resource type="PackedScene" path="res://scenes/game/drop_marker/drop_marker.tscn" id="2_gcs0y"]
 [ext_resource type="PackedScene" uid="uid://bnugbts7q5efj" path="res://scenes/game/bucket/bucket.tscn" id="2_voa4k"]
-[ext_resource type="PackedScene" uid="uid://ctc64dnv2jawv" path="res://scenes/game/peg/peg.tscn" id="4_5oo8i"]
+[ext_resource type="PackedScene" uid="uid://bud1xgj8rjy15" path="res://scenes/game/ramp/ramp.tscn" id="4_5oo8i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gcs0y"]
+font_size = 200
+font_color = Color(0.92941177, 0.8784314, 0, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wprqg"]
 friction = 0.0
-bounce = 0.5
+bounce = 0.9
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hiwug"]
 size = Vector2(32, 1157.5)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gc7k6"]
+friction = 0.0
+bounce = 0.9
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_voa4k"]
 friction = 0.0
-bounce = 0.5
+bounce = 0.9
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ckmaq"]
+friction = 0.0
+bounce = 0.9
 
 [node name="Board" type="Node2D" unique_id=2047480295]
 script = ExtResource("1_grf38")
@@ -22,6 +36,17 @@ script = ExtResource("1_grf38")
 [node name="ImageBackground" type="TextureRect" parent="." unique_id=94544916]
 offset_right = 1600.0
 offset_bottom = 1000.0
+
+[node name="Text" type="Label" parent="." unique_id=1388778403]
+offset_top = 300.0
+offset_right = 1385.2174
+offset_bottom = 657.0
+scale = Vector2(1.15, 1)
+text = "board name"
+label_settings = SubResource("LabelSettings_gcs0y")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="DropPositions" type="Node2D" parent="." unique_id=2045868811]
 unique_name_in_owner = true
@@ -82,10 +107,14 @@ collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_wprqg")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left" unique_id=97837573]
+[node name="Wall" type="CollisionShape2D" parent="Walls/Left" unique_id=97837573]
 position = Vector2(-16, 461.25)
 shape = SubResource("RectangleShape2D_hiwug")
 metadata/_edit_lock_ = true
+
+[node name="Ramp" parent="Walls/Left" unique_id=2071365893 instance=ExtResource("4_5oo8i")]
+position = Vector2(0, 672)
+physics_material_override = SubResource("PhysicsMaterial_gc7k6")
 
 [node name="Right" type="StaticBody2D" parent="Walls" unique_id=1081303422]
 position = Vector2(1600, 0)
@@ -94,62 +123,13 @@ collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_voa4k")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right" unique_id=1509934788]
+[node name="Wall" type="CollisionShape2D" parent="Walls/Right" unique_id=1509934788]
 position = Vector2(16, 487.5)
 shape = SubResource("RectangleShape2D_hiwug")
 metadata/_edit_lock_ = true
 
-[node name="Pins" type="Node2D" parent="." unique_id=210672860]
+[node name="Ramp" parent="Walls/Right" unique_id=87935822 instance=ExtResource("4_5oo8i")]
+position = Vector2(0, 672)
+physics_material_override = SubResource("PhysicsMaterial_ckmaq")
 
-[node name="Row" type="Node2D" parent="Pins" unique_id=1913549549]
-position = Vector2(60, 300)
-
-[node name="Peg" parent="Pins/Row" unique_id=578915731 instance=ExtResource("4_5oo8i")]
-
-[node name="Peg2" parent="Pins/Row" unique_id=1988151128 instance=ExtResource("4_5oo8i")]
-position = Vector2(90, 0)
-
-[node name="Peg3" parent="Pins/Row" unique_id=589841314 instance=ExtResource("4_5oo8i")]
-position = Vector2(180, 0)
-
-[node name="Peg4" parent="Pins/Row" unique_id=470463380 instance=ExtResource("4_5oo8i")]
-position = Vector2(270, 0)
-
-[node name="Peg5" parent="Pins/Row" unique_id=786212727 instance=ExtResource("4_5oo8i")]
-position = Vector2(360, 0)
-
-[node name="Peg6" parent="Pins/Row" unique_id=1011148814 instance=ExtResource("4_5oo8i")]
-position = Vector2(450, 0)
-
-[node name="Peg7" parent="Pins/Row" unique_id=558236834 instance=ExtResource("4_5oo8i")]
-position = Vector2(540, 0)
-
-[node name="Peg8" parent="Pins/Row" unique_id=1439649435 instance=ExtResource("4_5oo8i")]
-position = Vector2(630, 0)
-
-[node name="Peg9" parent="Pins/Row" unique_id=507273164 instance=ExtResource("4_5oo8i")]
-position = Vector2(720, 0)
-
-[node name="Peg10" parent="Pins/Row" unique_id=1195753754 instance=ExtResource("4_5oo8i")]
-position = Vector2(810, 0)
-
-[node name="Peg11" parent="Pins/Row" unique_id=284554194 instance=ExtResource("4_5oo8i")]
-position = Vector2(900, 0)
-
-[node name="Peg12" parent="Pins/Row" unique_id=1828211561 instance=ExtResource("4_5oo8i")]
-position = Vector2(990, 0)
-
-[node name="Peg13" parent="Pins/Row" unique_id=244779218 instance=ExtResource("4_5oo8i")]
-position = Vector2(1080, 0)
-
-[node name="Peg14" parent="Pins/Row" unique_id=1793544466 instance=ExtResource("4_5oo8i")]
-position = Vector2(1170, 0)
-
-[node name="Peg15" parent="Pins/Row" unique_id=1982842871 instance=ExtResource("4_5oo8i")]
-position = Vector2(1260, 0)
-
-[node name="Peg16" parent="Pins/Row" unique_id=207036366 instance=ExtResource("4_5oo8i")]
-position = Vector2(1350, 0)
-
-[node name="Peg17" parent="Pins/Row" unique_id=404258644 instance=ExtResource("4_5oo8i")]
-position = Vector2(1440, 0)
+[node name="Pegs" type="Node2D" parent="." unique_id=210672860]

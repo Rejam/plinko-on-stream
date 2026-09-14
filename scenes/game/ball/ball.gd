@@ -5,7 +5,7 @@ class_name Ball extends RigidBody2D
 ## Rotating the sprite instead keeps the drop behaviour untouched while letting
 ## patterned balls read as rolling.
 
-@onready var visible_on_screen: VisibleOnScreenNotifier2D = %VisibleOnScreen
+#@onready var visible_on_screen: VisibleOnScreenNotifier2D = %VisibleOnScreen
 @onready var _skin: Sprite2D = $Skin
 @onready var _roll_radius: float = ($CollisionShape2D.shape as CircleShape2D).radius
 
@@ -19,7 +19,7 @@ var owner_player: Player = null:
 			_apply_skin(value.user_id)
 
 func _ready() -> void:
-	visible_on_screen.screen_exited.connect(queue_free)
+	#visible_on_screen.screen_exited.connect(queue_free)
 	if owner_player != null:
 		_apply_skin(owner_player.user_id)
 
@@ -39,4 +39,5 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	var peg = body as Peg
 	if not peg: return
+	apply_central_impulse(Vector2(randf_range(-1, 1) * 5, -100))
 	peg.hit()
