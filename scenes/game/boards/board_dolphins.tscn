@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://c56jtk2m2j8e" path="res://scenes/game/boards/_base_board.tscn" id="1_h7yox"]
 [ext_resource type="Texture2D" uid="uid://dcj70no2y6cni" path="res://assets/board_backgrounds/dolphins.webp" id="2_2d3ra"]
 [ext_resource type="PackedScene" uid="uid://ctc64dnv2jawv" path="res://scenes/game/peg/peg.tscn" id="3_7qkm3"]
-[ext_resource type="Script" uid="uid://bjkdgdavgadce" path="res://scenes/game/peg/peg.gd" id="4_24vij"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7qkm3"]
 font_size = 120
@@ -15,11 +14,11 @@ font_size = 160
 font_color = Color(0.11396345, 0.35028628, 0.9981962, 1)
 outline_size = 20
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sg6as"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2d3ra"]
 friction = 0.0
 bounce = 0.9
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jxrey"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7qkm3"]
 friction = 0.0
 bounce = 0.9
 
@@ -81,7 +80,9 @@ background_colour = Color(0.99999994, 0.50214565, 0.17263114, 1)
 position = Vector2(440, 40)
 
 [node name="Bucket3" parent="Buckets" parent_id_path=PackedInt32Array(1979250660) index="2" unique_id=1843626455]
+base_value = -20
 width = 480
+background_colour = Color(0.73074186, 9.505823e-07, 7.70092e-07, 1)
 
 [node name="Bucket4" parent="Buckets" parent_id_path=PackedInt32Array(1979250660) index="3" unique_id=277844201]
 position = Vector2(1160, 40)
@@ -94,381 +95,243 @@ width = 320
 background_colour = Color(0.99999994, 0.50214565, 0.17263114, 1)
 
 [node name="Ramp" parent="Walls/Left" parent_id_path=PackedInt32Array(1502387386) index="1" unique_id=2071365893]
-physics_material_override = SubResource("PhysicsMaterial_sg6as")
+physics_material_override = SubResource("PhysicsMaterial_2d3ra")
 fill = Color(0.17216134, 1.92523e-07, 0.8628026, 1)
 
 [node name="Ramp" parent="Walls/Right" parent_id_path=PackedInt32Array(1081303422) index="1" unique_id=87935822]
-physics_material_override = SubResource("PhysicsMaterial_jxrey")
+physics_material_override = SubResource("PhysicsMaterial_7qkm3")
 fill = Color(0.17254902, 0, 0.8627451, 1)
 
 [node name="Lattice" type="Node2D" parent="Pegs" parent_id_path=PackedInt32Array(210672860) index="0" unique_id=667396221]
 
-[node name="Peg" type="StaticBody2D" parent="Pegs/Lattice" index="0" unique_id=578915731 instance=ExtResource("3_7qkm3")]
+[node name="Peg" parent="Pegs/Lattice" index="0" unique_id=578915731 instance=ExtResource("3_7qkm3")]
 position = Vector2(60, 200)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175412" type="StaticBody2D" parent="Pegs/Lattice" index="1" unique_id=1756910586 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175412" parent="Pegs/Lattice" index="1" unique_id=1756910586 instance=ExtResource("3_7qkm3")]
 position = Vector2(150, 200)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175413" type="StaticBody2D" parent="Pegs/Lattice" index="2" unique_id=1853201114 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175413" parent="Pegs/Lattice" index="2" unique_id=1853201114 instance=ExtResource("3_7qkm3")]
 position = Vector2(240, 200)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175414" type="StaticBody2D" parent="Pegs/Lattice" index="3" unique_id=68508818 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175414" parent="Pegs/Lattice" index="3" unique_id=68508818 instance=ExtResource("3_7qkm3")]
 position = Vector2(330, 200)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175418" type="StaticBody2D" parent="Pegs/Lattice" index="4" unique_id=1882067584 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175418" parent="Pegs/Lattice" index="4" unique_id=1882067584 instance=ExtResource("3_7qkm3")]
 position = Vector2(697, 193)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175425" type="StaticBody2D" parent="Pegs/Lattice" index="5" unique_id=772125950 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175425" parent="Pegs/Lattice" index="5" unique_id=772125950 instance=ExtResource("3_7qkm3")]
 position = Vector2(1320, 200)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175426" type="StaticBody2D" parent="Pegs/Lattice" index="6" unique_id=1564586330 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175426" parent="Pegs/Lattice" index="6" unique_id=1564586330 instance=ExtResource("3_7qkm3")]
 position = Vector2(1410, 200)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175427" type="StaticBody2D" parent="Pegs/Lattice" index="7" unique_id=2093511775 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175427" parent="Pegs/Lattice" index="7" unique_id=2093511775 instance=ExtResource("3_7qkm3")]
 position = Vector2(1500, 200)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175428" type="StaticBody2D" parent="Pegs/Lattice" index="8" unique_id=1593412658 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175428" parent="Pegs/Lattice" index="8" unique_id=1593412658 instance=ExtResource("3_7qkm3")]
 position = Vector2(105, 255)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175429" type="StaticBody2D" parent="Pegs/Lattice" index="9" unique_id=628194472 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175429" parent="Pegs/Lattice" index="9" unique_id=628194472 instance=ExtResource("3_7qkm3")]
 position = Vector2(195, 255)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175432" type="StaticBody2D" parent="Pegs/Lattice" index="10" unique_id=1317370756 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175432" parent="Pegs/Lattice" index="10" unique_id=1317370756 instance=ExtResource("3_7qkm3")]
 position = Vector2(478, 268)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175433" type="StaticBody2D" parent="Pegs/Lattice" index="11" unique_id=1653843207 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175433" parent="Pegs/Lattice" index="11" unique_id=1653843207 instance=ExtResource("3_7qkm3")]
 position = Vector2(555, 255)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175441" type="StaticBody2D" parent="Pegs/Lattice" index="12" unique_id=1721788670 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175441" parent="Pegs/Lattice" index="12" unique_id=1721788670 instance=ExtResource("3_7qkm3")]
 position = Vector2(1284, 247)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175442" type="StaticBody2D" parent="Pegs/Lattice" index="13" unique_id=263625065 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175442" parent="Pegs/Lattice" index="13" unique_id=263625065 instance=ExtResource("3_7qkm3")]
 position = Vector2(1365, 255)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175443" type="StaticBody2D" parent="Pegs/Lattice" index="14" unique_id=144422200 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175443" parent="Pegs/Lattice" index="14" unique_id=144422200 instance=ExtResource("3_7qkm3")]
 position = Vector2(1455, 255)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175444" type="StaticBody2D" parent="Pegs/Lattice" index="15" unique_id=25867075 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175444" parent="Pegs/Lattice" index="15" unique_id=25867075 instance=ExtResource("3_7qkm3")]
 position = Vector2(60, 313.14285)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175445" type="StaticBody2D" parent="Pegs/Lattice" index="16" unique_id=1186526540 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175445" parent="Pegs/Lattice" index="16" unique_id=1186526540 instance=ExtResource("3_7qkm3")]
 position = Vector2(150, 313.14285)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175448" type="StaticBody2D" parent="Pegs/Lattice" index="17" unique_id=1424217675 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175448" parent="Pegs/Lattice" index="17" unique_id=1424217675 instance=ExtResource("3_7qkm3")]
 position = Vector2(420, 313.14285)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175449" type="StaticBody2D" parent="Pegs/Lattice" index="18" unique_id=492863089 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175449" parent="Pegs/Lattice" index="18" unique_id=492863089 instance=ExtResource("3_7qkm3")]
 position = Vector2(510, 313.14285)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175450" type="StaticBody2D" parent="Pegs/Lattice" index="19" unique_id=129936960 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175450" parent="Pegs/Lattice" index="19" unique_id=129936960 instance=ExtResource("3_7qkm3")]
 position = Vector2(623, 299)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175452" type="StaticBody2D" parent="Pegs/Lattice" index="20" unique_id=1290766188 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175452" parent="Pegs/Lattice" index="20" unique_id=1290766188 instance=ExtResource("3_7qkm3")]
 position = Vector2(780, 313.14285)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175453" type="StaticBody2D" parent="Pegs/Lattice" index="21" unique_id=624570148 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175453" parent="Pegs/Lattice" index="21" unique_id=624570148 instance=ExtResource("3_7qkm3")]
 position = Vector2(870, 313.14285)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175454" type="StaticBody2D" parent="Pegs/Lattice" index="22" unique_id=1736430885 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175454" parent="Pegs/Lattice" index="22" unique_id=1736430885 instance=ExtResource("3_7qkm3")]
 position = Vector2(960, 313.14285)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175459" type="StaticBody2D" parent="Pegs/Lattice" index="23" unique_id=1764764147 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175459" parent="Pegs/Lattice" index="23" unique_id=1764764147 instance=ExtResource("3_7qkm3")]
 position = Vector2(1410, 313.14285)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175460" type="StaticBody2D" parent="Pegs/Lattice" index="24" unique_id=1703451220 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175460" parent="Pegs/Lattice" index="24" unique_id=1703451220 instance=ExtResource("3_7qkm3")]
 position = Vector2(1500, 313.14285)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175461" type="StaticBody2D" parent="Pegs/Lattice" index="25" unique_id=2016510148 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175461" parent="Pegs/Lattice" index="25" unique_id=2016510148 instance=ExtResource("3_7qkm3")]
 position = Vector2(105, 374.60815)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175462" type="StaticBody2D" parent="Pegs/Lattice" index="26" unique_id=1719867301 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175462" parent="Pegs/Lattice" index="26" unique_id=1719867301 instance=ExtResource("3_7qkm3")]
 position = Vector2(195, 374.60815)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175464" type="StaticBody2D" parent="Pegs/Lattice" index="27" unique_id=909840102 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175464" parent="Pegs/Lattice" index="27" unique_id=909840102 instance=ExtResource("3_7qkm3")]
 position = Vector2(375, 374.60815)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175465" type="StaticBody2D" parent="Pegs/Lattice" index="28" unique_id=1260317925 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175465" parent="Pegs/Lattice" index="28" unique_id=1260317925 instance=ExtResource("3_7qkm3")]
 position = Vector2(465, 374.60815)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175467" type="StaticBody2D" parent="Pegs/Lattice" index="29" unique_id=1661338684 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175467" parent="Pegs/Lattice" index="29" unique_id=1661338684 instance=ExtResource("3_7qkm3")]
 position = Vector2(637, 353)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175469" type="StaticBody2D" parent="Pegs/Lattice" index="30" unique_id=941115913 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175469" parent="Pegs/Lattice" index="30" unique_id=941115913 instance=ExtResource("3_7qkm3")]
 position = Vector2(825, 374.60815)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175470" type="StaticBody2D" parent="Pegs/Lattice" index="31" unique_id=1467899922 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175470" parent="Pegs/Lattice" index="31" unique_id=1467899922 instance=ExtResource("3_7qkm3")]
 position = Vector2(915, 374.60815)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175472" type="StaticBody2D" parent="Pegs/Lattice" index="32" unique_id=2121521357 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175472" parent="Pegs/Lattice" index="32" unique_id=2121521357 instance=ExtResource("3_7qkm3")]
 position = Vector2(1095, 374.60815)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175473" type="StaticBody2D" parent="Pegs/Lattice" index="33" unique_id=675309557 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175473" parent="Pegs/Lattice" index="33" unique_id=675309557 instance=ExtResource("3_7qkm3")]
 position = Vector2(1185, 374.60815)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175475" type="StaticBody2D" parent="Pegs/Lattice" index="34" unique_id=1982687255 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175475" parent="Pegs/Lattice" index="34" unique_id=1982687255 instance=ExtResource("3_7qkm3")]
 position = Vector2(1376, 375)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175476" type="StaticBody2D" parent="Pegs/Lattice" index="35" unique_id=2089398632 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175476" parent="Pegs/Lattice" index="35" unique_id=2089398632 instance=ExtResource("3_7qkm3")]
 position = Vector2(1455, 374.60815)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175477" type="StaticBody2D" parent="Pegs/Lattice" index="36" unique_id=892242164 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175477" parent="Pegs/Lattice" index="36" unique_id=892242164 instance=ExtResource("3_7qkm3")]
 position = Vector2(60, 439.5858)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175478" type="StaticBody2D" parent="Pegs/Lattice" index="37" unique_id=1900228509 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175478" parent="Pegs/Lattice" index="37" unique_id=1900228509 instance=ExtResource("3_7qkm3")]
 position = Vector2(150, 439.5858)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175480" type="StaticBody2D" parent="Pegs/Lattice" index="38" unique_id=338383542 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175480" parent="Pegs/Lattice" index="38" unique_id=338383542 instance=ExtResource("3_7qkm3")]
 position = Vector2(330, 439.5858)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175485" type="StaticBody2D" parent="Pegs/Lattice" index="39" unique_id=642199648 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175485" parent="Pegs/Lattice" index="39" unique_id=642199648 instance=ExtResource("3_7qkm3")]
 position = Vector2(780, 439.5858)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175486" type="StaticBody2D" parent="Pegs/Lattice" index="40" unique_id=1839067170 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175486" parent="Pegs/Lattice" index="40" unique_id=1839067170 instance=ExtResource("3_7qkm3")]
 position = Vector2(870, 439.5858)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175488" type="StaticBody2D" parent="Pegs/Lattice" index="41" unique_id=750987565 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175488" parent="Pegs/Lattice" index="41" unique_id=750987565 instance=ExtResource("3_7qkm3")]
 position = Vector2(1050, 439.5858)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175489" type="StaticBody2D" parent="Pegs/Lattice" index="42" unique_id=597430270 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175489" parent="Pegs/Lattice" index="42" unique_id=597430270 instance=ExtResource("3_7qkm3")]
 position = Vector2(1140, 439.5858)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175490" type="StaticBody2D" parent="Pegs/Lattice" index="43" unique_id=646982704 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175490" parent="Pegs/Lattice" index="43" unique_id=646982704 instance=ExtResource("3_7qkm3")]
 position = Vector2(1230, 439.5858)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175492" type="StaticBody2D" parent="Pegs/Lattice" index="44" unique_id=32884266 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175492" parent="Pegs/Lattice" index="44" unique_id=32884266 instance=ExtResource("3_7qkm3")]
 position = Vector2(1419, 433)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175493" type="StaticBody2D" parent="Pegs/Lattice" index="45" unique_id=1000925658 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175493" parent="Pegs/Lattice" index="45" unique_id=1000925658 instance=ExtResource("3_7qkm3")]
 position = Vector2(1500, 439.5858)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
 [node name="_StaticBody2D_175493" parent="Pegs/Lattice" index="46" unique_id=834379874 instance=ExtResource("3_7qkm3")]
@@ -479,12 +342,9 @@ colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 position = Vector2(1545, 377)
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175494" type="StaticBody2D" parent="Pegs/Lattice" index="48" unique_id=5085590 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175494" parent="Pegs/Lattice" index="48" unique_id=5085590 instance=ExtResource("3_7qkm3")]
 position = Vector2(105, 508.2764)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
 [node name="_StaticBody2D_175495" parent="Pegs/Lattice" index="49" unique_id=1952856426 instance=ExtResource("3_7qkm3")]
@@ -492,12 +352,9 @@ position = Vector2(48, 508)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175499" type="StaticBody2D" parent="Pegs/Lattice" index="50" unique_id=1346580185 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175499" parent="Pegs/Lattice" index="50" unique_id=1346580185 instance=ExtResource("3_7qkm3")]
 position = Vector2(555, 508.2764)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
 [node name="_StaticBody2D_175499" parent="Pegs/Lattice" index="51" unique_id=923840422 instance=ExtResource("3_7qkm3")]
@@ -505,108 +362,69 @@ position = Vector2(594, 459)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175500" type="StaticBody2D" parent="Pegs/Lattice" index="52" unique_id=995974802 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175500" parent="Pegs/Lattice" index="52" unique_id=995974802 instance=ExtResource("3_7qkm3")]
 position = Vector2(645, 508.2764)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175501" type="StaticBody2D" parent="Pegs/Lattice" index="53" unique_id=66696447 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175501" parent="Pegs/Lattice" index="53" unique_id=66696447 instance=ExtResource("3_7qkm3")]
 position = Vector2(735, 508.2764)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175502" type="StaticBody2D" parent="Pegs/Lattice" index="54" unique_id=673347698 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175502" parent="Pegs/Lattice" index="54" unique_id=673347698 instance=ExtResource("3_7qkm3")]
 position = Vector2(825, 508.2764)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175504" type="StaticBody2D" parent="Pegs/Lattice" index="55" unique_id=1129532965 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175504" parent="Pegs/Lattice" index="55" unique_id=1129532965 instance=ExtResource("3_7qkm3")]
 position = Vector2(1005, 508.2764)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175505" type="StaticBody2D" parent="Pegs/Lattice" index="56" unique_id=1155063518 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175505" parent="Pegs/Lattice" index="56" unique_id=1155063518 instance=ExtResource("3_7qkm3")]
 position = Vector2(1095, 508.2764)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175509" type="StaticBody2D" parent="Pegs/Lattice" index="57" unique_id=626999789 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175509" parent="Pegs/Lattice" index="57" unique_id=626999789 instance=ExtResource("3_7qkm3")]
 position = Vector2(1470, 512)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175510" type="StaticBody2D" parent="Pegs/Lattice" index="58" unique_id=386522823 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175510" parent="Pegs/Lattice" index="58" unique_id=386522823 instance=ExtResource("3_7qkm3")]
 position = Vector2(60, 580.8922)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175513" type="StaticBody2D" parent="Pegs/Lattice" index="59" unique_id=1574840209 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175513" parent="Pegs/Lattice" index="59" unique_id=1574840209 instance=ExtResource("3_7qkm3")]
 position = Vector2(332, 586)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175514" type="StaticBody2D" parent="Pegs/Lattice" index="60" unique_id=281360638 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175514" parent="Pegs/Lattice" index="60" unique_id=281360638 instance=ExtResource("3_7qkm3")]
 position = Vector2(420, 580.8922)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175526" type="StaticBody2D" parent="Pegs/Lattice" index="61" unique_id=1151868042 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175526" parent="Pegs/Lattice" index="61" unique_id=1151868042 instance=ExtResource("3_7qkm3")]
 position = Vector2(1500, 580.8922)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175528" type="StaticBody2D" parent="Pegs/Lattice" index="62" unique_id=1102199095 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175528" parent="Pegs/Lattice" index="62" unique_id=1102199095 instance=ExtResource("3_7qkm3")]
 position = Vector2(285, 657.6575)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175529" type="StaticBody2D" parent="Pegs/Lattice" index="63" unique_id=1565080899 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175529" parent="Pegs/Lattice" index="63" unique_id=1565080899 instance=ExtResource("3_7qkm3")]
 position = Vector2(375, 657.6575)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175530" type="StaticBody2D" parent="Pegs/Lattice" index="64" unique_id=1282004691 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175530" parent="Pegs/Lattice" index="64" unique_id=1282004691 instance=ExtResource("3_7qkm3")]
 position = Vector2(450, 642)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
 [node name="_StaticBody2D_175535" parent="Pegs/Lattice" index="65" unique_id=1211430664 instance=ExtResource("3_7qkm3")]
@@ -636,28 +454,19 @@ position = Vector2(733, 777)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175537" type="StaticBody2D" parent="Pegs/Lattice" index="71" unique_id=275206128 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175537" parent="Pegs/Lattice" index="71" unique_id=275206128 instance=ExtResource("3_7qkm3")]
 position = Vector2(1095, 657.6575)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175538" type="StaticBody2D" parent="Pegs/Lattice" index="72" unique_id=1526087636 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175538" parent="Pegs/Lattice" index="72" unique_id=1526087636 instance=ExtResource("3_7qkm3")]
 position = Vector2(1185, 657.6575)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175539" type="StaticBody2D" parent="Pegs/Lattice" index="73" unique_id=1512903534 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175539" parent="Pegs/Lattice" index="73" unique_id=1512903534 instance=ExtResource("3_7qkm3")]
 position = Vector2(1309, 658)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
 [node name="_StaticBody2D_175540" parent="Pegs/Lattice" index="74" unique_id=163287571 instance=ExtResource("3_7qkm3")]
@@ -670,44 +479,32 @@ position = Vector2(1259, 615)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175543" type="StaticBody2D" parent="Pegs/Lattice" index="76" unique_id=153808686 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175543" parent="Pegs/Lattice" index="76" unique_id=153808686 instance=ExtResource("3_7qkm3")]
 position = Vector2(240, 738.8093)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175544" type="StaticBody2D" parent="Pegs/Lattice" index="77" unique_id=33431325 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175544" parent="Pegs/Lattice" index="77" unique_id=33431325 instance=ExtResource("3_7qkm3")]
 position = Vector2(330, 738.8093)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
 [node name="_StaticBody2D_175558" parent="Pegs/Lattice" index="78" unique_id=1292755282 instance=ExtResource("3_7qkm3")]
 position = Vector2(49, 774)
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175560" type="StaticBody2D" parent="Pegs/Lattice" index="79" unique_id=1551087331 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175560" parent="Pegs/Lattice" index="79" unique_id=1551087331 instance=ExtResource("3_7qkm3")]
 position = Vector2(285, 824.5984)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
 [node name="_StaticBody2D_175560" parent="Pegs/Lattice" index="80" unique_id=41340 instance=ExtResource("3_7qkm3")]
 position = Vector2(361, 792)
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175572" type="StaticBody2D" parent="Pegs/Lattice" index="81" unique_id=26126115 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175572" parent="Pegs/Lattice" index="81" unique_id=26126115 instance=ExtResource("3_7qkm3")]
 position = Vector2(1362, 777)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_24vij")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
 [node name="Text" type="Node2D" parent="Pegs" parent_id_path=PackedInt32Array(210672860) index="1" unique_id=2006880883]

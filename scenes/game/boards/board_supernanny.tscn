@@ -2,8 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c56jtk2m2j8e" path="res://scenes/game/boards/_base_board.tscn" id="1_agnwk"]
 [ext_resource type="PackedScene" uid="uid://ctc64dnv2jawv" path="res://scenes/game/peg/peg.tscn" id="2_7ltta"]
-[ext_resource type="Texture2D" uid="uid://2mbqmhrxv686" path="res://assets/board_backgrounds/supernanny/supernanny2.jpg" id="2_agnwk"]
-[ext_resource type="Script" uid="uid://bjkdgdavgadce" path="res://scenes/game/peg/peg.gd" id="4_felfy"]
+[ext_resource type="Texture2D" uid="uid://2mbqmhrxv686" path="res://assets/board_backgrounds/supernanny.jpg" id="2_agnwk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7ltta"]
 friction = 0.0
@@ -376,12 +375,9 @@ colour = Color(0.6836089, 0.29337206, 1, 1)
 position = Vector2(1441, 808.5984)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132884" type="StaticBody2D" parent="Pegs/Lattice/Purple" index="83" unique_id=933833228 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132884" parent="Pegs/Lattice/Purple" index="83" unique_id=933833228 instance=ExtResource("2_7ltta")]
 position = Vector2(901, 808.5984)
-collision_layer = 4
-collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
-script = ExtResource("4_felfy")
 colour = Color(0.68235296, 0.29411766, 1, 1)
 
 [node name="White" type="Node2D" parent="Pegs/Lattice" index="1" unique_id=107983343]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://2mbqmhrxv686"
-path="res://.godot/imported/supernanny2.jpg-2bf561a5593c36ab54b910dc865a62ba.ctex"
+path="res://.godot/imported/supernanny.jpg-51b10042ca5c33dc78cb9cfc9a786b64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/board_backgrounds/supernanny/supernanny2.jpg"
-dest_files=["res://.godot/imported/supernanny2.jpg-2bf561a5593c36ab54b910dc865a62ba.ctex"]
+source_file="res://assets/board_backgrounds/supernanny.jpg"
+dest_files=["res://.godot/imported/supernanny.jpg-51b10042ca5c33dc78cb9cfc9a786b64.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do1o5hsalkbm1"
-path="res://.godot/imported/supernanny.jpg-f57d9e70958dcd3eda81e29e13983c38.ctex"
+uid="uid://bh6ly4qpk8a71"
+path="res://.godot/imported/family_fortunes.png-cd45aa0a8767c80a7d143ae656a016d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/board_backgrounds/supernanny/supernanny.jpg"
-dest_files=["res://.godot/imported/supernanny.jpg-f57d9e70958dcd3eda81e29e13983c38.ctex"]
+source_file="res://assets/board_backgrounds/family_fortunes.png"
+dest_files=["res://.godot/imported/family_fortunes.png-cd45aa0a8767c80a7d143ae656a016d2.ctex"]
 
 [params]
 

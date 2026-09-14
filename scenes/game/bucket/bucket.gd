@@ -8,12 +8,12 @@ signal ball_entered(ball: Ball, base_value: int)
 
 const HEIGHT := 80.0
 
-@export_range(10, 100, 5, "prefer_slider") var base_value := 10:
+@export_range(-20, 100, 5, "prefer_slider") var base_value := 10:
 	set(value):
 		base_value = value
 		_refresh()
 
-@export_range(100, 660, 20, "or_greater", "prefer_slider") var width : int = 200:
+@export_range(80, 660, 20, "or_greater", "prefer_slider") var width : int = 200:
 	set(value):
 		width = value
 		_refresh()

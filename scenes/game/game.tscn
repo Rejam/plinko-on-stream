@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://drdi3o0k7wjik" path="res://scenes/game/game.gd" id="1_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://cvffomituhpw8" path="res://scenes/game/boards/board_supernanny.tscn" id="2_bdhmt"]
+[ext_resource type="PackedScene" uid="uid://b6b08g1mpuopp" path="res://scenes/game/boards/board_family_fortunes.tscn" id="2_ftsea"]
 [ext_resource type="PackedScene" uid="uid://dp33x5bhhwo7d" path="res://scenes/game/boards/board_dolphins.tscn" id="3_87uf6"]
 [ext_resource type="Texture2D" uid="uid://cedacrybofmmn" path="res://assets/UIpackSheet_transparent.png" id="4_87uf6"]
 [ext_resource type="PackedScene" uid="uid://b8t3bxfwvtd7m" path="res://scenes/debug/debug.tscn" id="5_4j704"]
@@ -31,7 +32,7 @@ corner_radius_bottom_left = 6
 
 [node name="Game" type="Node2D" unique_id=2047480295]
 script = ExtResource("1_5i0tg")
-boards = Array[PackedScene]([ExtResource("2_bdhmt"), ExtResource("3_87uf6")])
+boards = Array[PackedScene]([ExtResource("2_ftsea"), ExtResource("2_bdhmt"), ExtResource("3_87uf6")])
 
 [node name="Background" type="TextureRect" parent="." unique_id=324974537]
 anchors_preset = 15
