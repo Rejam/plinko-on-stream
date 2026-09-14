@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dfpnxfomie3s4" path="res://scenes/game/phase_panel/round_over_layer.tscn" id="9_kp23o"]
 [ext_resource type="PackedScene" uid="uid://c7wodg5g357dt" path="res://scenes/game/phase_panel/session_over_layer.tscn" id="10_5jirj"]
 [ext_resource type="PackedScene" path="res://scenes/game/quit_confirm/quit_confirm_layer.tscn" id="11_kp23o"]
+[ext_resource type="PackedScene" path="res://scenes/game/score_popup/score_popup.tscn" id="14_otnwt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bpukv"]
 atlas = ExtResource("4_87uf6")
@@ -270,6 +271,9 @@ session_manager = NodePath("../SessionManager")
 [node name="SessionOverLayer" parent="." unique_id=1931666716 node_paths=PackedStringArray("session_manager") instance=ExtResource("10_5jirj")]
 visible = false
 session_manager = NodePath("../SessionManager")
+
+[node name="ScorePopup" parent="." unique_id=416313750 instance=ExtResource("14_otnwt")]
+unique_name_in_owner = true
 
 [node name="QuitConfirmLayer" parent="." unique_id=447824394 instance=ExtResource("11_kp23o")]
 unique_name_in_owner = true

@@ -2,6 +2,10 @@ extends Node2D
 
 @export var boards: Array[PackedScene] = []
 @export var round_count := 10
+## Board dimensions, fixed across every board — the inheriting scenes all use the
+## base board's 1600x1000 background. Used to place the score popup over the
+## board rather than over the viewport.
+@export var board_size := Vector2(1600, 1000)
 
 @onready var board_marker: BoardMarker = %BoardMarker
 @onready var session_manager: SessionManager = %SessionManager
@@ -18,6 +22,7 @@ extends Node2D
 @onready var facecam_reserve: Control = %FacecamReserve
 @onready var quit_button: Button = %QuitButton
 @onready var quit_confirm_layer: CanvasLayer = %QuitConfirmLayer
+@onready var score_popup: ScorePopup = %ScorePopup
 
 var current_ball: Ball = null
 
@@ -57,8 +62,20 @@ func _on_ball_released() -> void:
 
 func _on_ball_scored(ball: Ball, base_value: int) -> void:
 	if ball != current_ball: return
-	if session_manager.notify_drop_scored(ball.owner_player, base_value):
+	if session_manager.notify_drop_scored(ball.owner_player, base_value, ball.peg_hits):
 		current_ball = null
+
+## Polled rather than driven by a signal per contact: hits arrive several times
+## a second during a drop, and the label only needs to be right once per frame.
+func _process(_delta: float) -> void:
+	if session_manager.game_state != SessionManager.GameState.DROPPING:
+		return
+	if not is_instance_valid(current_ball):
+		return
+	var entry := session_manager.current_entry
+	if entry == null:
+		return
+	current_ball_label.text = "%s is up · %d" % [entry.player.display_name, current_ball.peg_hits]
 
 func _on_state_changed(game_state: SessionManager.GameState) -> void:
 	var session_over := game_state == SessionManager.GameState.SESSION_OVER
@@ -96,11 +113,8 @@ func _on_entry_received(player: Player, raw_column: String) -> void:
 	if column == BoardMarker.NO_COLUMN: return
 	session_manager.register_entrant(player, column)
 
-func _on_drop_resolved(_player: Player, _base_value: int, _multiplier: int, _points: int) -> void:
-	# Unconsumed. The score lands in the standings list; base_value and
-	# multiplier are exposed nowhere else, so this stays as the hook for an
-	# on-board score popup.
-	pass
+func _on_drop_resolved(player: Player, _base_value: int, _multiplier: int, _peg_hits: int, points: int) -> void:
+	score_popup.show_drop(player, points, board_marker.global_position + board_size * 0.5)
 
 func _on_standings_updated(standings: Array[Standing]) -> void:
 	standings_list.clear()

@@ -36,8 +36,14 @@ func _physics_process(delta: float) -> void:
 	_skin.rotation += (linear_velocity.x / _roll_radius) * spin_scale * delta
 
 
+## Pegs struck on this drop. Read by game.gd when the ball scores, and worth one
+## point each. A redrop spawns a fresh ball, so a failed attempt's contacts are
+## discarded with it — that drop did not count.
+var peg_hits: int = 0
+
 func _on_body_entered(body: Node) -> void:
 	var peg = body as Peg
 	if not peg: return
+	peg_hits += 1
 	apply_central_impulse.call_deferred(Vector2(randf_range(-1, 1) * 5, -100))
 	peg.hit()

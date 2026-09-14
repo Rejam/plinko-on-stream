@@ -10,7 +10,7 @@ signal standings_updated(standings: Array[Standing])
 signal ball_requested(entry: Entry)
 signal ball_released
 signal entrants_changed(entries: Array[Entry])
-signal drop_resolved(player: Player, base_value: int, multiplier: int, points: int)
+signal drop_resolved(player: Player, base_value: int, multiplier: int, peg_hits: int, points: int)
 
 var game_state: GameState = GameState.IDLE
 
@@ -120,7 +120,7 @@ func continue_round() -> void:
 
 ## Returns false if the report was rejected, in which case the caller still owns
 ## the ball — the round stays in DROPPING and Redrop is the way out.
-func notify_drop_scored(player: Player, base_value: int) -> bool:
+func notify_drop_scored(player: Player, base_value: int, peg_hits: int) -> bool:
 	# game_state leaves DROPPING as soon as a ball scores, so a second
 	# report from the same ball is ignored.
 	if game_state != GameState.DROPPING:
@@ -131,14 +131,18 @@ func notify_drop_scored(player: Player, base_value: int) -> bool:
 	_set_game_state(GameState.DROP_RESOLVED)
  
 	var multiplier := current_multiplier
-	var points := base_value * multiplier
+	# Pegs pay a flat point each, outside the multiplier, so a peg is worth the
+	# same in round one as in the last block. They exist to separate players who
+	# would otherwise finish level: five buckets produce frequent exact ties, and
+	# a per-drop contact count has far more resolution than a bucket value.
+	var points := base_value * multiplier + peg_hits
 	var standing := _standing_for(player)
 	standing.total += points
 	standing.round_points[current_round] = points
 	current_entry.scored = true
 	entrants_changed.emit(_waiting_entries())
 	standings_updated.emit(sorted_standings())
-	drop_resolved.emit(player, base_value, multiplier, points)
+	drop_resolved.emit(player, base_value, multiplier, peg_hits, points)
 	return true
 
 func _next_entrant() -> void:
