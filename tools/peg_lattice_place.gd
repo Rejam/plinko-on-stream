@@ -3,10 +3,17 @@ extends EditorScript
 
 ## Places a triangular lattice of pegs into the open board. File > Run.
 ##
-## Triangular rather than square: rows offset by half the spacing and pitched
-## 0.866 * spacing apart put every nearest neighbour — including the diagonals —
-## at exactly SPACING, so one number governs the whole field and no pair can
-## land inside the trap limit by accident.
+## Columns are fixed: every row uses the same SPACING and alternate rows are
+## offset by exactly half of it, which is what makes this a quincunx. The
+## density gradient lives entirely in the row pitch.
+##
+## An earlier version interpolated the horizontal spacing instead. That was
+## wrong: rows stepping by different spacings from a common left edge accumulate
+## different offsets, so they drift out of phase across the board and line up
+## into vertical columns wherever they happen to coincide — the exact corridors
+## a lattice is meant to make impossible. Row pitch is also the better knob:
+## rows are what set how many deflections the ball gets, while horizontal
+## spacing only sets how far each one moves it.
 ##
 ## Nothing is avoided. The lattice fills the band regardless of what is already
 ## there; deleting the pegs that clash with the lettering is an authoring
@@ -24,18 +31,14 @@ const LATTICE_NAME := "Lattice"
 ## Node the lattice is parented under, relative to the scene root.
 const PARENT_PATH := "Pegs"
 
-## Spacing is interpolated linearly with depth, so TOP > BOTTOM gives a sparse
-## field that tightens toward the buckets and TOP < BOTTOM gives the reverse.
-## Equal values give a uniform lattice.
-##
-## The gradient costs a guarantee. At uniform spacing every nearest neighbour is
-## exactly SPACING, diagonals included. Once adjacent rows have different
-## spacings they drift out of phase, so somewhere along the board two pegs in
-## neighbouring rows sit almost vertically in line and the closest approach
-## becomes the row pitch rather than the spacing. The check below is therefore
-## against the pitch, which is the smaller number.
-const TOP_SPACING := 70.0
-const BOTTOM_SPACING := 100.0
+## Constant horizontal spacing. Alternate rows are offset by half of it.
+const SPACING := 90.0
+
+## Vertical distance between rows, interpolated with depth. TOP < BOTTOM gives
+## a dense field at the top opening out toward the buckets. Equal values give a
+## uniform lattice. 0.866 * SPACING reproduces the equilateral case.
+const TOP_PITCH := 55.0
+const BOTTOM_PITCH := 95.0
 
 ## Band to fill, in the parent's coordinate space.
 const TOP_Y := 200.0
@@ -65,10 +68,13 @@ func _run() -> void:
 
 	var peg_limit := 2.0 * (ball_r + peg_r)
 	var wall_limit := 2.0 * ball_r + peg_r
-	var tightest := minf(TOP_SPACING, BOTTOM_SPACING)
-	var tightest_pitch := tightest * ROW_PITCH_RATIO
-	if tightest_pitch <= peg_limit:
-		push_error("Lattice: row pitch %.1f at spacing %.1f is at or below the trap limit %.1f - rows drifting out of phase would put a pair inside it." % [tightest_pitch, tightest, peg_limit])
+	var tightest_pitch := minf(TOP_PITCH, BOTTOM_PITCH)
+	var tightest_diagonal := Vector2(SPACING * 0.5, tightest_pitch).length()
+	if SPACING <= peg_limit:
+		push_error("Lattice: SPACING %.1f is at or below the trap limit %.1f - every neighbour in a row would hold a ball." % [SPACING, peg_limit])
+		return
+	if tightest_diagonal <= peg_limit:
+		push_error("Lattice: diagonal %.1f at pitch %.1f is at or below the trap limit %.1f - rows are too close for this spacing." % [tightest_diagonal, tightest_pitch, peg_limit])
 		return
 
 	var packed := load(PEG_SCENE) as PackedScene
@@ -95,8 +101,8 @@ func _run() -> void:
 
 	while y <= BOTTOM_Y:
 		var t := 0.0 if is_equal_approx(BOTTOM_Y, TOP_Y) else clampf((y - TOP_Y) / (BOTTOM_Y - TOP_Y), 0.0, 1.0)
-		var spacing := lerpf(TOP_SPACING, BOTTOM_SPACING, t)
-		var x := LEFT_X + (0.0 if row % 2 == 0 else spacing * 0.5)
+		var pitch := lerpf(TOP_PITCH, BOTTOM_PITCH, t)
+		var x := LEFT_X + (0.0 if row % 2 == 0 else SPACING * 0.5)
 		while x <= RIGHT_X:
 			var local := Vector2(x, y)
 			var global_point := lattice.to_global(local)
@@ -108,12 +114,12 @@ func _run() -> void:
 				lattice.add_child(peg)
 				peg.owner = root
 				placed += 1
-			x += spacing
-		y += spacing * ROW_PITCH_RATIO
+			x += SPACING
+		y += pitch
 		row += 1
 
 	print("Lattice - %s" % root.name)
-	print("  spacing %.1f to %.1f, tightest pitch %.1f (trap limit %.1f), %d rows" % [TOP_SPACING, BOTTOM_SPACING, tightest_pitch, peg_limit, row])
+	print("  spacing %.1f, pitch %.1f to %.1f, diagonal %.1f (trap limit %.1f), %d rows" % [SPACING, TOP_PITCH, BOTTOM_PITCH, tightest_diagonal, peg_limit, row])
 	print("  placed %d, skipped %d near walls" % [placed, skipped_walls])
 	print("  save the scene to keep them")
 

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ctc64dnv2jawv"]
 
 [ext_resource type="Script" uid="uid://bjkdgdavgadce" path="res://scenes/game/peg/peg.gd" id="1_5r5fp"]
-[ext_resource type="Texture2D" uid="uid://cpckgbgge31d8" path="res://scenes/game/peg/ball_puck.png" id="1_shcew"]
 [ext_resource type="Texture2D" uid="uid://cw71kh113aiti" path="res://assets/circle_02.png" id="3_5yi2d"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l07mq"]
@@ -23,10 +22,7 @@ script = ExtResource("1_5r5fp")
 
 [node name="PegCollision" type="CollisionShape2D" parent="." unique_id=540054425]
 shape = SubResource("CircleShape2D_hiwug")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1708710926]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_shcew")
+debug_color = Color(0, 0.6, 0.69803923, 0)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1203685837]
 emitting = false

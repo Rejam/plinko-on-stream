@@ -46,10 +46,10 @@ func _refresh() -> void:
 	_collision.shape = rect
 	_collision.rotation = PI * 0.25
 
-	var material := PhysicsMaterial.new()
-	material.friction = 0.0
-	material.bounce = bounce
-	physics_material_override = material
+	var p_material := PhysicsMaterial.new()
+	p_material.friction = 0.0
+	p_material.bounce = bounce
+	physics_material_override = p_material
 
 	queue_redraw()
 
