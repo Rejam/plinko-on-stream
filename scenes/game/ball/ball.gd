@@ -39,5 +39,5 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	var peg = body as Peg
 	if not peg: return
-	apply_central_impulse(Vector2(randf_range(-1, 1) * 5, -100))
+	apply_central_impulse.call_deferred(Vector2(randf_range(-1, 1) * 5, -100))
 	peg.hit()
