@@ -46,9 +46,6 @@ const BOTTOM_Y := 900.0
 const LEFT_X := 60.0
 const RIGHT_X := 1540.0
 
-const ROW_PITCH_RATIO := 0.8660254
-
-
 func _run() -> void:
 	var root := EditorInterface.get_edited_scene_root()
 	if root == null:
