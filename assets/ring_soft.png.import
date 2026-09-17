@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw71kh113aiti"
-path="res://.godot/imported/circle_02.png-32eea01fc2e2fac3e0cf361bad7695de.ctex"
+uid="uid://b8455476uytmw"
+path="res://.godot/imported/ring_soft.png-7f9756ca1263b565edd294e87c3f06bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/circle_02.png"
-dest_files=["res://.godot/imported/circle_02.png-32eea01fc2e2fac3e0cf361bad7695de.ctex"]
+source_file="res://assets/ring_soft.png"
+dest_files=["res://.godot/imported/ring_soft.png-7f9756ca1263b565edd294e87c3f06bf.ctex"]
 
 [params]
 

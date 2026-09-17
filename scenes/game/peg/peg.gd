@@ -64,7 +64,12 @@ func _draw() -> void:
 
 
 func hit() -> void:
-	_cpu_particles_2d.modulate = colour
+	# Hue from the fill, brightness not. The particle material is additive with
+	# an overbright ramp, and modulate multiplies that down: a dark or low-alpha
+	# fill cancels the burst entirely rather than tinting it. Since the outline
+	# took over legibility the fills are muted, so tinting by `colour` directly
+	# would silently kill the flash on exactly the pegs that were toned down.
+	_cpu_particles_2d.modulate = Color.from_hsv(colour.h, colour.s, 1.0, 1.0)
 	_cpu_particles_2d.restart()
 	if _tween and _tween.is_valid():
 		_tween.kill()
