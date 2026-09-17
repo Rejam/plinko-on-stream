@@ -38,7 +38,7 @@ const PULSE_TIME := 0.2
 ## the fill, which is authored, so only the outer ring has to survive the photo.
 ## Constants, not exports — a per-peg width would let a board break the exact
 ## legibility guarantee the rings exist to provide.
-const EDGE_WIDTH := 1.5
+const EDGE_WIDTH := 1
 const OUTLINE_DARK := Color(0, 0, 0, 1)
 const OUTLINE_LIGHT := Color(1, 1, 1, 1)
 
@@ -56,11 +56,11 @@ func _draw() -> void:
 	## width across the radius, which would put the visible edge half a stroke
 	## off the collider; each fill here also paints over the last, so there is
 	## no hairline seam where two antialiased strokes fail to meet.
-	var r := _radius * _pulse
+	var r := _radius * _pulse + 1
 	var edge := EDGE_WIDTH * _pulse
-	draw_circle(Vector2.ZERO, r, OUTLINE_DARK, true, -1.0, true)
-	draw_circle(Vector2.ZERO, maxf(r - edge, 0.0), OUTLINE_LIGHT, true, -1.0, true)
-	draw_circle(Vector2.ZERO, maxf(r - edge * 2.0, 0.0), colour, true, -1.0, true)
+	draw_circle(Vector2.ZERO, r, OUTLINE_DARK, true, -1.0, false)
+	draw_circle(Vector2.ZERO, maxf(r - edge, 0.0), OUTLINE_LIGHT, true, -1.0, false)
+	draw_circle(Vector2.ZERO, maxf(r - edge * 2.0, 0.0), colour, true, -1.0, false)
 
 
 func hit() -> void:

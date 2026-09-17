@@ -155,12 +155,12 @@ physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
 [node name="@StaticBody2D@175432" parent="Pegs/Lattice" index="10" unique_id=1317370756 instance=ExtResource("3_7qkm3")]
-position = Vector2(478, 268)
+position = Vector2(477, 282)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
 [node name="@StaticBody2D@175433" parent="Pegs/Lattice" index="11" unique_id=1653843207 instance=ExtResource("3_7qkm3")]
-position = Vector2(555, 255)
+position = Vector2(562, 316)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
@@ -190,17 +190,17 @@ physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
 [node name="@StaticBody2D@175448" parent="Pegs/Lattice" index="17" unique_id=1424217675 instance=ExtResource("3_7qkm3")]
-position = Vector2(420, 313.14285)
+position = Vector2(372, 333)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
 [node name="@StaticBody2D@175449" parent="Pegs/Lattice" index="18" unique_id=492863089 instance=ExtResource("3_7qkm3")]
-position = Vector2(510, 313.14285)
+position = Vector2(467, 372)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
 [node name="@StaticBody2D@175450" parent="Pegs/Lattice" index="19" unique_id=129936960 instance=ExtResource("3_7qkm3")]
-position = Vector2(623, 299)
+position = Vector2(585, 261)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
@@ -240,269 +240,264 @@ physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
 [node name="@StaticBody2D@175464" parent="Pegs/Lattice" index="27" unique_id=909840102 instance=ExtResource("3_7qkm3")]
-position = Vector2(375, 374.60815)
+position = Vector2(364, 405)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175465" parent="Pegs/Lattice" index="28" unique_id=1260317925 instance=ExtResource("3_7qkm3")]
-position = Vector2(465, 374.60815)
+[node name="@StaticBody2D@175467" parent="Pegs/Lattice" index="28" unique_id=1661338684 instance=ExtResource("3_7qkm3")]
+position = Vector2(640, 340)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175467" parent="Pegs/Lattice" index="29" unique_id=1661338684 instance=ExtResource("3_7qkm3")]
-position = Vector2(637, 353)
-physics_material_override = SubResource("PhysicsMaterial_l07mq")
-colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
-
-[node name="@StaticBody2D@175469" parent="Pegs/Lattice" index="30" unique_id=941115913 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175469" parent="Pegs/Lattice" index="29" unique_id=941115913 instance=ExtResource("3_7qkm3")]
 position = Vector2(825, 374.60815)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175470" parent="Pegs/Lattice" index="31" unique_id=1467899922 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175470" parent="Pegs/Lattice" index="30" unique_id=1467899922 instance=ExtResource("3_7qkm3")]
 position = Vector2(915, 374.60815)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175472" parent="Pegs/Lattice" index="32" unique_id=2121521357 instance=ExtResource("3_7qkm3")]
-position = Vector2(1095, 374.60815)
+[node name="@StaticBody2D@175472" parent="Pegs/Lattice" index="31" unique_id=2121521357 instance=ExtResource("3_7qkm3")]
+position = Vector2(1125, 378)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175473" parent="Pegs/Lattice" index="33" unique_id=675309557 instance=ExtResource("3_7qkm3")]
-position = Vector2(1185, 374.60815)
+[node name="@StaticBody2D@175473" parent="Pegs/Lattice" index="32" unique_id=675309557 instance=ExtResource("3_7qkm3")]
+position = Vector2(1224, 393)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175475" parent="Pegs/Lattice" index="34" unique_id=1982687255 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175475" parent="Pegs/Lattice" index="33" unique_id=1982687255 instance=ExtResource("3_7qkm3")]
 position = Vector2(1376, 375)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175476" parent="Pegs/Lattice" index="35" unique_id=2089398632 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175476" parent="Pegs/Lattice" index="34" unique_id=2089398632 instance=ExtResource("3_7qkm3")]
 position = Vector2(1455, 374.60815)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175477" parent="Pegs/Lattice" index="36" unique_id=892242164 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175477" parent="Pegs/Lattice" index="35" unique_id=892242164 instance=ExtResource("3_7qkm3")]
 position = Vector2(60, 439.5858)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175478" parent="Pegs/Lattice" index="37" unique_id=1900228509 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175478" parent="Pegs/Lattice" index="36" unique_id=1900228509 instance=ExtResource("3_7qkm3")]
 position = Vector2(150, 439.5858)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175480" parent="Pegs/Lattice" index="38" unique_id=338383542 instance=ExtResource("3_7qkm3")]
-position = Vector2(330, 439.5858)
+[node name="@StaticBody2D@175480" parent="Pegs/Lattice" index="37" unique_id=338383542 instance=ExtResource("3_7qkm3")]
+position = Vector2(283, 476)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175485" parent="Pegs/Lattice" index="39" unique_id=642199648 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175485" parent="Pegs/Lattice" index="38" unique_id=642199648 instance=ExtResource("3_7qkm3")]
 position = Vector2(780, 439.5858)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175486" parent="Pegs/Lattice" index="40" unique_id=1839067170 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175486" parent="Pegs/Lattice" index="39" unique_id=1839067170 instance=ExtResource("3_7qkm3")]
 position = Vector2(870, 439.5858)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175488" parent="Pegs/Lattice" index="41" unique_id=750987565 instance=ExtResource("3_7qkm3")]
-position = Vector2(1050, 439.5858)
+[node name="@StaticBody2D@175488" parent="Pegs/Lattice" index="40" unique_id=750987565 instance=ExtResource("3_7qkm3")]
+position = Vector2(1047, 412)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175489" parent="Pegs/Lattice" index="42" unique_id=597430270 instance=ExtResource("3_7qkm3")]
-position = Vector2(1140, 439.5858)
+[node name="@StaticBody2D@175489" parent="Pegs/Lattice" index="41" unique_id=597430270 instance=ExtResource("3_7qkm3")]
+position = Vector2(1227, 492)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175490" parent="Pegs/Lattice" index="43" unique_id=646982704 instance=ExtResource("3_7qkm3")]
-position = Vector2(1230, 439.5858)
+[node name="@StaticBody2D@175490" parent="Pegs/Lattice" index="42" unique_id=646982704 instance=ExtResource("3_7qkm3")]
+position = Vector2(1316, 501)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175492" parent="Pegs/Lattice" index="44" unique_id=32884266 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175492" parent="Pegs/Lattice" index="43" unique_id=32884266 instance=ExtResource("3_7qkm3")]
 position = Vector2(1419, 433)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175493" parent="Pegs/Lattice" index="45" unique_id=1000925658 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175493" parent="Pegs/Lattice" index="44" unique_id=1000925658 instance=ExtResource("3_7qkm3")]
 position = Vector2(1500, 439.5858)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="_StaticBody2D_175493" parent="Pegs/Lattice" index="46" unique_id=834379874 instance=ExtResource("3_7qkm3")]
+[node name="_StaticBody2D_175493" parent="Pegs/Lattice" index="45" unique_id=834379874 instance=ExtResource("3_7qkm3")]
 position = Vector2(1533, 509)
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="_StaticBody2D_175494" parent="Pegs/Lattice" index="47" unique_id=1336726391 instance=ExtResource("3_7qkm3")]
+[node name="_StaticBody2D_175494" parent="Pegs/Lattice" index="46" unique_id=1336726391 instance=ExtResource("3_7qkm3")]
 position = Vector2(1545, 377)
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175494" parent="Pegs/Lattice" index="48" unique_id=5085590 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175494" parent="Pegs/Lattice" index="47" unique_id=5085590 instance=ExtResource("3_7qkm3")]
 position = Vector2(105, 508.2764)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="_StaticBody2D_175495" parent="Pegs/Lattice" index="49" unique_id=1952856426 instance=ExtResource("3_7qkm3")]
+[node name="_StaticBody2D_175495" parent="Pegs/Lattice" index="48" unique_id=1952856426 instance=ExtResource("3_7qkm3")]
 position = Vector2(48, 508)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175499" parent="Pegs/Lattice" index="50" unique_id=1346580185 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175499" parent="Pegs/Lattice" index="49" unique_id=1346580185 instance=ExtResource("3_7qkm3")]
 position = Vector2(555, 508.2764)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="_StaticBody2D_175499" parent="Pegs/Lattice" index="51" unique_id=923840422 instance=ExtResource("3_7qkm3")]
+[node name="_StaticBody2D_175499" parent="Pegs/Lattice" index="50" unique_id=923840422 instance=ExtResource("3_7qkm3")]
 position = Vector2(594, 459)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175500" parent="Pegs/Lattice" index="52" unique_id=995974802 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175500" parent="Pegs/Lattice" index="51" unique_id=995974802 instance=ExtResource("3_7qkm3")]
 position = Vector2(645, 508.2764)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175501" parent="Pegs/Lattice" index="53" unique_id=66696447 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175501" parent="Pegs/Lattice" index="52" unique_id=66696447 instance=ExtResource("3_7qkm3")]
 position = Vector2(735, 508.2764)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175502" parent="Pegs/Lattice" index="54" unique_id=673347698 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175502" parent="Pegs/Lattice" index="53" unique_id=673347698 instance=ExtResource("3_7qkm3")]
 position = Vector2(825, 508.2764)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175504" parent="Pegs/Lattice" index="55" unique_id=1129532965 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175504" parent="Pegs/Lattice" index="54" unique_id=1129532965 instance=ExtResource("3_7qkm3")]
 position = Vector2(1005, 508.2764)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175505" parent="Pegs/Lattice" index="56" unique_id=1155063518 instance=ExtResource("3_7qkm3")]
-position = Vector2(1095, 508.2764)
+[node name="@StaticBody2D@175505" parent="Pegs/Lattice" index="55" unique_id=1155063518 instance=ExtResource("3_7qkm3")]
+position = Vector2(1103, 472)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175509" parent="Pegs/Lattice" index="57" unique_id=626999789 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175509" parent="Pegs/Lattice" index="56" unique_id=626999789 instance=ExtResource("3_7qkm3")]
 position = Vector2(1470, 512)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175510" parent="Pegs/Lattice" index="58" unique_id=386522823 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175510" parent="Pegs/Lattice" index="57" unique_id=386522823 instance=ExtResource("3_7qkm3")]
 position = Vector2(60, 580.8922)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175513" parent="Pegs/Lattice" index="59" unique_id=1574840209 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175513" parent="Pegs/Lattice" index="58" unique_id=1574840209 instance=ExtResource("3_7qkm3")]
 position = Vector2(332, 586)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175514" parent="Pegs/Lattice" index="60" unique_id=281360638 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175514" parent="Pegs/Lattice" index="59" unique_id=281360638 instance=ExtResource("3_7qkm3")]
 position = Vector2(420, 580.8922)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175526" parent="Pegs/Lattice" index="61" unique_id=1151868042 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175526" parent="Pegs/Lattice" index="60" unique_id=1151868042 instance=ExtResource("3_7qkm3")]
 position = Vector2(1500, 580.8922)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175528" parent="Pegs/Lattice" index="62" unique_id=1102199095 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175528" parent="Pegs/Lattice" index="61" unique_id=1102199095 instance=ExtResource("3_7qkm3")]
 position = Vector2(285, 657.6575)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175529" parent="Pegs/Lattice" index="63" unique_id=1565080899 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175529" parent="Pegs/Lattice" index="62" unique_id=1565080899 instance=ExtResource("3_7qkm3")]
 position = Vector2(375, 657.6575)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175530" parent="Pegs/Lattice" index="64" unique_id=1282004691 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175530" parent="Pegs/Lattice" index="63" unique_id=1282004691 instance=ExtResource("3_7qkm3")]
 position = Vector2(450, 642)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="_StaticBody2D_175535" parent="Pegs/Lattice" index="65" unique_id=1211430664 instance=ExtResource("3_7qkm3")]
+[node name="_StaticBody2D_175535" parent="Pegs/Lattice" index="64" unique_id=1211430664 instance=ExtResource("3_7qkm3")]
 position = Vector2(474, 699)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="_StaticBody2D_175530" parent="Pegs/Lattice" index="66" unique_id=530276630 instance=ExtResource("3_7qkm3")]
+[node name="_StaticBody2D_175530" parent="Pegs/Lattice" index="65" unique_id=530276630 instance=ExtResource("3_7qkm3")]
 position = Vector2(552, 688)
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="_StaticBody2D_175534" parent="Pegs/Lattice" index="67" unique_id=1918325965 instance=ExtResource("3_7qkm3")]
+[node name="_StaticBody2D_175534" parent="Pegs/Lattice" index="66" unique_id=1918325965 instance=ExtResource("3_7qkm3")]
 position = Vector2(587, 783)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="_StaticBody2D_175531" parent="Pegs/Lattice" index="68" unique_id=1454082992 instance=ExtResource("3_7qkm3")]
+[node name="_StaticBody2D_175531" parent="Pegs/Lattice" index="67" unique_id=1454082992 instance=ExtResource("3_7qkm3")]
 position = Vector2(645, 686)
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="_StaticBody2D_175532" parent="Pegs/Lattice" index="69" unique_id=2121280474 instance=ExtResource("3_7qkm3")]
+[node name="_StaticBody2D_175532" parent="Pegs/Lattice" index="68" unique_id=2121280474 instance=ExtResource("3_7qkm3")]
 position = Vector2(736, 687)
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="_StaticBody2D_175533" parent="Pegs/Lattice" index="70" unique_id=1084140406 instance=ExtResource("3_7qkm3")]
+[node name="_StaticBody2D_175533" parent="Pegs/Lattice" index="69" unique_id=1084140406 instance=ExtResource("3_7qkm3")]
 position = Vector2(733, 777)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175537" parent="Pegs/Lattice" index="71" unique_id=275206128 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175537" parent="Pegs/Lattice" index="70" unique_id=275206128 instance=ExtResource("3_7qkm3")]
 position = Vector2(1095, 657.6575)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175538" parent="Pegs/Lattice" index="72" unique_id=1526087636 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175538" parent="Pegs/Lattice" index="71" unique_id=1526087636 instance=ExtResource("3_7qkm3")]
 position = Vector2(1185, 657.6575)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175539" parent="Pegs/Lattice" index="73" unique_id=1512903534 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175539" parent="Pegs/Lattice" index="72" unique_id=1512903534 instance=ExtResource("3_7qkm3")]
 position = Vector2(1309, 658)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="_StaticBody2D_175540" parent="Pegs/Lattice" index="74" unique_id=163287571 instance=ExtResource("3_7qkm3")]
+[node name="_StaticBody2D_175540" parent="Pegs/Lattice" index="73" unique_id=163287571 instance=ExtResource("3_7qkm3")]
 position = Vector2(1248, 687)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="_StaticBody2D_175539" parent="Pegs/Lattice" index="75" unique_id=772781899 instance=ExtResource("3_7qkm3")]
+[node name="_StaticBody2D_175539" parent="Pegs/Lattice" index="74" unique_id=772781899 instance=ExtResource("3_7qkm3")]
 position = Vector2(1259, 615)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175543" parent="Pegs/Lattice" index="76" unique_id=153808686 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175543" parent="Pegs/Lattice" index="75" unique_id=153808686 instance=ExtResource("3_7qkm3")]
 position = Vector2(240, 738.8093)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175544" parent="Pegs/Lattice" index="77" unique_id=33431325 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175544" parent="Pegs/Lattice" index="76" unique_id=33431325 instance=ExtResource("3_7qkm3")]
 position = Vector2(330, 738.8093)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="_StaticBody2D_175558" parent="Pegs/Lattice" index="78" unique_id=1292755282 instance=ExtResource("3_7qkm3")]
+[node name="_StaticBody2D_175558" parent="Pegs/Lattice" index="77" unique_id=1292755282 instance=ExtResource("3_7qkm3")]
 position = Vector2(49, 774)
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175560" parent="Pegs/Lattice" index="79" unique_id=1551087331 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175560" parent="Pegs/Lattice" index="78" unique_id=1551087331 instance=ExtResource("3_7qkm3")]
 position = Vector2(285, 824.5984)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="_StaticBody2D_175560" parent="Pegs/Lattice" index="80" unique_id=41340 instance=ExtResource("3_7qkm3")]
+[node name="_StaticBody2D_175560" parent="Pegs/Lattice" index="79" unique_id=41340 instance=ExtResource("3_7qkm3")]
 position = Vector2(361, 792)
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)
 
-[node name="@StaticBody2D@175572" parent="Pegs/Lattice" index="81" unique_id=26126115 instance=ExtResource("3_7qkm3")]
+[node name="@StaticBody2D@175572" parent="Pegs/Lattice" index="80" unique_id=26126115 instance=ExtResource("3_7qkm3")]
 position = Vector2(1362, 777)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(1.8289685e-06, 0.55309534, 0.84729034, 1)

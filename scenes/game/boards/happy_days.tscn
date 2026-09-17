@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c6koi3o6akh1a" path="res://assets/board_backgrounds/happy_days.webp" id="2_iu5l2"]
 [ext_resource type="PackedScene" uid="uid://bnugbts7q5efj" path="res://scenes/game/bucket/bucket.tscn" id="3_iu5l2"]
 [ext_resource type="PackedScene" uid="uid://bud1xgj8rjy15" path="res://scenes/game/ramp/ramp.tscn" id="4_5l7gl"]
+[ext_resource type="PackedScene" uid="uid://ctc64dnv2jawv" path="res://scenes/game/peg/peg.tscn" id="6_5l7gl"]
+[ext_resource type="Script" uid="uid://bjkdgdavgadce" path="res://scenes/game/peg/peg.gd" id="7_3wmbg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gcs0y"]
 font_size = 221
@@ -18,7 +20,7 @@ bounce = 0.9
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hiwug"]
 size = Vector2(32, 1157.5)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5l7gl"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x0v6g"]
 friction = 0.0
 bounce = 0.9
 
@@ -26,9 +28,13 @@ bounce = 0.9
 friction = 0.0
 bounce = 0.9
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3wmbg"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uy65b"]
 friction = 0.0
 bounce = 0.9
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l07mq"]
+friction = 0.0
+bounce = 0.8
 
 [node name="Board" type="Node2D" unique_id=2047480295]
 script = ExtResource("1_x7hpy")
@@ -39,6 +45,7 @@ offset_bottom = 1238.0
 offset_transform_enabled = true
 texture = ExtResource("2_iu5l2")
 stretch_mode = 6
+metadata/_edit_lock_ = true
 
 [node name="Text" type="Label" parent="." unique_id=1388778403]
 offset_top = 498.0
@@ -50,6 +57,7 @@ label_settings = SubResource("LabelSettings_gcs0y")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+metadata/_edit_lock_ = true
 
 [node name="DropPositions" type="Node2D" parent="." unique_id=2045868811]
 unique_name_in_owner = true
@@ -117,7 +125,7 @@ metadata/_edit_lock_ = true
 
 [node name="Ramp" parent="Walls/Left" unique_id=2071365893 instance=ExtResource("4_5l7gl")]
 position = Vector2(0, 432)
-physics_material_override = SubResource("PhysicsMaterial_5l7gl")
+physics_material_override = SubResource("PhysicsMaterial_x0v6g")
 
 [node name="Right" type="StaticBody2D" parent="Walls" unique_id=1081303422]
 position = Vector2(1600, 0)
@@ -133,6 +141,936 @@ metadata/_edit_lock_ = true
 
 [node name="Ramp" parent="Walls/Right" unique_id=87935822 instance=ExtResource("4_5l7gl")]
 position = Vector2(0, 432)
-physics_material_override = SubResource("PhysicsMaterial_3wmbg")
+physics_material_override = SubResource("PhysicsMaterial_uy65b")
 
 [node name="Pegs" type="Node2D" parent="." unique_id=210672860]
+
+[node name="Arcs" type="Node2D" parent="Pegs" unique_id=2081178566]
+
+[node name="Peg" type="StaticBody2D" parent="Pegs/Arcs" unique_id=578915731 instance=ExtResource("6_5l7gl")]
+position = Vector2(150, 331.16327)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74442" type="StaticBody2D" parent="Pegs/Arcs" unique_id=445292927 instance=ExtResource("6_5l7gl")]
+position = Vector2(240, 297.35574)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74443" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1180399564 instance=ExtResource("6_5l7gl")]
+position = Vector2(330, 268.57742)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="Peg2" parent="Pegs/Arcs" unique_id=209887840 instance=ExtResource("6_5l7gl")]
+position = Vector2(91, 275.58585)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74442" parent="Pegs/Arcs" unique_id=313445598 instance=ExtResource("6_5l7gl")]
+position = Vector2(181, 241.77832)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74443" parent="Pegs/Arcs" unique_id=803592433 instance=ExtResource("6_5l7gl")]
+position = Vector2(271, 213)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74444" type="StaticBody2D" parent="Pegs/Arcs" unique_id=209730180 instance=ExtResource("6_5l7gl")]
+position = Vector2(420, 244.82834)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74445" type="StaticBody2D" parent="Pegs/Arcs" unique_id=552868270 instance=ExtResource("6_5l7gl")]
+position = Vector2(510, 226.10847)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74446" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1723198614 instance=ExtResource("6_5l7gl")]
+position = Vector2(600, 212.41782)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74447" type="StaticBody2D" parent="Pegs/Arcs" unique_id=2062644560 instance=ExtResource("6_5l7gl")]
+position = Vector2(690, 203.7564)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74448" type="StaticBody2D" parent="Pegs/Arcs" unique_id=658129637 instance=ExtResource("6_5l7gl")]
+position = Vector2(780, 200.12418)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74449" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1296609052 instance=ExtResource("6_5l7gl")]
+position = Vector2(870, 201.52118)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74450" type="StaticBody2D" parent="Pegs/Arcs" unique_id=2139781955 instance=ExtResource("6_5l7gl")]
+position = Vector2(960, 207.9474)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74451" type="StaticBody2D" parent="Pegs/Arcs" unique_id=26669412 instance=ExtResource("6_5l7gl")]
+position = Vector2(1050, 219.40285)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74452" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1374484184 instance=ExtResource("6_5l7gl")]
+position = Vector2(1140, 235.88751)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74453" type="StaticBody2D" parent="Pegs/Arcs" unique_id=2143217524 instance=ExtResource("6_5l7gl")]
+position = Vector2(1230, 257.4014)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74454" type="StaticBody2D" parent="Pegs/Arcs" unique_id=624501735 instance=ExtResource("6_5l7gl")]
+position = Vector2(1320, 283.9445)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74455" type="StaticBody2D" parent="Pegs/Arcs" unique_id=326884048 instance=ExtResource("6_5l7gl")]
+position = Vector2(1410, 315.5168)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74456" type="StaticBody2D" parent="Pegs/Arcs" unique_id=283480705 instance=ExtResource("6_5l7gl")]
+position = Vector2(1500, 352.11835)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74454" parent="Pegs/Arcs" unique_id=1336272722 instance=ExtResource("6_5l7gl")]
+position = Vector2(1370, 217)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74455" parent="Pegs/Arcs" unique_id=1202394729 instance=ExtResource("6_5l7gl")]
+position = Vector2(1460, 248.57233)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74456" parent="Pegs/Arcs" unique_id=514142981 instance=ExtResource("6_5l7gl")]
+position = Vector2(1550, 285.17386)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74457" type="StaticBody2D" parent="Pegs/Arcs" unique_id=398077818 instance=ExtResource("6_5l7gl")]
+position = Vector2(195, 370.34973)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74458" type="StaticBody2D" parent="Pegs/Arcs" unique_id=878357997 instance=ExtResource("6_5l7gl")]
+position = Vector2(285, 337.1781)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74459" type="StaticBody2D" parent="Pegs/Arcs" unique_id=352724358 instance=ExtResource("6_5l7gl")]
+position = Vector2(375, 309.33765)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74460" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1372291381 instance=ExtResource("6_5l7gl")]
+position = Vector2(465, 286.8283)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74461" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1440464222 instance=ExtResource("6_5l7gl")]
+position = Vector2(555, 269.65015)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74462" type="StaticBody2D" parent="Pegs/Arcs" unique_id=2128179506 instance=ExtResource("6_5l7gl")]
+position = Vector2(645, 257.80313)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74463" type="StaticBody2D" parent="Pegs/Arcs" unique_id=948815169 instance=ExtResource("6_5l7gl")]
+position = Vector2(735, 251.2873)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74464" type="StaticBody2D" parent="Pegs/Arcs" unique_id=2080362616 instance=ExtResource("6_5l7gl")]
+position = Vector2(825, 250.10258)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74465" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1418982586 instance=ExtResource("6_5l7gl")]
+position = Vector2(915, 254.24904)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74466" type="StaticBody2D" parent="Pegs/Arcs" unique_id=2114296266 instance=ExtResource("6_5l7gl")]
+position = Vector2(1005, 263.72665)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74467" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1016040650 instance=ExtResource("6_5l7gl")]
+position = Vector2(1095, 278.5354)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74468" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1807791688 instance=ExtResource("6_5l7gl")]
+position = Vector2(1185, 298.67532)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74469" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1047576849 instance=ExtResource("6_5l7gl")]
+position = Vector2(1275, 324.1464)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74470" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1349168715 instance=ExtResource("6_5l7gl")]
+position = Vector2(1365, 354.9486)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74471" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1587636690 instance=ExtResource("6_5l7gl")]
+position = Vector2(1455, 391.082)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74472" type="StaticBody2D" parent="Pegs/Arcs" unique_id=506457100 instance=ExtResource("6_5l7gl")]
+position = Vector2(150, 451.47086)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74473" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1876238545 instance=ExtResource("6_5l7gl")]
+position = Vector2(240, 413.43658)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74474" type="StaticBody2D" parent="Pegs/Arcs" unique_id=275686279 instance=ExtResource("6_5l7gl")]
+position = Vector2(330, 381.0603)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74475" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1306938270 instance=ExtResource("6_5l7gl")]
+position = Vector2(420, 354.34198)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74476" type="StaticBody2D" parent="Pegs/Arcs" unique_id=419927889 instance=ExtResource("6_5l7gl")]
+position = Vector2(510, 333.28168)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74477" type="StaticBody2D" parent="Pegs/Arcs" unique_id=171380048 instance=ExtResource("6_5l7gl")]
+position = Vector2(600, 317.87936)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74478" type="StaticBody2D" parent="Pegs/Arcs" unique_id=584868637 instance=ExtResource("6_5l7gl")]
+position = Vector2(690, 308.13504)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74479" type="StaticBody2D" parent="Pegs/Arcs" unique_id=608648278 instance=ExtResource("6_5l7gl")]
+position = Vector2(780, 304.04874)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74480" type="StaticBody2D" parent="Pegs/Arcs" unique_id=825677572 instance=ExtResource("6_5l7gl")]
+position = Vector2(870, 305.6204)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74481" type="StaticBody2D" parent="Pegs/Arcs" unique_id=373445014 instance=ExtResource("6_5l7gl")]
+position = Vector2(960, 312.85004)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74482" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1813371220 instance=ExtResource("6_5l7gl")]
+position = Vector2(1050, 325.7377)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74483" type="StaticBody2D" parent="Pegs/Arcs" unique_id=622434295 instance=ExtResource("6_5l7gl")]
+position = Vector2(1140, 344.28333)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74484" type="StaticBody2D" parent="Pegs/Arcs" unique_id=247284281 instance=ExtResource("6_5l7gl")]
+position = Vector2(1230, 368.48697)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74485" type="StaticBody2D" parent="Pegs/Arcs" unique_id=262293463 instance=ExtResource("6_5l7gl")]
+position = Vector2(1320, 398.3486)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74486" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1042366789 instance=ExtResource("6_5l7gl")]
+position = Vector2(1410, 433.86823)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74487" type="StaticBody2D" parent="Pegs/Arcs" unique_id=14311895 instance=ExtResource("6_5l7gl")]
+position = Vector2(105, 541.6253)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74488" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1506231152 instance=ExtResource("6_5l7gl")]
+position = Vector2(195, 498.20685)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74489" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1261199492 instance=ExtResource("6_5l7gl")]
+position = Vector2(285, 460.8002)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74490" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1421896923 instance=ExtResource("6_5l7gl")]
+position = Vector2(375, 429.4053)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74491" type="StaticBody2D" parent="Pegs/Arcs" unique_id=398495158 instance=ExtResource("6_5l7gl")]
+position = Vector2(465, 404.02222)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74492" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1981092092 instance=ExtResource("6_5l7gl")]
+position = Vector2(555, 384.6509)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74493" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1831658965 instance=ExtResource("6_5l7gl")]
+position = Vector2(645, 371.29138)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74494" type="StaticBody2D" parent="Pegs/Arcs" unique_id=91921732 instance=ExtResource("6_5l7gl")]
+position = Vector2(735, 363.94363)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74495" type="StaticBody2D" parent="Pegs/Arcs" unique_id=782567754 instance=ExtResource("6_5l7gl")]
+position = Vector2(825, 362.6077)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74496" type="StaticBody2D" parent="Pegs/Arcs" unique_id=370265823 instance=ExtResource("6_5l7gl")]
+position = Vector2(915, 367.2835)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74497" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1106406415 instance=ExtResource("6_5l7gl")]
+position = Vector2(1005, 377.97113)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74498" type="StaticBody2D" parent="Pegs/Arcs" unique_id=2035952725 instance=ExtResource("6_5l7gl")]
+position = Vector2(1095, 394.67053)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74499" type="StaticBody2D" parent="Pegs/Arcs" unique_id=331352879 instance=ExtResource("6_5l7gl")]
+position = Vector2(1185, 417.38174)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74500" type="StaticBody2D" parent="Pegs/Arcs" unique_id=2059340998 instance=ExtResource("6_5l7gl")]
+position = Vector2(1275, 446.1047)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74501" type="StaticBody2D" parent="Pegs/Arcs" unique_id=100221970 instance=ExtResource("6_5l7gl")]
+position = Vector2(1365, 480.83948)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74502" type="StaticBody2D" parent="Pegs/Arcs" unique_id=445545448 instance=ExtResource("6_5l7gl")]
+position = Vector2(1456, 513.58606)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74505" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1069596588 instance=ExtResource("6_5l7gl")]
+position = Vector2(240, 549.45435)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74506" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1834990843 instance=ExtResource("6_5l7gl")]
+position = Vector2(330, 512.8621)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74507" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1236665426 instance=ExtResource("6_5l7gl")]
+position = Vector2(420, 482.66467)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74508" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1413469273 instance=ExtResource("6_5l7gl")]
+position = Vector2(510, 458.86194)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74509" type="StaticBody2D" parent="Pegs/Arcs" unique_id=777909717 instance=ExtResource("6_5l7gl")]
+position = Vector2(600, 441.454)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74510" type="StaticBody2D" parent="Pegs/Arcs" unique_id=281318734 instance=ExtResource("6_5l7gl")]
+position = Vector2(690, 430.4408)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74511" type="StaticBody2D" parent="Pegs/Arcs" unique_id=308192465 instance=ExtResource("6_5l7gl")]
+position = Vector2(780, 425.82236)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74512" type="StaticBody2D" parent="Pegs/Arcs" unique_id=550048038 instance=ExtResource("6_5l7gl")]
+position = Vector2(870, 427.5987)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74513" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1800069988 instance=ExtResource("6_5l7gl")]
+position = Vector2(960, 435.76978)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74514" type="StaticBody2D" parent="Pegs/Arcs" unique_id=161968601 instance=ExtResource("6_5l7gl")]
+position = Vector2(1050, 450.3356)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74515" type="StaticBody2D" parent="Pegs/Arcs" unique_id=382064351 instance=ExtResource("6_5l7gl")]
+position = Vector2(1140, 471.2962)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74516" type="StaticBody2D" parent="Pegs/Arcs" unique_id=433127258 instance=ExtResource("6_5l7gl")]
+position = Vector2(1230, 498.65155)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74517" type="StaticBody2D" parent="Pegs/Arcs" unique_id=821029381 instance=ExtResource("6_5l7gl")]
+position = Vector2(1320, 532.4017)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74518" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1906425353 instance=ExtResource("6_5l7gl")]
+position = Vector2(1411, 563.5466)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74523" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1395721712 instance=ExtResource("6_5l7gl")]
+position = Vector2(375, 570.09467)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74524" type="StaticBody2D" parent="Pegs/Arcs" unique_id=237427173 instance=ExtResource("6_5l7gl")]
+position = Vector2(465, 541.34424)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74525" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1067557832 instance=ExtResource("6_5l7gl")]
+position = Vector2(555, 519.4031)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74526" type="StaticBody2D" parent="Pegs/Arcs" unique_id=12947679 instance=ExtResource("6_5l7gl")]
+position = Vector2(645, 504.27127)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74527" type="StaticBody2D" parent="Pegs/Arcs" unique_id=687141642 instance=ExtResource("6_5l7gl")]
+position = Vector2(735, 495.94876)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74528" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1086329102 instance=ExtResource("6_5l7gl")]
+position = Vector2(825, 494.43558)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74529" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1159733819 instance=ExtResource("6_5l7gl")]
+position = Vector2(915, 499.73172)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74530" type="StaticBody2D" parent="Pegs/Arcs" unique_id=937725086 instance=ExtResource("6_5l7gl")]
+position = Vector2(1005, 511.83716)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74531" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1032699337 instance=ExtResource("6_5l7gl")]
+position = Vector2(1095, 530.75195)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74532" type="StaticBody2D" parent="Pegs/Arcs" unique_id=899261 instance=ExtResource("6_5l7gl")]
+position = Vector2(1185, 556.476)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74536" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1030863390 instance=ExtResource("6_5l7gl")]
+position = Vector2(60, 813.672)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74543" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1497164369 instance=ExtResource("6_5l7gl")]
+position = Vector2(690, 567.7526)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74544" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1577395618 instance=ExtResource("6_5l7gl")]
+position = Vector2(780, 562.5107)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74545" type="StaticBody2D" parent="Pegs/Arcs" unique_id=307089629 instance=ExtResource("6_5l7gl")]
+position = Vector2(870, 565.5268)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74546" type="StaticBody2D" parent="Pegs/Arcs" unique_id=1383286826 instance=ExtResource("6_5l7gl")]
+position = Vector2(960, 569.801)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="@StaticBody2D@74552" type="StaticBody2D" parent="Pegs/Arcs" unique_id=2037529701 instance=ExtResource("6_5l7gl")]
+position = Vector2(1500, 787.86554)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+script = ExtResource("7_3wmbg")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="Text" type="Node2D" parent="Pegs" unique_id=1643074440]
+
+[node name="_StaticBody2D_74536" parent="Pegs/Text" unique_id=2082389706 instance=ExtResource("6_5l7gl")]
+position = Vector2(69, 625)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74537" parent="Pegs/Text" unique_id=1868030476 instance=ExtResource("6_5l7gl")]
+position = Vector2(68, 742)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74538" parent="Pegs/Text" unique_id=675961415 instance=ExtResource("6_5l7gl")]
+position = Vector2(124, 680)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74539" parent="Pegs/Text" unique_id=1252658871 instance=ExtResource("6_5l7gl")]
+position = Vector2(182, 624)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74540" parent="Pegs/Text" unique_id=1790923486 instance=ExtResource("6_5l7gl")]
+position = Vector2(183, 743)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74541" parent="Pegs/Text" unique_id=1299607144 instance=ExtResource("6_5l7gl")]
+position = Vector2(259, 706)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74542" parent="Pegs/Text" unique_id=2112330896 instance=ExtResource("6_5l7gl")]
+position = Vector2(351, 707)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74543" parent="Pegs/Text" unique_id=1881991207 instance=ExtResource("6_5l7gl")]
+position = Vector2(306, 615)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74544" parent="Pegs/Text" unique_id=169447429 instance=ExtResource("6_5l7gl")]
+position = Vector2(428, 617)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74545" parent="Pegs/Text" unique_id=455916285 instance=ExtResource("6_5l7gl")]
+position = Vector2(427, 746)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74546" parent="Pegs/Text" unique_id=20165954 instance=ExtResource("6_5l7gl")]
+position = Vector2(504, 680)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74547" parent="Pegs/Text" unique_id=499980305 instance=ExtResource("6_5l7gl")]
+position = Vector2(584, 618)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74548" parent="Pegs/Text" unique_id=1940133552 instance=ExtResource("6_5l7gl")]
+position = Vector2(659, 681)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74550" parent="Pegs/Text" unique_id=1818710334 instance=ExtResource("6_5l7gl")]
+position = Vector2(726, 619)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74551" parent="Pegs/Text" unique_id=1622253790 instance=ExtResource("6_5l7gl")]
+position = Vector2(829, 618)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74552" parent="Pegs/Text" unique_id=821700334 instance=ExtResource("6_5l7gl")]
+position = Vector2(777, 748)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74553" parent="Pegs/Text" unique_id=455432109 instance=ExtResource("6_5l7gl")]
+position = Vector2(958, 619)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74554" parent="Pegs/Text" unique_id=1452049051 instance=ExtResource("6_5l7gl")]
+position = Vector2(957, 747)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74555" parent="Pegs/Text" unique_id=1787210379 instance=ExtResource("6_5l7gl")]
+position = Vector2(1057, 729)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74556" parent="Pegs/Text" unique_id=1466489303 instance=ExtResource("6_5l7gl")]
+position = Vector2(1061, 639)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74557" parent="Pegs/Text" unique_id=2033912278 instance=ExtResource("6_5l7gl")]
+position = Vector2(1189, 616)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74558" parent="Pegs/Text" unique_id=645993048 instance=ExtResource("6_5l7gl")]
+position = Vector2(1125, 748)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74559" parent="Pegs/Text" unique_id=2019647460 instance=ExtResource("6_5l7gl")]
+position = Vector2(1250, 748)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74560" parent="Pegs/Text" unique_id=52844812 instance=ExtResource("6_5l7gl")]
+position = Vector2(1190, 707)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74561" parent="Pegs/Text" unique_id=140040621 instance=ExtResource("6_5l7gl")]
+position = Vector2(1296, 618)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74562" parent="Pegs/Text" unique_id=1340552777 instance=ExtResource("6_5l7gl")]
+position = Vector2(1398, 618)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74563" parent="Pegs/Text" unique_id=1117193896 instance=ExtResource("6_5l7gl")]
+position = Vector2(1347, 747)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74564" parent="Pegs/Text" unique_id=1567896004 instance=ExtResource("6_5l7gl")]
+position = Vector2(1456, 749)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74565" parent="Pegs/Text" unique_id=68008354 instance=ExtResource("6_5l7gl")]
+position = Vector2(1534, 718)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74566" parent="Pegs/Text" unique_id=876055512 instance=ExtResource("6_5l7gl")]
+position = Vector2(1451, 644)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74567" parent="Pegs/Text" unique_id=378272477 instance=ExtResource("6_5l7gl")]
+position = Vector2(1525, 617)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)
+
+[node name="_StaticBody2D_74549" parent="Pegs/Text" unique_id=338798396 instance=ExtResource("6_5l7gl")]
+position = Vector2(584, 747)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+colour = Color(0.88235295, 0, 0.7882353, 1)

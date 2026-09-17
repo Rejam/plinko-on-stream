@@ -122,468 +122,468 @@ physics_material_override = SubResource("PhysicsMaterial_t6rx7")
 
 [node name="Peg" parent="Pegs/Text" index="0" unique_id=1743175407 instance=ExtResource("4_a7t6s")]
 position = Vector2(288, 407)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg2" parent="Pegs/Text" index="1" unique_id=2010711113 instance=ExtResource("4_a7t6s")]
 position = Vector2(347, 407)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg3" parent="Pegs/Text" index="2" unique_id=848395673 instance=ExtResource("4_a7t6s")]
 position = Vector2(406, 407)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg8" parent="Pegs/Text" index="3" unique_id=356580711 instance=ExtResource("4_a7t6s")]
 position = Vector2(522, 407)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg9" parent="Pegs/Text" index="4" unique_id=2054205502 instance=ExtResource("4_a7t6s")]
 position = Vector2(465, 459)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg10" parent="Pegs/Text" index="5" unique_id=2025772683 instance=ExtResource("4_a7t6s")]
 position = Vector2(582, 459)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg16" parent="Pegs/Text" index="6" unique_id=669706597 instance=ExtResource("4_a7t6s")]
 position = Vector2(639, 408)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg17" parent="Pegs/Text" index="7" unique_id=274914630 instance=ExtResource("4_a7t6s")]
 position = Vector2(639, 458)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg18" parent="Pegs/Text" index="8" unique_id=184208529 instance=ExtResource("4_a7t6s")]
 position = Vector2(640, 509)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg19" parent="Pegs/Text" index="9" unique_id=1045952397 instance=ExtResource("4_a7t6s")]
 position = Vector2(639, 561)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg20" parent="Pegs/Text" index="10" unique_id=1685430668 instance=ExtResource("4_a7t6s")]
 position = Vector2(697, 484)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg21" parent="Pegs/Text" index="11" unique_id=1420383265 instance=ExtResource("4_a7t6s")]
 position = Vector2(756, 407)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg22" parent="Pegs/Text" index="12" unique_id=694046015 instance=ExtResource("4_a7t6s")]
 position = Vector2(757, 459)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg23" parent="Pegs/Text" index="13" unique_id=296174347 instance=ExtResource("4_a7t6s")]
 position = Vector2(756, 511)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg24" parent="Pegs/Text" index="14" unique_id=376710275 instance=ExtResource("4_a7t6s")]
 position = Vector2(756, 560)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg25" parent="Pegs/Text" index="15" unique_id=1629511238 instance=ExtResource("4_a7t6s")]
 position = Vector2(845, 408)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg26" parent="Pegs/Text" index="16" unique_id=2016593458 instance=ExtResource("4_a7t6s")]
 position = Vector2(903, 407.99997)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg27" parent="Pegs/Text" index="17" unique_id=1829033178 instance=ExtResource("4_a7t6s")]
 position = Vector2(873, 461)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg28" parent="Pegs/Text" index="18" unique_id=232557696 instance=ExtResource("4_a7t6s")]
 position = Vector2(874.00006, 510.00006)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg29" parent="Pegs/Text" index="19" unique_id=86192898 instance=ExtResource("4_a7t6s")]
 position = Vector2(844.00006, 561)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg30" parent="Pegs/Text" index="20" unique_id=430489828 instance=ExtResource("4_a7t6s")]
 position = Vector2(904, 561)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg31" parent="Pegs/Text" index="21" unique_id=435840048 instance=ExtResource("4_a7t6s")]
 position = Vector2(989.9999, 407.00003)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg32" parent="Pegs/Text" index="22" unique_id=1230622698 instance=ExtResource("4_a7t6s")]
 position = Vector2(991, 458.00006)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg33" parent="Pegs/Text" index="23" unique_id=1401918974 instance=ExtResource("4_a7t6s")]
 position = Vector2(991.00006, 510.00003)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg34" parent="Pegs/Text" index="24" unique_id=453590748 instance=ExtResource("4_a7t6s")]
 position = Vector2(991.00006, 561)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg81" parent="Pegs/Text" index="25" unique_id=359208481 instance=ExtResource("4_a7t6s")]
 position = Vector2(991, 611)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg82" parent="Pegs/Text" index="26" unique_id=501476624 instance=ExtResource("4_a7t6s")]
 position = Vector2(992.0001, 662)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg83" parent="Pegs/Text" index="27" unique_id=1644108998 instance=ExtResource("4_a7t6s")]
 position = Vector2(992.0002, 714)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg89" parent="Pegs/Text" index="28" unique_id=1155043947 instance=ExtResource("4_a7t6s")]
 position = Vector2(1051, 687.9999)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg84" parent="Pegs/Text" index="29" unique_id=1348209980 instance=ExtResource("4_a7t6s")]
 position = Vector2(992.0002, 765)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg85" parent="Pegs/Text" index="30" unique_id=84022114 instance=ExtResource("4_a7t6s")]
 position = Vector2(1108, 610.99994)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg86" parent="Pegs/Text" index="31" unique_id=980939647 instance=ExtResource("4_a7t6s")]
 position = Vector2(1108.0001, 662)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg87" parent="Pegs/Text" index="32" unique_id=475477001 instance=ExtResource("4_a7t6s")]
 position = Vector2(1109.0002, 714)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg88" parent="Pegs/Text" index="33" unique_id=965494762 instance=ExtResource("4_a7t6s")]
 position = Vector2(1109.0002, 765)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg90" parent="Pegs/Text" index="34" unique_id=168723024 instance=ExtResource("4_a7t6s")]
 position = Vector2(1167, 611)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg91" parent="Pegs/Text" index="35" unique_id=1251309779 instance=ExtResource("4_a7t6s")]
 position = Vector2(1167.0001, 662.00006)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg92" parent="Pegs/Text" index="36" unique_id=26254547 instance=ExtResource("4_a7t6s")]
 position = Vector2(1168.0002, 714.00006)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg93" parent="Pegs/Text" index="37" unique_id=1164937821 instance=ExtResource("4_a7t6s")]
 position = Vector2(1168.0002, 765.00006)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg35" parent="Pegs/Text" index="38" unique_id=980794392 instance=ExtResource("4_a7t6s")]
 position = Vector2(1049, 561)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg36" parent="Pegs/Text" index="39" unique_id=999449104 instance=ExtResource("4_a7t6s")]
 position = Vector2(1108, 561)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg94" parent="Pegs/Text" index="40" unique_id=156278205 instance=ExtResource("4_a7t6s")]
 position = Vector2(1226, 612)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg95" parent="Pegs/Text" index="41" unique_id=525123913 instance=ExtResource("4_a7t6s")]
 position = Vector2(1285, 612)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg99" parent="Pegs/Text" index="42" unique_id=2038476647 instance=ExtResource("4_a7t6s")]
 position = Vector2(1401, 612.00006)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg105" parent="Pegs/Text" index="43" unique_id=1639913154 instance=ExtResource("4_a7t6s")]
 position = Vector2(1344, 638.00006)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg100" parent="Pegs/Text" index="44" unique_id=1781895405 instance=ExtResource("4_a7t6s")]
 position = Vector2(1461.0001, 637)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg101" parent="Pegs/Text" index="45" unique_id=1714604522 instance=ExtResource("4_a7t6s")]
 position = Vector2(1372, 688)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg102" parent="Pegs/Text" index="46" unique_id=1006294323 instance=ExtResource("4_a7t6s")]
 position = Vector2(1431, 688)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg103" parent="Pegs/Text" index="47" unique_id=1202918402 instance=ExtResource("4_a7t6s")]
 position = Vector2(1402, 764.0001)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg106" parent="Pegs/Text" index="48" unique_id=532791326 instance=ExtResource("4_a7t6s")]
 position = Vector2(1343, 739.0001)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg104" parent="Pegs/Text" index="49" unique_id=613157823 instance=ExtResource("4_a7t6s")]
 position = Vector2(1461.0001, 738.9999)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg98" parent="Pegs/Text" index="50" unique_id=1114914777 instance=ExtResource("4_a7t6s")]
 position = Vector2(1226, 689)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg96" parent="Pegs/Text" index="51" unique_id=1890964814 instance=ExtResource("4_a7t6s")]
 position = Vector2(1226, 765)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg97" parent="Pegs/Text" index="52" unique_id=194794117 instance=ExtResource("4_a7t6s")]
 position = Vector2(1285, 765)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg37" parent="Pegs/Text" index="53" unique_id=1337923418 instance=ExtResource("4_a7t6s")]
 position = Vector2(1167, 407)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg38" parent="Pegs/Text" index="54" unique_id=795026472 instance=ExtResource("4_a7t6s")]
 position = Vector2(1284, 407.00003)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg39" parent="Pegs/Text" index="55" unique_id=409130363 instance=ExtResource("4_a7t6s")]
 position = Vector2(1256, 458.00006)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg40" parent="Pegs/Text" index="56" unique_id=803423171 instance=ExtResource("4_a7t6s")]
 position = Vector2(1197, 458.00003)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg41" parent="Pegs/Text" index="57" unique_id=340768336 instance=ExtResource("4_a7t6s")]
 position = Vector2(1225, 510)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg42" parent="Pegs/Text" index="58" unique_id=1354480777 instance=ExtResource("4_a7t6s")]
 position = Vector2(1226, 560.99994)
 rotation = 1.1198021
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg11" parent="Pegs/Text" index="59" unique_id=1322668348 instance=ExtResource("4_a7t6s")]
 position = Vector2(581, 510)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg12" parent="Pegs/Text" index="60" unique_id=852765793 instance=ExtResource("4_a7t6s")]
 position = Vector2(581, 560)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg13" parent="Pegs/Text" index="61" unique_id=1065001959 instance=ExtResource("4_a7t6s")]
 position = Vector2(464, 510)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg14" parent="Pegs/Text" index="62" unique_id=1292902158 instance=ExtResource("4_a7t6s")]
 position = Vector2(464.99997, 560)
 rotation = 1.4958768
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg15" parent="Pegs/Text" index="63" unique_id=498033297 instance=ExtResource("4_a7t6s")]
 position = Vector2(524, 510)
 rotation = 1.4958768
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg4" parent="Pegs/Text" index="64" unique_id=157066324 instance=ExtResource("4_a7t6s")]
 position = Vector2(287, 459)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg5" parent="Pegs/Text" index="65" unique_id=1406761503 instance=ExtResource("4_a7t6s")]
 position = Vector2(287, 510)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg6" parent="Pegs/Text" index="66" unique_id=900890802 instance=ExtResource("4_a7t6s")]
 position = Vector2(288, 560)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg7" parent="Pegs/Text" index="67" unique_id=469311791 instance=ExtResource("4_a7t6s")]
 position = Vector2(347, 484)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg43" parent="Pegs/Text" index="68" unique_id=1273218464 instance=ExtResource("4_a7t6s")]
 position = Vector2(112, 611)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg44" parent="Pegs/Text" index="69" unique_id=1338212065 instance=ExtResource("4_a7t6s")]
 position = Vector2(171, 611)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg45" parent="Pegs/Text" index="70" unique_id=733962941 instance=ExtResource("4_a7t6s")]
 position = Vector2(230, 611)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg46" parent="Pegs/Text" index="71" unique_id=2084719744 instance=ExtResource("4_a7t6s")]
 position = Vector2(111, 663)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg47" parent="Pegs/Text" index="72" unique_id=1998187460 instance=ExtResource("4_a7t6s")]
 position = Vector2(111, 714)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg48" parent="Pegs/Text" index="73" unique_id=568389231 instance=ExtResource("4_a7t6s")]
 position = Vector2(112, 764)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg49" parent="Pegs/Text" index="74" unique_id=442373432 instance=ExtResource("4_a7t6s")]
 position = Vector2(171, 688)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg50" parent="Pegs/Text" index="75" unique_id=1702387688 instance=ExtResource("4_a7t6s")]
 position = Vector2(464, 612)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg51" parent="Pegs/Text" index="76" unique_id=1398491095 instance=ExtResource("4_a7t6s")]
 position = Vector2(523, 612)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg52" parent="Pegs/Text" index="77" unique_id=1779440532 instance=ExtResource("4_a7t6s")]
 position = Vector2(582, 637)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg64" parent="Pegs/Text" index="78" unique_id=1965019293 instance=ExtResource("4_a7t6s")]
 position = Vector2(581, 764)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg53" parent="Pegs/Text" index="79" unique_id=357234908 instance=ExtResource("4_a7t6s")]
 position = Vector2(464, 663)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg54" parent="Pegs/Text" index="80" unique_id=1288287371 instance=ExtResource("4_a7t6s")]
 position = Vector2(464, 714)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg55" parent="Pegs/Text" index="81" unique_id=209419982 instance=ExtResource("4_a7t6s")]
 position = Vector2(464, 765)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg56" parent="Pegs/Text" index="82" unique_id=1807129846 instance=ExtResource("4_a7t6s")]
 position = Vector2(524, 713)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg57" parent="Pegs/Text" index="83" unique_id=1964983716 instance=ExtResource("4_a7t6s")]
 position = Vector2(641, 611)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg58" parent="Pegs/Text" index="84" unique_id=1969836682 instance=ExtResource("4_a7t6s")]
 position = Vector2(700, 611)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg59" parent="Pegs/Text" index="85" unique_id=1885798305 instance=ExtResource("4_a7t6s")]
 position = Vector2(759, 611)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg60" parent="Pegs/Text" index="86" unique_id=147801899 instance=ExtResource("4_a7t6s")]
 position = Vector2(815, 611)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg61" parent="Pegs/Text" index="87" unique_id=1918905873 instance=ExtResource("4_a7t6s")]
 position = Vector2(699, 714)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg62" parent="Pegs/Text" index="88" unique_id=978621524 instance=ExtResource("4_a7t6s")]
 position = Vector2(700, 764)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg63" parent="Pegs/Text" index="89" unique_id=1242975674 instance=ExtResource("4_a7t6s")]
 position = Vector2(699, 663)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg75" parent="Pegs/Text" index="90" unique_id=1690496318 instance=ExtResource("4_a7t6s")]
 position = Vector2(933, 612)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg76" parent="Pegs/Text" index="91" unique_id=2087684511 instance=ExtResource("4_a7t6s")]
 position = Vector2(933, 714)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg77" parent="Pegs/Text" index="92" unique_id=1942873275 instance=ExtResource("4_a7t6s")]
 position = Vector2(933, 663)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg78" parent="Pegs/Text" index="93" unique_id=1211314416 instance=ExtResource("4_a7t6s")]
 position = Vector2(815, 714)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg80" parent="Pegs/Text" index="94" unique_id=643282126 instance=ExtResource("4_a7t6s")]
 position = Vector2(874, 764)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg79" parent="Pegs/Text" index="95" unique_id=974131294 instance=ExtResource("4_a7t6s")]
 position = Vector2(815, 663)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg74" parent="Pegs/Text" index="96" unique_id=605471442 instance=ExtResource("4_a7t6s")]
 position = Vector2(319, 765)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg66" parent="Pegs/Text" index="97" unique_id=1680734807 instance=ExtResource("4_a7t6s")]
 position = Vector2(375, 610)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg67" parent="Pegs/Text" index="98" unique_id=857979483 instance=ExtResource("4_a7t6s")]
 position = Vector2(318, 611)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg68" parent="Pegs/Text" index="99" unique_id=1522029067 instance=ExtResource("4_a7t6s")]
 position = Vector2(289, 663)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg69" parent="Pegs/Text" index="100" unique_id=1756907209 instance=ExtResource("4_a7t6s")]
 position = Vector2(289, 713)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg71" parent="Pegs/Text" index="101" unique_id=105170178 instance=ExtResource("4_a7t6s")]
 position = Vector2(406, 663)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg73" parent="Pegs/Text" index="102" unique_id=1661180991 instance=ExtResource("4_a7t6s")]
 position = Vector2(376, 765)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="Peg70" parent="Pegs/Text" index="103" unique_id=1467645458 instance=ExtResource("4_a7t6s")]
 position = Vector2(406, 715)
-colour = Color(0.9647059, 0.6156863, 0, 1)
+colour = Color(0.7632296, 0.66419387, 0, 1)
 
 [node name="White" type="Node2D" parent="Pegs" parent_id_path=PackedInt32Array(210672860) index="2" unique_id=150777371]
 

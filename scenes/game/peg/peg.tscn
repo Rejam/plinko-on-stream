@@ -26,7 +26,6 @@ collision_layer = 4
 collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 script = ExtResource("1_5r5fp")
-colour = Color(0, 0, 0, 1)
 
 [node name="PegCollision" type="CollisionShape2D" parent="." unique_id=540054425]
 shape = SubResource("CircleShape2D_hiwug")
