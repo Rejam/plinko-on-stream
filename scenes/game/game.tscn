@@ -257,6 +257,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 max_lines_visible = 1
 
+[node name="HitsLabel" type="Label" parent="UI/CurrentBallRow" unique_id=973701698]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+vertical_alignment = 1
+
 [node name="BoardMarker" type="Node2D" parent="." unique_id=797090416]
 unique_name_in_owner = true
 position = Vector2(0, 80)

@@ -1,16 +1,9 @@
 class_name Board extends Node2D
 
-## Expected children (authored per board in the editor, like pegs):
-##   DropPositions/ — one DropMarker per column, left to right
-##   Buckets/      — Bucket scenes with base_value set per instance
-##   Pegs/, Walls/ — visual/physical content, opaque to this script
-
 signal ball_scored(ball: Ball, base_value: int)
 
 @export var ball_gravity_scale := 1.0
 
-## Held balls sit this far above the board's top edge so they drop into view
-## rather than appearing on top of a drop marker. Negative is above the board.
 @export var ball_spawn_y := -60.0
 
 const BALL_SCENE = preload("uid://cthrtlsbusy3")
@@ -46,6 +39,7 @@ func drop_position(column: int) -> Vector2:
 ## the ball from here: releasing (freeze = false), redropping,
 ## freeing. The board never frees a ball.
 func spawn_held_ball(column: int) -> Ball:
+	_set_active_column(column)
 	var ball: Ball = BALL_SCENE.instantiate()
 	ball.position = Vector2(drop_position(column).x, ball_spawn_y)
 	ball.gravity_scale = ball_gravity_scale
@@ -53,5 +47,15 @@ func spawn_held_ball(column: int) -> Ball:
 	add_child(ball)
 	return ball
 	
+## Indexes DropPositions by child order, the same lookup drop_position uses, so
+## the lit marker cannot be a different column from the one the ball spawns in.
+## Keying off DropMarker.column would let one mistyped export light up in the
+## wrong place while the drop still went where it should.
+func _set_active_column(column: int) -> void:
+	for index in _drop_positions.get_child_count():
+		var marker := _drop_positions.get_child(index) as DropMarker
+		if marker:
+			marker.active = index == column - 1
+
 func _on_bucket_ball_entered(ball: Ball, base_value: int) -> void:
 	ball_scored.emit(ball, base_value)

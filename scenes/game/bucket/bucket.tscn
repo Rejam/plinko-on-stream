@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cfbgav4kugxhn" path="res://scenes/game/bucket/bucket.gd" id="1_wprqg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wprqg"]
-size = Vector2(128, 80)
+size = Vector2(108, 70)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_auo3e"]
 size = Vector2(1, 80)
@@ -22,6 +22,7 @@ width = 128
 
 [node name="BucketCollision" type="CollisionShape2D" parent="." unique_id=1519126293]
 unique_name_in_owner = true
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_wprqg")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1579341855]

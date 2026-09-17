@@ -16,6 +16,7 @@ extends Node2D
 @onready var entrants_waiting_list: ItemList = %EntrantsWaitingList
 @onready var redrop_button: Button = %RedropButton
 @onready var current_ball_label: Label = %CurrentBallLabel
+@onready var hits_label: Label = %HitsLabel
 @onready var current_ball_icon: TextureRect = %BallIcon
 @onready var multiplier_label: Label = %MultiplierLabel
 @onready var standings_list: ItemList = %StandingsList
@@ -67,15 +68,19 @@ func _on_ball_scored(ball: Ball, base_value: int) -> void:
 
 ## Polled rather than driven by a signal per contact: hits arrive several times
 ## a second during a drop, and the label only needs to be right once per frame.
+##
+## Writes HitsLabel, never CurrentBallLabel. The count used to be appended to the
+## name, and since CurrentBallRow centres its contents, every new digit re-centred
+## the group and slid the name and ball icon sideways mid-drop. HitsLabel has a
+## fixed minimum width, so the digits grow inside a box that never changes size.
 func _process(_delta: float) -> void:
 	if session_manager.game_state != SessionManager.GameState.DROPPING:
 		return
 	if not is_instance_valid(current_ball):
 		return
-	var entry := session_manager.current_entry
-	if entry == null:
+	if session_manager.current_entry == null:
 		return
-	current_ball_label.text = "%s is up · %d" % [entry.player.display_name, current_ball.peg_hits]
+	hits_label.text = "· %d" % current_ball.peg_hits
 
 func _on_state_changed(game_state: SessionManager.GameState) -> void:
 	var session_over := game_state == SessionManager.GameState.SESSION_OVER
@@ -98,8 +103,12 @@ func _update_current_ball_label(game_state: SessionManager.GameState) -> void:
 	current_ball_icon.visible = showing
 	if not showing:
 		current_ball_label.text = ""
+		hits_label.text = ""
 		return
 	current_ball_label.text = "%s is up" % entry.player.display_name
+	# Shown from PRE_DROP so the count does not appear out of nowhere on release.
+	# The row's width is then identical from request through to resolve.
+	hits_label.text = "· 0"
 	current_ball_icon.texture = BallArt.texture_for(entry.player.user_id)
 
 func _on_entrants_changed(entrants: Array[Entry]) -> void:

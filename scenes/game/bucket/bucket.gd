@@ -68,7 +68,7 @@ func _set_bucket_collision_area(size: Vector2) -> void:
 func _resize_rect(size: Vector2) -> void:
 	_rect.size = size
 	_rect.position = -size / 2.0
-	_rect.color = Color(background_colour, 0.8)
+	_rect.color = Color(background_colour)
 	
 func _resize_label(size: Vector2) -> void:
 	_label.size = size
