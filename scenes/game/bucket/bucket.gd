@@ -1,12 +1,23 @@
 @tool
 class_name Bucket extends Area2D
 
-## Detects a ball and reports its base value. Nothing else —
-## it does not free the ball and never sees the multiplier.
+## Detects a ball and reports its base value. Nothing else — it does not free
+## the ball. The multiplier is display only: the label shows what the bucket
+## pays this round, but the emitted value stays base, and SessionManager applies
+## the multiplier to the score.
 
 signal ball_entered(ball: Ball, base_value: int)
 
 const HEIGHT := 80.0
+## Scoring area inset from the walls and rim. Must stay below the ball radius or
+## a ball resting against a wall would not reach the area.
+const SCORE_INSET := 10.0
+
+## Set by the board at runtime, so the label matches the round's payout.
+var multiplier := 1:
+	set(value):
+		multiplier = value
+		_refresh()
 
 @export_range(-20, 100, 5, "prefer_slider") var base_value := 10:
 	set(value):
@@ -46,11 +57,13 @@ func _refresh() -> void:
 	_resize_label(size)
 	_position_walls(size)
 
+## Inset from walls and rim so a ball resting against a divider cannot overlap
+## the neighbour's area by solver slop.
 func _set_bucket_collision_area(size: Vector2) -> void:
 	var shape := RectangleShape2D.new()
-	shape.size = size
+	shape.size = Vector2(size.x - 2.0 * SCORE_INSET, size.y - SCORE_INSET)
 	_bucket_collision.shape = shape
-	_bucket_collision.position = Vector2.ZERO
+	_bucket_collision.position = Vector2(0, SCORE_INSET / 2.0)
 
 func _resize_rect(size: Vector2) -> void:
 	_rect.size = size
@@ -61,7 +74,7 @@ func _resize_label(size: Vector2) -> void:
 	_label.size = size
 	_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_label.text = str(base_value)	
+	_label.text = str(base_value * multiplier)
 
 func _position_walls(size: Vector2) -> void:
 	_left_wall_collision.shape = _new_wall_shape(Vector2(1.0, size.y))

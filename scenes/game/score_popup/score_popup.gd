@@ -8,7 +8,7 @@ class_name ScorePopup extends CanvasLayer
 ## a CanvasLayer is not a CanvasItem and has neither property.
 
 const RISE_TIME := 0.25
-const HOLD_TIME := 2.5
+const HOLD_TIME := 3.5
 const FADE_TIME := 0.5
 const START_SCALE := 0.7
 
@@ -27,9 +27,11 @@ func _ready() -> void:
 	_dim.modulate.a = 0.0
 
 
-func show_drop(player: Player, points: int, centre: Vector2) -> void:
+## points is SessionManager's total, not re-added here, so the popup cannot
+## disagree with the standings if the formula changes.
+func show_drop(player: Player, bucket_points: int, peg_hits: int, points: int, centre: Vector2) -> void:
 	_name_label.text = player.display_name
-	_score_label.text = "+%d" % points
+	_score_label.text = "%d + %d = %d" % [bucket_points, peg_hits, points]
 	_ball_icon.texture = BallArt.texture_for(player.user_id)
 
 	if _tween and _tween.is_valid():

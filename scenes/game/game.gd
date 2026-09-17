@@ -46,7 +46,7 @@ func _ready() -> void:
 
 func _on_round_started(current_round: int, total_rounds: int, multiplier: int) -> void:
 	multiplier_label.text = "Round %d/%d · %dx" % [current_round, total_rounds, multiplier]
-	board_marker.swap_to.call_deferred(current_round)
+	board_marker.swap_to.call_deferred(current_round, multiplier)
 
 func _on_ball_requested(entry: Entry) -> void:
 	if is_instance_valid(current_ball):
@@ -113,8 +113,9 @@ func _on_entry_received(player: Player, raw_column: String) -> void:
 	if column == BoardMarker.NO_COLUMN: return
 	session_manager.register_entrant(player, column)
 
-func _on_drop_resolved(player: Player, _base_value: int, _multiplier: int, _peg_hits: int, points: int) -> void:
-	score_popup.show_drop(player, points, board_marker.global_position + board_size * 0.5)
+func _on_drop_resolved(player: Player, base_value: int, multiplier: int, peg_hits: int, points: int) -> void:
+	score_popup.show_drop(player, base_value * multiplier, peg_hits, points,
+		board_marker.global_position + board_size * 0.5)
 
 func _on_standings_updated(standings: Array[Standing]) -> void:
 	standings_list.clear()

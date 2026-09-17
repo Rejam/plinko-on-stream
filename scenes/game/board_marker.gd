@@ -10,13 +10,14 @@ var _board: Board = null
 func setup(boards: Array[PackedScene]) -> void:
 	_boards = boards
 
-func swap_to(round_number: int) -> void:
+func swap_to(round_number: int, multiplier: int) -> void:
 	_clear()
 	if _boards.is_empty():
 		push_error("No boards have been added")
 		return
 	_board = _boards[(round_number - 1) % _boards.size()].instantiate()
 	add_child(_board)
+	_board.set_multiplier(multiplier)
 	_board.ball_scored.connect(ball_scored.emit)
 
 func spawn_held_ball(column: int) -> Ball:

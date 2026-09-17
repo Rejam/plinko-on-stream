@@ -25,7 +25,12 @@ func _ready() -> void:
 		push_error("%s has no buckets" % scene_file_path)
 	for bucket: Bucket in _buckets.get_children():
 		bucket.ball_entered.connect(_on_bucket_ball_entered)
-		
+
+## Buckets display base × multiplier. Scoring is unaffected; see Bucket.
+func set_multiplier(multiplier: int) -> void:
+	for bucket: Bucket in _buckets.get_children():
+		bucket.multiplier = multiplier
+
 ## Columns are 1-indexed to match the on-screen labels and the chat
 ## command (!plinko 1-7). Clamping bad input is the round manager's job.
 ## The board only answers what exists.
