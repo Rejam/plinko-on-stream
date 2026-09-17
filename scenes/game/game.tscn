@@ -5,16 +5,18 @@
 [ext_resource type="PackedScene" uid="uid://b6b08g1mpuopp" path="res://scenes/game/boards/board_family_fortunes.tscn" id="2_ftsea"]
 [ext_resource type="PackedScene" uid="uid://dp33x5bhhwo7d" path="res://scenes/game/boards/board_dolphins.tscn" id="3_87uf6"]
 [ext_resource type="Texture2D" uid="uid://cedacrybofmmn" path="res://assets/UIpackSheet_transparent.png" id="4_87uf6"]
+[ext_resource type="PackedScene" uid="uid://dnqvpfssyncg" path="res://scenes/game/boards/idiot_sandwich.tscn" id="5_3xj4h"]
 [ext_resource type="PackedScene" uid="uid://b8t3bxfwvtd7m" path="res://scenes/debug/debug.tscn" id="5_4j704"]
 [ext_resource type="Theme" uid="uid://qpugxn881apx" path="res://hud_theme.tres" id="6_2a8rs"]
 [ext_resource type="Script" uid="uid://dw3rutslo8pit" path="res://scenes/game/board_marker.gd" id="6_4j704"]
 [ext_resource type="PackedScene" uid="uid://bhqi5hdr2opg4" path="res://scenes/game/twitch_status/twitch_status.tscn" id="6_5jirj"]
+[ext_resource type="PackedScene" uid="uid://c1alu8nw8v3ax" path="res://scenes/game/boards/happy_days.tscn" id="6_5v6r0"]
 [ext_resource type="Script" uid="uid://70oms4n25mxt" path="res://scenes/game/ticker/ticker_scroll.gd" id="6_vaxfo"]
 [ext_resource type="PackedScene" uid="uid://bkhuo30b08vdf" path="res://scenes/game/session_manager/session_manager.tscn" id="7_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://dfpnxfomie3s4" path="res://scenes/game/phase_panel/round_over_layer.tscn" id="9_kp23o"]
 [ext_resource type="PackedScene" uid="uid://c7wodg5g357dt" path="res://scenes/game/phase_panel/session_over_layer.tscn" id="10_5jirj"]
 [ext_resource type="PackedScene" path="res://scenes/game/quit_confirm/quit_confirm_layer.tscn" id="11_kp23o"]
-[ext_resource type="PackedScene" path="res://scenes/game/score_popup/score_popup.tscn" id="14_otnwt"]
+[ext_resource type="PackedScene" uid="uid://c4upnk75lh3uv" path="res://scenes/game/score_popup/score_popup.tscn" id="14_otnwt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bpukv"]
 atlas = ExtResource("4_87uf6")
@@ -33,7 +35,7 @@ corner_radius_bottom_left = 6
 
 [node name="Game" type="Node2D" unique_id=2047480295]
 script = ExtResource("1_5i0tg")
-boards = Array[PackedScene]([ExtResource("2_ftsea"), ExtResource("2_bdhmt"), ExtResource("3_87uf6")])
+boards = Array[PackedScene]([ExtResource("2_ftsea"), ExtResource("2_bdhmt"), ExtResource("3_87uf6"), ExtResource("5_3xj4h"), ExtResource("6_5v6r0")])
 
 [node name="Background" type="TextureRect" parent="." unique_id=324974537]
 anchors_preset = 15
