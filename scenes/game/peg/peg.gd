@@ -31,6 +31,17 @@ var _tween: Tween
 const PULSE_PEAK := 2.5
 const PULSE_TIME := 0.2
 
+## Two rings, dark outside light inside, so a peg reads over any board photo
+## without the fill having to be the loud colour doing the work. They grow
+## INWARD from _radius: that is the contact edge, and a ball must not appear to
+## bounce off pixels the collider does not have. The inner ring only ever meets
+## the fill, which is authored, so only the outer ring has to survive the photo.
+## Constants, not exports — a per-peg width would let a board break the exact
+## legibility guarantee the rings exist to provide.
+const EDGE_WIDTH := 1.5
+const OUTLINE_DARK := Color(0, 0, 0, 1)
+const OUTLINE_LIGHT := Color(1, 1, 1, 1)
+
 
 
 func _ready() -> void:
@@ -41,7 +52,15 @@ func _ready() -> void:
 
 
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, _radius * _pulse, colour, true, -1.0, true)
+	## Filled circles, not stroked rings. An unfilled draw_circle straddles its
+	## width across the radius, which would put the visible edge half a stroke
+	## off the collider; each fill here also paints over the last, so there is
+	## no hairline seam where two antialiased strokes fail to meet.
+	var r := _radius * _pulse
+	var edge := EDGE_WIDTH * _pulse
+	draw_circle(Vector2.ZERO, r, OUTLINE_DARK, true, -1.0, true)
+	draw_circle(Vector2.ZERO, maxf(r - edge, 0.0), OUTLINE_LIGHT, true, -1.0, true)
+	draw_circle(Vector2.ZERO, maxf(r - edge * 2.0, 0.0), colour, true, -1.0, true)
 
 
 func hit() -> void:

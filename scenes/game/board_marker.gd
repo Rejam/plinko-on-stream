@@ -8,7 +8,8 @@ var _boards: Array[PackedScene] = []
 var _board: Board = null
 
 func setup(boards: Array[PackedScene]) -> void:
-	_boards = boards
+	_boards = boards.duplicate()
+	_boards.shuffle()
 
 func swap_to(round_number: int, multiplier: int) -> void:
 	_clear()
