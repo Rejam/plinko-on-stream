@@ -270,7 +270,6 @@ position = Vector2(0, 80)
 script = ExtResource("6_4j704")
 
 [node name="DebugMenu" parent="." unique_id=250459968 instance=ExtResource("5_4j704")]
-visible = false
 
 [node name="SessionManager" parent="." unique_id=916437948 instance=ExtResource("7_bdhmt")]
 unique_name_in_owner = true
