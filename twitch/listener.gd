@@ -1,6 +1,6 @@
 extends Node
 
-const CLIENT_ID := "vcke9lww8ciefo8bimxd2k795m2kr4"
+const CLIENT_ID := "4nycp3krnclb23fk6san5za367vezq"
 const REDIRECT_PORT := 3000
 const SCOPES := [
 	"chat:read",
