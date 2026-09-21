@@ -56,10 +56,15 @@ text = "Session Complete"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="StandingsList" type="ItemList" parent="Scrim/Card/ResultsContainer" unique_id=742000236]
+[node name="StandingsScroll" type="ScrollContainer" parent="Scrim/Card/ResultsContainer" unique_id=741290878]
 layout_mode = 2
 size_flags_vertical = 3
-fixed_icon_size = Vector2i(28, 28)
+horizontal_scroll_mode = 0
+
+[node name="StandingsList" type="VBoxContainer" parent="Scrim/Card/ResultsContainer/StandingsScroll" unique_id=2008972004]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="BackToTitleButton" type="Button" parent="Scrim/Card/ResultsContainer" unique_id=2129314092]
 layout_mode = 2

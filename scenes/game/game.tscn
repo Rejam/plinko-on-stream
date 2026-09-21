@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bhqi5hdr2opg4" path="res://scenes/game/twitch_status/twitch_status.tscn" id="6_5jirj"]
 [ext_resource type="PackedScene" uid="uid://c1alu8nw8v3ax" path="res://scenes/game/boards/happy_days.tscn" id="6_5v6r0"]
 [ext_resource type="PackedScene" uid="uid://bkhuo30b08vdf" path="res://scenes/game/session_manager/session_manager.tscn" id="7_bdhmt"]
+[ext_resource type="Script" uid="uid://cg6rw8igs22mw" path="res://scenes/game/player_row/player_list.gd" id="9_5v6r0"]
 [ext_resource type="PackedScene" uid="uid://dfpnxfomie3s4" path="res://scenes/game/phase_panel/round_over_layer.tscn" id="9_kp23o"]
 [ext_resource type="PackedScene" uid="uid://c7wodg5g357dt" path="res://scenes/game/phase_panel/session_over_layer.tscn" id="10_5jirj"]
 [ext_resource type="PackedScene" path="res://scenes/game/quit_confirm/quit_confirm_layer.tscn" id="11_kp23o"]
@@ -92,17 +93,40 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 theme = ExtResource("6_2a8rs")
 
-[node name="StandingsList" type="ItemList" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=867627058]
-unique_name_in_owner = true
+[node name="RoundScoresTitle" type="Label" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=1608726089]
 layout_mode = 2
-size_flags_vertical = 3
-fixed_icon_size = Vector2i(20, 20)
+theme_override_font_sizes/font_size = 20
+text = "Round scores"
 
-[node name="EntrantsWaitingList" type="ItemList" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=1820649433]
-unique_name_in_owner = true
+[node name="StandingsScroll" type="ScrollContainer" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=432678643]
 layout_mode = 2
 size_flags_vertical = 3
-fixed_icon_size = Vector2i(20, 20)
+horizontal_scroll_mode = 0
+
+[node name="StandingsList" type="VBoxContainer" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer/StandingsScroll" unique_id=1028249727]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+script = ExtResource("9_5v6r0")
+
+[node name="QueueTitle" type="Label" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=936684374]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Queue"
+
+[node name="EntrantsScroll" type="ScrollContainer" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=899794368]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="EntrantsWaitingList" type="VBoxContainer" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer/EntrantsScroll" unique_id=1992988748]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+script = ExtResource("9_5v6r0")
 
 [node name="EndRegistrationButton" type="Button" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=1130275608]
 unique_name_in_owner = true

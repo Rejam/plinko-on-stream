@@ -6,7 +6,7 @@ const BLOCK_SIZE := 5
 
 signal round_started(current_round: int, round_count: int, multiplier: int)
 signal state_changed(game_state: GameState)
-signal standings_updated(standings: Array[Standing])
+signal standings_updated
 signal ball_requested(entry: Entry)
 signal ball_released
 signal entrants_changed(entries: Array[Entry])
@@ -14,7 +14,6 @@ signal drop_resolved(player: Player, base_value: int, multiplier: int, peg_hits:
 
 var game_state: GameState = GameState.IDLE
 
-# Session-scoped. Never cleared while the session runs.
 var standings: Dictionary[String, Standing] = {}
 var round_count := 0
 var current_round := 0
@@ -63,6 +62,37 @@ func _by_standing(a: Standing, b: Standing) -> bool:
 		return a.seq < b.seq
 	return a.total > b.total
 
+func round_standings() -> Array[Standing]:
+	var rows: Array[Standing] = []
+	for standing: Standing in standings.values():
+		if standing.round_points.has(current_round):
+			rows.append(standing)
+	rows.sort_custom(_by_round_points)
+	return rows
+
+func _by_round_points(a: Standing, b: Standing) -> bool:
+	var a_points := a.points_in(current_round)
+	var b_points := b.points_in(current_round)
+	if a_points == b_points:
+		return a.seq < b.seq
+	return a_points > b_points
+
+## Rounds in which each player had that round's highest points, keyed by
+## user_id. Draws count for everyone tied. Derived from round_points on demand.
+func round_top_counts() -> Dictionary[String, int]:
+	var counts: Dictionary[String, int] = {}
+	for round_number in range(1, current_round + 1):
+		var best := -1
+		for standing: Standing in standings.values():
+			if standing.round_points.has(round_number):
+				best = maxi(best, standing.points_in(round_number))
+		if best < 0:
+			continue
+		for standing: Standing in standings.values():
+			if standing.round_points.has(round_number) and standing.points_in(round_number) == best:
+				counts[standing.user_id] = counts.get(standing.user_id, 0) + 1
+	return counts
+
 func _begin_round() -> void:
 	current_round += 1
 	round_started.emit(current_round, round_count, current_multiplier)
@@ -72,6 +102,9 @@ func _reset_round() -> void:
 	_queue.clear()
 	current_entry = null
 	entrants_changed.emit(_waiting_entries())
+	# The live list shows this round's scores only; emit so it empties now
+	# rather than holding last round's rows until the first score.
+	standings_updated.emit()
 	_set_game_state(GameState.REGISTRATION)
 
 # --- round -----------------------------------------------------------------
@@ -141,7 +174,7 @@ func notify_drop_scored(player: Player, base_value: int, peg_hits: int) -> bool:
 	standing.round_points[current_round] = points
 	current_entry.scored = true
 	entrants_changed.emit(_waiting_entries())
-	standings_updated.emit(sorted_standings())
+	standings_updated.emit()
 	drop_resolved.emit(player, base_value, multiplier, peg_hits, points)
 	return true
 

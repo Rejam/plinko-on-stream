@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://fwleucke2t3j" path="res://scenes/game/phase_panel/round_over_panel.gd" id="1_rop"]
 [ext_resource type="Theme" uid="uid://cjpll8hsimr7p" path="res://game_theme.tres" id="2_rop"]
+[ext_resource type="Script" uid="uid://cg6rw8igs22mw" path="res://scenes/game/player_row/player_list.gd" id="3_jhp3m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rop"]
 bg_color = Color(0.01, 0.01, 0.015, 0.68)
@@ -57,11 +58,16 @@ text = "Round Complete"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="StandingsList" type="ItemList" parent="Scrim/Card/ResultsContainer" unique_id=602144367]
+[node name="StandingsScroll" type="ScrollContainer" parent="Scrim/Card/ResultsContainer" unique_id=1052700459]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 32
-fixed_icon_size = Vector2i(28, 28)
+horizontal_scroll_mode = 0
+
+[node name="StandingsList" type="VBoxContainer" parent="Scrim/Card/ResultsContainer/StandingsScroll" unique_id=2046968934]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+script = ExtResource("3_jhp3m")
 
 [node name="NextRoundButton" type="Button" parent="Scrim/Card/ResultsContainer" unique_id=233062899]
 layout_mode = 2

@@ -13,13 +13,14 @@ extends Node2D
 @onready var round_status_label: Label = %RoundStatusLabel
 @onready var end_reg_button: Button = %EndRegistrationButton
 @onready var continue_button: Button = %ContinueButton
-@onready var entrants_waiting_list: ItemList = %EntrantsWaitingList
+@onready var entrants_waiting_list: PlayerList = %EntrantsWaitingList
+@onready var queue_title: Label = %QueueTitle
 @onready var redrop_button: Button = %RedropButton
 @onready var current_ball_label: Label = %CurrentBallLabel
 @onready var hits_label: Label = %HitsLabel
 @onready var current_ball_icon: TextureRect = %BallIcon
 @onready var multiplier_label: Label = %MultiplierLabel
-@onready var standings_list: ItemList = %StandingsList
+@onready var standings_list: PlayerList = %StandingsList
 @onready var quit_button: Button = %QuitButton
 @onready var quit_confirm_layer: CanvasLayer = %QuitConfirmLayer
 @onready var score_popup: ScorePopup = %ScorePopup
@@ -111,10 +112,11 @@ func _update_current_ball_label(game_state: SessionManager.GameState) -> void:
 	current_ball_icon.texture = BallArt.texture_for(entry.player.user_id)
 
 func _on_entrants_changed(entrants: Array[Entry]) -> void:
+	queue_title.text = "Queue (%d)" % entrants.size()
 	entrants_waiting_list.clear()
 	for entrant in entrants:
-		entrants_waiting_list.add_item("%s : %s" % [entrant.player.display_name, entrant.column],
-			BallArt.texture_for(entrant.player.user_id))
+		entrants_waiting_list.add(entrant.player.user_id, entrant.player.display_name,
+			str(entrant.column))
 
 func _on_entry_received(player: Player, raw_column: String) -> void:
 	var column := board_marker.parse_column(raw_column)
@@ -125,8 +127,9 @@ func _on_drop_resolved(player: Player, base_value: int, multiplier: int, peg_hit
 	score_popup.show_drop(player, base_value * multiplier, peg_hits, points,
 		board_marker.global_position + board_size * 0.5)
 
-func _on_standings_updated(standings: Array[Standing]) -> void:
+func _on_standings_updated() -> void:
 	standings_list.clear()
-	for standing in standings:
-		standings_list.add_item("%s : %d" % [standing.display_name, standing.total],
-			BallArt.texture_for(standing.user_id))
+	var round_number := session_manager.current_round
+	for standing in session_manager.round_standings():
+		standings_list.add(standing.user_id, standing.display_name,
+			str(standing.points_in(round_number)))

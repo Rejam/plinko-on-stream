@@ -8,7 +8,7 @@ extends CanvasLayer
 
 @export var session_manager: SessionManager
 
-@onready var _standings_list: ItemList = $Scrim/Card/ResultsContainer/StandingsList
+@onready var _standings_list: PlayerList = $Scrim/Card/ResultsContainer/StandingsScroll/StandingsList
 @onready var _next_round_button: Button = $Scrim/Card/ResultsContainer/NextRoundButton
 
 func _ready() -> void:
@@ -19,13 +19,10 @@ func _ready() -> void:
 	session_manager.state_changed.connect(_on_state_changed)
 	_next_round_button.pressed.connect(session_manager.next_round)
 
-## Filled on entry rather than from standings_updated — the panel is hidden
-## while scores move.
 func _on_state_changed(game_state: SessionManager.GameState) -> void:
 	visible = game_state == SessionManager.GameState.ROUND_OVER
 	if not visible:
 		return
 	_standings_list.clear()
 	for standing in session_manager.sorted_standings():
-		_standings_list.add_item("%s : %d" % [standing.display_name, standing.total],
-			BallArt.texture_for(standing.user_id))
+		_standings_list.add(standing.user_id, standing.display_name, str(standing.total))

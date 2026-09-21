@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://75mjjsj1ik0t"]
+
+[ext_resource type="Script" uid="uid://bxpi6cit2x5ce" path="res://scenes/game/player_row/player_row.gd" id="1_ixp73"]
+
+[node name="PlayerRow" type="HBoxContainer" unique_id=1348227406]
+mouse_filter = 2
+theme_override_constants/separation = 10
+script = ExtResource("1_ixp73")
+
+[node name="BallIcon" type="TextureRect" parent="." unique_id=1484751804]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="." unique_id=483595400]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text_overrun_behavior = 3
+
+[node name="ValueLabel" type="Label" parent="." unique_id=1911005452]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="RightPad" type="Control" parent="." unique_id=1621527673]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+mouse_filter = 2
