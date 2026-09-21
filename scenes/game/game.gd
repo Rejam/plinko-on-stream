@@ -20,7 +20,6 @@ extends Node2D
 @onready var current_ball_icon: TextureRect = %BallIcon
 @onready var multiplier_label: Label = %MultiplierLabel
 @onready var standings_list: ItemList = %StandingsList
-@onready var facecam_reserve: Control = %FacecamReserve
 @onready var quit_button: Button = %QuitButton
 @onready var quit_confirm_layer: CanvasLayer = %QuitConfirmLayer
 @onready var score_popup: ScorePopup = %ScorePopup

@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://dw3rutslo8pit" path="res://scenes/game/board_marker.gd" id="6_4j704"]
 [ext_resource type="PackedScene" uid="uid://bhqi5hdr2opg4" path="res://scenes/game/twitch_status/twitch_status.tscn" id="6_5jirj"]
 [ext_resource type="PackedScene" uid="uid://c1alu8nw8v3ax" path="res://scenes/game/boards/happy_days.tscn" id="6_5v6r0"]
-[ext_resource type="Script" uid="uid://70oms4n25mxt" path="res://scenes/game/ticker/ticker_scroll.gd" id="6_vaxfo"]
 [ext_resource type="PackedScene" uid="uid://bkhuo30b08vdf" path="res://scenes/game/session_manager/session_manager.tscn" id="7_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://dfpnxfomie3s4" path="res://scenes/game/phase_panel/round_over_layer.tscn" id="9_kp23o"]
 [ext_resource type="PackedScene" uid="uid://c7wodg5g357dt" path="res://scenes/game/phase_panel/session_over_layer.tscn" id="10_5jirj"]
@@ -57,6 +56,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("6_2a8rs")
 
 [node name="Columns" type="HBoxContainer" parent="UI/Root" unique_id=1769035691]
 layout_mode = 0
@@ -66,136 +66,20 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="LeftColumn" type="VBoxContainer" parent="UI/Root/Columns" unique_id=1611780381]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="Ticker" type="Panel" parent="UI/Root/Columns/LeftColumn" unique_id=1092493225]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("6_2a8rs")
-
-[node name="Row" type="HBoxContainer" parent="UI/Root/Columns/LeftColumn/Ticker" unique_id=1900441995]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="QuitButton" type="Button" parent="UI/Root/Columns/LeftColumn/Ticker/Row" unique_id=1047079342]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Quit"
-
-[node name="TickerScroll" type="Control" parent="UI/Root/Columns/LeftColumn/Ticker/Row" unique_id=2126370940]
-unique_name_in_owner = true
-clip_contents = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-script = ExtResource("6_vaxfo")
-
-[node name="StripA" type="Label" parent="UI/Root/Columns/LeftColumn/Ticker/Row/TickerScroll" unique_id=1145181873]
-layout_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 0.6)
-theme_override_font_sizes/font_size = 16
-
-[node name="StripB" type="Label" parent="UI/Root/Columns/LeftColumn/Ticker/Row/TickerScroll" unique_id=2133894967]
-layout_mode = 0
-theme_override_colors/font_color = Color(1, 1, 1, 0.6)
-theme_override_font_sizes/font_size = 16
-
-[node name="TwitchStatus" parent="UI/Root/Columns/LeftColumn/Ticker/Row" unique_id=2118529810 instance=ExtResource("6_5jirj")]
-layout_mode = 2
-
-[node name="TopBar" type="Panel" parent="UI/Root/Columns/LeftColumn" unique_id=1668786433]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("6_2a8rs")
-
-[node name="Margin" type="MarginContainer" parent="UI/Root/Columns/LeftColumn/TopBar" unique_id=372798264]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_bottom = 4
-
-[node name="Row" type="HBoxContainer" parent="UI/Root/Columns/LeftColumn/TopBar/Margin" unique_id=1129685556]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="RedropButton" type="Button" parent="UI/Root/Columns/LeftColumn/TopBar/Margin/Row" unique_id=499774679]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-text = "Redrop"
-
-[node name="DropBallButton" type="Button" parent="UI/Root/Columns/LeftColumn/TopBar/Margin/Row" unique_id=501488133]
-unique_name_in_owner = true
-layout_mode = 2
-theme_type_variation = &"PrimaryButton"
-theme_override_styles/normal = SubResource("StyleBoxFlat_2a8rs")
-text = "Drop Ball"
-
-[node name="ContinueButton" type="Button" parent="UI/Root/Columns/LeftColumn/TopBar/Margin/Row" unique_id=302666286]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 4
-theme_type_variation = &"PrimaryButton"
-text = "Continue"
-
-[node name="Spacer" type="Control" parent="UI/Root/Columns/LeftColumn/TopBar/Margin/Row" unique_id=1526887495]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MultiplierLabel" type="Label" parent="UI/Root/Columns/LeftColumn/TopBar/Margin/Row" unique_id=743735509]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="RoundStatusLabel" type="Label" parent="UI/Root/Columns/LeftColumn/TopBar/Margin/Row" unique_id=2140504398]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Status"
-
-[node name="RightColumn" type="VBoxContainer" parent="UI/Root/Columns" unique_id=1938546238]
+[node name="LeftCol" type="VBoxContainer" parent="UI/Root/Columns" unique_id=1938546238]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="FacecamReserve" type="Panel" parent="UI/Root/Columns/RightColumn" unique_id=305499433]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(320, 180)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("6_2a8rs")
-
-[node name="Margin" type="MarginContainer" parent="UI/Root/Columns/RightColumn/FacecamReserve" unique_id=1825687716]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="InfoBox" type="Panel" parent="UI/Root/Columns/RightColumn" unique_id=1712812118]
+[node name="InfoBox" type="Panel" parent="UI/Root/Columns/LeftCol" unique_id=1712812118]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("6_2a8rs")
 
-[node name="Margin" type="MarginContainer" parent="UI/Root/Columns/RightColumn/InfoBox" unique_id=1626145583]
+[node name="Margin" type="MarginContainer" parent="UI/Root/Columns/LeftCol/InfoBox" unique_id=1626145583]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -204,23 +88,23 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="StandingsContainer" type="VBoxContainer" parent="UI/Root/Columns/RightColumn/InfoBox/Margin" unique_id=632585386]
+[node name="StandingsContainer" type="VBoxContainer" parent="UI/Root/Columns/LeftCol/InfoBox/Margin" unique_id=632585386]
 layout_mode = 2
 theme = ExtResource("6_2a8rs")
 
-[node name="StandingsList" type="ItemList" parent="UI/Root/Columns/RightColumn/InfoBox/Margin/StandingsContainer" unique_id=867627058]
+[node name="StandingsList" type="ItemList" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=867627058]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 fixed_icon_size = Vector2i(20, 20)
 
-[node name="EntrantsWaitingList" type="ItemList" parent="UI/Root/Columns/RightColumn/InfoBox/Margin/StandingsContainer" unique_id=1820649433]
+[node name="EntrantsWaitingList" type="ItemList" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=1820649433]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 fixed_icon_size = Vector2i(20, 20)
 
-[node name="EndRegistrationButton" type="Button" parent="UI/Root/Columns/RightColumn/InfoBox/Margin/StandingsContainer" unique_id=1130275608]
+[node name="EndRegistrationButton" type="Button" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=1130275608]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
@@ -228,10 +112,108 @@ theme_type_variation = &"PrimaryButton"
 theme_override_font_sizes/font_size = 16
 text = "Start Game"
 
+[node name="RightCol" type="VBoxContainer" parent="UI/Root/Columns" unique_id=1611780381]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="TopBar" type="Panel" parent="UI/Root/Columns/RightCol" unique_id=1668786433]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("6_2a8rs")
+
+[node name="Margin" type="MarginContainer" parent="UI/Root/Columns/RightCol/TopBar" unique_id=372798264]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 4
+
+[node name="Row" type="HBoxContainer" parent="UI/Root/Columns/RightCol/TopBar/Margin" unique_id=1129685556]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DropBallButton" type="Button" parent="UI/Root/Columns/RightCol/TopBar/Margin/Row" unique_id=501488133]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+theme_override_styles/normal = SubResource("StyleBoxFlat_2a8rs")
+text = "Drop Ball"
+
+[node name="ContinueButton" type="Button" parent="UI/Root/Columns/RightCol/TopBar/Margin/Row" unique_id=302666286]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"PrimaryButton"
+text = "Continue"
+
+[node name="Spacer" type="Control" parent="UI/Root/Columns/RightCol/TopBar/Margin/Row" unique_id=1526887495]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RedropButton" type="Button" parent="UI/Root/Columns/RightCol/TopBar/Margin/Row" unique_id=499774679]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Redrop"
+
+[node name="QuitButton" type="Button" parent="UI/Root/Columns/RightCol/TopBar/Margin/Row" unique_id=1047079342]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
+
+[node name="BoardSpace" type="Control" parent="UI/Root/Columns/RightCol" unique_id=1459044565]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BottomBar" type="Panel" parent="UI/Root/Columns/RightCol" unique_id=2145223898]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Root/Columns/RightCol/BottomBar" unique_id=368901232]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Root/Columns/RightCol/BottomBar/MarginContainer" unique_id=19429526]
+layout_mode = 2
+
+[node name="TwitchStatus" parent="UI/Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=2118529810 instance=ExtResource("6_5jirj")]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="UI/Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=1054812088]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MultiplierLabel" type="Label" parent="UI/Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=743735509]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Spacer2" type="Control" parent="UI/Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=1711167594]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RoundStatusLabel" type="Label" parent="UI/Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=2140504398]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Status"
+
 [node name="CurrentBallRow" type="HBoxContainer" parent="UI" unique_id=1674489122]
-offset_top = 30.0
-offset_right = 1600.0
-offset_bottom = 80.0
+offset_left = 316.0
+offset_top = -6.0
+offset_right = 1916.0
+offset_bottom = 44.0
 mouse_filter = 2
 theme_override_constants/separation = 14
 alignment = 1
@@ -249,7 +231,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 offset_transform_enabled = true
-offset_transform_position = Vector2(0, -6)
+offset_transform_position = Vector2(0, -4)
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 36
 text = "quayside_kev is dropping"
@@ -266,7 +248,7 @@ vertical_alignment = 1
 
 [node name="BoardMarker" type="Node2D" parent="." unique_id=797090416]
 unique_name_in_owner = true
-position = Vector2(0, 80)
+position = Vector2(320, 40)
 script = ExtResource("6_4j704")
 
 [node name="DebugMenu" parent="." unique_id=250459968 instance=ExtResource("5_4j704")]

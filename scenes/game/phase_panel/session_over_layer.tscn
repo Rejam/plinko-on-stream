@@ -64,5 +64,5 @@ fixed_icon_size = Vector2i(28, 28)
 [node name="BackToTitleButton" type="Button" parent="Scrim/Card/ResultsContainer" unique_id=2129314092]
 layout_mode = 2
 theme_type_variation = &"PrimaryButton"
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "Back to Title"

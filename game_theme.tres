@@ -281,6 +281,7 @@ ItemList/constants/icon_margin = 9
 ItemList/constants/line_separation = 6
 ItemList/constants/outline_size = 0
 ItemList/constants/v_separation = 9
+ItemList/font_sizes/font_size = 24
 ItemList/styles/cursor = SubResource("StyleBoxFlat_vp4oh")
 ItemList/styles/cursor_unfocused = SubResource("StyleBoxFlat_vp4oh")
 ItemList/styles/focus = SubResource("StyleBoxFlat_jvwys")
