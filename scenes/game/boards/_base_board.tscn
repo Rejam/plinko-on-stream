@@ -13,11 +13,11 @@ font_color = Color(0.92941177, 0.8784314, 0, 1)
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3fqkk"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ckmaq"]
 friction = 0.0
 bounce = 0.9
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s83xk"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3fqkk"]
 friction = 0.0
 bounce = 0.9
 
@@ -27,6 +27,7 @@ script = ExtResource("1_grf38")
 [node name="BoardBackground" parent="." unique_id=1158839754 instance=ExtResource("2_gc7k6")]
 
 [node name="DropPositions" parent="." unique_id=764417574 instance=ExtResource("3_ckmaq")]
+unique_name_in_owner = true
 
 [node name="Text" type="Label" parent="." unique_id=1388778403]
 offset_top = 300.0
@@ -41,13 +42,13 @@ uppercase = true
 
 [node name="Walls" parent="." unique_id=418344759 instance=ExtResource("4_ckmaq")]
 
-[node name="RampLeft" parent="." unique_id=2071365893 instance=ExtResource("4_5oo8i")]
+[node name="RampLeft" parent="Walls" unique_id=2071365893 instance=ExtResource("4_5oo8i")]
 position = Vector2(0, 660)
-physics_material_override = SubResource("PhysicsMaterial_3fqkk")
+physics_material_override = SubResource("PhysicsMaterial_ckmaq")
 
-[node name="RampRight" parent="." unique_id=411638552 instance=ExtResource("4_5oo8i")]
+[node name="RampRight" parent="Walls" unique_id=411638552 instance=ExtResource("4_5oo8i")]
 position = Vector2(1600, 660)
-physics_material_override = SubResource("PhysicsMaterial_s83xk")
+physics_material_override = SubResource("PhysicsMaterial_3fqkk")
 
 [node name="Buckets" type="Node2D" parent="." unique_id=1979250660]
 unique_name_in_owner = true
