@@ -12,7 +12,7 @@ extends EditorScript
 ## hardcoded here, so this restores whatever the default currently is instead
 ## of a copy that goes stale the moment the default changes.
 
-const PEG_SCRIPT := "res://scenes/game/peg/peg.gd"
+const PEG_SCRIPT := "uid://bjkdgdavgadce"
 
 
 func _run() -> void:

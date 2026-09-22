@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://wbsjt1ljaicg"]
+
+[node name="BoardBackground" type="TextureRect" unique_id=1158839754]
+offset_right = 1600.0
+offset_bottom = 1000.0
+metadata/_edit_lock_ = true

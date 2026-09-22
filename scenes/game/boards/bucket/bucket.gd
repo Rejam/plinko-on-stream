@@ -19,7 +19,7 @@ var multiplier := 1:
 		multiplier = value
 		_refresh()
 
-@export_range(-20, 100, 5, "prefer_slider") var base_value := 10:
+@export_range(-50, 100, 5, "prefer_slider") var base_value := 10:
 	set(value):
 		base_value = value
 		_refresh()

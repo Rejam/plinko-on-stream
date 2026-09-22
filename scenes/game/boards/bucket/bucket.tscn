@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bnugbts7q5efj"]
 
-[ext_resource type="Script" uid="uid://cfbgav4kugxhn" path="res://scenes/game/bucket/bucket.gd" id="1_wprqg"]
+[ext_resource type="Script" uid="uid://cfbgav4kugxhn" path="res://scenes/game/boards/bucket/bucket.gd" id="1_wprqg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wprqg"]
 size = Vector2(108, 70)

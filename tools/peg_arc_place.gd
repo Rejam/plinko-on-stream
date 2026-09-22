@@ -28,8 +28,8 @@ extends EditorScript
 ## Self-contained, like the lattice script. The two duplicate their wall test;
 ## sharing it would cost a third file to save one function.
 
-const PEG_SCENE := "res://scenes/game/peg/peg.tscn"
-const BALL_SCENE := "res://scenes/game/ball/ball.tscn"
+const PEG_SCENE := "uid://ctc64dnv2jawv"
+const BALL_SCENE := "uid://cthrtlsbusy3"
 const FIELD_NAME := "Arcs"
 
 ## Node the field is parented under, relative to the scene root.

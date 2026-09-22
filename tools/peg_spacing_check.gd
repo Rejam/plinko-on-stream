@@ -22,8 +22,8 @@ extends EditorScript
 ## into the .tscn and never appear in the scene tree dock. A run with no
 ## violations leaves nothing behind, so fixing the board clears the display.
 
-const BALL_SCENE := "res://scenes/game/ball/ball.tscn"
-const PEG_SCENE := "res://scenes/game/peg/peg.tscn"
+const PEG_SCENE := "uid://ctc64dnv2jawv"
+const BALL_SCENE := "uid://cthrtlsbusy3"
 const MARKER_NAME := "__SpacingCheck"
 
 ## Amber band above the hard limit: flagged as having no margin, not as broken.

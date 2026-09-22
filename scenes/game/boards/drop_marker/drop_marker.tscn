@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://75xw7d108vgf"]
 
-[ext_resource type="Script" uid="uid://d08x3877ac81p" path="res://scenes/game/drop_marker/drop_marker.gd" id="1_dm"]
+[ext_resource type="Script" uid="uid://d08x3877ac81p" path="res://scenes/game/boards/drop_marker/drop_marker.gd" id="1_dm"]
 
 [node name="DropMarker" type="Node2D" unique_id=184192665]
 script = ExtResource("1_dm")

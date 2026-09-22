@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cthrtlsbusy3"]
 
-[ext_resource type="Script" uid="uid://ckqgq6tlnuqhc" path="res://scenes/game/ball/ball.gd" id="1_l07mq"]
+[ext_resource type="Script" uid="uid://ckqgq6tlnuqhc" path="res://scenes/game/boards/ball/ball.gd" id="1_l07mq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oekm8"]
 friction = 0.0

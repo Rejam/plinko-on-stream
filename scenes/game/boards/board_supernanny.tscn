@@ -1,14 +1,26 @@
 [gd_scene format=3 uid="uid://cvffomituhpw8"]
 
-[ext_resource type="PackedScene" uid="uid://c56jtk2m2j8e" path="res://scenes/game/boards/_base_board.tscn" id="1_agnwk"]
-[ext_resource type="PackedScene" uid="uid://ctc64dnv2jawv" path="res://scenes/game/peg/peg.tscn" id="2_7ltta"]
+[ext_resource type="Script" uid="uid://585tibkjp0fq" path="res://scenes/game/boards/board.gd" id="1_2bao4"]
+[ext_resource type="PackedScene" uid="uid://ctc64dnv2jawv" path="res://scenes/game/boards/peg/peg.tscn" id="2_7ltta"]
 [ext_resource type="Texture2D" uid="uid://2mbqmhrxv686" path="res://assets/board_backgrounds/supernanny.jpg" id="2_agnwk"]
+[ext_resource type="PackedScene" uid="uid://wbsjt1ljaicg" path="res://scenes/game/boards/board_background/board_background.tscn" id="2_wh38a"]
+[ext_resource type="PackedScene" uid="uid://bnugbts7q5efj" path="res://scenes/game/boards/bucket/bucket.tscn" id="3_felfy"]
+[ext_resource type="PackedScene" uid="uid://q6km264o7fjj" path="res://scenes/game/boards/walls.tscn" id="4_jl6wo"]
+[ext_resource type="PackedScene" uid="uid://bud1xgj8rjy15" path="res://scenes/game/boards/ramp/ramp.tscn" id="5_e1dug"]
+[ext_resource type="PackedScene" uid="uid://cg5gtoys5tfeo" path="res://scenes/game/boards/drop_marker/drop_positions.tscn" id="6_g0tq3"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7ltta"]
+[sub_resource type="LabelSettings" id="LabelSettings_felfy"]
+font_size = 200
+font_color = Color(0.92941177, 0.8784314, 0, 1)
+shadow_size = 80
+shadow_color = Color(0.12473465, 0.11542664, 0, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8dr7u"]
 friction = 0.0
 bounce = 0.9
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_felfy"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f1xg7"]
 friction = 0.0
 bounce = 0.9
 
@@ -16,720 +28,778 @@ bounce = 0.9
 friction = 0.0
 bounce = 0.8
 
-[node name="BoardSupernanny" unique_id=2047480295 instance=ExtResource("1_agnwk")]
+[node name="BoardSupernanny" type="Node2D" unique_id=2047480295]
+script = ExtResource("1_2bao4")
 
-[node name="ImageBackground" parent="." index="0" unique_id=94544916]
+[node name="BoardBackground" parent="." unique_id=1158839754 instance=ExtResource("2_wh38a")]
 texture = ExtResource("2_agnwk")
-metadata/_edit_lock_ = true
 
-[node name="Text" parent="." index="1" unique_id=1388778403]
+[node name="Text" type="Label" parent="." unique_id=1388778403]
 offset_left = 2.0
 offset_top = 355.0
 offset_right = 1387.2174
 offset_bottom = 628.0
+scale = Vector2(1.15, 1)
 text = "supernanny"
+label_settings = SubResource("LabelSettings_felfy")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 metadata/_edit_lock_ = true
 
-[node name="Buckets" parent="." index="3" unique_id=1979250660]
+[node name="Walls" parent="." unique_id=418344759 instance=ExtResource("4_jl6wo")]
+
+[node name="RampLeft" parent="Walls" unique_id=2071365893 instance=ExtResource("5_e1dug")]
+position = Vector2(0, 660)
+physics_material_override = SubResource("PhysicsMaterial_8dr7u")
+
+[node name="RampRight" parent="Walls" unique_id=411638552 instance=ExtResource("5_e1dug")]
+position = Vector2(1600, 660)
+physics_material_override = SubResource("PhysicsMaterial_f1xg7")
+
+[node name="DropPositions" parent="." unique_id=764417574 instance=ExtResource("6_g0tq3")]
+unique_name_in_owner = true
+
+[node name="Buckets" type="Node2D" parent="." unique_id=1979250660]
+unique_name_in_owner = true
+position = Vector2(0, 920)
 metadata/_edit_lock_ = true
 
-[node name="Ramp" parent="Walls/Left" parent_id_path=PackedInt32Array(1502387386) index="1" unique_id=2071365893]
-physics_material_override = SubResource("PhysicsMaterial_7ltta")
+[node name="Bucket" parent="Buckets" unique_id=497517029 instance=ExtResource("3_felfy")]
+position = Vector2(100, 40)
+width = 200
 
-[node name="Ramp" parent="Walls/Right" parent_id_path=PackedInt32Array(1081303422) index="1" unique_id=87935822]
-physics_material_override = SubResource("PhysicsMaterial_felfy")
+[node name="Bucket3" parent="Buckets" unique_id=675490253 instance=ExtResource("3_felfy")]
+position = Vector2(300, 40)
+base_value = 20
+width = 200
+background_colour = Color(0.99999994, 0.50214565, 0.17263114, 1)
 
-[node name="Lattice" type="Node2D" parent="Pegs" parent_id_path=PackedInt32Array(210672860) index="0" unique_id=1802546097]
+[node name="Bucket2" parent="Buckets" unique_id=860446683 instance=ExtResource("3_felfy")]
+position = Vector2(500, 40)
+base_value = 50
+width = 200
+background_colour = Color(0.87058824, 0.8352941, 0, 1)
 
-[node name="Purple" type="Node2D" parent="Pegs/Lattice" index="0" unique_id=202931748]
+[node name="Bucket4" parent="Buckets" unique_id=1929300586 instance=ExtResource("3_felfy")]
+position = Vector2(700, 40)
+width = 200
 
-[node name="Peg" parent="Pegs/Lattice/Purple" index="0" unique_id=578915731 instance=ExtResource("2_7ltta")]
+[node name="Bucket5" parent="Buckets" unique_id=236611910 instance=ExtResource("3_felfy")]
+position = Vector2(900, 40)
+base_value = 20
+width = 200
+background_colour = Color(0.99999994, 0.50214565, 0.17263114, 1)
+
+[node name="Bucket6" parent="Buckets" unique_id=184960602 instance=ExtResource("3_felfy")]
+position = Vector2(1100, 40)
+base_value = 50
+width = 200
+background_colour = Color(0.87058824, 0.8352941, 0, 1)
+
+[node name="Bucket7" parent="Buckets" unique_id=127308385 instance=ExtResource("3_felfy")]
+position = Vector2(1300, 40)
+width = 200
+
+[node name="Bucket8" parent="Buckets" unique_id=417757418 instance=ExtResource("3_felfy")]
+position = Vector2(1500, 40)
+base_value = 20
+width = 200
+background_colour = Color(0.99999994, 0.50214565, 0.17263114, 1)
+
+[node name="Pegs" type="Node2D" parent="." unique_id=210672860]
+
+[node name="Lattice" type="Node2D" parent="Pegs" unique_id=1802546097]
+
+[node name="Purple" type="Node2D" parent="Pegs/Lattice" unique_id=202931748]
+
+[node name="Peg" parent="Pegs/Lattice/Purple" unique_id=578915731 instance=ExtResource("2_7ltta")]
 position = Vector2(60, 200)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132683" parent="Pegs/Lattice/Purple" index="1" unique_id=545169453 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132683" parent="Pegs/Lattice/Purple" unique_id=545169453 instance=ExtResource("2_7ltta")]
 position = Vector2(150, 200)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132684" parent="Pegs/Lattice/Purple" index="2" unique_id=553091520 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132684" parent="Pegs/Lattice/Purple" unique_id=553091520 instance=ExtResource("2_7ltta")]
 position = Vector2(240, 200)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132685" parent="Pegs/Lattice/Purple" index="3" unique_id=161941982 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132685" parent="Pegs/Lattice/Purple" unique_id=161941982 instance=ExtResource("2_7ltta")]
 position = Vector2(330, 200)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132686" parent="Pegs/Lattice/Purple" index="4" unique_id=1619124659 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132686" parent="Pegs/Lattice/Purple" unique_id=1619124659 instance=ExtResource("2_7ltta")]
 position = Vector2(420, 200)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132687" parent="Pegs/Lattice/Purple" index="5" unique_id=2085321989 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132687" parent="Pegs/Lattice/Purple" unique_id=2085321989 instance=ExtResource("2_7ltta")]
 position = Vector2(510, 200)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132688" parent="Pegs/Lattice/Purple" index="6" unique_id=1515193918 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132688" parent="Pegs/Lattice/Purple" unique_id=1515193918 instance=ExtResource("2_7ltta")]
 position = Vector2(600, 200)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132689" parent="Pegs/Lattice/Purple" index="7" unique_id=610120577 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132689" parent="Pegs/Lattice/Purple" unique_id=610120577 instance=ExtResource("2_7ltta")]
 position = Vector2(690, 200)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132690" parent="Pegs/Lattice/Purple" index="8" unique_id=1292661055 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132690" parent="Pegs/Lattice/Purple" unique_id=1292661055 instance=ExtResource("2_7ltta")]
 position = Vector2(780, 200)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132691" parent="Pegs/Lattice/Purple" index="9" unique_id=1715882368 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132691" parent="Pegs/Lattice/Purple" unique_id=1715882368 instance=ExtResource("2_7ltta")]
 position = Vector2(870, 200)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132695" parent="Pegs/Lattice/Purple" index="10" unique_id=639294252 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132695" parent="Pegs/Lattice/Purple" unique_id=639294252 instance=ExtResource("2_7ltta")]
 position = Vector2(1230, 200)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132696" parent="Pegs/Lattice/Purple" index="11" unique_id=1857375801 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132696" parent="Pegs/Lattice/Purple" unique_id=1857375801 instance=ExtResource("2_7ltta")]
 position = Vector2(1320, 200)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132697" parent="Pegs/Lattice/Purple" index="12" unique_id=1816177570 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132697" parent="Pegs/Lattice/Purple" unique_id=1816177570 instance=ExtResource("2_7ltta")]
 position = Vector2(1410, 200)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132698" parent="Pegs/Lattice/Purple" index="13" unique_id=1393705 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132698" parent="Pegs/Lattice/Purple" unique_id=1393705 instance=ExtResource("2_7ltta")]
 position = Vector2(1500, 200)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132699" parent="Pegs/Lattice/Purple" index="14" unique_id=767050570 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132699" parent="Pegs/Lattice/Purple" unique_id=767050570 instance=ExtResource("2_7ltta")]
 position = Vector2(105, 255)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132700" parent="Pegs/Lattice/Purple" index="15" unique_id=218114404 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132700" parent="Pegs/Lattice/Purple" unique_id=218114404 instance=ExtResource("2_7ltta")]
 position = Vector2(195, 255)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132701" parent="Pegs/Lattice/Purple" index="16" unique_id=1111614699 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132701" parent="Pegs/Lattice/Purple" unique_id=1111614699 instance=ExtResource("2_7ltta")]
 position = Vector2(285, 255)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132702" parent="Pegs/Lattice/Purple" index="17" unique_id=779596383 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132702" parent="Pegs/Lattice/Purple" unique_id=779596383 instance=ExtResource("2_7ltta")]
 position = Vector2(375, 255)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132703" parent="Pegs/Lattice/Purple" index="18" unique_id=574263771 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132703" parent="Pegs/Lattice/Purple" unique_id=574263771 instance=ExtResource("2_7ltta")]
 position = Vector2(465, 255)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132704" parent="Pegs/Lattice/Purple" index="19" unique_id=852757572 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132704" parent="Pegs/Lattice/Purple" unique_id=852757572 instance=ExtResource("2_7ltta")]
 position = Vector2(555, 255)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132705" parent="Pegs/Lattice/Purple" index="20" unique_id=1509662179 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132705" parent="Pegs/Lattice/Purple" unique_id=1509662179 instance=ExtResource("2_7ltta")]
 position = Vector2(645, 255)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132706" parent="Pegs/Lattice/Purple" index="21" unique_id=141367240 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132706" parent="Pegs/Lattice/Purple" unique_id=141367240 instance=ExtResource("2_7ltta")]
 position = Vector2(735, 255)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132707" parent="Pegs/Lattice/Purple" index="22" unique_id=877685638 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132707" parent="Pegs/Lattice/Purple" unique_id=877685638 instance=ExtResource("2_7ltta")]
 position = Vector2(825, 255)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132708" parent="Pegs/Lattice/Purple" index="23" unique_id=347776039 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132708" parent="Pegs/Lattice/Purple" unique_id=347776039 instance=ExtResource("2_7ltta")]
 position = Vector2(915, 255)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132711" parent="Pegs/Lattice/Purple" index="24" unique_id=325553321 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132711" parent="Pegs/Lattice/Purple" unique_id=325553321 instance=ExtResource("2_7ltta")]
 position = Vector2(1185, 255)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132712" parent="Pegs/Lattice/Purple" index="25" unique_id=1825670268 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132712" parent="Pegs/Lattice/Purple" unique_id=1825670268 instance=ExtResource("2_7ltta")]
 position = Vector2(1275, 255)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132713" parent="Pegs/Lattice/Purple" index="26" unique_id=667234657 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132713" parent="Pegs/Lattice/Purple" unique_id=667234657 instance=ExtResource("2_7ltta")]
 position = Vector2(1365, 255)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132714" parent="Pegs/Lattice/Purple" index="27" unique_id=722432258 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132714" parent="Pegs/Lattice/Purple" unique_id=722432258 instance=ExtResource("2_7ltta")]
 position = Vector2(1455, 255)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132715" parent="Pegs/Lattice/Purple" index="28" unique_id=1865105664 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132715" parent="Pegs/Lattice/Purple" unique_id=1865105664 instance=ExtResource("2_7ltta")]
 position = Vector2(60, 313.14285)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132716" parent="Pegs/Lattice/Purple" index="29" unique_id=1308905907 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132716" parent="Pegs/Lattice/Purple" unique_id=1308905907 instance=ExtResource("2_7ltta")]
 position = Vector2(150, 313.14285)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132717" parent="Pegs/Lattice/Purple" index="30" unique_id=1883953174 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132717" parent="Pegs/Lattice/Purple" unique_id=1883953174 instance=ExtResource("2_7ltta")]
 position = Vector2(240, 313.14285)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132718" parent="Pegs/Lattice/Purple" index="31" unique_id=2000794202 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132718" parent="Pegs/Lattice/Purple" unique_id=2000794202 instance=ExtResource("2_7ltta")]
 position = Vector2(330, 313.14285)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132719" parent="Pegs/Lattice/Purple" index="32" unique_id=2145025162 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132719" parent="Pegs/Lattice/Purple" unique_id=2145025162 instance=ExtResource("2_7ltta")]
 position = Vector2(420, 313.14285)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132720" parent="Pegs/Lattice/Purple" index="33" unique_id=679118062 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132720" parent="Pegs/Lattice/Purple" unique_id=679118062 instance=ExtResource("2_7ltta")]
 position = Vector2(510, 313.14285)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132721" parent="Pegs/Lattice/Purple" index="34" unique_id=787576406 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132721" parent="Pegs/Lattice/Purple" unique_id=787576406 instance=ExtResource("2_7ltta")]
 position = Vector2(600, 313.14285)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132722" parent="Pegs/Lattice/Purple" index="35" unique_id=2114187067 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132722" parent="Pegs/Lattice/Purple" unique_id=2114187067 instance=ExtResource("2_7ltta")]
 position = Vector2(690, 313.14285)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132723" parent="Pegs/Lattice/Purple" index="36" unique_id=521880474 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132723" parent="Pegs/Lattice/Purple" unique_id=521880474 instance=ExtResource("2_7ltta")]
 position = Vector2(780, 313.14285)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132724" parent="Pegs/Lattice/Purple" index="37" unique_id=1129666691 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132724" parent="Pegs/Lattice/Purple" unique_id=1129666691 instance=ExtResource("2_7ltta")]
 position = Vector2(870, 313.14285)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132725" parent="Pegs/Lattice/Purple" index="38" unique_id=491510568 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132725" parent="Pegs/Lattice/Purple" unique_id=491510568 instance=ExtResource("2_7ltta")]
 position = Vector2(960, 313.14285)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132728" parent="Pegs/Lattice/Purple" index="39" unique_id=182459664 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132728" parent="Pegs/Lattice/Purple" unique_id=182459664 instance=ExtResource("2_7ltta")]
 position = Vector2(1230, 313.14285)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132729" parent="Pegs/Lattice/Purple" index="40" unique_id=880616538 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132729" parent="Pegs/Lattice/Purple" unique_id=880616538 instance=ExtResource("2_7ltta")]
 position = Vector2(1320, 313.14285)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132730" parent="Pegs/Lattice/Purple" index="41" unique_id=631313036 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132730" parent="Pegs/Lattice/Purple" unique_id=631313036 instance=ExtResource("2_7ltta")]
 position = Vector2(1410, 313.14285)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132731" parent="Pegs/Lattice/Purple" index="42" unique_id=153027048 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132731" parent="Pegs/Lattice/Purple" unique_id=153027048 instance=ExtResource("2_7ltta")]
 position = Vector2(1500, 313.14285)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132732" parent="Pegs/Lattice/Purple" index="43" unique_id=112261025 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132732" parent="Pegs/Lattice/Purple" unique_id=112261025 instance=ExtResource("2_7ltta")]
 position = Vector2(105, 374.60815)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132733" parent="Pegs/Lattice/Purple" index="44" unique_id=1951935871 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132733" parent="Pegs/Lattice/Purple" unique_id=1951935871 instance=ExtResource("2_7ltta")]
 position = Vector2(195, 374.60815)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132734" parent="Pegs/Lattice/Purple" index="45" unique_id=1133923928 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132734" parent="Pegs/Lattice/Purple" unique_id=1133923928 instance=ExtResource("2_7ltta")]
 position = Vector2(285, 374.60815)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132735" parent="Pegs/Lattice/Purple" index="46" unique_id=1598269485 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132735" parent="Pegs/Lattice/Purple" unique_id=1598269485 instance=ExtResource("2_7ltta")]
 position = Vector2(375, 374.60815)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132736" parent="Pegs/Lattice/Purple" index="47" unique_id=1782354995 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132736" parent="Pegs/Lattice/Purple" unique_id=1782354995 instance=ExtResource("2_7ltta")]
 position = Vector2(465, 374.60815)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132737" parent="Pegs/Lattice/Purple" index="48" unique_id=136426452 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132737" parent="Pegs/Lattice/Purple" unique_id=136426452 instance=ExtResource("2_7ltta")]
 position = Vector2(555, 374.60815)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132738" parent="Pegs/Lattice/Purple" index="49" unique_id=1561968749 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132738" parent="Pegs/Lattice/Purple" unique_id=1561968749 instance=ExtResource("2_7ltta")]
 position = Vector2(645, 374.60815)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132739" parent="Pegs/Lattice/Purple" index="50" unique_id=801415488 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132739" parent="Pegs/Lattice/Purple" unique_id=801415488 instance=ExtResource("2_7ltta")]
 position = Vector2(735, 374.60815)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132740" parent="Pegs/Lattice/Purple" index="51" unique_id=352640597 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132740" parent="Pegs/Lattice/Purple" unique_id=352640597 instance=ExtResource("2_7ltta")]
 position = Vector2(825, 374.60815)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132745" parent="Pegs/Lattice/Purple" index="52" unique_id=2145175252 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132745" parent="Pegs/Lattice/Purple" unique_id=2145175252 instance=ExtResource("2_7ltta")]
 position = Vector2(1275, 374.60815)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132746" parent="Pegs/Lattice/Purple" index="53" unique_id=1607168612 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132746" parent="Pegs/Lattice/Purple" unique_id=1607168612 instance=ExtResource("2_7ltta")]
 position = Vector2(1365, 374.60815)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132747" parent="Pegs/Lattice/Purple" index="54" unique_id=420124683 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132747" parent="Pegs/Lattice/Purple" unique_id=420124683 instance=ExtResource("2_7ltta")]
 position = Vector2(1455, 374.60815)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132844" parent="Pegs/Lattice/Purple" index="55" unique_id=1368662160 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132844" parent="Pegs/Lattice/Purple" unique_id=1368662160 instance=ExtResource("2_7ltta")]
 position = Vector2(181, 641.6575)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132845" parent="Pegs/Lattice/Purple" index="56" unique_id=782885184 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132845" parent="Pegs/Lattice/Purple" unique_id=782885184 instance=ExtResource("2_7ltta")]
 position = Vector2(271, 641.6575)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132846" parent="Pegs/Lattice/Purple" index="57" unique_id=1783768084 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132846" parent="Pegs/Lattice/Purple" unique_id=1783768084 instance=ExtResource("2_7ltta")]
 position = Vector2(361, 641.6575)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132847" parent="Pegs/Lattice/Purple" index="58" unique_id=57472728 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132847" parent="Pegs/Lattice/Purple" unique_id=57472728 instance=ExtResource("2_7ltta")]
 position = Vector2(451, 641.6575)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132848" parent="Pegs/Lattice/Purple" index="59" unique_id=1595170140 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132848" parent="Pegs/Lattice/Purple" unique_id=1595170140 instance=ExtResource("2_7ltta")]
 position = Vector2(541, 641.6575)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132849" parent="Pegs/Lattice/Purple" index="60" unique_id=1644962451 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132849" parent="Pegs/Lattice/Purple" unique_id=1644962451 instance=ExtResource("2_7ltta")]
 position = Vector2(631, 641.6575)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132850" parent="Pegs/Lattice/Purple" index="61" unique_id=1294504077 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132850" parent="Pegs/Lattice/Purple" unique_id=1294504077 instance=ExtResource("2_7ltta")]
 position = Vector2(721, 641.6575)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132857" parent="Pegs/Lattice/Purple" index="62" unique_id=1701467060 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132857" parent="Pegs/Lattice/Purple" unique_id=1701467060 instance=ExtResource("2_7ltta")]
 position = Vector2(1351, 641.6575)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132858" parent="Pegs/Lattice/Purple" index="63" unique_id=398731801 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132858" parent="Pegs/Lattice/Purple" unique_id=398731801 instance=ExtResource("2_7ltta")]
 position = Vector2(1441, 641.6575)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132859" parent="Pegs/Lattice/Purple" index="64" unique_id=1903076349 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132859" parent="Pegs/Lattice/Purple" unique_id=1903076349 instance=ExtResource("2_7ltta")]
 position = Vector2(136, 722.8093)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132860" parent="Pegs/Lattice/Purple" index="65" unique_id=1695527621 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132860" parent="Pegs/Lattice/Purple" unique_id=1695527621 instance=ExtResource("2_7ltta")]
 position = Vector2(226, 722.8093)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132861" parent="Pegs/Lattice/Purple" index="66" unique_id=1624129413 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132861" parent="Pegs/Lattice/Purple" unique_id=1624129413 instance=ExtResource("2_7ltta")]
 position = Vector2(316, 722.8093)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132862" parent="Pegs/Lattice/Purple" index="67" unique_id=2137254761 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132862" parent="Pegs/Lattice/Purple" unique_id=2137254761 instance=ExtResource("2_7ltta")]
 position = Vector2(406, 722.8093)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132863" parent="Pegs/Lattice/Purple" index="68" unique_id=1369726561 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132863" parent="Pegs/Lattice/Purple" unique_id=1369726561 instance=ExtResource("2_7ltta")]
 position = Vector2(496, 722.8093)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132864" parent="Pegs/Lattice/Purple" index="69" unique_id=1140512023 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132864" parent="Pegs/Lattice/Purple" unique_id=1140512023 instance=ExtResource("2_7ltta")]
 position = Vector2(586, 722.8093)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132865" parent="Pegs/Lattice/Purple" index="70" unique_id=19910635 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132865" parent="Pegs/Lattice/Purple" unique_id=19910635 instance=ExtResource("2_7ltta")]
 position = Vector2(676, 722.8093)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132866" parent="Pegs/Lattice/Purple" index="71" unique_id=1763063392 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132866" parent="Pegs/Lattice/Purple" unique_id=1763063392 instance=ExtResource("2_7ltta")]
 position = Vector2(766, 722.8093)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132874" parent="Pegs/Lattice/Purple" index="72" unique_id=44939045 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132874" parent="Pegs/Lattice/Purple" unique_id=44939045 instance=ExtResource("2_7ltta")]
 position = Vector2(1486, 722.8093)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132875" parent="Pegs/Lattice/Purple" index="73" unique_id=2077150942 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132875" parent="Pegs/Lattice/Purple" unique_id=2077150942 instance=ExtResource("2_7ltta")]
 position = Vector2(91, 808.5984)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132876" parent="Pegs/Lattice/Purple" index="74" unique_id=751843369 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132876" parent="Pegs/Lattice/Purple" unique_id=751843369 instance=ExtResource("2_7ltta")]
 position = Vector2(181, 808.5984)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132877" parent="Pegs/Lattice/Purple" index="75" unique_id=1737041690 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132877" parent="Pegs/Lattice/Purple" unique_id=1737041690 instance=ExtResource("2_7ltta")]
 position = Vector2(271, 808.5984)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132878" parent="Pegs/Lattice/Purple" index="76" unique_id=1899673642 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132878" parent="Pegs/Lattice/Purple" unique_id=1899673642 instance=ExtResource("2_7ltta")]
 position = Vector2(361, 808.5984)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132879" parent="Pegs/Lattice/Purple" index="77" unique_id=2076505508 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132879" parent="Pegs/Lattice/Purple" unique_id=2076505508 instance=ExtResource("2_7ltta")]
 position = Vector2(451, 808.5984)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132880" parent="Pegs/Lattice/Purple" index="78" unique_id=1054214362 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132880" parent="Pegs/Lattice/Purple" unique_id=1054214362 instance=ExtResource("2_7ltta")]
 position = Vector2(541, 808.5984)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132881" parent="Pegs/Lattice/Purple" index="79" unique_id=1345038740 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132881" parent="Pegs/Lattice/Purple" unique_id=1345038740 instance=ExtResource("2_7ltta")]
 position = Vector2(631, 808.5984)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132882" parent="Pegs/Lattice/Purple" index="80" unique_id=1291026743 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132882" parent="Pegs/Lattice/Purple" unique_id=1291026743 instance=ExtResource("2_7ltta")]
 position = Vector2(721, 808.5984)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132889" parent="Pegs/Lattice/Purple" index="81" unique_id=1629368266 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132889" parent="Pegs/Lattice/Purple" unique_id=1629368266 instance=ExtResource("2_7ltta")]
 position = Vector2(1351, 808.5984)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132890" parent="Pegs/Lattice/Purple" index="82" unique_id=702931478 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132890" parent="Pegs/Lattice/Purple" unique_id=702931478 instance=ExtResource("2_7ltta")]
 position = Vector2(1441, 808.5984)
 colour = Color(0.6836089, 0.29337206, 1, 1)
 
-[node name="_StaticBody2D_132884" parent="Pegs/Lattice/Purple" index="83" unique_id=933833228 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132884" parent="Pegs/Lattice/Purple" unique_id=933833228 instance=ExtResource("2_7ltta")]
 position = Vector2(901, 808.5984)
 physics_material_override = SubResource("PhysicsMaterial_l07mq")
 colour = Color(0.68235296, 0.29411766, 1, 1)
 
-[node name="White" type="Node2D" parent="Pegs/Lattice" index="1" unique_id=107983343]
+[node name="White" type="Node2D" parent="Pegs/Lattice" unique_id=107983343]
 
-[node name="_StaticBody2D_132741" parent="Pegs/Lattice/White" index="0" unique_id=441945239 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132741" parent="Pegs/Lattice/White" unique_id=441945239 instance=ExtResource("2_7ltta")]
 position = Vector2(915, 374.60815)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132742" parent="Pegs/Lattice/White" index="1" unique_id=305064360 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132742" parent="Pegs/Lattice/White" unique_id=305064360 instance=ExtResource("2_7ltta")]
 position = Vector2(1005, 374.60815)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132743" parent="Pegs/Lattice/White" index="2" unique_id=1280137001 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132743" parent="Pegs/Lattice/White" unique_id=1280137001 instance=ExtResource("2_7ltta")]
 position = Vector2(1095, 374.60815)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132744" parent="Pegs/Lattice/White" index="3" unique_id=1965088529 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132744" parent="Pegs/Lattice/White" unique_id=1965088529 instance=ExtResource("2_7ltta")]
 position = Vector2(1185, 374.60815)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132851" parent="Pegs/Lattice/White" index="4" unique_id=926910677 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132851" parent="Pegs/Lattice/White" unique_id=926910677 instance=ExtResource("2_7ltta")]
 position = Vector2(811, 641.6575)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132852" parent="Pegs/Lattice/White" index="5" unique_id=2019454738 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132852" parent="Pegs/Lattice/White" unique_id=2019454738 instance=ExtResource("2_7ltta")]
 position = Vector2(901, 641.6575)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132853" parent="Pegs/Lattice/White" index="6" unique_id=1300937343 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132853" parent="Pegs/Lattice/White" unique_id=1300937343 instance=ExtResource("2_7ltta")]
 position = Vector2(991, 641.6575)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132854" parent="Pegs/Lattice/White" index="7" unique_id=595325398 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132854" parent="Pegs/Lattice/White" unique_id=595325398 instance=ExtResource("2_7ltta")]
 position = Vector2(1081, 641.6575)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132855" parent="Pegs/Lattice/White" index="8" unique_id=1962906190 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132855" parent="Pegs/Lattice/White" unique_id=1962906190 instance=ExtResource("2_7ltta")]
 position = Vector2(1171, 641.6575)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132856" parent="Pegs/Lattice/White" index="9" unique_id=1612480246 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132856" parent="Pegs/Lattice/White" unique_id=1612480246 instance=ExtResource("2_7ltta")]
 position = Vector2(1261, 641.6575)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132867" parent="Pegs/Lattice/White" index="10" unique_id=527702626 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132867" parent="Pegs/Lattice/White" unique_id=527702626 instance=ExtResource("2_7ltta")]
 position = Vector2(856, 722.8093)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132868" parent="Pegs/Lattice/White" index="11" unique_id=1109569391 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132868" parent="Pegs/Lattice/White" unique_id=1109569391 instance=ExtResource("2_7ltta")]
 position = Vector2(946, 722.8093)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132869" parent="Pegs/Lattice/White" index="12" unique_id=869491970 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132869" parent="Pegs/Lattice/White" unique_id=869491970 instance=ExtResource("2_7ltta")]
 position = Vector2(1036, 722.8093)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132870" parent="Pegs/Lattice/White" index="13" unique_id=1087505685 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132870" parent="Pegs/Lattice/White" unique_id=1087505685 instance=ExtResource("2_7ltta")]
 position = Vector2(1126, 722.8093)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132871" parent="Pegs/Lattice/White" index="14" unique_id=1624521032 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132871" parent="Pegs/Lattice/White" unique_id=1624521032 instance=ExtResource("2_7ltta")]
 position = Vector2(1216, 722.8093)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132872" parent="Pegs/Lattice/White" index="15" unique_id=1208656547 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132872" parent="Pegs/Lattice/White" unique_id=1208656547 instance=ExtResource("2_7ltta")]
 position = Vector2(1306, 722.8093)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132883" parent="Pegs/Lattice/White" index="16" unique_id=401198510 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132883" parent="Pegs/Lattice/White" unique_id=401198510 instance=ExtResource("2_7ltta")]
 position = Vector2(811, 808.5984)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132885" parent="Pegs/Lattice/White" index="17" unique_id=702572951 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132885" parent="Pegs/Lattice/White" unique_id=702572951 instance=ExtResource("2_7ltta")]
 position = Vector2(991, 808.5984)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132886" parent="Pegs/Lattice/White" index="18" unique_id=188590119 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132886" parent="Pegs/Lattice/White" unique_id=188590119 instance=ExtResource("2_7ltta")]
 position = Vector2(1081, 808.5984)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132887" parent="Pegs/Lattice/White" index="19" unique_id=874099611 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132887" parent="Pegs/Lattice/White" unique_id=874099611 instance=ExtResource("2_7ltta")]
 position = Vector2(1171, 808.5984)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132888" parent="Pegs/Lattice/White" index="20" unique_id=660304452 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132888" parent="Pegs/Lattice/White" unique_id=660304452 instance=ExtResource("2_7ltta")]
 position = Vector2(1261, 808.5984)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132692" parent="Pegs/Lattice/White" index="21" unique_id=2113058389 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132692" parent="Pegs/Lattice/White" unique_id=2113058389 instance=ExtResource("2_7ltta")]
 position = Vector2(960, 200)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132693" parent="Pegs/Lattice/White" index="22" unique_id=2063672199 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132693" parent="Pegs/Lattice/White" unique_id=2063672199 instance=ExtResource("2_7ltta")]
 position = Vector2(1050, 200)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132694" parent="Pegs/Lattice/White" index="23" unique_id=166145637 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132694" parent="Pegs/Lattice/White" unique_id=166145637 instance=ExtResource("2_7ltta")]
 position = Vector2(1140, 200)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132709" parent="Pegs/Lattice/White" index="24" unique_id=1834750171 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132709" parent="Pegs/Lattice/White" unique_id=1834750171 instance=ExtResource("2_7ltta")]
 position = Vector2(1005, 255)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132710" parent="Pegs/Lattice/White" index="25" unique_id=1907214442 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132710" parent="Pegs/Lattice/White" unique_id=1907214442 instance=ExtResource("2_7ltta")]
 position = Vector2(1095, 255)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132726" parent="Pegs/Lattice/White" index="26" unique_id=340253210 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132726" parent="Pegs/Lattice/White" unique_id=340253210 instance=ExtResource("2_7ltta")]
 position = Vector2(1050, 313.14285)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132727" parent="Pegs/Lattice/White" index="27" unique_id=583711696 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132727" parent="Pegs/Lattice/White" unique_id=583711696 instance=ExtResource("2_7ltta")]
 position = Vector2(1140, 313.14285)
 colour = Color(1, 1, 1, 1)
 
-[node name="_StaticBody2D_132873" parent="Pegs/Lattice/White" index="28" unique_id=1906271355 instance=ExtResource("2_7ltta")]
+[node name="_StaticBody2D_132873" parent="Pegs/Lattice/White" unique_id=1906271355 instance=ExtResource("2_7ltta")]
 position = Vector2(1396, 722.8093)
 colour = Color(1, 1, 1, 1)
 
-[node name="Supernanny" type="Node2D" parent="Pegs" parent_id_path=PackedInt32Array(210672860) index="1" unique_id=7374991]
+[node name="Supernanny" type="Node2D" parent="Pegs" unique_id=7374991]
 
-[node name="S" type="Node2D" parent="Pegs/Supernanny" index="0" unique_id=97976700]
+[node name="S" type="Node2D" parent="Pegs/Supernanny" unique_id=97976700]
 position = Vector2(35, 420)
 
-[node name="Peg" parent="Pegs/Supernanny/S" index="0" unique_id=1086230690 instance=ExtResource("2_7ltta")]
+[node name="Peg" parent="Pegs/Supernanny/S" unique_id=1086230690 instance=ExtResource("2_7ltta")]
 position = Vector2(93, 19)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg2" parent="Pegs/Supernanny/S" index="1" unique_id=1498756520 instance=ExtResource("2_7ltta")]
+[node name="Peg2" parent="Pegs/Supernanny/S" unique_id=1498756520 instance=ExtResource("2_7ltta")]
 position = Vector2(24, 27)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg3" parent="Pegs/Supernanny/S" index="2" unique_id=1731328309 instance=ExtResource("2_7ltta")]
+[node name="Peg3" parent="Pegs/Supernanny/S" unique_id=1731328309 instance=ExtResource("2_7ltta")]
 position = Vector2(54, 77)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg4" parent="Pegs/Supernanny/S" index="3" unique_id=498736479 instance=ExtResource("2_7ltta")]
+[node name="Peg4" parent="Pegs/Supernanny/S" unique_id=498736479 instance=ExtResource("2_7ltta")]
 position = Vector2(101, 111)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg5" parent="Pegs/Supernanny/S" index="4" unique_id=1750729567 instance=ExtResource("2_7ltta")]
+[node name="Peg5" parent="Pegs/Supernanny/S" unique_id=1750729567 instance=ExtResource("2_7ltta")]
 position = Vector2(62, 142)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg6" parent="Pegs/Supernanny/S" index="5" unique_id=591016800 instance=ExtResource("2_7ltta")]
+[node name="Peg6" parent="Pegs/Supernanny/S" unique_id=591016800 instance=ExtResource("2_7ltta")]
 position = Vector2(11, 136)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Y" type="Node2D" parent="Pegs/Supernanny" index="1" unique_id=1240316666]
+[node name="Y" type="Node2D" parent="Pegs/Supernanny" unique_id=1240316666]
 position = Vector2(1429, 423)
 
-[node name="Peg" parent="Pegs/Supernanny/Y" index="0" unique_id=556999296 instance=ExtResource("2_7ltta")]
+[node name="Peg" parent="Pegs/Supernanny/Y" unique_id=556999296 instance=ExtResource("2_7ltta")]
 position = Vector2(27, 13)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg3" parent="Pegs/Supernanny/Y" index="1" unique_id=429834303 instance=ExtResource("2_7ltta")]
+[node name="Peg3" parent="Pegs/Supernanny/Y" unique_id=429834303 instance=ExtResource("2_7ltta")]
 position = Vector2(72, 137)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg4" parent="Pegs/Supernanny/Y" index="2" unique_id=1528514540 instance=ExtResource("2_7ltta")]
+[node name="Peg4" parent="Pegs/Supernanny/Y" unique_id=1528514540 instance=ExtResource("2_7ltta")]
 position = Vector2(100, 67)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg5" parent="Pegs/Supernanny/Y" index="3" unique_id=938822936 instance=ExtResource("2_7ltta")]
+[node name="Peg5" parent="Pegs/Supernanny/Y" unique_id=938822936 instance=ExtResource("2_7ltta")]
 position = Vector2(47, 67)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg6" parent="Pegs/Supernanny/Y" index="4" unique_id=780086163 instance=ExtResource("2_7ltta")]
+[node name="Peg6" parent="Pegs/Supernanny/Y" unique_id=780086163 instance=ExtResource("2_7ltta")]
 position = Vector2(119, 12)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="U" type="Node2D" parent="Pegs/Supernanny" index="2" unique_id=502088449]
+[node name="U" type="Node2D" parent="Pegs/Supernanny" unique_id=502088449]
 position = Vector2(173, 422)
 
-[node name="Peg" parent="Pegs/Supernanny/U" index="0" unique_id=80006796 instance=ExtResource("2_7ltta")]
+[node name="Peg" parent="Pegs/Supernanny/U" unique_id=80006796 instance=ExtResource("2_7ltta")]
 position = Vector2(13, 18)
 colour = Color(0.88118815, 2.2332668e-05, 0.6161154, 1)
 
-[node name="Peg2" parent="Pegs/Supernanny/U" index="1" unique_id=1129005525 instance=ExtResource("2_7ltta")]
+[node name="Peg2" parent="Pegs/Supernanny/U" unique_id=1129005525 instance=ExtResource("2_7ltta")]
 position = Vector2(14, 86)
 colour = Color(0.88118815, 2.2332668e-05, 0.6161154, 1)
 
-[node name="Peg3" parent="Pegs/Supernanny/U" index="2" unique_id=1017588147 instance=ExtResource("2_7ltta")]
+[node name="Peg3" parent="Pegs/Supernanny/U" unique_id=1017588147 instance=ExtResource("2_7ltta")]
 position = Vector2(37, 138)
 colour = Color(0.88118815, 2.2332668e-05, 0.6161154, 1)
 
-[node name="Peg4" parent="Pegs/Supernanny/U" index="3" unique_id=195317008 instance=ExtResource("2_7ltta")]
+[node name="Peg4" parent="Pegs/Supernanny/U" unique_id=195317008 instance=ExtResource("2_7ltta")]
 position = Vector2(98, 136)
 colour = Color(0.88118815, 2.2332668e-05, 0.6161154, 1)
 
-[node name="Peg5" parent="Pegs/Supernanny/U" index="4" unique_id=1506219553 instance=ExtResource("2_7ltta")]
+[node name="Peg5" parent="Pegs/Supernanny/U" unique_id=1506219553 instance=ExtResource("2_7ltta")]
 position = Vector2(117, 85)
 colour = Color(0.88118815, 2.2332668e-05, 0.6161154, 1)
 
-[node name="Peg6" parent="Pegs/Supernanny/U" index="5" unique_id=1609459017 instance=ExtResource("2_7ltta")]
+[node name="Peg6" parent="Pegs/Supernanny/U" unique_id=1609459017 instance=ExtResource("2_7ltta")]
 position = Vector2(118, 15)
 colour = Color(0.88118815, 2.2332668e-05, 0.6161154, 1)
 
-[node name="N3" type="Node2D" parent="Pegs/Supernanny" index="3" unique_id=508789635]
+[node name="N3" type="Node2D" parent="Pegs/Supernanny" unique_id=508789635]
 position = Vector2(1275, 426)
 
-[node name="Peg" parent="Pegs/Supernanny/N3" index="0" unique_id=672173345 instance=ExtResource("2_7ltta")]
+[node name="Peg" parent="Pegs/Supernanny/N3" unique_id=672173345 instance=ExtResource("2_7ltta")]
 position = Vector2(20, 12)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg3" parent="Pegs/Supernanny/N3" index="1" unique_id=1197382904 instance=ExtResource("2_7ltta")]
+[node name="Peg3" parent="Pegs/Supernanny/N3" unique_id=1197382904 instance=ExtResource("2_7ltta")]
 position = Vector2(13, 133)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg4" parent="Pegs/Supernanny/N3" index="2" unique_id=1318996468 instance=ExtResource("2_7ltta")]
+[node name="Peg4" parent="Pegs/Supernanny/N3" unique_id=1318996468 instance=ExtResource("2_7ltta")]
 position = Vector2(113, 130)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg5" parent="Pegs/Supernanny/N3" index="3" unique_id=918096814 instance=ExtResource("2_7ltta")]
+[node name="Peg5" parent="Pegs/Supernanny/N3" unique_id=918096814 instance=ExtResource("2_7ltta")]
 position = Vector2(72, 75)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg6" parent="Pegs/Supernanny/N3" index="4" unique_id=457358447 instance=ExtResource("2_7ltta")]
+[node name="Peg6" parent="Pegs/Supernanny/N3" unique_id=457358447 instance=ExtResource("2_7ltta")]
 position = Vector2(124, 13)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="P" type="Node2D" parent="Pegs/Supernanny" index="4" unique_id=1843427612]
+[node name="P" type="Node2D" parent="Pegs/Supernanny" unique_id=1843427612]
 position = Vector2(343, 424)
 
-[node name="Peg" parent="Pegs/Supernanny/P" index="0" unique_id=702226814 instance=ExtResource("2_7ltta")]
+[node name="Peg" parent="Pegs/Supernanny/P" unique_id=702226814 instance=ExtResource("2_7ltta")]
 position = Vector2(15, 15)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg3" parent="Pegs/Supernanny/P" index="1" unique_id=379832573 instance=ExtResource("2_7ltta")]
+[node name="Peg3" parent="Pegs/Supernanny/P" unique_id=379832573 instance=ExtResource("2_7ltta")]
 position = Vector2(15, 133)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg4" parent="Pegs/Supernanny/P" index="2" unique_id=959110909 instance=ExtResource("2_7ltta")]
+[node name="Peg4" parent="Pegs/Supernanny/P" unique_id=959110909 instance=ExtResource("2_7ltta")]
 position = Vector2(52, 81)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg5" parent="Pegs/Supernanny/P" index="3" unique_id=773166301 instance=ExtResource("2_7ltta")]
+[node name="Peg5" parent="Pegs/Supernanny/P" unique_id=773166301 instance=ExtResource("2_7ltta")]
 position = Vector2(96, 27)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="N2" type="Node2D" parent="Pegs/Supernanny" index="5" unique_id=872088865]
+[node name="N2" type="Node2D" parent="Pegs/Supernanny" unique_id=872088865]
 position = Vector2(1093, 423)
 
-[node name="Peg" parent="Pegs/Supernanny/N2" index="0" unique_id=594921277 instance=ExtResource("2_7ltta")]
+[node name="Peg" parent="Pegs/Supernanny/N2" unique_id=594921277 instance=ExtResource("2_7ltta")]
 position = Vector2(22, 14)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg3" parent="Pegs/Supernanny/N2" index="1" unique_id=1112591691 instance=ExtResource("2_7ltta")]
+[node name="Peg3" parent="Pegs/Supernanny/N2" unique_id=1112591691 instance=ExtResource("2_7ltta")]
 position = Vector2(15, 135)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg4" parent="Pegs/Supernanny/N2" index="2" unique_id=723074732 instance=ExtResource("2_7ltta")]
+[node name="Peg4" parent="Pegs/Supernanny/N2" unique_id=723074732 instance=ExtResource("2_7ltta")]
 position = Vector2(115, 132)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg5" parent="Pegs/Supernanny/N2" index="3" unique_id=19055875 instance=ExtResource("2_7ltta")]
+[node name="Peg5" parent="Pegs/Supernanny/N2" unique_id=19055875 instance=ExtResource("2_7ltta")]
 position = Vector2(74, 77)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg6" parent="Pegs/Supernanny/N2" index="4" unique_id=1245258465 instance=ExtResource("2_7ltta")]
+[node name="Peg6" parent="Pegs/Supernanny/N2" unique_id=1245258465 instance=ExtResource("2_7ltta")]
 position = Vector2(126, 15)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="E" type="Node2D" parent="Pegs/Supernanny" index="6" unique_id=1438024685]
+[node name="E" type="Node2D" parent="Pegs/Supernanny" unique_id=1438024685]
 position = Vector2(484, 424)
 
-[node name="Peg" parent="Pegs/Supernanny/E" index="0" unique_id=1571582211 instance=ExtResource("2_7ltta")]
+[node name="Peg" parent="Pegs/Supernanny/E" unique_id=1571582211 instance=ExtResource("2_7ltta")]
 position = Vector2(13, 14)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg3" parent="Pegs/Supernanny/E" index="1" unique_id=355590376 instance=ExtResource("2_7ltta")]
+[node name="Peg3" parent="Pegs/Supernanny/E" unique_id=355590376 instance=ExtResource("2_7ltta")]
 position = Vector2(15, 135)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg4" parent="Pegs/Supernanny/E" index="2" unique_id=643110293 instance=ExtResource("2_7ltta")]
+[node name="Peg4" parent="Pegs/Supernanny/E" unique_id=643110293 instance=ExtResource("2_7ltta")]
 position = Vector2(82, 135)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg5" parent="Pegs/Supernanny/E" index="3" unique_id=712988971 instance=ExtResource("2_7ltta")]
+[node name="Peg5" parent="Pegs/Supernanny/E" unique_id=712988971 instance=ExtResource("2_7ltta")]
 position = Vector2(47, 70)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg6" parent="Pegs/Supernanny/E" index="4" unique_id=1554179761 instance=ExtResource("2_7ltta")]
+[node name="Peg6" parent="Pegs/Supernanny/E" unique_id=1554179761 instance=ExtResource("2_7ltta")]
 position = Vector2(83, 12)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="A" type="Node2D" parent="Pegs/Supernanny" index="7" unique_id=766115964]
+[node name="A" type="Node2D" parent="Pegs/Supernanny" unique_id=766115964]
 position = Vector2(924, 428)
 
-[node name="Peg" parent="Pegs/Supernanny/A" index="0" unique_id=2076921636 instance=ExtResource("2_7ltta")]
+[node name="Peg" parent="Pegs/Supernanny/A" unique_id=2076921636 instance=ExtResource("2_7ltta")]
 position = Vector2(74, 7)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg3" parent="Pegs/Supernanny/A" index="1" unique_id=1694523517 instance=ExtResource("2_7ltta")]
+[node name="Peg3" parent="Pegs/Supernanny/A" unique_id=1694523517 instance=ExtResource("2_7ltta")]
 position = Vector2(17, 130)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg4" parent="Pegs/Supernanny/A" index="2" unique_id=188428162 instance=ExtResource("2_7ltta")]
+[node name="Peg4" parent="Pegs/Supernanny/A" unique_id=188428162 instance=ExtResource("2_7ltta")]
 position = Vector2(131, 131)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg5" parent="Pegs/Supernanny/A" index="3" unique_id=1291025196 instance=ExtResource("2_7ltta")]
+[node name="Peg5" parent="Pegs/Supernanny/A" unique_id=1291025196 instance=ExtResource("2_7ltta")]
 position = Vector2(46, 75)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg6" parent="Pegs/Supernanny/A" index="4" unique_id=347925476 instance=ExtResource("2_7ltta")]
+[node name="Peg6" parent="Pegs/Supernanny/A" unique_id=347925476 instance=ExtResource("2_7ltta")]
 position = Vector2(102, 76)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="R" type="Node2D" parent="Pegs/Supernanny" index="8" unique_id=1148948150]
+[node name="R" type="Node2D" parent="Pegs/Supernanny" unique_id=1148948150]
 position = Vector2(612, 423)
 
-[node name="Peg" parent="Pegs/Supernanny/R" index="0" unique_id=1864089993 instance=ExtResource("2_7ltta")]
+[node name="Peg" parent="Pegs/Supernanny/R" unique_id=1864089993 instance=ExtResource("2_7ltta")]
 position = Vector2(16, 14)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg3" parent="Pegs/Supernanny/R" index="1" unique_id=1947078893 instance=ExtResource("2_7ltta")]
+[node name="Peg3" parent="Pegs/Supernanny/R" unique_id=1947078893 instance=ExtResource("2_7ltta")]
 position = Vector2(18, 135)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg4" parent="Pegs/Supernanny/R" index="2" unique_id=990846958 instance=ExtResource("2_7ltta")]
+[node name="Peg4" parent="Pegs/Supernanny/R" unique_id=990846958 instance=ExtResource("2_7ltta")]
 position = Vector2(106, 136)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg5" parent="Pegs/Supernanny/R" index="3" unique_id=683838407 instance=ExtResource("2_7ltta")]
+[node name="Peg5" parent="Pegs/Supernanny/R" unique_id=683838407 instance=ExtResource("2_7ltta")]
 position = Vector2(48, 78)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg6" parent="Pegs/Supernanny/R" index="4" unique_id=1644755591 instance=ExtResource("2_7ltta")]
+[node name="Peg6" parent="Pegs/Supernanny/R" unique_id=1644755591 instance=ExtResource("2_7ltta")]
 position = Vector2(96, 32)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="N" type="Node2D" parent="Pegs/Supernanny" index="9" unique_id=1579521743]
+[node name="N" type="Node2D" parent="Pegs/Supernanny" unique_id=1579521743]
 position = Vector2(763, 425)
 
-[node name="Peg" parent="Pegs/Supernanny/N" index="0" unique_id=1886936526 instance=ExtResource("2_7ltta")]
+[node name="Peg" parent="Pegs/Supernanny/N" unique_id=1886936526 instance=ExtResource("2_7ltta")]
 position = Vector2(19, 12)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg3" parent="Pegs/Supernanny/N" index="1" unique_id=412766552 instance=ExtResource("2_7ltta")]
+[node name="Peg3" parent="Pegs/Supernanny/N" unique_id=412766552 instance=ExtResource("2_7ltta")]
 position = Vector2(12, 133)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg4" parent="Pegs/Supernanny/N" index="2" unique_id=1519964429 instance=ExtResource("2_7ltta")]
+[node name="Peg4" parent="Pegs/Supernanny/N" unique_id=1519964429 instance=ExtResource("2_7ltta")]
 position = Vector2(112, 130)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg5" parent="Pegs/Supernanny/N" index="3" unique_id=1428728400 instance=ExtResource("2_7ltta")]
+[node name="Peg5" parent="Pegs/Supernanny/N" unique_id=1428728400 instance=ExtResource("2_7ltta")]
 position = Vector2(71, 75)
 colour = Color(0.88235295, 0, 0.6156863, 1)
 
-[node name="Peg6" parent="Pegs/Supernanny/N" index="4" unique_id=1201111794 instance=ExtResource("2_7ltta")]
+[node name="Peg6" parent="Pegs/Supernanny/N" unique_id=1201111794 instance=ExtResource("2_7ltta")]
 position = Vector2(123, 13)
 colour = Color(0.88235295, 0, 0.6156863, 1)

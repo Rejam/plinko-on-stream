@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://q6km264o7fjj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wprqg"]
+friction = 0.0
+bounce = 0.9
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hiwug"]
+size = Vector2(32, 1157.5)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_voa4k"]
+friction = 0.0
+bounce = 0.9
+
+[node name="Walls" type="Node2D" unique_id=418344759]
+metadata/_edit_lock_ = true
+
+[node name="Left" type="StaticBody2D" parent="." unique_id=1117602574]
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_wprqg")
+metadata/_edit_lock_ = true
+
+[node name="Wall" type="CollisionShape2D" parent="Left" unique_id=803479526]
+position = Vector2(-16, 461.25)
+shape = SubResource("RectangleShape2D_hiwug")
+metadata/_edit_lock_ = true
+
+[node name="Right" type="StaticBody2D" parent="." unique_id=247870587]
+position = Vector2(1600, 0)
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_voa4k")
+metadata/_edit_lock_ = true
+
+[node name="Wall" type="CollisionShape2D" parent="Right" unique_id=2015135337]
+position = Vector2(16, 487.5)
+shape = SubResource("RectangleShape2D_hiwug")
+metadata/_edit_lock_ = true

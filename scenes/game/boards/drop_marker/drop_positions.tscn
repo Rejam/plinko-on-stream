@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cg5gtoys5tfeo"]
+
+[ext_resource type="PackedScene" uid="uid://75xw7d108vgf" path="res://scenes/game/boards/drop_marker/drop_marker.tscn" id="1_h13s4"]
+
+[node name="DropPositions" type="Node2D" unique_id=764417574]
+
+[node name="Column1" parent="." unique_id=184192665 instance=ExtResource("1_h13s4")]
+position = Vector2(150, 1)
+column = 1
+
+[node name="Column2" parent="." unique_id=867702396 instance=ExtResource("1_h13s4")]
+position = Vector2(482, 0)
+
+[node name="Column3" parent="." unique_id=389643049 instance=ExtResource("1_h13s4")]
+position = Vector2(800, 1)
+column = 3
+
+[node name="Column4" parent="." unique_id=1464534537 instance=ExtResource("1_h13s4")]
+position = Vector2(1120, 0)
+column = 4
+
+[node name="Column5" parent="." unique_id=1600595005 instance=ExtResource("1_h13s4")]
+position = Vector2(1450, 1)
+column = 5

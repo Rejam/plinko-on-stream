@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://h0758n0rbmu2"]
+
+[ext_resource type="PackedScene" uid="uid://bnugbts7q5efj" path="res://scenes/game/boards/bucket/bucket.tscn" id="1_bqfx2"]
+
+[node name="Buckets" type="Node2D" unique_id=1477913254]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1145071436]
+position = Vector2(0, 920)
+
+[node name="Bucket" parent="Node2D" unique_id=497517029 instance=ExtResource("1_bqfx2")]
+position = Vector2(160, 40)
+base_value = 20
+width = 320
+background_colour = Color(0.99999994, 0.50214565, 0.17263114, 1)
+
+[node name="Bucket2" parent="Node2D" unique_id=1258825650 instance=ExtResource("1_bqfx2")]
+position = Vector2(440, 40)
+base_value = 50
+width = 240
+background_colour = Color(1, 1, 0.18039216, 1)
+
+[node name="Bucket3" parent="Node2D" unique_id=943329883 instance=ExtResource("1_bqfx2")]
+position = Vector2(800, 40)
+base_value = -20
+width = 480
+background_colour = Color(0.73074186, 9.505823e-07, 7.70092e-07, 1)
+
+[node name="Bucket4" parent="Node2D" unique_id=62318887 instance=ExtResource("1_bqfx2")]
+position = Vector2(1160, 40)
+base_value = 50
+width = 240
+background_colour = Color(0.87058824, 0.8352941, 0, 1)
+
+[node name="Bucket5" parent="Node2D" unique_id=939229185 instance=ExtResource("1_bqfx2")]
+position = Vector2(1440, 40)
+base_value = 20
+width = 320
+background_colour = Color(0.99999994, 0.50214565, 0.17263114, 1)

@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://c56jtk2m2j8e"]
 
 [ext_resource type="Script" uid="uid://585tibkjp0fq" path="res://scenes/game/boards/board.gd" id="1_grf38"]
-[ext_resource type="PackedScene" uid="uid://75xw7d108vgf" path="res://scenes/game/drop_marker/drop_marker.tscn" id="2_gcs0y"]
-[ext_resource type="PackedScene" uid="uid://bnugbts7q5efj" path="res://scenes/game/bucket/bucket.tscn" id="2_voa4k"]
-[ext_resource type="PackedScene" uid="uid://bud1xgj8rjy15" path="res://scenes/game/ramp/ramp.tscn" id="4_5oo8i"]
+[ext_resource type="PackedScene" uid="uid://wbsjt1ljaicg" path="res://scenes/game/boards/board_background/board_background.tscn" id="2_gc7k6"]
+[ext_resource type="PackedScene" uid="uid://bnugbts7q5efj" path="res://scenes/game/boards/bucket/bucket.tscn" id="2_voa4k"]
+[ext_resource type="PackedScene" uid="uid://cg5gtoys5tfeo" path="res://scenes/game/boards/drop_marker/drop_positions.tscn" id="3_ckmaq"]
+[ext_resource type="PackedScene" uid="uid://bud1xgj8rjy15" path="res://scenes/game/boards/ramp/ramp.tscn" id="4_5oo8i"]
+[ext_resource type="PackedScene" uid="uid://q6km264o7fjj" path="res://scenes/game/boards/walls.tscn" id="4_ckmaq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gcs0y"]
 font_size = 200
@@ -11,31 +13,20 @@ font_color = Color(0.92941177, 0.8784314, 0, 1)
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wprqg"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3fqkk"]
 friction = 0.0
 bounce = 0.9
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hiwug"]
-size = Vector2(32, 1157.5)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5oo8i"]
-friction = 0.0
-bounce = 0.9
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_voa4k"]
-friction = 0.0
-bounce = 0.9
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gc7k6"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s83xk"]
 friction = 0.0
 bounce = 0.9
 
 [node name="Board" type="Node2D" unique_id=2047480295]
 script = ExtResource("1_grf38")
 
-[node name="ImageBackground" type="TextureRect" parent="." unique_id=94544916]
-offset_right = 1600.0
-offset_bottom = 1000.0
+[node name="BoardBackground" parent="." unique_id=1158839754 instance=ExtResource("2_gc7k6")]
+
+[node name="DropPositions" parent="." unique_id=764417574 instance=ExtResource("3_ckmaq")]
 
 [node name="Text" type="Label" parent="." unique_id=1388778403]
 offset_top = 300.0
@@ -48,88 +39,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="DropPositions" type="Node2D" parent="." unique_id=2045868811]
-unique_name_in_owner = true
+[node name="Walls" parent="." unique_id=418344759 instance=ExtResource("4_ckmaq")]
 
-[node name="Column1" parent="DropPositions" unique_id=1398213862 instance=ExtResource("2_gcs0y")]
-position = Vector2(150, 1)
-column = 1
+[node name="RampLeft" parent="." unique_id=2071365893 instance=ExtResource("4_5oo8i")]
+position = Vector2(0, 660)
+physics_material_override = SubResource("PhysicsMaterial_3fqkk")
 
-[node name="Column2" parent="DropPositions" unique_id=839480834 instance=ExtResource("2_gcs0y")]
-position = Vector2(450, 1)
-
-[node name="Column3" parent="DropPositions" unique_id=418523930 instance=ExtResource("2_gcs0y")]
-position = Vector2(800, 1)
-column = 3
-
-[node name="Column4" parent="DropPositions" unique_id=1796172646 instance=ExtResource("2_gcs0y")]
-position = Vector2(1150, 1)
-column = 4
-
-[node name="Column5" parent="DropPositions" unique_id=1656154058 instance=ExtResource("2_gcs0y")]
-position = Vector2(1450, 1)
-column = 5
+[node name="RampRight" parent="." unique_id=411638552 instance=ExtResource("4_5oo8i")]
+position = Vector2(1600, 660)
+physics_material_override = SubResource("PhysicsMaterial_s83xk")
 
 [node name="Buckets" type="Node2D" parent="." unique_id=1979250660]
 unique_name_in_owner = true
 position = Vector2(0, 920)
 
 [node name="Bucket" parent="Buckets" unique_id=497517029 instance=ExtResource("2_voa4k")]
-position = Vector2(200, 40)
-width = 400
-
-[node name="Bucket2" parent="Buckets" unique_id=893771601 instance=ExtResource("2_voa4k")]
-position = Vector2(520, 40)
-base_value = 50
-width = 240
-background_colour = Color(1, 1, 0.18039216, 1)
-
-[node name="Bucket3" parent="Buckets" unique_id=1843626455 instance=ExtResource("2_voa4k")]
 position = Vector2(800, 40)
-width = 320
-
-[node name="Bucket4" parent="Buckets" unique_id=277844201 instance=ExtResource("2_voa4k")]
-position = Vector2(1080, 40)
-base_value = 50
-width = 240
-background_colour = Color(0.8697201, 0.83497185, 0, 1)
-
-[node name="Bucket5" parent="Buckets" unique_id=1521932946 instance=ExtResource("2_voa4k")]
-position = Vector2(1400, 40)
-width = 400
-
-[node name="Walls" type="Node2D" parent="." unique_id=19235319]
-metadata/_edit_lock_ = true
-
-[node name="Left" type="StaticBody2D" parent="Walls" unique_id=1502387386]
-collision_layer = 4
-collision_mask = 0
-physics_material_override = SubResource("PhysicsMaterial_wprqg")
-metadata/_edit_lock_ = true
-
-[node name="Wall" type="CollisionShape2D" parent="Walls/Left" unique_id=97837573]
-position = Vector2(-16, 461.25)
-shape = SubResource("RectangleShape2D_hiwug")
-metadata/_edit_lock_ = true
-
-[node name="Ramp" parent="Walls/Left" unique_id=2071365893 instance=ExtResource("4_5oo8i")]
-position = Vector2(0, 672)
-physics_material_override = SubResource("PhysicsMaterial_5oo8i")
-
-[node name="Right" type="StaticBody2D" parent="Walls" unique_id=1081303422]
-position = Vector2(1600, 0)
-collision_layer = 4
-collision_mask = 0
-physics_material_override = SubResource("PhysicsMaterial_voa4k")
-metadata/_edit_lock_ = true
-
-[node name="Wall" type="CollisionShape2D" parent="Walls/Right" unique_id=1509934788]
-position = Vector2(16, 487.5)
-shape = SubResource("RectangleShape2D_hiwug")
-metadata/_edit_lock_ = true
-
-[node name="Ramp" parent="Walls/Right" unique_id=87935822 instance=ExtResource("4_5oo8i")]
-position = Vector2(0, 672)
-physics_material_override = SubResource("PhysicsMaterial_gc7k6")
+width = 1600
 
 [node name="Pegs" type="Node2D" parent="." unique_id=210672860]

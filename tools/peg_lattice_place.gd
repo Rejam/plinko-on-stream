@@ -24,8 +24,8 @@ extends EditorScript
 ## Owned, unlike the spacing check's markers, because these pegs are meant to be
 ## saved. Re-running discards the previous lattice and nothing else.
 
-const PEG_SCENE := "res://scenes/game/peg/peg.tscn"
-const BALL_SCENE := "res://scenes/game/ball/ball.tscn"
+const PEG_SCENE := "uid://ctc64dnv2jawv"
+const BALL_SCENE := "uid://cthrtlsbusy3"
 const LATTICE_NAME := "Lattice"
 
 ## Node the lattice is parented under, relative to the scene root.
