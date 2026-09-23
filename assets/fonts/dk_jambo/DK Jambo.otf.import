@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b23uaui11nll"
-path="res://.godot/imported/MatrixType-Regular.otf-a094e061bcec44ae95569620abddf753.fontdata"
+uid="uid://c44fcc3ca0ps0"
+path="res://.godot/imported/DK Jambo.otf-50995a1c21ba490ccbf0146a3e83bf09.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/matrixtype/MatrixType-Regular.otf"
-dest_files=["res://.godot/imported/MatrixType-Regular.otf-a094e061bcec44ae95569620abddf753.fontdata"]
+source_file="res://assets/fonts/dk_jambo/DK Jambo.otf"
+dest_files=["res://.godot/imported/DK Jambo.otf-50995a1c21ba490ccbf0146a3e83bf09.fontdata"]
 
 [params]
 

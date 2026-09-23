@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://3rmsjgk1sgsx" path="res://scenes/game/boards/board_happy_days.tscn" id="6_5v6r0"]
 [ext_resource type="PackedScene" uid="uid://bkhuo30b08vdf" path="res://scenes/game/session_manager/session_manager.tscn" id="7_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://dawrcn6dcaloj" path="res://scenes/game/boards/board_margaret_thatchers_dungeon.tscn" id="7_uyinl"]
+[ext_resource type="PackedScene" uid="uid://bdacsypf8u5a1" path="res://scenes/game/boards/board_whats_on_your_place.tscn" id="8_10c2w"]
 [ext_resource type="Script" uid="uid://cg6rw8igs22mw" path="res://scenes/game/player_row/player_list.gd" id="9_5v6r0"]
 [ext_resource type="PackedScene" uid="uid://dfpnxfomie3s4" path="res://scenes/game/phase_panel/round_over_layer.tscn" id="9_kp23o"]
 [ext_resource type="PackedScene" uid="uid://c7wodg5g357dt" path="res://scenes/game/phase_panel/session_over_layer.tscn" id="10_5jirj"]
@@ -36,7 +37,7 @@ corner_radius_bottom_left = 6
 
 [node name="Game" type="Node2D" unique_id=2047480295]
 script = ExtResource("1_5i0tg")
-boards = Array[PackedScene]([ExtResource("3_87uf6"), ExtResource("6_5v6r0"), ExtResource("2_bdhmt"), ExtResource("5_3xj4h"), ExtResource("2_ftsea"), ExtResource("7_uyinl")])
+boards = Array[PackedScene]([ExtResource("3_87uf6"), ExtResource("6_5v6r0"), ExtResource("2_bdhmt"), ExtResource("5_3xj4h"), ExtResource("2_ftsea"), ExtResource("7_uyinl"), ExtResource("8_10c2w")])
 
 [node name="Background" type="TextureRect" parent="." unique_id=324974537]
 anchors_preset = 15

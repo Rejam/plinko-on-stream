@@ -7,12 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bud1xgj8rjy15" path="res://scenes/game/boards/ramp/ramp.tscn" id="4_5oo8i"]
 [ext_resource type="PackedScene" uid="uid://q6km264o7fjj" path="res://scenes/game/boards/walls.tscn" id="4_ckmaq"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_gcs0y"]
-font_size = 200
-font_color = Color(0.92941177, 0.8784314, 0, 1)
-outline_size = 20
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ckmaq"]
 friction = 0.0
 bounce = 0.9
@@ -21,6 +15,12 @@ bounce = 0.9
 friction = 0.0
 bounce = 0.9
 
+[sub_resource type="LabelSettings" id="LabelSettings_gcs0y"]
+font_size = 200
+font_color = Color(0.92941177, 0.8784314, 0, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Board" type="Node2D" unique_id=2047480295]
 script = ExtResource("1_grf38")
 
@@ -28,17 +28,6 @@ script = ExtResource("1_grf38")
 
 [node name="DropPositions" parent="." unique_id=764417574 instance=ExtResource("3_ckmaq")]
 unique_name_in_owner = true
-
-[node name="Text" type="Label" parent="." unique_id=1388778403]
-offset_top = 300.0
-offset_right = 1385.2174
-offset_bottom = 657.0
-scale = Vector2(1.15, 1)
-text = "board name"
-label_settings = SubResource("LabelSettings_gcs0y")
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
 
 [node name="Walls" parent="." unique_id=418344759 instance=ExtResource("4_ckmaq")]
 
@@ -57,5 +46,16 @@ position = Vector2(0, 920)
 [node name="Bucket" parent="Buckets" unique_id=497517029 instance=ExtResource("2_voa4k")]
 position = Vector2(800, 40)
 width = 1600
+
+[node name="Text" type="Label" parent="." unique_id=1388778403]
+offset_top = 300.0
+offset_right = 1385.2174
+offset_bottom = 657.0
+scale = Vector2(1.15, 1)
+text = "board name"
+label_settings = SubResource("LabelSettings_gcs0y")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="Pegs" type="Node2D" parent="." unique_id=210672860]
