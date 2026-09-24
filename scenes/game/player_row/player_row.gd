@@ -2,7 +2,7 @@ class_name PlayerRow extends HBoxContainer
 
 ## One display-only line in a PlayerList: ball, name, value.
 ## Nothing here takes input — every node is MOUSE_FILTER_IGNORE so rows never
-## look or behave like something clickable (the reason ItemList was replaced).
+## look or behave like something clickable.
 
 @onready var _ball: TextureRect = $BallIcon
 @onready var _name: Label = $NameLabel

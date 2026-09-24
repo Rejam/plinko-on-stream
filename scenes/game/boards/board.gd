@@ -25,7 +25,7 @@ func set_multiplier(multiplier: int) -> void:
 		bucket.multiplier = multiplier
 
 ## Columns are 1-indexed to match the on-screen labels and the chat
-## command (!plinko 1-7). Clamping bad input is the round manager's job.
+## command (!plinko <column>). Validating chat input is BoardMarker.parse_column's job.
 ## The board only answers what exists.
 func column_count() -> int:
 	return _drop_positions.get_child_count()

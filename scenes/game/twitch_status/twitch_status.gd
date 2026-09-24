@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-## Chat connection indicator for the ticker row. Self-subscribes to the Twitch
+## Chat connection indicator in the bottom bar. Self-subscribes to the Twitch
 ## autoload rather than taking an exported reference
 ##
 ## Green: Twitch sent the 001 welcome. Yellow: connecting or retrying, and it

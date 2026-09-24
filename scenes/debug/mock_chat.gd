@@ -19,8 +19,8 @@ const NAMES: PackedStringArray = [
 ## has no way to ask. Raise it to your real column count for a wider spread.
 const SAFE_COLUMN_MAX := 7
 ## Rejected on any board: to_int() gives < 1, or a number no board reaches.
-## Digits above 7 are deliberately absent — board1 has 8 columns, so "8" is a
-## real entry there. "3.7" is absent too: to_int() truncates it to a valid 3.
+## Digits just above SAFE_COLUMN_MAX are absent — some boards have more columns,
+## so they can be real entries. "3.7" is absent too: to_int() truncates it to a valid 3.
 const JUNK_COLUMNS: PackedStringArray = ["0", "-3", "banana", "", "99"]
 
 @onready var add_button: Button = %AddEntrantButton

@@ -2,7 +2,7 @@ class_name BallArt
 
 ## One source of truth for a viewer's ball: a generated texture used both by the
 ## ball in play and by every list that shows their name. Generated rather than
-## drawn so it can be handed to ItemList.add_item as an icon — a _draw cannot.
+## drawn so TextureRects (list rows, score popup) can show it — a _draw cannot.
 ##
 ## Appearance is derived from user_id, so the same viewer gets the same ball
 ## every round and every session with nothing stored. Textures are cached per

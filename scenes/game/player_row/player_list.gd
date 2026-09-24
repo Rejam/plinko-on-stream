@@ -1,7 +1,6 @@
 class_name PlayerList extends VBoxContainer
 
-## Display-only replacement for ItemList: a column of PlayerRows. Mirrors the
-## ItemList calls (clear, add) so call sites barely change.
+## Display-only list: a column of PlayerRows. clear() and add() are the whole API.
 
 const ROW := preload("res://scenes/game/player_row/player_row.tscn")
 
