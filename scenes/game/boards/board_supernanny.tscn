@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://2mbqmhrxv686" path="res://assets/board_backgrounds/supernanny.jpg" id="2_agnwk"]
 [ext_resource type="PackedScene" uid="uid://wbsjt1ljaicg" path="res://scenes/game/boards/board_background/board_background.tscn" id="2_wh38a"]
 [ext_resource type="PackedScene" uid="uid://bnugbts7q5efj" path="res://scenes/game/boards/bucket/bucket.tscn" id="3_felfy"]
-[ext_resource type="PackedScene" uid="uid://q6km264o7fjj" path="res://scenes/game/boards/walls.tscn" id="4_jl6wo"]
-[ext_resource type="PackedScene" uid="uid://bud1xgj8rjy15" path="res://scenes/game/boards/ramp/ramp.tscn" id="5_e1dug"]
+[ext_resource type="PackedScene" uid="uid://q6km264o7fjj" path="res://scenes/game/boards/walls/walls.tscn" id="4_jl6wo"]
+[ext_resource type="PackedScene" uid="uid://bud1xgj8rjy15" path="res://scenes/game/boards/obstacles/ramp/ramp.tscn" id="5_e1dug"]
 [ext_resource type="PackedScene" uid="uid://cg5gtoys5tfeo" path="res://scenes/game/boards/drop_marker/drop_positions.tscn" id="6_g0tq3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_felfy"]

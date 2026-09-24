@@ -11,8 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://3rmsjgk1sgsx" path="res://scenes/game/boards/board_happy_days.tscn" id="6_5v6r0"]
 [ext_resource type="PackedScene" uid="uid://bkhuo30b08vdf" path="res://scenes/game/session_manager/session_manager.tscn" id="7_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://dawrcn6dcaloj" path="res://scenes/game/boards/board_margaret_thatchers_dungeon.tscn" id="7_uyinl"]
-[ext_resource type="PackedScene" uid="uid://bdacsypf8u5a1" path="res://scenes/game/boards/board_whats_on_your_place.tscn" id="8_10c2w"]
+[ext_resource type="PackedScene" uid="uid://bdacsypf8u5a1" path="res://scenes/game/boards/board_whats_on_your_plate.tscn" id="8_10c2w"]
 [ext_resource type="PackedScene" uid="uid://dfpnxfomie3s4" path="res://scenes/game/phase_panel/round_over_layer.tscn" id="9_kp23o"]
+[ext_resource type="PackedScene" uid="uid://capx17podabmv" path="res://scenes/game/boards/board_coach_trip.tscn" id="9_uyinl"]
 [ext_resource type="PackedScene" uid="uid://c7wodg5g357dt" path="res://scenes/game/phase_panel/session_over_layer.tscn" id="10_5jirj"]
 [ext_resource type="PackedScene" uid="uid://7vfasdaeinoq" path="res://scenes/game/hud/hud.tscn" id="10_5v6r0"]
 [ext_resource type="PackedScene" path="res://scenes/game/quit_confirm/quit_confirm_layer.tscn" id="11_kp23o"]
@@ -24,7 +25,7 @@ region = Rect2(450, 54, 16, 16)
 
 [node name="Game" type="Node2D" unique_id=2047480295]
 script = ExtResource("1_5i0tg")
-boards = Array[PackedScene]([ExtResource("3_87uf6"), ExtResource("6_5v6r0"), ExtResource("2_bdhmt"), ExtResource("5_3xj4h"), ExtResource("2_ftsea"), ExtResource("7_uyinl"), ExtResource("8_10c2w")])
+boards = Array[PackedScene]([ExtResource("9_uyinl"), ExtResource("3_87uf6"), ExtResource("2_ftsea"), ExtResource("6_5v6r0"), ExtResource("5_3xj4h"), ExtResource("7_uyinl"), ExtResource("2_bdhmt"), ExtResource("8_10c2w")])
 
 [node name="Background" type="TextureRect" parent="." unique_id=324974537]
 anchors_preset = 15

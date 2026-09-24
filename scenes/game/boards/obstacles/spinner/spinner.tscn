@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b5nujnhxm2lpb"]
 
-[ext_resource type="Script" uid="uid://d07ejfjslgpjj" path="res://scenes/game/boards/Spinner/spinner.gd" id="1_awtjc"]
+[ext_resource type="Script" uid="uid://d07ejfjslgpjj" path="res://scenes/game/boards/obstacles/spinner/spinner.gd" id="1_awtjc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5lgib"]
 size = Vector2(10, 160)

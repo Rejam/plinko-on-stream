@@ -42,6 +42,9 @@ func _physics_process(delta: float) -> void:
 var peg_hits: int = 0
 
 func _on_body_entered(body: Node) -> void:
+	if body.has_method("on_ball_hit"):
+		body.on_ball_hit()
+	
 	var peg = body as Peg
 	if not peg: return
 	peg_hits += 1

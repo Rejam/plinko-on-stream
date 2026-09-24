@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://w08pjlk0g1sk"]
+
+[ext_resource type="Script" uid="uid://vb05uk742b3w" path="res://scenes/game/boards/obstacles/coach/coach.gd" id="1_8eo54"]
+[ext_resource type="Texture2D" uid="uid://ulwa1bmu3pch" path="res://scenes/game/boards/obstacles/coach/coach.png" id="1_kroyh"]
+[ext_resource type="Texture2D" uid="uid://uqoih2r1g8ri" path="res://scenes/game/boards/obstacles/coach/smoke_01.png" id="2_yk8ke"]
+[ext_resource type="AudioStream" uid="uid://bm8dq6et8gu5g" path="res://scenes/game/boards/obstacles/coach/horn.mp3" id="3_2iimm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2iimm"]
+friction = 0.0
+bounce = 0.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8eo54"]
+radius = 56.5
+height = 427.71512
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2iimm"]
+blend_mode = 4
+
+[sub_resource type="Curve" id="Curve_hiwug"]
+_data = [Vector2(0, 0), 0.0, 5.1400495, 0, 0, Vector2(0.5219885, 1), 0.018857248, 0.018857248, 0, 0, Vector2(1, 0), -1.9358596, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_drl23"]
+offsets = PackedFloat32Array(0, 0.12989691, 0.30309278, 0.5216495, 0.6948454, 0.84948456, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.8374353, 0.409456, 1.1551381e-06, 1, 0.9411765, 1, 0, 1, 2.3102762e-06, 0.87432826, 0, 1, 0.2725595, 0.64673084, 0.99999493, 1, 0.7019608, 0.38039216, 1, 1, 0.69411767, 0.24313726, 1, 1)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" unique_id=750970848]
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_2iimm")
+script = ExtResource("1_8eo54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=26247350]
+position = Vector2(202, 74)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_8eo54")
+
+[node name="Smoke" type="CPUParticles2D" parent="." unique_id=2031534594]
+material = SubResource("CanvasItemMaterial_2iimm")
+position = Vector2(2, 105)
+amount = 60
+texture = ExtResource("2_yk8ke")
+lifetime = 2.0
+fixed_fps = 30
+direction = Vector2(-1, 0)
+spread = 10.0
+gravity = Vector2(0, -50)
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.05
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_hiwug")
+color = Color(0.9802465, 0.29522157, 0.6282571, 1)
+color_ramp = SubResource("Gradient_drl23")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=495557839]
+unique_name_in_owner = true
+stream = ExtResource("3_2iimm")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1272582579]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 472.8877
+offset_bottom = 190.0
+texture = ExtResource("1_kroyh")
+expand_mode = 1
+metadata/_edit_lock_ = true

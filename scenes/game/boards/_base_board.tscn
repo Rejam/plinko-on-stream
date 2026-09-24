@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://wbsjt1ljaicg" path="res://scenes/game/boards/board_background/board_background.tscn" id="2_gc7k6"]
 [ext_resource type="PackedScene" uid="uid://bnugbts7q5efj" path="res://scenes/game/boards/bucket/bucket.tscn" id="2_voa4k"]
 [ext_resource type="PackedScene" uid="uid://cg5gtoys5tfeo" path="res://scenes/game/boards/drop_marker/drop_positions.tscn" id="3_ckmaq"]
-[ext_resource type="PackedScene" uid="uid://bud1xgj8rjy15" path="res://scenes/game/boards/ramp/ramp.tscn" id="4_5oo8i"]
-[ext_resource type="PackedScene" uid="uid://q6km264o7fjj" path="res://scenes/game/boards/walls.tscn" id="4_ckmaq"]
+[ext_resource type="PackedScene" uid="uid://bud1xgj8rjy15" path="res://scenes/game/boards/obstacles/ramp/ramp.tscn" id="4_5oo8i"]
+[ext_resource type="PackedScene" uid="uid://q6km264o7fjj" path="res://scenes/game/boards/walls/walls.tscn" id="4_ckmaq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ckmaq"]
 friction = 0.0

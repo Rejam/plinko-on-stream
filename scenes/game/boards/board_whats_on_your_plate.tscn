@@ -4,20 +4,20 @@
 [ext_resource type="PackedScene" uid="uid://wbsjt1ljaicg" path="res://scenes/game/boards/board_background/board_background.tscn" id="2_h021p"]
 [ext_resource type="Texture2D" uid="uid://rqa5ubf1tkcq" path="res://assets/board_backgrounds/plate.jpg" id="3_hv012"]
 [ext_resource type="PackedScene" uid="uid://cg5gtoys5tfeo" path="res://scenes/game/boards/drop_marker/drop_positions.tscn" id="4_l0fby"]
-[ext_resource type="PackedScene" uid="uid://q6km264o7fjj" path="res://scenes/game/boards/walls.tscn" id="5_vn8h3"]
-[ext_resource type="PackedScene" uid="uid://bud1xgj8rjy15" path="res://scenes/game/boards/ramp/ramp.tscn" id="6_j3g0v"]
+[ext_resource type="PackedScene" uid="uid://q6km264o7fjj" path="res://scenes/game/boards/walls/walls.tscn" id="5_vn8h3"]
+[ext_resource type="PackedScene" uid="uid://bud1xgj8rjy15" path="res://scenes/game/boards/obstacles/ramp/ramp.tscn" id="6_j3g0v"]
 [ext_resource type="PackedScene" uid="uid://bnugbts7q5efj" path="res://scenes/game/boards/bucket/bucket.tscn" id="7_obnsj"]
 [ext_resource type="Texture2D" uid="uid://dxkvdxv63yc01" path="res://assets/board_backgrounds/cheese.webp" id="8_kx2nk"]
 [ext_resource type="Texture2D" uid="uid://dhbpmqha305f7" path="res://assets/board_backgrounds/chapati.png" id="9_4d4i0"]
 [ext_resource type="FontFile" uid="uid://c44fcc3ca0ps0" path="res://assets/fonts/dk_jambo/DK Jambo.otf" id="10_x3jty"]
 [ext_resource type="PackedScene" uid="uid://ctc64dnv2jawv" path="res://scenes/game/boards/peg/peg.tscn" id="11_er4b2"]
-[ext_resource type="PackedScene" uid="uid://b5nujnhxm2lpb" path="res://scenes/game/boards/Spinner/spinner.tscn" id="12_6yih8"]
+[ext_resource type="PackedScene" uid="uid://b5nujnhxm2lpb" path="res://scenes/game/boards/obstacles/spinner/spinner.tscn" id="12_6yih8"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7rcw4"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n3gio"]
 friction = 0.0
 bounce = 0.9
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h021p"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s3ejr"]
 friction = 0.0
 bounce = 0.9
 
@@ -44,12 +44,12 @@ unique_name_in_owner = true
 
 [node name="RampLeft" parent="Walls" unique_id=2071365893 instance=ExtResource("6_j3g0v")]
 position = Vector2(0, 560)
-physics_material_override = SubResource("PhysicsMaterial_7rcw4")
+physics_material_override = SubResource("PhysicsMaterial_n3gio")
 fill = Color(0.8901961, 0.48235294, 0.2784314, 1)
 
 [node name="RampRight" parent="Walls" unique_id=411638552 instance=ExtResource("6_j3g0v")]
 position = Vector2(1600, 400)
-physics_material_override = SubResource("PhysicsMaterial_h021p")
+physics_material_override = SubResource("PhysicsMaterial_s3ejr")
 fill = Color(0.8895806, 0.48409766, 0.27847663, 1)
 
 [node name="Buckets" type="Node2D" parent="." unique_id=1979250660]

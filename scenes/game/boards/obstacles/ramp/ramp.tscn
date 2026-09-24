@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bud1xgj8rjy15"]
+
+[ext_resource type="Script" uid="uid://dydnto2ga80xl" path="res://scenes/game/boards/obstacles/ramp/ramp.gd" id="1_14uah"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_puq60"]
+friction = 0.0
+bounce = 0.9
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0j76"]
+size = Vector2(120, 120)
+
+[node name="Ramp" type="StaticBody2D" unique_id=2071365893]
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_puq60")
+script = ExtResource("1_14uah")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1145262442]
+rotation = 0.7853982
+shape = SubResource("RectangleShape2D_u0j76")
+debug_color = Color(0, 0.6, 0.69803923, 0)

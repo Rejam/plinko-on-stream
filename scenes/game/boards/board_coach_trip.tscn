@@ -1,0 +1,540 @@
+[gd_scene format=3 uid="uid://capx17podabmv"]
+
+[ext_resource type="Script" uid="uid://585tibkjp0fq" path="res://scenes/game/boards/board.gd" id="1_ojepa"]
+[ext_resource type="Texture2D" uid="uid://bf84yge3pvk7c" path="res://assets/board_backgrounds/brendan.jpg" id="2_3wdhq"]
+[ext_resource type="PackedScene" uid="uid://wbsjt1ljaicg" path="res://scenes/game/boards/board_background/board_background.tscn" id="2_fshlb"]
+[ext_resource type="PackedScene" uid="uid://cg5gtoys5tfeo" path="res://scenes/game/boards/drop_marker/drop_positions.tscn" id="4_nc1dy"]
+[ext_resource type="PackedScene" uid="uid://q6km264o7fjj" path="res://scenes/game/boards/walls/walls.tscn" id="5_t6ugu"]
+[ext_resource type="PackedScene" uid="uid://bud1xgj8rjy15" path="res://scenes/game/boards/obstacles/ramp/ramp.tscn" id="6_c5c4j"]
+[ext_resource type="PackedScene" uid="uid://bnugbts7q5efj" path="res://scenes/game/boards/bucket/bucket.tscn" id="7_t3g0s"]
+[ext_resource type="PackedScene" uid="uid://w08pjlk0g1sk" path="res://scenes/game/boards/obstacles/coach/coach.tscn" id="8_fshlb"]
+[ext_resource type="PackedScene" uid="uid://ctc64dnv2jawv" path="res://scenes/game/boards/peg/peg.tscn" id="8_t6ugu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nc1dy"]
+friction = 0.0
+bounce = 0.9
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t6ugu"]
+friction = 0.0
+bounce = 0.9
+
+[sub_resource type="LabelSettings" id="LabelSettings_gcs0y"]
+font_size = 200
+font_color = Color(0.92941177, 0.8784314, 0, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l07mq"]
+friction = 0.0
+bounce = 0.8
+
+[node name="Board" type="Node2D" unique_id=2047480295]
+script = ExtResource("1_ojepa")
+
+[node name="BoardBackground" parent="." unique_id=1158839754 instance=ExtResource("2_fshlb")]
+offset_top = -100.0
+offset_bottom = 1500.0
+texture = ExtResource("2_3wdhq")
+expand_mode = 4
+stretch_mode = 6
+
+[node name="DropPositions" parent="." unique_id=764417574 instance=ExtResource("4_nc1dy")]
+unique_name_in_owner = true
+
+[node name="Walls" parent="." unique_id=418344759 instance=ExtResource("5_t6ugu")]
+
+[node name="RampLeft" parent="Walls" unique_id=2071365893 instance=ExtResource("6_c5c4j")]
+position = Vector2(0, 660)
+physics_material_override = SubResource("PhysicsMaterial_nc1dy")
+fill = Color(0.8392157, 0.47843137, 0.7254902, 1)
+
+[node name="RampRight" parent="Walls" unique_id=411638552 instance=ExtResource("6_c5c4j")]
+position = Vector2(1600, 660)
+physics_material_override = SubResource("PhysicsMaterial_t6ugu")
+fill = Color(0.24858052, 0.63539034, 0.9456598, 1)
+
+[node name="Buckets" type="Node2D" parent="." unique_id=1979250660]
+unique_name_in_owner = true
+position = Vector2(0, 920)
+
+[node name="Bucket" parent="Buckets" unique_id=497517029 instance=ExtResource("7_t3g0s")]
+position = Vector2(800, 40)
+width = 1600
+
+[node name="Text" type="Label" parent="." unique_id=1388778403]
+offset_top = 300.0
+offset_right = 1385.2174
+offset_bottom = 657.0
+scale = Vector2(1.15, 1)
+text = "coach trip"
+label_settings = SubResource("LabelSettings_gcs0y")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Pegs" type="Node2D" parent="." unique_id=210672860]
+
+[node name="Lattice" type="Node2D" parent="Pegs" unique_id=1319677955]
+
+[node name="Peg" parent="Pegs/Lattice" unique_id=578915731 instance=ExtResource("8_t6ugu")]
+position = Vector2(60, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80289" parent="Pegs/Lattice" unique_id=1417017160 instance=ExtResource("8_t6ugu")]
+position = Vector2(150, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80290" parent="Pegs/Lattice" unique_id=792717671 instance=ExtResource("8_t6ugu")]
+position = Vector2(240, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80291" parent="Pegs/Lattice" unique_id=703147344 instance=ExtResource("8_t6ugu")]
+position = Vector2(330, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80292" parent="Pegs/Lattice" unique_id=1649219961 instance=ExtResource("8_t6ugu")]
+position = Vector2(420, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80293" parent="Pegs/Lattice" unique_id=2130218515 instance=ExtResource("8_t6ugu")]
+position = Vector2(510, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80294" parent="Pegs/Lattice" unique_id=63019182 instance=ExtResource("8_t6ugu")]
+position = Vector2(600, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80295" parent="Pegs/Lattice" unique_id=650855467 instance=ExtResource("8_t6ugu")]
+position = Vector2(690, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80296" parent="Pegs/Lattice" unique_id=1552467799 instance=ExtResource("8_t6ugu")]
+position = Vector2(780, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80297" parent="Pegs/Lattice" unique_id=794838800 instance=ExtResource("8_t6ugu")]
+position = Vector2(870, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80298" parent="Pegs/Lattice" unique_id=1442781700 instance=ExtResource("8_t6ugu")]
+position = Vector2(960, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80299" parent="Pegs/Lattice" unique_id=1231148751 instance=ExtResource("8_t6ugu")]
+position = Vector2(1050, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80300" parent="Pegs/Lattice" unique_id=1471836123 instance=ExtResource("8_t6ugu")]
+position = Vector2(1140, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80301" parent="Pegs/Lattice" unique_id=652118265 instance=ExtResource("8_t6ugu")]
+position = Vector2(1230, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80302" parent="Pegs/Lattice" unique_id=1097392243 instance=ExtResource("8_t6ugu")]
+position = Vector2(1320, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80303" parent="Pegs/Lattice" unique_id=1861391023 instance=ExtResource("8_t6ugu")]
+position = Vector2(1410, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80304" parent="Pegs/Lattice" unique_id=1734976221 instance=ExtResource("8_t6ugu")]
+position = Vector2(1500, 200)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80354" parent="Pegs/Lattice" unique_id=769805064 instance=ExtResource("8_t6ugu")]
+position = Vector2(60, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80355" parent="Pegs/Lattice" unique_id=973517776 instance=ExtResource("8_t6ugu")]
+position = Vector2(150, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80356" parent="Pegs/Lattice" unique_id=167687389 instance=ExtResource("8_t6ugu")]
+position = Vector2(240, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80357" parent="Pegs/Lattice" unique_id=1410482564 instance=ExtResource("8_t6ugu")]
+position = Vector2(330, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80358" parent="Pegs/Lattice" unique_id=2140395839 instance=ExtResource("8_t6ugu")]
+position = Vector2(420, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80359" parent="Pegs/Lattice" unique_id=1459353341 instance=ExtResource("8_t6ugu")]
+position = Vector2(510, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80360" parent="Pegs/Lattice" unique_id=1828248761 instance=ExtResource("8_t6ugu")]
+position = Vector2(600, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80361" parent="Pegs/Lattice" unique_id=1466021911 instance=ExtResource("8_t6ugu")]
+position = Vector2(690, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80362" parent="Pegs/Lattice" unique_id=397402190 instance=ExtResource("8_t6ugu")]
+position = Vector2(780, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80363" parent="Pegs/Lattice" unique_id=2007456233 instance=ExtResource("8_t6ugu")]
+position = Vector2(870, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80364" parent="Pegs/Lattice" unique_id=1979513407 instance=ExtResource("8_t6ugu")]
+position = Vector2(960, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80365" parent="Pegs/Lattice" unique_id=546283831 instance=ExtResource("8_t6ugu")]
+position = Vector2(1050, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80366" parent="Pegs/Lattice" unique_id=387359099 instance=ExtResource("8_t6ugu")]
+position = Vector2(1140, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80367" parent="Pegs/Lattice" unique_id=266537450 instance=ExtResource("8_t6ugu")]
+position = Vector2(1230, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80368" parent="Pegs/Lattice" unique_id=116029993 instance=ExtResource("8_t6ugu")]
+position = Vector2(1320, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80369" parent="Pegs/Lattice" unique_id=1707157162 instance=ExtResource("8_t6ugu")]
+position = Vector2(1410, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80370" parent="Pegs/Lattice" unique_id=781588208 instance=ExtResource("8_t6ugu")]
+position = Vector2(1500, 439.5858)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80371" parent="Pegs/Lattice" unique_id=1142323143 instance=ExtResource("8_t6ugu")]
+position = Vector2(105, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80372" parent="Pegs/Lattice" unique_id=856464389 instance=ExtResource("8_t6ugu")]
+position = Vector2(195, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80373" parent="Pegs/Lattice" unique_id=273920318 instance=ExtResource("8_t6ugu")]
+position = Vector2(285, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80374" parent="Pegs/Lattice" unique_id=926811858 instance=ExtResource("8_t6ugu")]
+position = Vector2(375, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80375" parent="Pegs/Lattice" unique_id=1321050735 instance=ExtResource("8_t6ugu")]
+position = Vector2(465, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80376" parent="Pegs/Lattice" unique_id=1180501429 instance=ExtResource("8_t6ugu")]
+position = Vector2(555, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80377" parent="Pegs/Lattice" unique_id=592361820 instance=ExtResource("8_t6ugu")]
+position = Vector2(645, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80378" parent="Pegs/Lattice" unique_id=297858568 instance=ExtResource("8_t6ugu")]
+position = Vector2(735, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80379" parent="Pegs/Lattice" unique_id=1688805677 instance=ExtResource("8_t6ugu")]
+position = Vector2(825, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80380" parent="Pegs/Lattice" unique_id=428397360 instance=ExtResource("8_t6ugu")]
+position = Vector2(915, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80381" parent="Pegs/Lattice" unique_id=1638605025 instance=ExtResource("8_t6ugu")]
+position = Vector2(1005, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80382" parent="Pegs/Lattice" unique_id=1966588030 instance=ExtResource("8_t6ugu")]
+position = Vector2(1095, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80383" parent="Pegs/Lattice" unique_id=749860178 instance=ExtResource("8_t6ugu")]
+position = Vector2(1185, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80384" parent="Pegs/Lattice" unique_id=567843057 instance=ExtResource("8_t6ugu")]
+position = Vector2(1275, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80385" parent="Pegs/Lattice" unique_id=1339862760 instance=ExtResource("8_t6ugu")]
+position = Vector2(1365, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80386" parent="Pegs/Lattice" unique_id=135486480 instance=ExtResource("8_t6ugu")]
+position = Vector2(1455, 508.2764)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80387" parent="Pegs/Lattice" unique_id=2059627103 instance=ExtResource("8_t6ugu")]
+position = Vector2(150, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80388" parent="Pegs/Lattice" unique_id=2093753398 instance=ExtResource("8_t6ugu")]
+position = Vector2(240, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80389" parent="Pegs/Lattice" unique_id=651404392 instance=ExtResource("8_t6ugu")]
+position = Vector2(330, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80390" parent="Pegs/Lattice" unique_id=604636195 instance=ExtResource("8_t6ugu")]
+position = Vector2(420, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80391" parent="Pegs/Lattice" unique_id=523268457 instance=ExtResource("8_t6ugu")]
+position = Vector2(510, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80392" parent="Pegs/Lattice" unique_id=93929540 instance=ExtResource("8_t6ugu")]
+position = Vector2(600, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80393" parent="Pegs/Lattice" unique_id=1811690560 instance=ExtResource("8_t6ugu")]
+position = Vector2(690, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80394" parent="Pegs/Lattice" unique_id=1649643639 instance=ExtResource("8_t6ugu")]
+position = Vector2(780, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80395" parent="Pegs/Lattice" unique_id=872638482 instance=ExtResource("8_t6ugu")]
+position = Vector2(870, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80396" parent="Pegs/Lattice" unique_id=1110874725 instance=ExtResource("8_t6ugu")]
+position = Vector2(960, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80397" parent="Pegs/Lattice" unique_id=2040527146 instance=ExtResource("8_t6ugu")]
+position = Vector2(1050, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80398" parent="Pegs/Lattice" unique_id=335774304 instance=ExtResource("8_t6ugu")]
+position = Vector2(1140, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80399" parent="Pegs/Lattice" unique_id=1637243094 instance=ExtResource("8_t6ugu")]
+position = Vector2(1230, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80400" parent="Pegs/Lattice" unique_id=290449067 instance=ExtResource("8_t6ugu")]
+position = Vector2(1320, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80401" parent="Pegs/Lattice" unique_id=480602048 instance=ExtResource("8_t6ugu")]
+position = Vector2(1410, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80402" parent="Pegs/Lattice" unique_id=248516381 instance=ExtResource("8_t6ugu")]
+position = Vector2(1500, 580.8922)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80403" parent="Pegs/Lattice" unique_id=105779181 instance=ExtResource("8_t6ugu")]
+position = Vector2(195, 657.6575)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80404" parent="Pegs/Lattice" unique_id=1281339793 instance=ExtResource("8_t6ugu")]
+position = Vector2(285, 657.6575)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80405" parent="Pegs/Lattice" unique_id=2049097960 instance=ExtResource("8_t6ugu")]
+position = Vector2(375, 657.6575)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80406" parent="Pegs/Lattice" unique_id=762234208 instance=ExtResource("8_t6ugu")]
+position = Vector2(465, 657.6575)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80407" parent="Pegs/Lattice" unique_id=1011117582 instance=ExtResource("8_t6ugu")]
+position = Vector2(555, 657.6575)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80408" parent="Pegs/Lattice" unique_id=587281767 instance=ExtResource("8_t6ugu")]
+position = Vector2(645, 657.6575)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80409" parent="Pegs/Lattice" unique_id=407045591 instance=ExtResource("8_t6ugu")]
+position = Vector2(735, 657.6575)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80410" parent="Pegs/Lattice" unique_id=1311845206 instance=ExtResource("8_t6ugu")]
+position = Vector2(825, 657.6575)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80411" parent="Pegs/Lattice" unique_id=127081048 instance=ExtResource("8_t6ugu")]
+position = Vector2(915, 657.6575)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80412" parent="Pegs/Lattice" unique_id=1333415415 instance=ExtResource("8_t6ugu")]
+position = Vector2(1005, 657.6575)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80413" parent="Pegs/Lattice" unique_id=147787542 instance=ExtResource("8_t6ugu")]
+position = Vector2(1095, 657.6575)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80414" parent="Pegs/Lattice" unique_id=342576286 instance=ExtResource("8_t6ugu")]
+position = Vector2(1185, 657.6575)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80415" parent="Pegs/Lattice" unique_id=25887088 instance=ExtResource("8_t6ugu")]
+position = Vector2(1275, 657.6575)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80416" parent="Pegs/Lattice" unique_id=1631315337 instance=ExtResource("8_t6ugu")]
+position = Vector2(1365, 657.6575)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80417" parent="Pegs/Lattice" unique_id=1720185667 instance=ExtResource("8_t6ugu")]
+position = Vector2(1455, 657.6575)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80418" parent="Pegs/Lattice" unique_id=1721412206 instance=ExtResource("8_t6ugu")]
+position = Vector2(150, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80419" parent="Pegs/Lattice" unique_id=485497848 instance=ExtResource("8_t6ugu")]
+position = Vector2(240, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80420" parent="Pegs/Lattice" unique_id=2060095027 instance=ExtResource("8_t6ugu")]
+position = Vector2(330, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80421" parent="Pegs/Lattice" unique_id=1063846228 instance=ExtResource("8_t6ugu")]
+position = Vector2(420, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80422" parent="Pegs/Lattice" unique_id=157296800 instance=ExtResource("8_t6ugu")]
+position = Vector2(510, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80423" parent="Pegs/Lattice" unique_id=775318701 instance=ExtResource("8_t6ugu")]
+position = Vector2(600, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80424" parent="Pegs/Lattice" unique_id=1199191496 instance=ExtResource("8_t6ugu")]
+position = Vector2(690, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80425" parent="Pegs/Lattice" unique_id=2039893046 instance=ExtResource("8_t6ugu")]
+position = Vector2(780, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80426" parent="Pegs/Lattice" unique_id=1761159957 instance=ExtResource("8_t6ugu")]
+position = Vector2(870, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80427" parent="Pegs/Lattice" unique_id=1391450609 instance=ExtResource("8_t6ugu")]
+position = Vector2(960, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80428" parent="Pegs/Lattice" unique_id=1329407860 instance=ExtResource("8_t6ugu")]
+position = Vector2(1050, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80429" parent="Pegs/Lattice" unique_id=1920322453 instance=ExtResource("8_t6ugu")]
+position = Vector2(1140, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80430" parent="Pegs/Lattice" unique_id=1800377041 instance=ExtResource("8_t6ugu")]
+position = Vector2(1230, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80431" parent="Pegs/Lattice" unique_id=1704009439 instance=ExtResource("8_t6ugu")]
+position = Vector2(1320, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80432" parent="Pegs/Lattice" unique_id=1934812067 instance=ExtResource("8_t6ugu")]
+position = Vector2(1410, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80433" parent="Pegs/Lattice" unique_id=994173308 instance=ExtResource("8_t6ugu")]
+position = Vector2(1500, 738.8093)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80434" parent="Pegs/Lattice" unique_id=818638582 instance=ExtResource("8_t6ugu")]
+position = Vector2(105, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80435" parent="Pegs/Lattice" unique_id=858604565 instance=ExtResource("8_t6ugu")]
+position = Vector2(195, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80436" parent="Pegs/Lattice" unique_id=1134283599 instance=ExtResource("8_t6ugu")]
+position = Vector2(285, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80437" parent="Pegs/Lattice" unique_id=551069622 instance=ExtResource("8_t6ugu")]
+position = Vector2(375, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80438" parent="Pegs/Lattice" unique_id=540248138 instance=ExtResource("8_t6ugu")]
+position = Vector2(465, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80439" parent="Pegs/Lattice" unique_id=1103054559 instance=ExtResource("8_t6ugu")]
+position = Vector2(555, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80440" parent="Pegs/Lattice" unique_id=188709896 instance=ExtResource("8_t6ugu")]
+position = Vector2(645, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80441" parent="Pegs/Lattice" unique_id=912010352 instance=ExtResource("8_t6ugu")]
+position = Vector2(735, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80442" parent="Pegs/Lattice" unique_id=468581178 instance=ExtResource("8_t6ugu")]
+position = Vector2(825, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80443" parent="Pegs/Lattice" unique_id=931174571 instance=ExtResource("8_t6ugu")]
+position = Vector2(915, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80444" parent="Pegs/Lattice" unique_id=118044446 instance=ExtResource("8_t6ugu")]
+position = Vector2(1005, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80445" parent="Pegs/Lattice" unique_id=2075224828 instance=ExtResource("8_t6ugu")]
+position = Vector2(1095, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80446" parent="Pegs/Lattice" unique_id=193608871 instance=ExtResource("8_t6ugu")]
+position = Vector2(1185, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80447" parent="Pegs/Lattice" unique_id=1567726111 instance=ExtResource("8_t6ugu")]
+position = Vector2(1275, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80448" parent="Pegs/Lattice" unique_id=171823503 instance=ExtResource("8_t6ugu")]
+position = Vector2(1365, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="@StaticBody2D@80449" parent="Pegs/Lattice" unique_id=581309043 instance=ExtResource("8_t6ugu")]
+position = Vector2(1455, 824.5984)
+physics_material_override = SubResource("PhysicsMaterial_l07mq")
+
+[node name="Coach" parent="." unique_id=362672920 instance=ExtResource("8_fshlb")]
+position = Vector2(-540, 260)
+
+[node name="Coach2" parent="." unique_id=947856709 instance=ExtResource("8_fshlb")]
+position = Vector2(-540, 260)
+start_delay = 3.2
+
+[node name="Coach3" parent="." unique_id=97975792 instance=ExtResource("8_fshlb")]
+position = Vector2(-540, 260)
+start_delay = 6.4
