@@ -1,0 +1,241 @@
+[gd_scene format=3 uid="uid://7vfasdaeinoq"]
+
+[ext_resource type="Script" uid="uid://j5qanrea4hfk" path="res://scenes/game/hud/hud.gd" id="1_4h4qe"]
+[ext_resource type="Theme" uid="uid://qpugxn881apx" path="res://hud_theme.tres" id="2_7lo7q"]
+[ext_resource type="Script" uid="uid://cg6rw8igs22mw" path="res://scenes/game/player_row/player_list.gd" id="3_etamk"]
+[ext_resource type="PackedScene" uid="uid://bhqi5hdr2opg4" path="res://scenes/game/twitch_status/twitch_status.tscn" id="4_spx7p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a8rs"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.31, 0.55, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="UI" type="CanvasLayer" unique_id=465853668]
+script = ExtResource("1_4h4qe")
+
+[node name="Root" type="Control" parent="." unique_id=1716650724]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_7lo7q")
+
+[node name="Columns" type="HBoxContainer" parent="Root" unique_id=1996239633]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="LeftCol" type="VBoxContainer" parent="Root/Columns" unique_id=944311928]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="InfoBox" type="Panel" parent="Root/Columns/LeftCol" unique_id=1166057092]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_7lo7q")
+
+[node name="Margin" type="MarginContainer" parent="Root/Columns/LeftCol/InfoBox" unique_id=522239864]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="StandingsContainer" type="VBoxContainer" parent="Root/Columns/LeftCol/InfoBox/Margin" unique_id=246297345]
+layout_mode = 2
+theme = ExtResource("2_7lo7q")
+
+[node name="RoundScoresTitle" type="Label" parent="Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=1222329159]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Round scores"
+
+[node name="StandingsScroll" type="ScrollContainer" parent="Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=508746994]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="StandingsList" type="VBoxContainer" parent="Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer/StandingsScroll" unique_id=2111315643]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+script = ExtResource("3_etamk")
+
+[node name="QueueTitle" type="Label" parent="Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=1436677456]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Queue"
+
+[node name="EntrantsScroll" type="ScrollContainer" parent="Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=968190240]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="EntrantsWaitingList" type="VBoxContainer" parent="Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer/EntrantsScroll" unique_id=786416010]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+script = ExtResource("3_etamk")
+
+[node name="EndRegistrationButton" type="Button" parent="Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=92562421]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+theme_override_font_sizes/font_size = 16
+text = "Start Game"
+
+[node name="RightCol" type="VBoxContainer" parent="Root/Columns" unique_id=940986068]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="TopBar" type="Panel" parent="Root/Columns/RightCol" unique_id=2056561421]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_7lo7q")
+
+[node name="Margin" type="MarginContainer" parent="Root/Columns/RightCol/TopBar" unique_id=739779678]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 4
+
+[node name="Row" type="HBoxContainer" parent="Root/Columns/RightCol/TopBar/Margin" unique_id=1668877626]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DropBallButton" type="Button" parent="Root/Columns/RightCol/TopBar/Margin/Row" unique_id=922293523]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+theme_override_styles/normal = SubResource("StyleBoxFlat_2a8rs")
+text = "Drop Ball"
+
+[node name="ContinueButton" type="Button" parent="Root/Columns/RightCol/TopBar/Margin/Row" unique_id=280739504]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"PrimaryButton"
+text = "Continue"
+
+[node name="Spacer" type="Control" parent="Root/Columns/RightCol/TopBar/Margin/Row" unique_id=300903560]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RedropButton" type="Button" parent="Root/Columns/RightCol/TopBar/Margin/Row" unique_id=502694131]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Redrop"
+
+[node name="QuitButton" type="Button" parent="Root/Columns/RightCol/TopBar/Margin/Row" unique_id=134331654]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
+
+[node name="BoardSpace" type="Control" parent="Root/Columns/RightCol" unique_id=1072600686]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BottomBar" type="Panel" parent="Root/Columns/RightCol" unique_id=1750194835]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Root/Columns/RightCol/BottomBar" unique_id=1884245772]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/Columns/RightCol/BottomBar/MarginContainer" unique_id=1169093006]
+layout_mode = 2
+
+[node name="TwitchStatus" parent="Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=2118529810 instance=ExtResource("4_spx7p")]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=1146830794]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MultiplierLabel" type="Label" parent="Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=1786246828]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Spacer2" type="Control" parent="Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=860406158]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RoundStatusLabel" type="Label" parent="Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=2141486171]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Status"
+
+[node name="CurrentBallRow" type="HBoxContainer" parent="." unique_id=664220259]
+offset_left = 316.0
+offset_top = -6.0
+offset_right = 1916.0
+offset_bottom = 44.0
+mouse_filter = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="BallIcon" type="TextureRect" parent="CurrentBallRow" unique_id=1797933961]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+stretch_mode = 5
+
+[node name="CurrentBallLabel" type="Label" parent="CurrentBallRow" unique_id=710660457]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -4)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 36
+text = "quayside_kev is dropping"
+horizontal_alignment = 1
+vertical_alignment = 1
+max_lines_visible = 1
+
+[node name="HitsLabel" type="Label" parent="CurrentBallRow" unique_id=1339285392]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+vertical_alignment = 1

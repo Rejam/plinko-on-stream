@@ -7,33 +7,20 @@
 [ext_resource type="Texture2D" uid="uid://cedacrybofmmn" path="res://assets/UIpackSheet_transparent.png" id="4_87uf6"]
 [ext_resource type="PackedScene" uid="uid://bx68kd553imh" path="res://scenes/game/boards/board_idiot_sandwich.tscn" id="5_3xj4h"]
 [ext_resource type="PackedScene" uid="uid://b8t3bxfwvtd7m" path="res://scenes/debug/debug.tscn" id="5_4j704"]
-[ext_resource type="Theme" uid="uid://qpugxn881apx" path="res://hud_theme.tres" id="6_2a8rs"]
 [ext_resource type="Script" uid="uid://dw3rutslo8pit" path="res://scenes/game/board_marker.gd" id="6_4j704"]
-[ext_resource type="PackedScene" uid="uid://bhqi5hdr2opg4" path="res://scenes/game/twitch_status/twitch_status.tscn" id="6_5jirj"]
 [ext_resource type="PackedScene" uid="uid://3rmsjgk1sgsx" path="res://scenes/game/boards/board_happy_days.tscn" id="6_5v6r0"]
 [ext_resource type="PackedScene" uid="uid://bkhuo30b08vdf" path="res://scenes/game/session_manager/session_manager.tscn" id="7_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://dawrcn6dcaloj" path="res://scenes/game/boards/board_margaret_thatchers_dungeon.tscn" id="7_uyinl"]
 [ext_resource type="PackedScene" uid="uid://bdacsypf8u5a1" path="res://scenes/game/boards/board_whats_on_your_place.tscn" id="8_10c2w"]
-[ext_resource type="Script" uid="uid://cg6rw8igs22mw" path="res://scenes/game/player_row/player_list.gd" id="9_5v6r0"]
 [ext_resource type="PackedScene" uid="uid://dfpnxfomie3s4" path="res://scenes/game/phase_panel/round_over_layer.tscn" id="9_kp23o"]
 [ext_resource type="PackedScene" uid="uid://c7wodg5g357dt" path="res://scenes/game/phase_panel/session_over_layer.tscn" id="10_5jirj"]
+[ext_resource type="PackedScene" uid="uid://7vfasdaeinoq" path="res://scenes/game/hud/hud.tscn" id="10_5v6r0"]
 [ext_resource type="PackedScene" path="res://scenes/game/quit_confirm/quit_confirm_layer.tscn" id="11_kp23o"]
 [ext_resource type="PackedScene" uid="uid://c4upnk75lh3uv" path="res://scenes/game/score_popup/score_popup.tscn" id="14_otnwt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bpukv"]
 atlas = ExtResource("4_87uf6")
 region = Rect2(450, 54, 16, 16)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a8rs"]
-content_margin_left = 8.0
-content_margin_top = 4.0
-content_margin_right = 8.0
-content_margin_bottom = 4.0
-bg_color = Color(0.31, 0.55, 1, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
 
 [node name="Game" type="Node2D" unique_id=2047480295]
 script = ExtResource("1_5i0tg")
@@ -49,238 +36,14 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_bpukv")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=403276215]
-
-[node name="Root" type="Control" parent="UI" unique_id=23372577]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("6_2a8rs")
-
-[node name="Columns" type="HBoxContainer" parent="UI/Root" unique_id=1769035691]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="LeftCol" type="VBoxContainer" parent="UI/Root/Columns" unique_id=1938546238]
-custom_minimum_size = Vector2(320, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="InfoBox" type="Panel" parent="UI/Root/Columns/LeftCol" unique_id=1712812118]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("6_2a8rs")
-
-[node name="Margin" type="MarginContainer" parent="UI/Root/Columns/LeftCol/InfoBox" unique_id=1626145583]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="StandingsContainer" type="VBoxContainer" parent="UI/Root/Columns/LeftCol/InfoBox/Margin" unique_id=632585386]
-layout_mode = 2
-theme = ExtResource("6_2a8rs")
-
-[node name="RoundScoresTitle" type="Label" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=1608726089]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Round scores"
-
-[node name="StandingsScroll" type="ScrollContainer" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=432678643]
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="StandingsList" type="VBoxContainer" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer/StandingsScroll" unique_id=1028249727]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-script = ExtResource("9_5v6r0")
-
-[node name="QueueTitle" type="Label" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=936684374]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Queue"
-
-[node name="EntrantsScroll" type="ScrollContainer" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=899794368]
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="EntrantsWaitingList" type="VBoxContainer" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer/EntrantsScroll" unique_id=1992988748]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-script = ExtResource("9_5v6r0")
-
-[node name="EndRegistrationButton" type="Button" parent="UI/Root/Columns/LeftCol/InfoBox/Margin/StandingsContainer" unique_id=1130275608]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-theme_type_variation = &"PrimaryButton"
-theme_override_font_sizes/font_size = 16
-text = "Start Game"
-
-[node name="RightCol" type="VBoxContainer" parent="UI/Root/Columns" unique_id=1611780381]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="TopBar" type="Panel" parent="UI/Root/Columns/RightCol" unique_id=1668786433]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("6_2a8rs")
-
-[node name="Margin" type="MarginContainer" parent="UI/Root/Columns/RightCol/TopBar" unique_id=372798264]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_bottom = 4
-
-[node name="Row" type="HBoxContainer" parent="UI/Root/Columns/RightCol/TopBar/Margin" unique_id=1129685556]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DropBallButton" type="Button" parent="UI/Root/Columns/RightCol/TopBar/Margin/Row" unique_id=501488133]
-unique_name_in_owner = true
-layout_mode = 2
-theme_type_variation = &"PrimaryButton"
-theme_override_styles/normal = SubResource("StyleBoxFlat_2a8rs")
-text = "Drop Ball"
-
-[node name="ContinueButton" type="Button" parent="UI/Root/Columns/RightCol/TopBar/Margin/Row" unique_id=302666286]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 4
-theme_type_variation = &"PrimaryButton"
-text = "Continue"
-
-[node name="Spacer" type="Control" parent="UI/Root/Columns/RightCol/TopBar/Margin/Row" unique_id=1526887495]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="RedropButton" type="Button" parent="UI/Root/Columns/RightCol/TopBar/Margin/Row" unique_id=499774679]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-text = "Redrop"
-
-[node name="QuitButton" type="Button" parent="UI/Root/Columns/RightCol/TopBar/Margin/Row" unique_id=1047079342]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Quit"
-
-[node name="BoardSpace" type="Control" parent="UI/Root/Columns/RightCol" unique_id=1459044565]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="BottomBar" type="Panel" parent="UI/Root/Columns/RightCol" unique_id=2145223898]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/Root/Columns/RightCol/BottomBar" unique_id=368901232]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_bottom = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Root/Columns/RightCol/BottomBar/MarginContainer" unique_id=19429526]
-layout_mode = 2
-
-[node name="TwitchStatus" parent="UI/Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=2118529810 instance=ExtResource("6_5jirj")]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="UI/Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=1054812088]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MultiplierLabel" type="Label" parent="UI/Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=743735509]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-
-[node name="Spacer2" type="Control" parent="UI/Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=1711167594]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="RoundStatusLabel" type="Label" parent="UI/Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=2140504398]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Status"
-
-[node name="CurrentBallRow" type="HBoxContainer" parent="UI" unique_id=1674489122]
-offset_left = 316.0
-offset_top = -6.0
-offset_right = 1916.0
-offset_bottom = 44.0
-mouse_filter = 2
-theme_override_constants/separation = 14
-alignment = 1
-
-[node name="BallIcon" type="TextureRect" parent="UI/CurrentBallRow" unique_id=455831690]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 2
-stretch_mode = 5
-
-[node name="CurrentBallLabel" type="Label" parent="UI/CurrentBallRow" unique_id=317743552]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-offset_transform_enabled = true
-offset_transform_position = Vector2(0, -4)
-theme_override_constants/line_spacing = 0
-theme_override_font_sizes/font_size = 36
-text = "quayside_kev is dropping"
-horizontal_alignment = 1
-vertical_alignment = 1
-max_lines_visible = 1
-
-[node name="HitsLabel" type="Label" parent="UI/CurrentBallRow" unique_id=973701698]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-vertical_alignment = 1
+[node name="HUD" parent="." unique_id=465853668 node_paths=PackedStringArray("session_manager", "quit_confirm_layer") instance=ExtResource("10_5v6r0")]
+session_manager = NodePath("../SessionManager")
+quit_confirm_layer = NodePath("../QuitConfirmLayer")
 
 [node name="BoardMarker" type="Node2D" parent="." unique_id=797090416]
 unique_name_in_owner = true
 position = Vector2(320, 40)
 script = ExtResource("6_4j704")
-
-[node name="DebugMenu" parent="." unique_id=250459968 instance=ExtResource("5_4j704")]
-
-[node name="SessionManager" parent="." unique_id=916437948 instance=ExtResource("7_bdhmt")]
-unique_name_in_owner = true
 
 [node name="RoundOverLayer" parent="." unique_id=927767012 node_paths=PackedStringArray("session_manager") instance=ExtResource("9_kp23o")]
 session_manager = NodePath("../SessionManager")
@@ -293,4 +56,9 @@ session_manager = NodePath("../SessionManager")
 unique_name_in_owner = true
 
 [node name="QuitConfirmLayer" parent="." unique_id=447824394 instance=ExtResource("11_kp23o")]
+unique_name_in_owner = true
+
+[node name="DebugMenu" parent="." unique_id=250459968 instance=ExtResource("5_4j704")]
+
+[node name="SessionManager" parent="." unique_id=916437948 instance=ExtResource("7_bdhmt")]
 unique_name_in_owner = true

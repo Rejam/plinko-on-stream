@@ -5,7 +5,6 @@ const HOLD_TIME := 2.5
 const FADE_TIME := 0.5
 const START_SCALE := 0.7
 
-@onready var _content: Control = %Content
 @onready var _card: PanelContainer = %Card
 @onready var _name_label: Label = %NameLabel
 @onready var _score_label: Label = %ScoreLabel
@@ -22,9 +21,11 @@ func _ready() -> void:
 	_card.add_theme_stylebox_override("panel", _card.get_theme_stylebox("panel", "Panel"))
 	_card.modulate.a = 0.0
 	_dim.modulate.a = 0.0
+	# Not saved by the scene for a container child.
+	_card.pivot_offset_ratio = Vector2(0.5, 0.5)
 
 
-func show_drop(player: Player, bucket_points: int, peg_hits: int, points: int, centre: Vector2) -> void:
+func show_drop(player: Player, bucket_points: int, peg_hits: int, points: int) -> void:
 	_name_label.text = player.display_name
 	_score_label.text = "%d + %d = %d" % [bucket_points, peg_hits, points]
 	_ball_icon.texture = BallArt.texture_for(player.user_id)
@@ -34,15 +35,10 @@ func show_drop(player: Player, bucket_points: int, peg_hits: int, points: int, c
 	if _tween and _tween.is_valid():
 		_tween.kill()
 
-	_card.reset_size()
-	_card.pivot_offset = _card.size * 0.5
-	_card.position = centre - _card.size * 0.5
-
 	_card.scale = Vector2(START_SCALE, START_SCALE)
 	_card.modulate.a = 0.0
 	_dim.modulate.a = 0.0
 
-	_confetti.position = _content.get_combined_minimum_size() * 0.5
 	_confetti.restart()
 
 	_tween = create_tween()
