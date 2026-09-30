@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://j5qanrea4hfk" path="res://scenes/game/hud/hud.gd" id="1_4h4qe"]
 [ext_resource type="Theme" uid="uid://qpugxn881apx" path="res://hud_theme.tres" id="2_7lo7q"]
 [ext_resource type="Script" uid="uid://cg6rw8igs22mw" path="res://scenes/game/player_row/player_list.gd" id="3_etamk"]
-[ext_resource type="PackedScene" uid="uid://bhqi5hdr2opg4" path="res://scenes/game/twitch_status/twitch_status.tscn" id="4_spx7p"]
+[ext_resource type="PackedScene" uid="uid://bhqi5hdr2opg4" path="res://twitch/twitch_chat_status/twitch_chat_status.tscn" id="4_spx7p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a8rs"]
 content_margin_left = 8.0
@@ -182,7 +182,7 @@ theme_override_constants/margin_bottom = 4
 [node name="HBoxContainer" type="HBoxContainer" parent="Root/Columns/RightCol/BottomBar/MarginContainer" unique_id=1169093006]
 layout_mode = 2
 
-[node name="TwitchStatus" parent="Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=2118529810 instance=ExtResource("4_spx7p")]
+[node name="TwitchChatStatus" parent="Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=2118529810 instance=ExtResource("4_spx7p")]
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="Root/Columns/RightCol/BottomBar/MarginContainer/HBoxContainer" unique_id=1146830794]

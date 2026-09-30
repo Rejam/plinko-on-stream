@@ -43,19 +43,35 @@ func _ready() -> void:
 	#add_child(_eventsub)
 	#_eventsub.redemption_received.connect(_on_redemption)
 
+
 ## Login happens on the title screen, so anything in game.tscn is created after
 ## chat has already connected and has missed the emit. Read the state instead of
 ## assuming DISCONNECTED.
 func chat_state() -> TwitchChat.ChatState:
 	return _chat.chat_state
 
+
 ## Manual reconnect, for the connection indicator's click handler.
 func retry_chat() -> void:
 	_chat.retry()
 
+
 func start_login() -> void:
 	_auth.start_login(CLIENT_ID, REDIRECT_PORT, SCOPES)
 
+
+## Logs out: stops chat and deletes the saved token, so the next
+## start_login() opens the browser.
+func disconnect_account() -> void:
+	_chat.disconnect_from_chat()
+	_auth.clear_saved_login()
+	access_token = ""
+	user_id = ""
+	user_login = ""
+	is_logged_in = false
+
+
+## Same for a browser login and a saved login.
 func _on_login_completed(token: String, id: String, login: String) -> void:
 	access_token = token
 	user_id = id
@@ -66,16 +82,18 @@ func _on_login_completed(token: String, id: String, login: String) -> void:
 	#_eventsub.init(token, id, CLIENT_ID)
 	login_completed.emit(login)
 
+
 func _on_chat_message(player: Player, message: String) -> void:
 	var parts := message.strip_edges().split(" ", false)
-	if parts.is_empty() or parts[0].to_lower() != "!plinko":
+	if parts.is_empty():
 		return
+	var command := parts[0]
 	var raw_column := parts[1] if parts.size() > 1 else ""
-	submit_entry(player, raw_column)
+	if command.to_lower() == "!plinko":
+		submit_entry(player, raw_column)
+
 
 func submit_entry(player: Player, raw_column: String) -> void:
-	if OS.is_debug_build():
-		print("twitch listener - submit_entry: player = %s, column = %s" % [player.display_name, raw_column])
 	entry_received.emit(player, raw_column)
 	
 #func _on_redemption(user: String, reward_title: String, user_input: String) -> void:

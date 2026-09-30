@@ -1,4 +1,4 @@
-extends HBoxContainer
+class_name TwitchChatStatus extends HBoxContainer
 
 ## Chat connection indicator in the bottom bar. Self-subscribes to the Twitch
 ## autoload rather than taking an exported reference

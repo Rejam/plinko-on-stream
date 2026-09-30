@@ -1,12 +1,22 @@
 class_name TwitchAuth extends Node
-## OAuth login flow ONLY: opens the browser, runs the local redirect
-## server, captures the access token, fetches the user's id/login, then
-## announces the result and goes quiet.
+## Gets a valid access token and the user's id/login, then announces the
+## result and goes quiet. Nothing happens until start_login() is called:
+## - a saved token (from an earlier browser login) is checked with Twitch
+##   and used if still good.
+## - otherwise the browser login runs: local redirect server, capture the
+##   token, fetch the user's id/login, save the token.
 
 signal login_completed(access_token: String, user_id: String, user_login: String)
 signal login_failed
 
 const LOGIN_TIMEOUT := 300.0
+const HTTP_TIMEOUT := 10.0
+const HTTP_OK := 200
+## user:// is per project, so this path never clashes between projects.
+const SAVE_PATH := "user://twitch_token.cfg"
+const SAVE_SECTION := "twitch"
+const SAVE_KEY_TOKEN := "access_token"
+const VALIDATE_URL := "https://id.twitch.tv/oauth2/validate"
 const HELIX_USERS_URL := "https://api.twitch.tv/helix/users"
 const DONE_PAGE := "<html><body>Login complete! You can close this tab.</body></html>"
 ## Twitch returns the token in the URL fragment, which never reaches the
@@ -22,6 +32,7 @@ if (t) {
 
 var _client_id: String = ""
 var _redirect_port: int = 0
+var _scopes: Array = []
 
 var _server := TCPServer.new()
 var _pending_client: StreamPeerTCP = null
@@ -36,19 +47,30 @@ func _ready() -> void:
 func start_login(client_id: String, redirect_port: int, scopes: Array) -> void:
 	_client_id = client_id
 	_redirect_port = redirect_port
+	_scopes = scopes
 
+	var saved_token := _load_token()
+	if saved_token.is_empty():
+		_start_browser_login()
+	else:
+		_validate_saved_token(saved_token)
+
+func _start_browser_login() -> void:
 	if _server.listen(_redirect_port, "127.0.0.1") != OK:
-		push_error("TwitchAuth: could not listen on port %d (already in use?)" % _redirect_port)
+		_fail("could not listen on port %d (already in use?)" % _redirect_port)
 		return
 	set_process(true)
-	OS.shell_open(_authorize_url(scopes))
+	OS.shell_open(_authorize_url())
 	_login_timeout.start()
 
-func _authorize_url(scopes: Array) -> String:
+func _authorize_url() -> String:
 	const BASE := "https://id.twitch.tv/oauth2/authorize"
 	var redirect_uri := "http://localhost:%d/callback" % _redirect_port
-	return "%s?response_type=token&client_id=%s&redirect_uri=%s&scope=%s" % [
-		BASE, _client_id, redirect_uri.uri_encode(), "+".join(scopes)
+	# force_verify makes Twitch show the account/confirm screen instead of
+	# silently reusing whoever is signed in to twitch.tv in the browser, so
+	# a different account can be picked after clear_saved_login().
+	return "%s?response_type=token&client_id=%s&redirect_uri=%s&scope=%s&force_verify=true" % [
+		BASE, _client_id, redirect_uri.uri_encode(), "+".join(_scopes)
 	]
 
 func _process(_delta: float) -> void:
@@ -126,6 +148,7 @@ func _respond_and_close(html: String) -> void:
 
 func _fetch_user_info() -> void:
 	var http := HTTPRequest.new()
+	http.timeout = HTTP_TIMEOUT
 	add_child(http)
 	http.request_completed.connect(func(_result, code, _headers, body):
 			http.queue_free()
@@ -147,6 +170,8 @@ func _on_user_info(code: int, body: PackedByteArray) -> void:
 		return
 
 	_stop_login()
+	# Keep the token so the next launch can skip the browser.
+	_save_token(_access_token)
 	login_completed.emit(_access_token, json["data"][0]["id"], json["data"][0]["login"])
 
 func _fail(reason: String) -> void:
@@ -171,3 +196,65 @@ func _make_login_timer() -> Timer:
 
 func _on_login_timeout() -> void:
 	_fail("login timed out")
+
+# --- SAVED LOGIN ---
+
+## Checks the saved token with Twitch. Any failure (unreachable, expired,
+## revoked, missing a scope) falls back to the browser; the browser login
+## overwrites the saved token, so a bad one never needs clearing here.
+func _validate_saved_token(token: String) -> void:
+	var http := HTTPRequest.new()
+	http.timeout = HTTP_TIMEOUT
+	add_child(http)
+	http.request_completed.connect(func(result, code, _headers, body):
+		http.queue_free()
+		_on_saved_token_checked(token, result, code, body)
+	)
+	var headers := PackedStringArray(["Authorization: OAuth %s" % token])
+	if http.request(VALIDATE_URL, headers) != OK:
+		http.queue_free()
+		_start_browser_login()
+
+func _on_saved_token_checked(token: String, result: int, code: int, body: PackedByteArray) -> void:
+	if result != HTTPRequest.RESULT_SUCCESS or code != HTTP_OK:
+		_start_browser_login()
+		return
+
+	var json = JSON.parse_string(body.get_string_from_utf8())
+	if not (json is Dictionary and json.has("user_id") and json.has("login")):
+		_start_browser_login()
+		return
+
+	# A token saved before a scope was added won't cover it.
+	var granted_scopes: Array = json.get("scopes", [])
+	for scope in _scopes:
+		if not granted_scopes.has(scope):
+			_start_browser_login()
+			return
+
+	_access_token = token
+	login_completed.emit(token, json["user_id"], json["login"])
+
+## Deletes the saved token, so the next Connect asks for a browser login.
+func clear_saved_login() -> void:
+	_clear_token()
+
+func _save_token(token: String) -> void:
+	var file := ConfigFile.new()
+	file.set_value(SAVE_SECTION, SAVE_KEY_TOKEN, token)
+	var error := file.save(SAVE_PATH)
+	if error != OK:
+		push_error("TwitchAuth: could not save token (error %d)" % error)
+
+## Returns an empty string when nothing is saved.
+func _load_token() -> String:
+	var file := ConfigFile.new()
+	var error := file.load(SAVE_PATH)
+	if error != OK:
+		return ""
+	var saved_token: String = file.get_value(SAVE_SECTION, SAVE_KEY_TOKEN, "")
+	return saved_token
+
+func _clear_token() -> void:
+	if FileAccess.file_exists(SAVE_PATH):
+		DirAccess.remove_absolute(SAVE_PATH)

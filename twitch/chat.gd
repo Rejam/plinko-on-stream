@@ -47,6 +47,16 @@ func connect_to_chat(access_token: String, user_login: String) -> void:
 	set_process(true)
 	_open_socket()
 
+
+## Deliberate disconnect: no retry follows, unlike a drop.
+func disconnect_from_chat() -> void:
+	set_process(false)          # stops polling, so the close isn't seen as a drop
+	_retry_countdown = 0.0      # cancel any pending retry
+	_access_token = ""          # makes retry() a no-op until the next login
+	_socket.close()
+	_set_chat_state(ChatState.DISCONNECTED)
+
+
 ## A fresh peer per attempt. Reusing a closed WebSocketPeer is documented as
 ## allowed but has been unreliable across 4.x, and a new one costs nothing.
 func _open_socket() -> void:

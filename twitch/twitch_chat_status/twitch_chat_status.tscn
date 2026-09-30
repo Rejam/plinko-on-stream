@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bhqi5hdr2opg4"]
 
-[ext_resource type="Script" uid="uid://bo3rmer4142xf" path="res://scenes/game/twitch_status/twitch_status.gd" id="1_2s86m"]
+[ext_resource type="Script" uid="uid://bo3rmer4142xf" path="res://twitch/twitch_chat_status/twitch_chat_status.gd" id="1_2s86m"]
 
-[node name="TwitchStatus" type="HBoxContainer" unique_id=2118529810]
+[node name="TwitchChatStatus" type="HBoxContainer" unique_id=2118529810]
 size_flags_vertical = 4
 tooltip_text = "Twitch chat connection. Click to reconnect when red."
 mouse_filter = 0
