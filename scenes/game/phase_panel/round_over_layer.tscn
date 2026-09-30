@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://fwleucke2t3j" path="res://scenes/game/phase_panel/round_over_panel.gd" id="1_rop"]
 [ext_resource type="Theme" uid="uid://cjpll8hsimr7p" path="res://game_theme.tres" id="2_rop"]
-[ext_resource type="Script" uid="uid://cg6rw8igs22mw" path="res://scenes/game/player_row/player_list.gd" id="3_jhp3m"]
+[ext_resource type="Script" uid="uid://cg6rw8igs22mw" path="res://scenes/game/dropper_row/dropper_list.gd" id="3_jhp3m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rop"]
 bg_color = Color(0.01, 0.01, 0.015, 0.68)
@@ -64,12 +64,14 @@ size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
 [node name="StandingsList" type="VBoxContainer" parent="Scrim/Card/ResultsContainer/StandingsScroll" unique_id=2046968934]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 script = ExtResource("3_jhp3m")
 
 [node name="NextRoundButton" type="Button" parent="Scrim/Card/ResultsContainer" unique_id=233062899]
+unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"PrimaryButton"
 theme_override_font_sizes/font_size = 24

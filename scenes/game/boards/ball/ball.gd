@@ -12,19 +12,19 @@ class_name Ball extends RigidBody2D
 ## Multiplier on the rolling rate. 1.0 matches a ball rolling without slipping.
 @export var spin_scale: float = 1.0
 
-var owner_player: Player = null:
+var owner_dropper: Dropper = null:
 	set(value):
-		owner_player = value
+		owner_dropper = value
 		if value != null and _skin != null:
 			_apply_skin(value.user_id)
 
 func _ready() -> void:
 	#visible_on_screen.screen_exited.connect(queue_free)
-	if owner_player != null:
-		_apply_skin(owner_player.user_id)
+	if owner_dropper != null:
+		_apply_skin(owner_dropper.user_id)
 
 ## Scales the shared texture to the collision radius so the ball on the board
-## and the icon beside the player's name are the same artwork.
+## and the icon beside the dropper's name are the same artwork.
 func _apply_skin(user_id: String) -> void:
 	_skin.texture = BallArt.texture_for(user_id)
 	var scale_factor := (_roll_radius * 2.0) / float(BallArt.SIZE)

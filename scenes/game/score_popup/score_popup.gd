@@ -25,10 +25,10 @@ func _ready() -> void:
 	_card.pivot_offset_ratio = Vector2(0.5, 0.5)
 
 
-func show_drop(player: Player, bucket_points: int, peg_hits: int, points: int) -> void:
-	_name_label.text = player.display_name
+func show_drop(dropper: Dropper, bucket_points: int, peg_hits: int, points: int) -> void:
+	_name_label.text = dropper.display_name
 	_score_label.text = "%d + %d = %d" % [bucket_points, peg_hits, points]
-	_ball_icon.texture = BallArt.texture_for(player.user_id)
+	_ball_icon.texture = BallArt.texture_for(dropper.user_id)
 
 	visible = true
 

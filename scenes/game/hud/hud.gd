@@ -13,8 +13,8 @@ class_name Hud extends CanvasLayer
 @onready var round_status_label: Label = %RoundStatusLabel
 @onready var multiplier_label: Label = %MultiplierLabel
 @onready var queue_title: Label = %QueueTitle
-@onready var entrants_waiting_list: PlayerList = %EntrantsWaitingList
-@onready var standings_list: PlayerList = %StandingsList
+@onready var entrants_waiting_list: DropperList = %EntrantsWaitingList
+@onready var standings_list: DropperList = %StandingsList
 @onready var current_ball_icon: TextureRect = %BallIcon
 @onready var current_ball_label: Label = %CurrentBallLabel
 @onready var hits_label: Label = %HitsLabel
@@ -67,15 +67,15 @@ func _update_current_ball_label(game_state: SessionManager.GameState) -> void:
 		current_ball_label.text = ""
 		hits_label.text = ""
 		return
-	current_ball_label.text = "%s is up" % entry.player.display_name
+	current_ball_label.text = "%s is up" % entry.dropper.display_name
 	hits_label.text = "· 0"
-	current_ball_icon.texture = BallArt.texture_for(entry.player.user_id)
+	current_ball_icon.texture = BallArt.texture_for(entry.dropper.user_id)
 
 func _on_entrants_changed(entrants: Array[Entry]) -> void:
 	queue_title.text = "Queue (%d)" % entrants.size()
 	entrants_waiting_list.clear()
 	for entrant in entrants:
-		entrants_waiting_list.add(entrant.player.user_id, entrant.player.display_name,
+		entrants_waiting_list.add(entrant.dropper.user_id, entrant.dropper.display_name,
 			str(entrant.column))
 
 func _on_standings_updated() -> void:

@@ -29,7 +29,7 @@ func _on_state_changed(game_state: SessionManager.GameState) -> void:
 	for child in _standings_list.get_children():
 		_standings_list.remove_child(child)
 		child.queue_free()
-	# Stars: rounds the player topped; draws count for everyone tied.
+	# Stars: rounds the dropper topped; draws count for everyone tied.
 	var round_tops := session_manager.round_top_counts()
 	for standing in session_manager.sorted_standings():
 		var row: SessionOverRow = ROW.instantiate()

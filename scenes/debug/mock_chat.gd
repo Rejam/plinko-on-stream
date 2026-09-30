@@ -5,8 +5,8 @@ extends VBoxContainer
 ##
 ## user_id is derived from the display name, so one name is one viewer across
 ## presses and across rounds. That stable id is what makes dedupe and
-## total-based queue insertion testable. A fresh Player is minted per press,
-## matching real chat — nothing here holds a Player across rounds.
+## total-based queue insertion testable. A fresh TwitchPlayer is minted per press,
+## matching real chat — nothing here holds a TwitchPlayer across rounds.
 
 const NAMES: PackedStringArray = [
 	"quayside_kev", "hadrianstan hadrianstan hadrianstan hadrianstan", "bellringer92", "greggs_enjoyer",
@@ -62,5 +62,5 @@ func _on_junk_pressed() -> void:
 func _safe_column() -> String:
 	return str(randi_range(1, SAFE_COLUMN_MAX))
 
-func _mint(display_name: String) -> Player:
-	return Player.make("mock_%s" % display_name, display_name)
+func _mint(display_name: String) -> TwitchPlayer:
+	return TwitchPlayer.make("mock_%s" % display_name, display_name)

@@ -9,10 +9,10 @@ class_name Standing extends Resource
 var round_points: Dictionary[int, int] = {}
 
 @warning_ignore("shadowed_variable")
-static func make(player: Player, seq: int) -> Standing:
+static func make(dropper: Dropper, seq: int) -> Standing:
 	var standing := Standing.new()
-	standing.user_id = player.user_id
-	standing.display_name = player.display_name
+	standing.user_id = dropper.user_id
+	standing.display_name = dropper.display_name
 	standing.seq = seq
 	return standing
 

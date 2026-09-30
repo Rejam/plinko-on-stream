@@ -1,6 +1,6 @@
-class_name PlayerRow extends HBoxContainer
+class_name DropperRow extends HBoxContainer
 
-## One display-only line in a PlayerList: ball, name, value.
+## One display-only line in a DropperList: ball, name, value.
 ## Nothing here takes input — every node is MOUSE_FILTER_IGNORE so rows never
 ## look or behave like something clickable.
 

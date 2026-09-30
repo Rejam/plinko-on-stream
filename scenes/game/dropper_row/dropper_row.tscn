@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://75mjjsj1ik0t"]
 
-[ext_resource type="Script" uid="uid://bxpi6cit2x5ce" path="res://scenes/game/player_row/player_row.gd" id="1_ixp73"]
+[ext_resource type="Script" uid="uid://bxpi6cit2x5ce" path="res://scenes/game/dropper_row/dropper_row.gd" id="1_ixp73"]
 
-[node name="PlayerRow" type="HBoxContainer" unique_id=1348227406]
+[node name="DropperRow" type="HBoxContainer" unique_id=1348227406]
 mouse_filter = 2
 theme_override_constants/separation = 10
 script = ExtResource("1_ixp73")

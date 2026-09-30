@@ -1,7 +1,7 @@
 class_name SessionOverRow extends HBoxContainer
 
 ## One line on the session-over card: ball, name, total, round-top stars.
-## Own scene rather than PlayerRow: the star column exists only here.
+## Own scene rather than DropperRow: the star column exists only here.
 ##
 ## The star column is always laid out and only made transparent at zero, so
 ## totals line up whether or not a row has stars. StarCount has a fixed width

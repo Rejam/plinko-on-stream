@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://j5qanrea4hfk" path="res://scenes/game/hud/hud.gd" id="1_4h4qe"]
 [ext_resource type="Theme" uid="uid://qpugxn881apx" path="res://hud_theme.tres" id="2_7lo7q"]
-[ext_resource type="Script" uid="uid://cg6rw8igs22mw" path="res://scenes/game/player_row/player_list.gd" id="3_etamk"]
+[ext_resource type="Script" uid="uid://cg6rw8igs22mw" path="res://scenes/game/dropper_row/dropper_list.gd" id="3_etamk"]
 [ext_resource type="PackedScene" uid="uid://bhqi5hdr2opg4" path="res://twitch/twitch_chat_status/twitch_chat_status.tscn" id="4_spx7p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a8rs"]

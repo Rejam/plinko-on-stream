@@ -27,7 +27,7 @@ func _on_ball_requested(entry: Entry) -> void:
 	if is_instance_valid(current_ball):
 		current_ball.queue_free()
 	current_ball = board_marker.spawn_held_ball(entry.column)
-	current_ball.owner_player = entry.player
+	current_ball.owner_dropper = entry.dropper
 	hud.set_ball(current_ball)
 
 func _on_ball_released() -> void:
@@ -38,13 +38,14 @@ func _on_ball_released() -> void:
 
 func _on_ball_scored(ball: Ball, base_value: int) -> void:
 	if ball != current_ball: return
-	if session_manager.notify_drop_scored(ball.owner_player, base_value, ball.peg_hits):
+	if session_manager.notify_drop_scored(ball.owner_dropper, base_value, ball.peg_hits):
 		current_ball = null
 
-func _on_entry_received(player: Player, raw_column: String) -> void:
+func _on_entry_received(player: TwitchPlayer, raw_column: String) -> void:
 	var column := board_marker.parse_column(raw_column)
 	if column == BoardMarker.NO_COLUMN: return
-	session_manager.register_entrant(player, column)
+	var dropper := Dropper.make(player.user_id, player.display_name)
+	session_manager.register_entrant(dropper, column)
 
-func _on_drop_resolved(player: Player, base_value: int, multiplier: int, peg_hits: int, points: int) -> void:
-	score_popup.show_drop(player, base_value * multiplier, peg_hits, points)
+func _on_drop_resolved(dropper: Dropper, base_value: int, multiplier: int, peg_hits: int, points: int) -> void:
+	score_popup.show_drop(dropper, base_value * multiplier, peg_hits, points)

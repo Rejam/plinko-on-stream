@@ -12,7 +12,7 @@ const SCOPES := [
 # --- PUBLIC SIGNALS (the game listens to these) ---
 signal login_completed(user_login: String)
 signal login_failed
-signal entry_received(player: Player, raw_column: String)
+signal entry_received(player: TwitchPlayer, raw_column: String)
 signal chat_state_changed(state: TwitchChat.ChatState)
 #signal reward_redeemed(user: String, reward_title: String, user_input: String)
 
@@ -83,7 +83,7 @@ func _on_login_completed(token: String, id: String, login: String) -> void:
 	login_completed.emit(login)
 
 
-func _on_chat_message(player: Player, message: String) -> void:
+func _on_chat_message(player: TwitchPlayer, message: String) -> void:
 	var parts := message.strip_edges().split(" ", false)
 	if parts.is_empty():
 		return
@@ -93,7 +93,7 @@ func _on_chat_message(player: Player, message: String) -> void:
 		submit_entry(player, raw_column)
 
 
-func submit_entry(player: Player, raw_column: String) -> void:
+func submit_entry(player: TwitchPlayer, raw_column: String) -> void:
 	entry_received.emit(player, raw_column)
 	
 #func _on_redemption(user: String, reward_title: String, user_input: String) -> void:

@@ -10,7 +10,7 @@ signal standings_updated
 signal ball_requested(entry: Entry)
 signal ball_released
 signal entrants_changed(entries: Array[Entry])
-signal drop_resolved(player: Player, base_value: int, multiplier: int, peg_hits: int, points: int)
+signal drop_resolved(dropper: Dropper, base_value: int, multiplier: int, peg_hits: int, points: int)
 
 var game_state: GameState = GameState.IDLE
 
@@ -77,7 +77,7 @@ func _by_round_points(a: Standing, b: Standing) -> bool:
 		return a.seq < b.seq
 	return a_points > b_points
 
-## Rounds in which each player had that round's highest points, keyed by
+## Rounds in which each dropper had that round's highest points, keyed by
 ## user_id. Draws count for everyone tied. Derived from round_points on demand.
 func round_top_counts() -> Dictionary[String, int]:
 	var counts: Dictionary[String, int] = {}
@@ -109,14 +109,14 @@ func _reset_round() -> void:
 
 # --- round -----------------------------------------------------------------
 
-func register_entrant(player: Player, column: int) -> void:
+func register_entrant(dropper: Dropper, column: int) -> void:
 	if game_state != GameState.REGISTRATION:
 		return
 	var total := 0
-	if standings.has(player.user_id):
-		total = standings[player.user_id].total
-	var entry := Entry.make(player, column, total)
-	_remove_existing(player.user_id)
+	if standings.has(dropper.user_id):
+		total = standings[dropper.user_id].total
+	var entry := Entry.make(dropper, column, total)
+	_remove_existing(dropper.user_id)
 	_insert_into_queue(entry)
 	entrants_changed.emit(_waiting_entries())
 
@@ -125,7 +125,7 @@ func register_entrant(player: Player, column: int) -> void:
 ## set of entries and a scan is sufficient — there is no separate index.
 func _remove_existing(user_id: String) -> void:
 	for i in _queue.size():
-		if _queue[i].player.user_id == user_id:
+		if _queue[i].dropper.user_id == user_id:
 			_queue.remove_at(i)
 			return
 
@@ -153,13 +153,13 @@ func continue_round() -> void:
 
 ## Returns false if the report was rejected, in which case the caller still owns
 ## the ball — the round stays in DROPPING and Redrop is the way out.
-func notify_drop_scored(player: Player, base_value: int, peg_hits: int) -> bool:
+func notify_drop_scored(dropper: Dropper, base_value: int, peg_hits: int) -> bool:
 	# game_state leaves DROPPING as soon as a ball scores, so a second
 	# report from the same ball is ignored.
 	if game_state != GameState.DROPPING:
 		return false
-	if player.user_id != current_entry.player.user_id:
-		push_error("Scored ball belongs to %s, expected %s" % [player.display_name, current_entry.player.display_name])
+	if dropper.user_id != current_entry.dropper.user_id:
+		push_error("Scored ball belongs to %s, expected %s" % [dropper.display_name, current_entry.dropper.display_name])
 		return false
 	_set_game_state(GameState.DROP_RESOLVED)
  
@@ -169,13 +169,13 @@ func notify_drop_scored(player: Player, base_value: int, peg_hits: int) -> bool:
 	# would otherwise finish level: five buckets produce frequent exact ties, and
 	# a per-drop contact count has far more resolution than a bucket value.
 	var points := base_value * multiplier + peg_hits
-	var standing := _standing_for(player)
+	var standing := _standing_for(dropper)
 	standing.total += points
 	standing.round_points[current_round] = points
 	current_entry.scored = true
 	entrants_changed.emit(_waiting_entries())
 	standings_updated.emit()
-	drop_resolved.emit(player, base_value, multiplier, peg_hits, points)
+	drop_resolved.emit(dropper, base_value, multiplier, peg_hits, points)
 	return true
 
 func _next_entrant() -> void:
@@ -209,13 +209,13 @@ func _by_total(a: Entry, b: Entry) -> bool:
 
 ## Standings fill as balls resolve, not at registration, so round one starts
 ## empty rather than as a screen of zeroes. Mints the Standing on first score.
-func _standing_for(player: Player) -> Standing:
-	if standings.has(player.user_id):
-		standings[player.user_id].display_name = player.display_name
+func _standing_for(dropper: Dropper) -> Standing:
+	if standings.has(dropper.user_id):
+		standings[dropper.user_id].display_name = dropper.display_name
 	else:
 		# standings only ever grows, so size() is the first-score index.
-		standings[player.user_id] = Standing.make(player, standings.size())
-	return standings[player.user_id]
+		standings[dropper.user_id] = Standing.make(dropper, standings.size())
+	return standings[dropper.user_id]
 
 # --- state transitions -----------------------------------------------------
 

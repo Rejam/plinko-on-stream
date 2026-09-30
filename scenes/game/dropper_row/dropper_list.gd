@@ -1,8 +1,8 @@
-class_name PlayerList extends VBoxContainer
+class_name DropperList extends VBoxContainer
 
-## Display-only list: a column of PlayerRows. clear() and add() are the whole API.
+## Display-only list: a column of DropperRows. clear() and add() are the whole API.
 
-const ROW := preload("res://scenes/game/player_row/player_row.tscn")
+const ROW := preload("res://scenes/game/dropper_row/dropper_row.tscn")
 
 ## Removes rows immediately. queue_free alone would leave the old rows in the
 ## container, and visible, until the end of the frame.
@@ -12,6 +12,6 @@ func clear() -> void:
 		child.queue_free()
 
 func add(user_id: String, display_name: String, value_text: String) -> void:
-	var row: PlayerRow = ROW.instantiate()
+	var row: DropperRow = ROW.instantiate()
 	add_child(row)
 	row.setup(user_id, display_name, value_text)

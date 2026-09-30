@@ -8,8 +8,8 @@ extends CanvasLayer
 
 @export var session_manager: SessionManager
 
-@onready var _standings_list: PlayerList = $Scrim/Card/ResultsContainer/StandingsScroll/StandingsList
-@onready var _next_round_button: Button = $Scrim/Card/ResultsContainer/NextRoundButton
+@onready var _standings_list: DropperList = %StandingsList
+@onready var _next_round_button: Button = %NextRoundButton
 
 func _ready() -> void:
 	visible = false
